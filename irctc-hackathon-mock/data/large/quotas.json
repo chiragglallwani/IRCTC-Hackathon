@@ -1,0 +1,143 @@
+{
+  "meta": {
+    "dataset": "bharat-journey-hackathon",
+    "version": "2.0.0",
+    "generatedAt": "2026-08-23T00:00:00.000Z",
+    "synthetic": true,
+    "recordCount": 12
+  },
+  "records": [
+    {
+      "quotaId": "GN",
+      "name": "General",
+      "shortName": "GN",
+      "description": "Available to every passenger",
+      "eligibility": {
+        "type": "general",
+        "requiresVerification": false
+      },
+      "displayPriority": 1
+    },
+    {
+      "quotaId": "LD",
+      "name": "Ladies",
+      "shortName": "LD",
+      "description": "All passengers must identify as women",
+      "eligibility": {
+        "type": "all_female",
+        "requiresVerification": false
+      },
+      "displayPriority": 2
+    },
+    {
+      "quotaId": "SS",
+      "name": "Senior citizen",
+      "shortName": "SS",
+      "description": "All passengers must meet mock senior-age criteria",
+      "eligibility": {
+        "type": "all_senior",
+        "requiresVerification": false
+      },
+      "displayPriority": 3
+    },
+    {
+      "quotaId": "TQ",
+      "name": "Tatkal",
+      "shortName": "TQ",
+      "description": "Opens at scheduled Tatkal time",
+      "eligibility": {
+        "type": "tatkal_eligible",
+        "requiresVerification": false
+      },
+      "displayPriority": 4
+    },
+    {
+      "quotaId": "PT",
+      "name": "Premium Tatkal",
+      "shortName": "PT",
+      "description": "Dynamic premium Tatkal fare",
+      "eligibility": {
+        "type": "tatkal_eligible",
+        "requiresVerification": false
+      },
+      "displayPriority": 5
+    },
+    {
+      "quotaId": "DF",
+      "name": "Defence",
+      "shortName": "DF",
+      "description": "Requires verified defence profile",
+      "eligibility": {
+        "type": "defence_verified",
+        "requiresVerification": true
+      },
+      "displayPriority": 6
+    },
+    {
+      "quotaId": "FT",
+      "name": "Foreign Tourist",
+      "shortName": "FT",
+      "description": "Requires passport verification",
+      "eligibility": {
+        "type": "foreign_passport_verified",
+        "requiresVerification": true
+      },
+      "displayPriority": 7
+    },
+    {
+      "quotaId": "HP",
+      "name": "Divyangjan",
+      "shortName": "HP",
+      "description": "Requires disability verification",
+      "eligibility": {
+        "type": "disability_verified",
+        "requiresVerification": true
+      },
+      "displayPriority": 8
+    },
+    {
+      "quotaId": "DP",
+      "name": "Duty Pass",
+      "shortName": "DP",
+      "description": "Requires railway employee profile",
+      "eligibility": {
+        "type": "railway_staff_verified",
+        "requiresVerification": true
+      },
+      "displayPriority": 9
+    },
+    {
+      "quotaId": "RE",
+      "name": "Railway Employee",
+      "shortName": "RE",
+      "description": "Requires railway employee profile",
+      "eligibility": {
+        "type": "railway_staff_verified",
+        "requiresVerification": true
+      },
+      "displayPriority": 10
+    },
+    {
+      "quotaId": "YU",
+      "name": "Youth Group",
+      "shortName": "YU",
+      "description": "Mock group travel eligibility",
+      "eligibility": {
+        "type": "group_eligible",
+        "requiresVerification": false
+      },
+      "displayPriority": 11
+    },
+    {
+      "quotaId": "PH",
+      "name": "Parliament House",
+      "shortName": "PH",
+      "description": "Mock official-travel eligibility",
+      "eligibility": {
+        "type": "official_verified",
+        "requiresVerification": true
+      },
+      "displayPriority": 12
+    }
+  ]
+}

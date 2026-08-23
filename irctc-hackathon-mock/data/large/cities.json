@@ -1,0 +1,8572 @@
+{
+  "meta": {
+    "dataset": "bharat-journey-hackathon",
+    "version": "2.0.0",
+    "generatedAt": "2026-08-23T00:00:00.000Z",
+    "synthetic": true,
+    "recordCount": 420
+  },
+  "records": [
+    {
+      "cityId": "city_andhra_pradesh_visakhapatnam",
+      "name": "Visakhapatnam",
+      "state": "Andhra Pradesh",
+      "country": "India",
+      "type": [
+        "railway_hub",
+        "tier_1",
+        "airport_hub"
+      ],
+      "latitude": 15.54593,
+      "longitude": 79.54278,
+      "aliases": [
+        "Visakhapatnam",
+        "Visakhapatnam City"
+      ],
+      "languages": [
+        "en",
+        "hi"
+      ],
+      "popular": true
+    },
+    {
+      "cityId": "city_andhra_pradesh_vijayawada",
+      "name": "Vijayawada",
+      "state": "Andhra Pradesh",
+      "country": "India",
+      "type": [
+        "tier_1"
+      ],
+      "latitude": 17.98585,
+      "longitude": 82.38569,
+      "aliases": [
+        "Vijayawada",
+        "Vijayawada City"
+      ],
+      "languages": [
+        "en",
+        "hi"
+      ],
+      "popular": true
+    },
+    {
+      "cityId": "city_andhra_pradesh_tirupati",
+      "name": "Tirupati",
+      "state": "Andhra Pradesh",
+      "country": "India",
+      "type": [
+        "tier_2",
+        "tourist_destination"
+      ],
+      "latitude": 17.37487,
+      "longitude": 81.70425,
+      "aliases": [
+        "Tirupati",
+        "Tirupati City"
+      ],
+      "languages": [
+        "en",
+        "hi"
+      ],
+      "popular": true
+    },
+    {
+      "cityId": "city_andhra_pradesh_guntur",
+      "name": "Guntur",
+      "state": "Andhra Pradesh",
+      "country": "India",
+      "type": [
+        "tier_2"
+      ],
+      "latitude": 18.40245,
+      "longitude": 82.87803,
+      "aliases": [
+        "Guntur",
+        "Guntur City"
+      ],
+      "languages": [
+        "en",
+        "hi"
+      ],
+      "popular": false
+    },
+    {
+      "cityId": "city_andhra_pradesh_nellore",
+      "name": "Nellore",
+      "state": "Andhra Pradesh",
+      "country": "India",
+      "type": [
+        "tier_2"
+      ],
+      "latitude": 14.86813,
+      "longitude": 78.78236,
+      "aliases": [
+        "Nellore",
+        "Nellore City"
+      ],
+      "languages": [
+        "en",
+        "hi"
+      ],
+      "popular": false
+    },
+    {
+      "cityId": "city_andhra_pradesh_kurnool",
+      "name": "Kurnool",
+      "state": "Andhra Pradesh",
+      "country": "India",
+      "type": [
+        "tier_2"
+      ],
+      "latitude": 18.27766,
+      "longitude": 82.77119,
+      "aliases": [
+        "Kurnool",
+        "Kurnool City"
+      ],
+      "languages": [
+        "en",
+        "hi"
+      ],
+      "popular": false
+    },
+    {
+      "cityId": "city_andhra_pradesh_rajahmundry",
+      "name": "Rajahmundry",
+      "state": "Andhra Pradesh",
+      "country": "India",
+      "type": [
+        "tier_2"
+      ],
+      "latitude": 15.90273,
+      "longitude": 79.92382,
+      "aliases": [
+        "Rajahmundry",
+        "Rajahmundry City"
+      ],
+      "languages": [
+        "en",
+        "hi"
+      ],
+      "popular": false
+    },
+    {
+      "cityId": "city_andhra_pradesh_kakinada",
+      "name": "Kakinada",
+      "state": "Andhra Pradesh",
+      "country": "India",
+      "type": [
+        "tier_2"
+      ],
+      "latitude": 16.2515,
+      "longitude": 80.37663,
+      "aliases": [
+        "Kakinada",
+        "Kakinada City"
+      ],
+      "languages": [
+        "en",
+        "hi"
+      ],
+      "popular": false
+    },
+    {
+      "cityId": "city_andhra_pradesh_anantapur",
+      "name": "Anantapur",
+      "state": "Andhra Pradesh",
+      "country": "India",
+      "type": [
+        "tier_2"
+      ],
+      "latitude": 15.09566,
+      "longitude": 79.01063,
+      "aliases": [
+        "Anantapur",
+        "Anantapur City"
+      ],
+      "languages": [
+        "en",
+        "hi"
+      ],
+      "popular": false
+    },
+    {
+      "cityId": "city_andhra_pradesh_kadapa",
+      "name": "Kadapa",
+      "state": "Andhra Pradesh",
+      "country": "India",
+      "type": [
+        "tier_2"
+      ],
+      "latitude": 15.8199,
+      "longitude": 79.78531,
+      "aliases": [
+        "Kadapa",
+        "Kadapa City"
+      ],
+      "languages": [
+        "en",
+        "hi"
+      ],
+      "popular": false
+    },
+    {
+      "cityId": "city_andhra_pradesh_ongole",
+      "name": "Ongole",
+      "state": "Andhra Pradesh",
+      "country": "India",
+      "type": [
+        "tier_2"
+      ],
+      "latitude": 18.29604,
+      "longitude": 82.71166,
+      "aliases": [
+        "Ongole",
+        "Ongole City"
+      ],
+      "languages": [
+        "en",
+        "hi"
+      ],
+      "popular": false
+    },
+    {
+      "cityId": "city_andhra_pradesh_eluru",
+      "name": "Eluru",
+      "state": "Andhra Pradesh",
+      "country": "India",
+      "type": [
+        "tier_2"
+      ],
+      "latitude": 14.33976,
+      "longitude": 78.07668,
+      "aliases": [
+        "Eluru",
+        "Eluru City"
+      ],
+      "languages": [
+        "en",
+        "hi"
+      ],
+      "popular": false
+    },
+    {
+      "cityId": "city_andhra_pradesh_srikakulam",
+      "name": "Srikakulam",
+      "state": "Andhra Pradesh",
+      "country": "India",
+      "type": [
+        "tier_2"
+      ],
+      "latitude": 14.90634,
+      "longitude": 78.78689,
+      "aliases": [
+        "Srikakulam",
+        "Srikakulam City"
+      ],
+      "languages": [
+        "en",
+        "hi"
+      ],
+      "popular": false
+    },
+    {
+      "cityId": "city_andhra_pradesh_amaravati",
+      "name": "Amaravati",
+      "state": "Andhra Pradesh",
+      "country": "India",
+      "type": [
+        "state_capital",
+        "capital",
+        "tier_2"
+      ],
+      "latitude": 16.62061,
+      "longitude": 80.81285,
+      "aliases": [
+        "Amaravati",
+        "Amaravati City"
+      ],
+      "languages": [
+        "en",
+        "hi"
+      ],
+      "popular": false
+    },
+    {
+      "cityId": "city_arunachal_pradesh_itanagar",
+      "name": "Itanagar",
+      "state": "Arunachal Pradesh",
+      "country": "India",
+      "type": [
+        "railway_hub",
+        "state_capital",
+        "capital",
+        "tier_1",
+        "airport_hub"
+      ],
+      "latitude": 26.70517,
+      "longitude": 93.09244,
+      "aliases": [
+        "Itanagar",
+        "Itanagar City"
+      ],
+      "languages": [
+        "en",
+        "hi"
+      ],
+      "popular": true
+    },
+    {
+      "cityId": "city_arunachal_pradesh_tawang",
+      "name": "Tawang",
+      "state": "Arunachal Pradesh",
+      "country": "India",
+      "type": [
+        "tier_1",
+        "tourist_destination"
+      ],
+      "latitude": 27.4918,
+      "longitude": 94.06273,
+      "aliases": [
+        "Tawang",
+        "Tawang City"
+      ],
+      "languages": [
+        "en",
+        "hi"
+      ],
+      "popular": true
+    },
+    {
+      "cityId": "city_arunachal_pradesh_ziro",
+      "name": "Ziro",
+      "state": "Arunachal Pradesh",
+      "country": "India",
+      "type": [
+        "tier_2",
+        "tourist_destination"
+      ],
+      "latitude": 27.15369,
+      "longitude": 93.74439,
+      "aliases": [
+        "Ziro",
+        "Ziro City"
+      ],
+      "languages": [
+        "en",
+        "hi"
+      ],
+      "popular": true
+    },
+    {
+      "cityId": "city_arunachal_pradesh_pasighat",
+      "name": "Pasighat",
+      "state": "Arunachal Pradesh",
+      "country": "India",
+      "type": [
+        "tier_2"
+      ],
+      "latitude": 28.5019,
+      "longitude": 95.21585,
+      "aliases": [
+        "Pasighat",
+        "Pasighat City"
+      ],
+      "languages": [
+        "en",
+        "hi"
+      ],
+      "popular": false
+    },
+    {
+      "cityId": "city_arunachal_pradesh_bomdila",
+      "name": "Bomdila",
+      "state": "Arunachal Pradesh",
+      "country": "India",
+      "type": [
+        "tier_2"
+      ],
+      "latitude": 28.59237,
+      "longitude": 95.3634,
+      "aliases": [
+        "Bomdila",
+        "Bomdila City"
+      ],
+      "languages": [
+        "en",
+        "hi"
+      ],
+      "popular": false
+    },
+    {
+      "cityId": "city_arunachal_pradesh_naharlagun",
+      "name": "Naharlagun",
+      "state": "Arunachal Pradesh",
+      "country": "India",
+      "type": [
+        "tier_2"
+      ],
+      "latitude": 29.08727,
+      "longitude": 95.98891,
+      "aliases": [
+        "Naharlagun",
+        "Naharlagun City"
+      ],
+      "languages": [
+        "en",
+        "hi"
+      ],
+      "popular": false
+    },
+    {
+      "cityId": "city_arunachal_pradesh_aalo",
+      "name": "Aalo",
+      "state": "Arunachal Pradesh",
+      "country": "India",
+      "type": [
+        "tier_2"
+      ],
+      "latitude": 25.12744,
+      "longitude": 91.30911,
+      "aliases": [
+        "Aalo",
+        "Aalo City"
+      ],
+      "languages": [
+        "en",
+        "hi"
+      ],
+      "popular": false
+    },
+    {
+      "cityId": "city_arunachal_pradesh_tezu",
+      "name": "Tezu",
+      "state": "Arunachal Pradesh",
+      "country": "India",
+      "type": [
+        "tier_2"
+      ],
+      "latitude": 25.89281,
+      "longitude": 92.25427,
+      "aliases": [
+        "Tezu",
+        "Tezu City"
+      ],
+      "languages": [
+        "en",
+        "hi"
+      ],
+      "popular": false
+    },
+    {
+      "cityId": "city_arunachal_pradesh_roing",
+      "name": "Roing",
+      "state": "Arunachal Pradesh",
+      "country": "India",
+      "type": [
+        "tier_2"
+      ],
+      "latitude": 27.57466,
+      "longitude": 94.20127,
+      "aliases": [
+        "Roing",
+        "Roing City"
+      ],
+      "languages": [
+        "en",
+        "hi"
+      ],
+      "popular": false
+    },
+    {
+      "cityId": "city_arunachal_pradesh_seppa",
+      "name": "Seppa",
+      "state": "Arunachal Pradesh",
+      "country": "India",
+      "type": [
+        "tier_2"
+      ],
+      "latitude": 28.01533,
+      "longitude": 94.64082,
+      "aliases": [
+        "Seppa",
+        "Seppa City"
+      ],
+      "languages": [
+        "en",
+        "hi"
+      ],
+      "popular": false
+    },
+    {
+      "cityId": "city_arunachal_pradesh_namsai",
+      "name": "Namsai",
+      "state": "Arunachal Pradesh",
+      "country": "India",
+      "type": [
+        "tier_2"
+      ],
+      "latitude": 27.44279,
+      "longitude": 94.04543,
+      "aliases": [
+        "Namsai",
+        "Namsai City"
+      ],
+      "languages": [
+        "en",
+        "hi"
+      ],
+      "popular": false
+    },
+    {
+      "cityId": "city_arunachal_pradesh_changlang",
+      "name": "Changlang",
+      "state": "Arunachal Pradesh",
+      "country": "India",
+      "type": [
+        "tier_2"
+      ],
+      "latitude": 28.4088,
+      "longitude": 95.18707,
+      "aliases": [
+        "Changlang",
+        "Changlang City"
+      ],
+      "languages": [
+        "en",
+        "hi"
+      ],
+      "popular": false
+    },
+    {
+      "cityId": "city_arunachal_pradesh_yingkiong",
+      "name": "Yingkiong",
+      "state": "Arunachal Pradesh",
+      "country": "India",
+      "type": [
+        "tier_2"
+      ],
+      "latitude": 26.57417,
+      "longitude": 93.01888,
+      "aliases": [
+        "Yingkiong",
+        "Yingkiong City"
+      ],
+      "languages": [
+        "en",
+        "hi"
+      ],
+      "popular": false
+    },
+    {
+      "cityId": "city_arunachal_pradesh_anini",
+      "name": "Anini",
+      "state": "Arunachal Pradesh",
+      "country": "India",
+      "type": [
+        "tier_2"
+      ],
+      "latitude": 27.87686,
+      "longitude": 94.47717,
+      "aliases": [
+        "Anini",
+        "Anini City"
+      ],
+      "languages": [
+        "en",
+        "hi"
+      ],
+      "popular": false
+    },
+    {
+      "cityId": "city_assam_guwahati",
+      "name": "Guwahati",
+      "state": "Assam",
+      "country": "India",
+      "type": [
+        "railway_hub",
+        "tier_1",
+        "airport_hub"
+      ],
+      "latitude": 24.47015,
+      "longitude": 89.78686,
+      "aliases": [
+        "Guwahati",
+        "Guwahati City"
+      ],
+      "languages": [
+        "en",
+        "hi"
+      ],
+      "popular": true
+    },
+    {
+      "cityId": "city_assam_dibrugarh",
+      "name": "Dibrugarh",
+      "state": "Assam",
+      "country": "India",
+      "type": [
+        "tier_1"
+      ],
+      "latitude": 25.46991,
+      "longitude": 90.96839,
+      "aliases": [
+        "Dibrugarh",
+        "Dibrugarh City"
+      ],
+      "languages": [
+        "en",
+        "hi"
+      ],
+      "popular": true
+    },
+    {
+      "cityId": "city_assam_jorhat",
+      "name": "Jorhat",
+      "state": "Assam",
+      "country": "India",
+      "type": [
+        "tier_2"
+      ],
+      "latitude": 25.62854,
+      "longitude": 91.15586,
+      "aliases": [
+        "Jorhat",
+        "Jorhat City"
+      ],
+      "languages": [
+        "en",
+        "hi"
+      ],
+      "popular": true
+    },
+    {
+      "cityId": "city_assam_silchar",
+      "name": "Silchar",
+      "state": "Assam",
+      "country": "India",
+      "type": [
+        "tier_2"
+      ],
+      "latitude": 24.51638,
+      "longitude": 89.84149,
+      "aliases": [
+        "Silchar",
+        "Silchar City"
+      ],
+      "languages": [
+        "en",
+        "hi"
+      ],
+      "popular": false
+    },
+    {
+      "cityId": "city_assam_tezpur",
+      "name": "Tezpur",
+      "state": "Assam",
+      "country": "India",
+      "type": [
+        "tier_2"
+      ],
+      "latitude": 25.87656,
+      "longitude": 91.36772,
+      "aliases": [
+        "Tezpur",
+        "Tezpur City"
+      ],
+      "languages": [
+        "en",
+        "hi"
+      ],
+      "popular": false
+    },
+    {
+      "cityId": "city_assam_nagaon",
+      "name": "Nagaon",
+      "state": "Assam",
+      "country": "India",
+      "type": [
+        "tier_2"
+      ],
+      "latitude": 24.39566,
+      "longitude": 89.69882,
+      "aliases": [
+        "Nagaon",
+        "Nagaon City"
+      ],
+      "languages": [
+        "en",
+        "hi"
+      ],
+      "popular": false
+    },
+    {
+      "cityId": "city_assam_sivasagar",
+      "name": "Sivasagar",
+      "state": "Assam",
+      "country": "India",
+      "type": [
+        "tier_2",
+        "tourist_destination"
+      ],
+      "latitude": 27.82979,
+      "longitude": 93.79796,
+      "aliases": [
+        "Sivasagar",
+        "Sivasagar City"
+      ],
+      "languages": [
+        "en",
+        "hi"
+      ],
+      "popular": true
+    },
+    {
+      "cityId": "city_assam_tinsukia",
+      "name": "Tinsukia",
+      "state": "Assam",
+      "country": "India",
+      "type": [
+        "tier_2"
+      ],
+      "latitude": 26.5528,
+      "longitude": 92.16692,
+      "aliases": [
+        "Tinsukia",
+        "Tinsukia City"
+      ],
+      "languages": [
+        "en",
+        "hi"
+      ],
+      "popular": false
+    },
+    {
+      "cityId": "city_assam_bongaigaon",
+      "name": "Bongaigaon",
+      "state": "Assam",
+      "country": "India",
+      "type": [
+        "tier_2"
+      ],
+      "latitude": 26.03668,
+      "longitude": 91.59758,
+      "aliases": [
+        "Bongaigaon",
+        "Bongaigaon City"
+      ],
+      "languages": [
+        "en",
+        "hi"
+      ],
+      "popular": false
+    },
+    {
+      "cityId": "city_assam_dhubri",
+      "name": "Dhubri",
+      "state": "Assam",
+      "country": "India",
+      "type": [
+        "tier_2"
+      ],
+      "latitude": 25.749,
+      "longitude": 91.21696,
+      "aliases": [
+        "Dhubri",
+        "Dhubri City"
+      ],
+      "languages": [
+        "en",
+        "hi"
+      ],
+      "popular": false
+    },
+    {
+      "cityId": "city_assam_haflong",
+      "name": "Haflong",
+      "state": "Assam",
+      "country": "India",
+      "type": [
+        "tier_2"
+      ],
+      "latitude": 25.61129,
+      "longitude": 91.1761,
+      "aliases": [
+        "Haflong",
+        "Haflong City"
+      ],
+      "languages": [
+        "en",
+        "hi"
+      ],
+      "popular": false
+    },
+    {
+      "cityId": "city_assam_goalpara",
+      "name": "Goalpara",
+      "state": "Assam",
+      "country": "India",
+      "type": [
+        "tier_2"
+      ],
+      "latitude": 26.07046,
+      "longitude": 91.71875,
+      "aliases": [
+        "Goalpara",
+        "Goalpara City"
+      ],
+      "languages": [
+        "en",
+        "hi"
+      ],
+      "popular": false
+    },
+    {
+      "cityId": "city_assam_barpeta",
+      "name": "Barpeta",
+      "state": "Assam",
+      "country": "India",
+      "type": [
+        "tier_2"
+      ],
+      "latitude": 28.00371,
+      "longitude": 94.0035,
+      "aliases": [
+        "Barpeta",
+        "Barpeta City"
+      ],
+      "languages": [
+        "en",
+        "hi"
+      ],
+      "popular": false
+    },
+    {
+      "cityId": "city_assam_karimganj",
+      "name": "Karimganj",
+      "state": "Assam",
+      "country": "India",
+      "type": [
+        "tier_2"
+      ],
+      "latitude": 26.04735,
+      "longitude": 91.65082,
+      "aliases": [
+        "Karimganj",
+        "Karimganj City"
+      ],
+      "languages": [
+        "en",
+        "hi"
+      ],
+      "popular": false
+    },
+    {
+      "cityId": "city_bihar_patna",
+      "name": "Patna",
+      "state": "Bihar",
+      "country": "India",
+      "type": [
+        "railway_hub",
+        "state_capital",
+        "capital",
+        "tier_1",
+        "airport_hub"
+      ],
+      "latitude": 25.57437,
+      "longitude": 85.15884,
+      "aliases": [
+        "Patna",
+        "Patna City"
+      ],
+      "languages": [
+        "en",
+        "hi"
+      ],
+      "popular": true
+    },
+    {
+      "cityId": "city_bihar_gaya",
+      "name": "Gaya",
+      "state": "Bihar",
+      "country": "India",
+      "type": [
+        "tier_1",
+        "tourist_destination"
+      ],
+      "latitude": 26.53776,
+      "longitude": 86.29739,
+      "aliases": [
+        "Gaya",
+        "Gaya City"
+      ],
+      "languages": [
+        "en",
+        "hi"
+      ],
+      "popular": true
+    },
+    {
+      "cityId": "city_bihar_muzaffarpur",
+      "name": "Muzaffarpur",
+      "state": "Bihar",
+      "country": "India",
+      "type": [
+        "tier_2"
+      ],
+      "latitude": 23.84704,
+      "longitude": 82.99556,
+      "aliases": [
+        "Muzaffarpur",
+        "Muzaffarpur City"
+      ],
+      "languages": [
+        "en",
+        "hi"
+      ],
+      "popular": true
+    },
+    {
+      "cityId": "city_bihar_bhagalpur",
+      "name": "Bhagalpur",
+      "state": "Bihar",
+      "country": "India",
+      "type": [
+        "tier_2"
+      ],
+      "latitude": 26.40229,
+      "longitude": 86.05603,
+      "aliases": [
+        "Bhagalpur",
+        "Bhagalpur City"
+      ],
+      "languages": [
+        "en",
+        "hi"
+      ],
+      "popular": false
+    },
+    {
+      "cityId": "city_bihar_darbhanga",
+      "name": "Darbhanga",
+      "state": "Bihar",
+      "country": "India",
+      "type": [
+        "tier_2"
+      ],
+      "latitude": 25.92455,
+      "longitude": 85.49143,
+      "aliases": [
+        "Darbhanga",
+        "Darbhanga City"
+      ],
+      "languages": [
+        "en",
+        "hi"
+      ],
+      "popular": false
+    },
+    {
+      "cityId": "city_bihar_purnia",
+      "name": "Purnia",
+      "state": "Bihar",
+      "country": "India",
+      "type": [
+        "tier_2"
+      ],
+      "latitude": 25.37503,
+      "longitude": 84.80137,
+      "aliases": [
+        "Purnia",
+        "Purnia City"
+      ],
+      "languages": [
+        "en",
+        "hi"
+      ],
+      "popular": false
+    },
+    {
+      "cityId": "city_bihar_ara",
+      "name": "Ara",
+      "state": "Bihar",
+      "country": "India",
+      "type": [
+        "tier_2"
+      ],
+      "latitude": 27.34266,
+      "longitude": 87.16738,
+      "aliases": [
+        "Ara",
+        "Ara City"
+      ],
+      "languages": [
+        "en",
+        "hi"
+      ],
+      "popular": false
+    },
+    {
+      "cityId": "city_bihar_begusarai",
+      "name": "Begusarai",
+      "state": "Bihar",
+      "country": "India",
+      "type": [
+        "tier_2"
+      ],
+      "latitude": 26.45115,
+      "longitude": 86.07314,
+      "aliases": [
+        "Begusarai",
+        "Begusarai City"
+      ],
+      "languages": [
+        "en",
+        "hi"
+      ],
+      "popular": false
+    },
+    {
+      "cityId": "city_bihar_bihar_sharif",
+      "name": "Bihar Sharif",
+      "state": "Bihar",
+      "country": "India",
+      "type": [
+        "tier_2"
+      ],
+      "latitude": 27.43052,
+      "longitude": 87.31184,
+      "aliases": [
+        "Bihar Sharif",
+        "Bihar Sharif City"
+      ],
+      "languages": [
+        "en",
+        "hi"
+      ],
+      "popular": false
+    },
+    {
+      "cityId": "city_bihar_katihar",
+      "name": "Katihar",
+      "state": "Bihar",
+      "country": "India",
+      "type": [
+        "tier_2"
+      ],
+      "latitude": 24.93678,
+      "longitude": 84.32406,
+      "aliases": [
+        "Katihar",
+        "Katihar City"
+      ],
+      "languages": [
+        "en",
+        "hi"
+      ],
+      "popular": false
+    },
+    {
+      "cityId": "city_bihar_munger",
+      "name": "Munger",
+      "state": "Bihar",
+      "country": "India",
+      "type": [
+        "tier_2"
+      ],
+      "latitude": 25.15082,
+      "longitude": 84.65827,
+      "aliases": [
+        "Munger",
+        "Munger City"
+      ],
+      "languages": [
+        "en",
+        "hi"
+      ],
+      "popular": false
+    },
+    {
+      "cityId": "city_bihar_sasaram",
+      "name": "Sasaram",
+      "state": "Bihar",
+      "country": "India",
+      "type": [
+        "tier_2"
+      ],
+      "latitude": 26.2463,
+      "longitude": 85.95293,
+      "aliases": [
+        "Sasaram",
+        "Sasaram City"
+      ],
+      "languages": [
+        "en",
+        "hi"
+      ],
+      "popular": false
+    },
+    {
+      "cityId": "city_bihar_samastipur",
+      "name": "Samastipur",
+      "state": "Bihar",
+      "country": "India",
+      "type": [
+        "tier_2"
+      ],
+      "latitude": 27.36175,
+      "longitude": 87.23056,
+      "aliases": [
+        "Samastipur",
+        "Samastipur City"
+      ],
+      "languages": [
+        "en",
+        "hi"
+      ],
+      "popular": false
+    },
+    {
+      "cityId": "city_bihar_bettiah",
+      "name": "Bettiah",
+      "state": "Bihar",
+      "country": "India",
+      "type": [
+        "tier_2"
+      ],
+      "latitude": 24.91973,
+      "longitude": 84.34454,
+      "aliases": [
+        "Bettiah",
+        "Bettiah City"
+      ],
+      "languages": [
+        "en",
+        "hi"
+      ],
+      "popular": false
+    },
+    {
+      "cityId": "city_chhattisgarh_raipur",
+      "name": "Raipur",
+      "state": "Chhattisgarh",
+      "country": "India",
+      "type": [
+        "railway_hub",
+        "state_capital",
+        "capital",
+        "tier_1",
+        "airport_hub"
+      ],
+      "latitude": 19.91845,
+      "longitude": 80.07667,
+      "aliases": [
+        "Raipur",
+        "Raipur City"
+      ],
+      "languages": [
+        "en",
+        "hi"
+      ],
+      "popular": true
+    },
+    {
+      "cityId": "city_chhattisgarh_bilaspur",
+      "name": "Bilaspur",
+      "state": "Chhattisgarh",
+      "country": "India",
+      "type": [
+        "tier_1"
+      ],
+      "latitude": 21.20754,
+      "longitude": 81.64075,
+      "aliases": [
+        "Bilaspur",
+        "Bilaspur City"
+      ],
+      "languages": [
+        "en",
+        "hi"
+      ],
+      "popular": true
+    },
+    {
+      "cityId": "city_chhattisgarh_durg",
+      "name": "Durg",
+      "state": "Chhattisgarh",
+      "country": "India",
+      "type": [
+        "tier_2"
+      ],
+      "latitude": 22.98015,
+      "longitude": 83.65441,
+      "aliases": [
+        "Durg",
+        "Durg City"
+      ],
+      "languages": [
+        "en",
+        "hi"
+      ],
+      "popular": true
+    },
+    {
+      "cityId": "city_chhattisgarh_bhilai",
+      "name": "Bhilai",
+      "state": "Chhattisgarh",
+      "country": "India",
+      "type": [
+        "tier_2"
+      ],
+      "latitude": 20.9039,
+      "longitude": 81.16004,
+      "aliases": [
+        "Bhilai",
+        "Bhilai City"
+      ],
+      "languages": [
+        "en",
+        "hi"
+      ],
+      "popular": false
+    },
+    {
+      "cityId": "city_chhattisgarh_korba",
+      "name": "Korba",
+      "state": "Chhattisgarh",
+      "country": "India",
+      "type": [
+        "tier_2"
+      ],
+      "latitude": 20.88761,
+      "longitude": 81.22204,
+      "aliases": [
+        "Korba",
+        "Korba City"
+      ],
+      "languages": [
+        "en",
+        "hi"
+      ],
+      "popular": false
+    },
+    {
+      "cityId": "city_chhattisgarh_jagdalpur",
+      "name": "Jagdalpur",
+      "state": "Chhattisgarh",
+      "country": "India",
+      "type": [
+        "tier_2",
+        "tourist_destination"
+      ],
+      "latitude": 20.66967,
+      "longitude": 80.92384,
+      "aliases": [
+        "Jagdalpur",
+        "Jagdalpur City"
+      ],
+      "languages": [
+        "en",
+        "hi"
+      ],
+      "popular": true
+    },
+    {
+      "cityId": "city_chhattisgarh_raigarh",
+      "name": "Raigarh",
+      "state": "Chhattisgarh",
+      "country": "India",
+      "type": [
+        "tier_2"
+      ],
+      "latitude": 22.03275,
+      "longitude": 82.53475,
+      "aliases": [
+        "Raigarh",
+        "Raigarh City"
+      ],
+      "languages": [
+        "en",
+        "hi"
+      ],
+      "popular": false
+    },
+    {
+      "cityId": "city_chhattisgarh_rajnandgaon",
+      "name": "Rajnandgaon",
+      "state": "Chhattisgarh",
+      "country": "India",
+      "type": [
+        "tier_2"
+      ],
+      "latitude": 21.97071,
+      "longitude": 82.42081,
+      "aliases": [
+        "Rajnandgaon",
+        "Rajnandgaon City"
+      ],
+      "languages": [
+        "en",
+        "hi"
+      ],
+      "popular": false
+    },
+    {
+      "cityId": "city_chhattisgarh_ambikapur",
+      "name": "Ambikapur",
+      "state": "Chhattisgarh",
+      "country": "India",
+      "type": [
+        "tier_2"
+      ],
+      "latitude": 22.04684,
+      "longitude": 82.55141,
+      "aliases": [
+        "Ambikapur",
+        "Ambikapur City"
+      ],
+      "languages": [
+        "en",
+        "hi"
+      ],
+      "popular": false
+    },
+    {
+      "cityId": "city_chhattisgarh_dhamtari",
+      "name": "Dhamtari",
+      "state": "Chhattisgarh",
+      "country": "India",
+      "type": [
+        "tier_2"
+      ],
+      "latitude": 21.51423,
+      "longitude": 81.92196,
+      "aliases": [
+        "Dhamtari",
+        "Dhamtari City"
+      ],
+      "languages": [
+        "en",
+        "hi"
+      ],
+      "popular": false
+    },
+    {
+      "cityId": "city_chhattisgarh_mahasamund",
+      "name": "Mahasamund",
+      "state": "Chhattisgarh",
+      "country": "India",
+      "type": [
+        "tier_2"
+      ],
+      "latitude": 19.45163,
+      "longitude": 79.44372,
+      "aliases": [
+        "Mahasamund",
+        "Mahasamund City"
+      ],
+      "languages": [
+        "en",
+        "hi"
+      ],
+      "popular": false
+    },
+    {
+      "cityId": "city_chhattisgarh_kanker",
+      "name": "Kanker",
+      "state": "Chhattisgarh",
+      "country": "India",
+      "type": [
+        "tier_2"
+      ],
+      "latitude": 22.74567,
+      "longitude": 83.3773,
+      "aliases": [
+        "Kanker",
+        "Kanker City"
+      ],
+      "languages": [
+        "en",
+        "hi"
+      ],
+      "popular": false
+    },
+    {
+      "cityId": "city_chhattisgarh_dantewada",
+      "name": "Dantewada",
+      "state": "Chhattisgarh",
+      "country": "India",
+      "type": [
+        "tier_2"
+      ],
+      "latitude": 21.82497,
+      "longitude": 82.24858,
+      "aliases": [
+        "Dantewada",
+        "Dantewada City"
+      ],
+      "languages": [
+        "en",
+        "hi"
+      ],
+      "popular": false
+    },
+    {
+      "cityId": "city_chhattisgarh_surguja",
+      "name": "Surguja",
+      "state": "Chhattisgarh",
+      "country": "India",
+      "type": [
+        "tier_2"
+      ],
+      "latitude": 20.59446,
+      "longitude": 80.79433,
+      "aliases": [
+        "Surguja",
+        "Surguja City"
+      ],
+      "languages": [
+        "en",
+        "hi"
+      ],
+      "popular": false
+    },
+    {
+      "cityId": "city_goa_panaji",
+      "name": "Panaji",
+      "state": "Goa",
+      "country": "India",
+      "type": [
+        "railway_hub",
+        "state_capital",
+        "capital",
+        "tier_1",
+        "airport_hub"
+      ],
+      "latitude": 15.59968,
+      "longitude": 74.02056,
+      "aliases": [
+        "Panaji",
+        "Panaji City"
+      ],
+      "languages": [
+        "en",
+        "hi"
+      ],
+      "popular": true
+    },
+    {
+      "cityId": "city_goa_margao",
+      "name": "Margao",
+      "state": "Goa",
+      "country": "India",
+      "type": [
+        "tier_1"
+      ],
+      "latitude": 17.21777,
+      "longitude": 75.85159,
+      "aliases": [
+        "Margao",
+        "Margao City"
+      ],
+      "languages": [
+        "en",
+        "hi"
+      ],
+      "popular": true
+    },
+    {
+      "cityId": "city_goa_vasco_da_gama",
+      "name": "Vasco da Gama",
+      "state": "Goa",
+      "country": "India",
+      "type": [
+        "tier_2"
+      ],
+      "latitude": 13.77523,
+      "longitude": 71.86439,
+      "aliases": [
+        "Vasco da Gama",
+        "Vasco da Gama City"
+      ],
+      "languages": [
+        "en",
+        "hi"
+      ],
+      "popular": true
+    },
+    {
+      "cityId": "city_goa_mapusa",
+      "name": "Mapusa",
+      "state": "Goa",
+      "country": "India",
+      "type": [
+        "tier_2"
+      ],
+      "latitude": 14.00808,
+      "longitude": 72.05833,
+      "aliases": [
+        "Mapusa",
+        "Mapusa City"
+      ],
+      "languages": [
+        "en",
+        "hi"
+      ],
+      "popular": false
+    },
+    {
+      "cityId": "city_goa_ponda",
+      "name": "Ponda",
+      "state": "Goa",
+      "country": "India",
+      "type": [
+        "tier_2"
+      ],
+      "latitude": 15.86413,
+      "longitude": 74.29246,
+      "aliases": [
+        "Ponda",
+        "Ponda City"
+      ],
+      "languages": [
+        "en",
+        "hi"
+      ],
+      "popular": false
+    },
+    {
+      "cityId": "city_goa_calangute",
+      "name": "Calangute",
+      "state": "Goa",
+      "country": "India",
+      "type": [
+        "tier_2",
+        "tourist_destination"
+      ],
+      "latitude": 15.16807,
+      "longitude": 73.3886,
+      "aliases": [
+        "Calangute",
+        "Calangute City"
+      ],
+      "languages": [
+        "en",
+        "hi"
+      ],
+      "popular": true
+    },
+    {
+      "cityId": "city_goa_canacona",
+      "name": "Canacona",
+      "state": "Goa",
+      "country": "India",
+      "type": [
+        "tier_2"
+      ],
+      "latitude": 14.53966,
+      "longitude": 72.72718,
+      "aliases": [
+        "Canacona",
+        "Canacona City"
+      ],
+      "languages": [
+        "en",
+        "hi"
+      ],
+      "popular": false
+    },
+    {
+      "cityId": "city_goa_bicholim",
+      "name": "Bicholim",
+      "state": "Goa",
+      "country": "India",
+      "type": [
+        "tier_2"
+      ],
+      "latitude": 13.62015,
+      "longitude": 71.68111,
+      "aliases": [
+        "Bicholim",
+        "Bicholim City"
+      ],
+      "languages": [
+        "en",
+        "hi"
+      ],
+      "popular": false
+    },
+    {
+      "cityId": "city_goa_valpoi",
+      "name": "Valpoi",
+      "state": "Goa",
+      "country": "India",
+      "type": [
+        "tier_2"
+      ],
+      "latitude": 17.04039,
+      "longitude": 75.64197,
+      "aliases": [
+        "Valpoi",
+        "Valpoi City"
+      ],
+      "languages": [
+        "en",
+        "hi"
+      ],
+      "popular": false
+    },
+    {
+      "cityId": "city_goa_pernem",
+      "name": "Pernem",
+      "state": "Goa",
+      "country": "India",
+      "type": [
+        "tier_2"
+      ],
+      "latitude": 15.04628,
+      "longitude": 73.28528,
+      "aliases": [
+        "Pernem",
+        "Pernem City"
+      ],
+      "languages": [
+        "en",
+        "hi"
+      ],
+      "popular": false
+    },
+    {
+      "cityId": "city_goa_curchorem",
+      "name": "Curchorem",
+      "state": "Goa",
+      "country": "India",
+      "type": [
+        "tier_2"
+      ],
+      "latitude": 16.11843,
+      "longitude": 74.593,
+      "aliases": [
+        "Curchorem",
+        "Curchorem City"
+      ],
+      "languages": [
+        "en",
+        "hi"
+      ],
+      "popular": false
+    },
+    {
+      "cityId": "city_goa_sanquelim",
+      "name": "Sanquelim",
+      "state": "Goa",
+      "country": "India",
+      "type": [
+        "tier_2"
+      ],
+      "latitude": 15.82998,
+      "longitude": 74.29273,
+      "aliases": [
+        "Sanquelim",
+        "Sanquelim City"
+      ],
+      "languages": [
+        "en",
+        "hi"
+      ],
+      "popular": false
+    },
+    {
+      "cityId": "city_goa_quepem",
+      "name": "Quepem",
+      "state": "Goa",
+      "country": "India",
+      "type": [
+        "tier_2"
+      ],
+      "latitude": 16.35418,
+      "longitude": 74.83099,
+      "aliases": [
+        "Quepem",
+        "Quepem City"
+      ],
+      "languages": [
+        "en",
+        "hi"
+      ],
+      "popular": false
+    },
+    {
+      "cityId": "city_goa_sanguem",
+      "name": "Sanguem",
+      "state": "Goa",
+      "country": "India",
+      "type": [
+        "tier_2"
+      ],
+      "latitude": 14.99039,
+      "longitude": 73.17861,
+      "aliases": [
+        "Sanguem",
+        "Sanguem City"
+      ],
+      "languages": [
+        "en",
+        "hi"
+      ],
+      "popular": false
+    },
+    {
+      "cityId": "city_gujarat_ahmedabad",
+      "name": "Ahmedabad",
+      "state": "Gujarat",
+      "country": "India",
+      "type": [
+        "railway_hub",
+        "tier_1",
+        "airport_hub"
+      ],
+      "latitude": 23.4528,
+      "longitude": 73.00873,
+      "aliases": [
+        "Ahmedabad",
+        "Ahmedabad City"
+      ],
+      "languages": [
+        "en",
+        "hi"
+      ],
+      "popular": true
+    },
+    {
+      "cityId": "city_gujarat_surat",
+      "name": "Surat",
+      "state": "Gujarat",
+      "country": "India",
+      "type": [
+        "tier_1"
+      ],
+      "latitude": 20.86033,
+      "longitude": 75.14491,
+      "aliases": [
+        "Surat",
+        "Surat City"
+      ],
+      "languages": [
+        "en",
+        "hi"
+      ],
+      "popular": true
+    },
+    {
+      "cityId": "city_gujarat_vadodara",
+      "name": "Vadodara",
+      "state": "Gujarat",
+      "country": "India",
+      "type": [
+        "tier_2"
+      ],
+      "latitude": 23.58956,
+      "longitude": 73.29223,
+      "aliases": [
+        "Vadodara",
+        "Vadodara City"
+      ],
+      "languages": [
+        "en",
+        "hi"
+      ],
+      "popular": true
+    },
+    {
+      "cityId": "city_gujarat_rajkot",
+      "name": "Rajkot",
+      "state": "Gujarat",
+      "country": "India",
+      "type": [
+        "tier_2"
+      ],
+      "latitude": 23.79307,
+      "longitude": 73.41088,
+      "aliases": [
+        "Rajkot",
+        "Rajkot City"
+      ],
+      "languages": [
+        "en",
+        "hi"
+      ],
+      "popular": false
+    },
+    {
+      "cityId": "city_gujarat_gandhinagar",
+      "name": "Gandhinagar",
+      "state": "Gujarat",
+      "country": "India",
+      "type": [
+        "state_capital",
+        "capital",
+        "tier_2"
+      ],
+      "latitude": 25.12862,
+      "longitude": 75.02988,
+      "aliases": [
+        "Gandhinagar",
+        "Gandhinagar City"
+      ],
+      "languages": [
+        "en",
+        "hi"
+      ],
+      "popular": false
+    },
+    {
+      "cityId": "city_gujarat_bhavnagar",
+      "name": "Bhavnagar",
+      "state": "Gujarat",
+      "country": "India",
+      "type": [
+        "tier_2"
+      ],
+      "latitude": 23.11245,
+      "longitude": 72.64712,
+      "aliases": [
+        "Bhavnagar",
+        "Bhavnagar City"
+      ],
+      "languages": [
+        "en",
+        "hi"
+      ],
+      "popular": false
+    },
+    {
+      "cityId": "city_gujarat_jamnagar",
+      "name": "Jamnagar",
+      "state": "Gujarat",
+      "country": "India",
+      "type": [
+        "tier_2"
+      ],
+      "latitude": 25.13866,
+      "longitude": 75.00112,
+      "aliases": [
+        "Jamnagar",
+        "Jamnagar City"
+      ],
+      "languages": [
+        "en",
+        "hi"
+      ],
+      "popular": false
+    },
+    {
+      "cityId": "city_gujarat_junagadh",
+      "name": "Junagadh",
+      "state": "Gujarat",
+      "country": "India",
+      "type": [
+        "tier_2"
+      ],
+      "latitude": 22.74995,
+      "longitude": 72.21872,
+      "aliases": [
+        "Junagadh",
+        "Junagadh City"
+      ],
+      "languages": [
+        "en",
+        "hi"
+      ],
+      "popular": false
+    },
+    {
+      "cityId": "city_gujarat_anand",
+      "name": "Anand",
+      "state": "Gujarat",
+      "country": "India",
+      "type": [
+        "tier_2"
+      ],
+      "latitude": 21.22239,
+      "longitude": 70.49468,
+      "aliases": [
+        "Anand",
+        "Anand City"
+      ],
+      "languages": [
+        "en",
+        "hi"
+      ],
+      "popular": false
+    },
+    {
+      "cityId": "city_gujarat_bharuch",
+      "name": "Bharuch",
+      "state": "Gujarat",
+      "country": "India",
+      "type": [
+        "tier_2"
+      ],
+      "latitude": 22.48504,
+      "longitude": 71.86502,
+      "aliases": [
+        "Bharuch",
+        "Bharuch City"
+      ],
+      "languages": [
+        "en",
+        "hi"
+      ],
+      "popular": false
+    },
+    {
+      "cityId": "city_gujarat_mehsana",
+      "name": "Mehsana",
+      "state": "Gujarat",
+      "country": "India",
+      "type": [
+        "tier_2"
+      ],
+      "latitude": 23.05088,
+      "longitude": 72.53374,
+      "aliases": [
+        "Mehsana",
+        "Mehsana City"
+      ],
+      "languages": [
+        "en",
+        "hi"
+      ],
+      "popular": false
+    },
+    {
+      "cityId": "city_gujarat_gandhidham",
+      "name": "Gandhidham",
+      "state": "Gujarat",
+      "country": "India",
+      "type": [
+        "tier_2"
+      ],
+      "latitude": 25.21188,
+      "longitude": 75.1689,
+      "aliases": [
+        "Gandhidham",
+        "Gandhidham City"
+      ],
+      "languages": [
+        "en",
+        "hi"
+      ],
+      "popular": false
+    },
+    {
+      "cityId": "city_gujarat_mundra",
+      "name": "Mundra",
+      "state": "Gujarat",
+      "country": "India",
+      "type": [
+        "tier_2",
+        "tourist_destination"
+      ],
+      "latitude": 22.19399,
+      "longitude": 71.52105,
+      "aliases": [
+        "Mundra",
+        "Mundra City"
+      ],
+      "languages": [
+        "en",
+        "hi"
+      ],
+      "popular": true
+    },
+    {
+      "cityId": "city_gujarat_palanpur",
+      "name": "Palanpur",
+      "state": "Gujarat",
+      "country": "India",
+      "type": [
+        "tier_2"
+      ],
+      "latitude": 21.23818,
+      "longitude": 70.39146,
+      "aliases": [
+        "Palanpur",
+        "Palanpur City"
+      ],
+      "languages": [
+        "en",
+        "hi"
+      ],
+      "popular": false
+    },
+    {
+      "cityId": "city_haryana_chandigarh",
+      "name": "Chandigarh",
+      "state": "Haryana",
+      "country": "India",
+      "type": [
+        "railway_hub",
+        "state_capital",
+        "capital",
+        "tier_1",
+        "airport_hub"
+      ],
+      "latitude": 30.03928,
+      "longitude": 78.89458,
+      "aliases": [
+        "Chandigarh",
+        "Chandigarh City"
+      ],
+      "languages": [
+        "en",
+        "hi"
+      ],
+      "popular": true
+    },
+    {
+      "cityId": "city_haryana_gurugram",
+      "name": "Gurugram",
+      "state": "Haryana",
+      "country": "India",
+      "type": [
+        "tier_1"
+      ],
+      "latitude": 29.53228,
+      "longitude": 78.41727,
+      "aliases": [
+        "Gurugram",
+        "Gurugram City"
+      ],
+      "languages": [
+        "en",
+        "hi"
+      ],
+      "popular": true
+    },
+    {
+      "cityId": "city_haryana_faridabad",
+      "name": "Faridabad",
+      "state": "Haryana",
+      "country": "India",
+      "type": [
+        "tier_2"
+      ],
+      "latitude": 28.34561,
+      "longitude": 76.93359,
+      "aliases": [
+        "Faridabad",
+        "Faridabad City"
+      ],
+      "languages": [
+        "en",
+        "hi"
+      ],
+      "popular": true
+    },
+    {
+      "cityId": "city_haryana_panipat",
+      "name": "Panipat",
+      "state": "Haryana",
+      "country": "India",
+      "type": [
+        "tier_2"
+      ],
+      "latitude": 27.01795,
+      "longitude": 75.32391,
+      "aliases": [
+        "Panipat",
+        "Panipat City"
+      ],
+      "languages": [
+        "en",
+        "hi"
+      ],
+      "popular": false
+    },
+    {
+      "cityId": "city_haryana_ambala",
+      "name": "Ambala",
+      "state": "Haryana",
+      "country": "India",
+      "type": [
+        "tier_2"
+      ],
+      "latitude": 29.08118,
+      "longitude": 77.8029,
+      "aliases": [
+        "Ambala",
+        "Ambala City"
+      ],
+      "languages": [
+        "en",
+        "hi"
+      ],
+      "popular": false
+    },
+    {
+      "cityId": "city_haryana_hisar",
+      "name": "Hisar",
+      "state": "Haryana",
+      "country": "India",
+      "type": [
+        "tier_2"
+      ],
+      "latitude": 28.66375,
+      "longitude": 77.26894,
+      "aliases": [
+        "Hisar",
+        "Hisar City"
+      ],
+      "languages": [
+        "en",
+        "hi"
+      ],
+      "popular": false
+    },
+    {
+      "cityId": "city_haryana_karnal",
+      "name": "Karnal",
+      "state": "Haryana",
+      "country": "India",
+      "type": [
+        "tier_2"
+      ],
+      "latitude": 28.58553,
+      "longitude": 77.17651,
+      "aliases": [
+        "Karnal",
+        "Karnal City"
+      ],
+      "languages": [
+        "en",
+        "hi"
+      ],
+      "popular": false
+    },
+    {
+      "cityId": "city_haryana_rohtak",
+      "name": "Rohtak",
+      "state": "Haryana",
+      "country": "India",
+      "type": [
+        "tier_2"
+      ],
+      "latitude": 27.81291,
+      "longitude": 76.34466,
+      "aliases": [
+        "Rohtak",
+        "Rohtak City"
+      ],
+      "languages": [
+        "en",
+        "hi"
+      ],
+      "popular": false
+    },
+    {
+      "cityId": "city_haryana_sonipat",
+      "name": "Sonipat",
+      "state": "Haryana",
+      "country": "India",
+      "type": [
+        "tier_2"
+      ],
+      "latitude": 27.90893,
+      "longitude": 76.49876,
+      "aliases": [
+        "Sonipat",
+        "Sonipat City"
+      ],
+      "languages": [
+        "en",
+        "hi"
+      ],
+      "popular": false
+    },
+    {
+      "cityId": "city_haryana_kurukshetra",
+      "name": "Kurukshetra",
+      "state": "Haryana",
+      "country": "India",
+      "type": [
+        "tier_2",
+        "tourist_destination"
+      ],
+      "latitude": 28.11891,
+      "longitude": 76.70629,
+      "aliases": [
+        "Kurukshetra",
+        "Kurukshetra City"
+      ],
+      "languages": [
+        "en",
+        "hi"
+      ],
+      "popular": true
+    },
+    {
+      "cityId": "city_haryana_yamunanagar",
+      "name": "Yamunanagar",
+      "state": "Haryana",
+      "country": "India",
+      "type": [
+        "tier_2"
+      ],
+      "latitude": 28.07254,
+      "longitude": 76.61087,
+      "aliases": [
+        "Yamunanagar",
+        "Yamunanagar City"
+      ],
+      "languages": [
+        "en",
+        "hi"
+      ],
+      "popular": false
+    },
+    {
+      "cityId": "city_haryana_rewari",
+      "name": "Rewari",
+      "state": "Haryana",
+      "country": "India",
+      "type": [
+        "tier_2"
+      ],
+      "latitude": 28.27095,
+      "longitude": 76.84536,
+      "aliases": [
+        "Rewari",
+        "Rewari City"
+      ],
+      "languages": [
+        "en",
+        "hi"
+      ],
+      "popular": false
+    },
+    {
+      "cityId": "city_haryana_sirsa",
+      "name": "Sirsa",
+      "state": "Haryana",
+      "country": "India",
+      "type": [
+        "tier_2"
+      ],
+      "latitude": 26.90037,
+      "longitude": 75.22558,
+      "aliases": [
+        "Sirsa",
+        "Sirsa City"
+      ],
+      "languages": [
+        "en",
+        "hi"
+      ],
+      "popular": false
+    },
+    {
+      "cityId": "city_haryana_bahadurgarh",
+      "name": "Bahadurgarh",
+      "state": "Haryana",
+      "country": "India",
+      "type": [
+        "tier_2"
+      ],
+      "latitude": 27.51964,
+      "longitude": 75.91682,
+      "aliases": [
+        "Bahadurgarh",
+        "Bahadurgarh City"
+      ],
+      "languages": [
+        "en",
+        "hi"
+      ],
+      "popular": false
+    },
+    {
+      "cityId": "city_himachal_pradesh_shimla",
+      "name": "Shimla",
+      "state": "Himachal Pradesh",
+      "country": "India",
+      "type": [
+        "railway_hub",
+        "state_capital",
+        "capital",
+        "tier_1",
+        "airport_hub"
+      ],
+      "latitude": 29.9187,
+      "longitude": 75.83485,
+      "aliases": [
+        "Shimla",
+        "Shimla City"
+      ],
+      "languages": [
+        "en",
+        "hi"
+      ],
+      "popular": true
+    },
+    {
+      "cityId": "city_himachal_pradesh_manali",
+      "name": "Manali",
+      "state": "Himachal Pradesh",
+      "country": "India",
+      "type": [
+        "tier_1",
+        "tourist_destination"
+      ],
+      "latitude": 30.54386,
+      "longitude": 76.49244,
+      "aliases": [
+        "Manali",
+        "Manali City"
+      ],
+      "languages": [
+        "en",
+        "hi"
+      ],
+      "popular": true
+    },
+    {
+      "cityId": "city_himachal_pradesh_dharamshala",
+      "name": "Dharamshala",
+      "state": "Himachal Pradesh",
+      "country": "India",
+      "type": [
+        "tier_2",
+        "tourist_destination"
+      ],
+      "latitude": 30.17331,
+      "longitude": 76.05451,
+      "aliases": [
+        "Dharamshala",
+        "Dharamshala City"
+      ],
+      "languages": [
+        "en",
+        "hi"
+      ],
+      "popular": true
+    },
+    {
+      "cityId": "city_himachal_pradesh_kullu",
+      "name": "Kullu",
+      "state": "Himachal Pradesh",
+      "country": "India",
+      "type": [
+        "tier_2"
+      ],
+      "latitude": 29.0627,
+      "longitude": 74.70134,
+      "aliases": [
+        "Kullu",
+        "Kullu City"
+      ],
+      "languages": [
+        "en",
+        "hi"
+      ],
+      "popular": false
+    },
+    {
+      "cityId": "city_himachal_pradesh_mandi",
+      "name": "Mandi",
+      "state": "Himachal Pradesh",
+      "country": "India",
+      "type": [
+        "tier_2"
+      ],
+      "latitude": 31.04163,
+      "longitude": 77.04008,
+      "aliases": [
+        "Mandi",
+        "Mandi City"
+      ],
+      "languages": [
+        "en",
+        "hi"
+      ],
+      "popular": false
+    },
+    {
+      "cityId": "city_himachal_pradesh_solan",
+      "name": "Solan",
+      "state": "Himachal Pradesh",
+      "country": "India",
+      "type": [
+        "tier_2"
+      ],
+      "latitude": 30.61699,
+      "longitude": 76.61948,
+      "aliases": [
+        "Solan",
+        "Solan City"
+      ],
+      "languages": [
+        "en",
+        "hi"
+      ],
+      "popular": false
+    },
+    {
+      "cityId": "city_himachal_pradesh_chamba",
+      "name": "Chamba",
+      "state": "Himachal Pradesh",
+      "country": "India",
+      "type": [
+        "tier_2"
+      ],
+      "latitude": 33.12839,
+      "longitude": 79.54687,
+      "aliases": [
+        "Chamba",
+        "Chamba City"
+      ],
+      "languages": [
+        "en",
+        "hi"
+      ],
+      "popular": false
+    },
+    {
+      "cityId": "city_himachal_pradesh_kangra",
+      "name": "Kangra",
+      "state": "Himachal Pradesh",
+      "country": "India",
+      "type": [
+        "tier_2"
+      ],
+      "latitude": 32.95012,
+      "longitude": 79.41744,
+      "aliases": [
+        "Kangra",
+        "Kangra City"
+      ],
+      "languages": [
+        "en",
+        "hi"
+      ],
+      "popular": false
+    },
+    {
+      "cityId": "city_himachal_pradesh_kasauli",
+      "name": "Kasauli",
+      "state": "Himachal Pradesh",
+      "country": "India",
+      "type": [
+        "tier_2"
+      ],
+      "latitude": 29.91738,
+      "longitude": 75.83329,
+      "aliases": [
+        "Kasauli",
+        "Kasauli City"
+      ],
+      "languages": [
+        "en",
+        "hi"
+      ],
+      "popular": false
+    },
+    {
+      "cityId": "city_himachal_pradesh_nahan",
+      "name": "Nahan",
+      "state": "Himachal Pradesh",
+      "country": "India",
+      "type": [
+        "tier_2"
+      ],
+      "latitude": 30.59865,
+      "longitude": 76.63843,
+      "aliases": [
+        "Nahan",
+        "Nahan City"
+      ],
+      "languages": [
+        "en",
+        "hi"
+      ],
+      "popular": false
+    },
+    {
+      "cityId": "city_himachal_pradesh_hamirpur",
+      "name": "Hamirpur",
+      "state": "Himachal Pradesh",
+      "country": "India",
+      "type": [
+        "tier_2"
+      ],
+      "latitude": 29.37455,
+      "longitude": 75.11052,
+      "aliases": [
+        "Hamirpur",
+        "Hamirpur City"
+      ],
+      "languages": [
+        "en",
+        "hi"
+      ],
+      "popular": false
+    },
+    {
+      "cityId": "city_himachal_pradesh_bilaspur",
+      "name": "Bilaspur",
+      "state": "Himachal Pradesh",
+      "country": "India",
+      "type": [
+        "tier_2"
+      ],
+      "latitude": 32.52754,
+      "longitude": 78.91803,
+      "aliases": [
+        "Bilaspur",
+        "Bilaspur City"
+      ],
+      "languages": [
+        "en",
+        "hi"
+      ],
+      "popular": false
+    },
+    {
+      "cityId": "city_himachal_pradesh_una",
+      "name": "Una",
+      "state": "Himachal Pradesh",
+      "country": "India",
+      "type": [
+        "tier_2"
+      ],
+      "latitude": 29.82729,
+      "longitude": 75.64557,
+      "aliases": [
+        "Una",
+        "Una City"
+      ],
+      "languages": [
+        "en",
+        "hi"
+      ],
+      "popular": false
+    },
+    {
+      "cityId": "city_himachal_pradesh_keylong",
+      "name": "Keylong",
+      "state": "Himachal Pradesh",
+      "country": "India",
+      "type": [
+        "tier_2"
+      ],
+      "latitude": 29.84217,
+      "longitude": 75.70379,
+      "aliases": [
+        "Keylong",
+        "Keylong City"
+      ],
+      "languages": [
+        "en",
+        "hi"
+      ],
+      "popular": false
+    },
+    {
+      "cityId": "city_jharkhand_ranchi",
+      "name": "Ranchi",
+      "state": "Jharkhand",
+      "country": "India",
+      "type": [
+        "railway_hub",
+        "state_capital",
+        "capital",
+        "tier_1",
+        "airport_hub"
+      ],
+      "latitude": 21.88936,
+      "longitude": 83.66473,
+      "aliases": [
+        "Ranchi",
+        "Ranchi City"
+      ],
+      "languages": [
+        "en",
+        "hi"
+      ],
+      "popular": true
+    },
+    {
+      "cityId": "city_jharkhand_jamshedpur",
+      "name": "Jamshedpur",
+      "state": "Jharkhand",
+      "country": "India",
+      "type": [
+        "tier_1"
+      ],
+      "latitude": 23.22266,
+      "longitude": 85.24044,
+      "aliases": [
+        "Jamshedpur",
+        "Jamshedpur City"
+      ],
+      "languages": [
+        "en",
+        "hi"
+      ],
+      "popular": true
+    },
+    {
+      "cityId": "city_jharkhand_dhanbad",
+      "name": "Dhanbad",
+      "state": "Jharkhand",
+      "country": "India",
+      "type": [
+        "tier_2"
+      ],
+      "latitude": 23.13449,
+      "longitude": 85.01437,
+      "aliases": [
+        "Dhanbad",
+        "Dhanbad City"
+      ],
+      "languages": [
+        "en",
+        "hi"
+      ],
+      "popular": true
+    },
+    {
+      "cityId": "city_jharkhand_bokaro",
+      "name": "Bokaro",
+      "state": "Jharkhand",
+      "country": "India",
+      "type": [
+        "tier_2"
+      ],
+      "latitude": 22.81073,
+      "longitude": 84.71299,
+      "aliases": [
+        "Bokaro",
+        "Bokaro City"
+      ],
+      "languages": [
+        "en",
+        "hi"
+      ],
+      "popular": false
+    },
+    {
+      "cityId": "city_jharkhand_deoghar",
+      "name": "Deoghar",
+      "state": "Jharkhand",
+      "country": "India",
+      "type": [
+        "tier_2",
+        "tourist_destination"
+      ],
+      "latitude": 22.96004,
+      "longitude": 84.88945,
+      "aliases": [
+        "Deoghar",
+        "Deoghar City"
+      ],
+      "languages": [
+        "en",
+        "hi"
+      ],
+      "popular": true
+    },
+    {
+      "cityId": "city_jharkhand_hazaribagh",
+      "name": "Hazaribagh",
+      "state": "Jharkhand",
+      "country": "India",
+      "type": [
+        "tier_2"
+      ],
+      "latitude": 21.37212,
+      "longitude": 83.05345,
+      "aliases": [
+        "Hazaribagh",
+        "Hazaribagh City"
+      ],
+      "languages": [
+        "en",
+        "hi"
+      ],
+      "popular": false
+    },
+    {
+      "cityId": "city_jharkhand_giridih",
+      "name": "Giridih",
+      "state": "Jharkhand",
+      "country": "India",
+      "type": [
+        "tier_2"
+      ],
+      "latitude": 22.35324,
+      "longitude": 84.09107,
+      "aliases": [
+        "Giridih",
+        "Giridih City"
+      ],
+      "languages": [
+        "en",
+        "hi"
+      ],
+      "popular": false
+    },
+    {
+      "cityId": "city_jharkhand_ramgarh",
+      "name": "Ramgarh",
+      "state": "Jharkhand",
+      "country": "India",
+      "type": [
+        "tier_2"
+      ],
+      "latitude": 25.05417,
+      "longitude": 87.28308,
+      "aliases": [
+        "Ramgarh",
+        "Ramgarh City"
+      ],
+      "languages": [
+        "en",
+        "hi"
+      ],
+      "popular": false
+    },
+    {
+      "cityId": "city_jharkhand_dumka",
+      "name": "Dumka",
+      "state": "Jharkhand",
+      "country": "India",
+      "type": [
+        "tier_2"
+      ],
+      "latitude": 24.48792,
+      "longitude": 86.61387,
+      "aliases": [
+        "Dumka",
+        "Dumka City"
+      ],
+      "languages": [
+        "en",
+        "hi"
+      ],
+      "popular": false
+    },
+    {
+      "cityId": "city_jharkhand_chaibasa",
+      "name": "Chaibasa",
+      "state": "Jharkhand",
+      "country": "India",
+      "type": [
+        "tier_2"
+      ],
+      "latitude": 23.1873,
+      "longitude": 85.15803,
+      "aliases": [
+        "Chaibasa",
+        "Chaibasa City"
+      ],
+      "languages": [
+        "en",
+        "hi"
+      ],
+      "popular": false
+    },
+    {
+      "cityId": "city_jharkhand_medininagar",
+      "name": "Medininagar",
+      "state": "Jharkhand",
+      "country": "India",
+      "type": [
+        "tier_2"
+      ],
+      "latitude": 21.68581,
+      "longitude": 83.42416,
+      "aliases": [
+        "Medininagar",
+        "Medininagar City"
+      ],
+      "languages": [
+        "en",
+        "hi"
+      ],
+      "popular": false
+    },
+    {
+      "cityId": "city_jharkhand_godda",
+      "name": "Godda",
+      "state": "Jharkhand",
+      "country": "India",
+      "type": [
+        "tier_2"
+      ],
+      "latitude": 24.64285,
+      "longitude": 86.91885,
+      "aliases": [
+        "Godda",
+        "Godda City"
+      ],
+      "languages": [
+        "en",
+        "hi"
+      ],
+      "popular": false
+    },
+    {
+      "cityId": "city_jharkhand_saraikela",
+      "name": "Saraikela",
+      "state": "Jharkhand",
+      "country": "India",
+      "type": [
+        "tier_2"
+      ],
+      "latitude": 22.3805,
+      "longitude": 84.16391,
+      "aliases": [
+        "Saraikela",
+        "Saraikela City"
+      ],
+      "languages": [
+        "en",
+        "hi"
+      ],
+      "popular": false
+    },
+    {
+      "cityId": "city_jharkhand_pakur",
+      "name": "Pakur",
+      "state": "Jharkhand",
+      "country": "India",
+      "type": [
+        "tier_2"
+      ],
+      "latitude": 24.28173,
+      "longitude": 86.41083,
+      "aliases": [
+        "Pakur",
+        "Pakur City"
+      ],
+      "languages": [
+        "en",
+        "hi"
+      ],
+      "popular": false
+    },
+    {
+      "cityId": "city_karnataka_bengaluru",
+      "name": "Bengaluru",
+      "state": "Karnataka",
+      "country": "India",
+      "type": [
+        "railway_hub",
+        "state_capital",
+        "capital",
+        "tier_1",
+        "airport_hub"
+      ],
+      "latitude": 13.83888,
+      "longitude": 78.55592,
+      "aliases": [
+        "Bengaluru",
+        "Bengaluru City"
+      ],
+      "languages": [
+        "en",
+        "hi"
+      ],
+      "popular": true
+    },
+    {
+      "cityId": "city_karnataka_mysuru",
+      "name": "Mysuru",
+      "state": "Karnataka",
+      "country": "India",
+      "type": [
+        "tier_1",
+        "tourist_destination"
+      ],
+      "latitude": 11.92987,
+      "longitude": 76.38107,
+      "aliases": [
+        "Mysuru",
+        "Mysuru City"
+      ],
+      "languages": [
+        "en",
+        "hi"
+      ],
+      "popular": true
+    },
+    {
+      "cityId": "city_karnataka_mangaluru",
+      "name": "Mangaluru",
+      "state": "Karnataka",
+      "country": "India",
+      "type": [
+        "tier_2"
+      ],
+      "latitude": 14.87225,
+      "longitude": 79.81781,
+      "aliases": [
+        "Mangaluru",
+        "Mangaluru City"
+      ],
+      "languages": [
+        "en",
+        "hi"
+      ],
+      "popular": true
+    },
+    {
+      "cityId": "city_karnataka_hubballi",
+      "name": "Hubballi",
+      "state": "Karnataka",
+      "country": "India",
+      "type": [
+        "tier_2"
+      ],
+      "latitude": 12.05183,
+      "longitude": 76.44395,
+      "aliases": [
+        "Hubballi",
+        "Hubballi City"
+      ],
+      "languages": [
+        "en",
+        "hi"
+      ],
+      "popular": false
+    },
+    {
+      "cityId": "city_karnataka_belagavi",
+      "name": "Belagavi",
+      "state": "Karnataka",
+      "country": "India",
+      "type": [
+        "tier_2"
+      ],
+      "latitude": 12.14357,
+      "longitude": 76.63362,
+      "aliases": [
+        "Belagavi",
+        "Belagavi City"
+      ],
+      "languages": [
+        "en",
+        "hi"
+      ],
+      "popular": false
+    },
+    {
+      "cityId": "city_karnataka_kalaburagi",
+      "name": "Kalaburagi",
+      "state": "Karnataka",
+      "country": "India",
+      "type": [
+        "tier_2"
+      ],
+      "latitude": 13.68883,
+      "longitude": 78.45984,
+      "aliases": [
+        "Kalaburagi",
+        "Kalaburagi City"
+      ],
+      "languages": [
+        "en",
+        "hi"
+      ],
+      "popular": false
+    },
+    {
+      "cityId": "city_karnataka_shivamogga",
+      "name": "Shivamogga",
+      "state": "Karnataka",
+      "country": "India",
+      "type": [
+        "tier_2"
+      ],
+      "latitude": 13.62902,
+      "longitude": 78.34853,
+      "aliases": [
+        "Shivamogga",
+        "Shivamogga City"
+      ],
+      "languages": [
+        "en",
+        "hi"
+      ],
+      "popular": false
+    },
+    {
+      "cityId": "city_karnataka_udupi",
+      "name": "Udupi",
+      "state": "Karnataka",
+      "country": "India",
+      "type": [
+        "tier_2",
+        "tourist_destination"
+      ],
+      "latitude": 14.40716,
+      "longitude": 79.22753,
+      "aliases": [
+        "Udupi",
+        "Udupi City"
+      ],
+      "languages": [
+        "en",
+        "hi"
+      ],
+      "popular": true
+    },
+    {
+      "cityId": "city_karnataka_davangere",
+      "name": "Davangere",
+      "state": "Karnataka",
+      "country": "India",
+      "type": [
+        "tier_2"
+      ],
+      "latitude": 12.31646,
+      "longitude": 76.83794,
+      "aliases": [
+        "Davangere",
+        "Davangere City"
+      ],
+      "languages": [
+        "en",
+        "hi"
+      ],
+      "popular": false
+    },
+    {
+      "cityId": "city_karnataka_ballari",
+      "name": "Ballari",
+      "state": "Karnataka",
+      "country": "India",
+      "type": [
+        "tier_2"
+      ],
+      "latitude": 14.22728,
+      "longitude": 79.09619,
+      "aliases": [
+        "Ballari",
+        "Ballari City"
+      ],
+      "languages": [
+        "en",
+        "hi"
+      ],
+      "popular": false
+    },
+    {
+      "cityId": "city_karnataka_vijayapura",
+      "name": "Vijayapura",
+      "state": "Karnataka",
+      "country": "India",
+      "type": [
+        "tier_2"
+      ],
+      "latitude": 14.812,
+      "longitude": 79.7466,
+      "aliases": [
+        "Vijayapura",
+        "Vijayapura City"
+      ],
+      "languages": [
+        "en",
+        "hi"
+      ],
+      "popular": false
+    },
+    {
+      "cityId": "city_karnataka_tumakuru",
+      "name": "Tumakuru",
+      "state": "Karnataka",
+      "country": "India",
+      "type": [
+        "tier_2"
+      ],
+      "latitude": 11.26726,
+      "longitude": 75.55735,
+      "aliases": [
+        "Tumakuru",
+        "Tumakuru City"
+      ],
+      "languages": [
+        "en",
+        "hi"
+      ],
+      "popular": false
+    },
+    {
+      "cityId": "city_karnataka_hassan",
+      "name": "Hassan",
+      "state": "Karnataka",
+      "country": "India",
+      "type": [
+        "tier_2"
+      ],
+      "latitude": 12.92013,
+      "longitude": 77.59201,
+      "aliases": [
+        "Hassan",
+        "Hassan City"
+      ],
+      "languages": [
+        "en",
+        "hi"
+      ],
+      "popular": false
+    },
+    {
+      "cityId": "city_karnataka_karwar",
+      "name": "Karwar",
+      "state": "Karnataka",
+      "country": "India",
+      "type": [
+        "tier_2"
+      ],
+      "latitude": 14.59021,
+      "longitude": 79.48449,
+      "aliases": [
+        "Karwar",
+        "Karwar City"
+      ],
+      "languages": [
+        "en",
+        "hi"
+      ],
+      "popular": false
+    },
+    {
+      "cityId": "city_kerala_thiruvananthapuram",
+      "name": "Thiruvananthapuram",
+      "state": "Kerala",
+      "country": "India",
+      "type": [
+        "railway_hub",
+        "state_capital",
+        "capital",
+        "tier_1",
+        "airport_hub"
+      ],
+      "latitude": 8.59292,
+      "longitude": 77.00587,
+      "aliases": [
+        "Thiruvananthapuram",
+        "Thiruvananthapuram City"
+      ],
+      "languages": [
+        "en",
+        "hi"
+      ],
+      "popular": true
+    },
+    {
+      "cityId": "city_kerala_kochi",
+      "name": "Kochi",
+      "state": "Kerala",
+      "country": "India",
+      "type": [
+        "tier_1"
+      ],
+      "latitude": 8.04944,
+      "longitude": 76.44483,
+      "aliases": [
+        "Kochi",
+        "Kochi City"
+      ],
+      "languages": [
+        "en",
+        "hi"
+      ],
+      "popular": true
+    },
+    {
+      "cityId": "city_kerala_kozhikode",
+      "name": "Kozhikode",
+      "state": "Kerala",
+      "country": "India",
+      "type": [
+        "tier_2"
+      ],
+      "latitude": 7.9567,
+      "longitude": 76.25397,
+      "aliases": [
+        "Kozhikode",
+        "Kozhikode City"
+      ],
+      "languages": [
+        "en",
+        "hi"
+      ],
+      "popular": true
+    },
+    {
+      "cityId": "city_kerala_thrissur",
+      "name": "Thrissur",
+      "state": "Kerala",
+      "country": "India",
+      "type": [
+        "tier_2"
+      ],
+      "latitude": 7.08406,
+      "longitude": 75.22267,
+      "aliases": [
+        "Thrissur",
+        "Thrissur City"
+      ],
+      "languages": [
+        "en",
+        "hi"
+      ],
+      "popular": false
+    },
+    {
+      "cityId": "city_kerala_kannur",
+      "name": "Kannur",
+      "state": "Kerala",
+      "country": "India",
+      "type": [
+        "tier_2"
+      ],
+      "latitude": 7.4154,
+      "longitude": 75.65488,
+      "aliases": [
+        "Kannur",
+        "Kannur City"
+      ],
+      "languages": [
+        "en",
+        "hi"
+      ],
+      "popular": false
+    },
+    {
+      "cityId": "city_kerala_alappuzha",
+      "name": "Alappuzha",
+      "state": "Kerala",
+      "country": "India",
+      "type": [
+        "tier_2"
+      ],
+      "latitude": 9.04692,
+      "longitude": 77.62366,
+      "aliases": [
+        "Alappuzha",
+        "Alappuzha City"
+      ],
+      "languages": [
+        "en",
+        "hi"
+      ],
+      "popular": false
+    },
+    {
+      "cityId": "city_kerala_kollam",
+      "name": "Kollam",
+      "state": "Kerala",
+      "country": "India",
+      "type": [
+        "tier_2"
+      ],
+      "latitude": 9.88713,
+      "longitude": 78.53539,
+      "aliases": [
+        "Kollam",
+        "Kollam City"
+      ],
+      "languages": [
+        "en",
+        "hi"
+      ],
+      "popular": false
+    },
+    {
+      "cityId": "city_kerala_kottayam",
+      "name": "Kottayam",
+      "state": "Kerala",
+      "country": "India",
+      "type": [
+        "tier_2"
+      ],
+      "latitude": 9.94397,
+      "longitude": 78.68381,
+      "aliases": [
+        "Kottayam",
+        "Kottayam City"
+      ],
+      "languages": [
+        "en",
+        "hi"
+      ],
+      "popular": false
+    },
+    {
+      "cityId": "city_kerala_palakkad",
+      "name": "Palakkad",
+      "state": "Kerala",
+      "country": "India",
+      "type": [
+        "tier_2"
+      ],
+      "latitude": 6.38327,
+      "longitude": 74.43509,
+      "aliases": [
+        "Palakkad",
+        "Palakkad City"
+      ],
+      "languages": [
+        "en",
+        "hi"
+      ],
+      "popular": false
+    },
+    {
+      "cityId": "city_kerala_munnar",
+      "name": "Munnar",
+      "state": "Kerala",
+      "country": "India",
+      "type": [
+        "tier_2",
+        "tourist_destination"
+      ],
+      "latitude": 7.01516,
+      "longitude": 75.10062,
+      "aliases": [
+        "Munnar",
+        "Munnar City"
+      ],
+      "languages": [
+        "en",
+        "hi"
+      ],
+      "popular": true
+    },
+    {
+      "cityId": "city_kerala_wayanad",
+      "name": "Wayanad",
+      "state": "Kerala",
+      "country": "India",
+      "type": [
+        "tier_2"
+      ],
+      "latitude": 9.74823,
+      "longitude": 78.41185,
+      "aliases": [
+        "Wayanad",
+        "Wayanad City"
+      ],
+      "languages": [
+        "en",
+        "hi"
+      ],
+      "popular": false
+    },
+    {
+      "cityId": "city_kerala_varkala",
+      "name": "Varkala",
+      "state": "Kerala",
+      "country": "India",
+      "type": [
+        "tier_2",
+        "tourist_destination"
+      ],
+      "latitude": 8.17804,
+      "longitude": 76.51556,
+      "aliases": [
+        "Varkala",
+        "Varkala City"
+      ],
+      "languages": [
+        "en",
+        "hi"
+      ],
+      "popular": true
+    },
+    {
+      "cityId": "city_kerala_kasaragod",
+      "name": "Kasaragod",
+      "state": "Kerala",
+      "country": "India",
+      "type": [
+        "tier_2"
+      ],
+      "latitude": 10.31638,
+      "longitude": 79.08331,
+      "aliases": [
+        "Kasaragod",
+        "Kasaragod City"
+      ],
+      "languages": [
+        "en",
+        "hi"
+      ],
+      "popular": false
+    },
+    {
+      "cityId": "city_kerala_guruvayur",
+      "name": "Guruvayur",
+      "state": "Kerala",
+      "country": "India",
+      "type": [
+        "tier_2"
+      ],
+      "latitude": 7.14386,
+      "longitude": 75.3746,
+      "aliases": [
+        "Guruvayur",
+        "Guruvayur City"
+      ],
+      "languages": [
+        "en",
+        "hi"
+      ],
+      "popular": false
+    },
+    {
+      "cityId": "city_madhya_pradesh_bhopal",
+      "name": "Bhopal",
+      "state": "Madhya Pradesh",
+      "country": "India",
+      "type": [
+        "railway_hub",
+        "state_capital",
+        "capital",
+        "tier_1",
+        "airport_hub"
+      ],
+      "latitude": 21.84756,
+      "longitude": 75.76107,
+      "aliases": [
+        "Bhopal",
+        "Bhopal City"
+      ],
+      "languages": [
+        "en",
+        "hi"
+      ],
+      "popular": true
+    },
+    {
+      "cityId": "city_madhya_pradesh_indore",
+      "name": "Indore",
+      "state": "Madhya Pradesh",
+      "country": "India",
+      "type": [
+        "tier_1"
+      ],
+      "latitude": 22.29767,
+      "longitude": 76.25239,
+      "aliases": [
+        "Indore",
+        "Indore City"
+      ],
+      "languages": [
+        "en",
+        "hi"
+      ],
+      "popular": true
+    },
+    {
+      "cityId": "city_madhya_pradesh_jabalpur",
+      "name": "Jabalpur",
+      "state": "Madhya Pradesh",
+      "country": "India",
+      "type": [
+        "tier_2"
+      ],
+      "latitude": 24.86989,
+      "longitude": 79.29228,
+      "aliases": [
+        "Jabalpur",
+        "Jabalpur City"
+      ],
+      "languages": [
+        "en",
+        "hi"
+      ],
+      "popular": true
+    },
+    {
+      "cityId": "city_madhya_pradesh_gwalior",
+      "name": "Gwalior",
+      "state": "Madhya Pradesh",
+      "country": "India",
+      "type": [
+        "tier_2"
+      ],
+      "latitude": 23.5433,
+      "longitude": 77.7245,
+      "aliases": [
+        "Gwalior",
+        "Gwalior City"
+      ],
+      "languages": [
+        "en",
+        "hi"
+      ],
+      "popular": false
+    },
+    {
+      "cityId": "city_madhya_pradesh_ujjain",
+      "name": "Ujjain",
+      "state": "Madhya Pradesh",
+      "country": "India",
+      "type": [
+        "tier_2",
+        "tourist_destination"
+      ],
+      "latitude": 24.53442,
+      "longitude": 78.97707,
+      "aliases": [
+        "Ujjain",
+        "Ujjain City"
+      ],
+      "languages": [
+        "en",
+        "hi"
+      ],
+      "popular": true
+    },
+    {
+      "cityId": "city_madhya_pradesh_sagar",
+      "name": "Sagar",
+      "state": "Madhya Pradesh",
+      "country": "India",
+      "type": [
+        "tier_2"
+      ],
+      "latitude": 24.64696,
+      "longitude": 78.98819,
+      "aliases": [
+        "Sagar",
+        "Sagar City"
+      ],
+      "languages": [
+        "en",
+        "hi"
+      ],
+      "popular": false
+    },
+    {
+      "cityId": "city_madhya_pradesh_satna",
+      "name": "Satna",
+      "state": "Madhya Pradesh",
+      "country": "India",
+      "type": [
+        "tier_2"
+      ],
+      "latitude": 23.74959,
+      "longitude": 78.04955,
+      "aliases": [
+        "Satna",
+        "Satna City"
+      ],
+      "languages": [
+        "en",
+        "hi"
+      ],
+      "popular": false
+    },
+    {
+      "cityId": "city_madhya_pradesh_rewa",
+      "name": "Rewa",
+      "state": "Madhya Pradesh",
+      "country": "India",
+      "type": [
+        "tier_2"
+      ],
+      "latitude": 21.50443,
+      "longitude": 75.39618,
+      "aliases": [
+        "Rewa",
+        "Rewa City"
+      ],
+      "languages": [
+        "en",
+        "hi"
+      ],
+      "popular": false
+    },
+    {
+      "cityId": "city_madhya_pradesh_khandwa",
+      "name": "Khandwa",
+      "state": "Madhya Pradesh",
+      "country": "India",
+      "type": [
+        "tier_2"
+      ],
+      "latitude": 21.56763,
+      "longitude": 75.43024,
+      "aliases": [
+        "Khandwa",
+        "Khandwa City"
+      ],
+      "languages": [
+        "en",
+        "hi"
+      ],
+      "popular": false
+    },
+    {
+      "cityId": "city_madhya_pradesh_ratlam",
+      "name": "Ratlam",
+      "state": "Madhya Pradesh",
+      "country": "India",
+      "type": [
+        "tier_2"
+      ],
+      "latitude": 22.6165,
+      "longitude": 76.62918,
+      "aliases": [
+        "Ratlam",
+        "Ratlam City"
+      ],
+      "languages": [
+        "en",
+        "hi"
+      ],
+      "popular": false
+    },
+    {
+      "cityId": "city_madhya_pradesh_dewas",
+      "name": "Dewas",
+      "state": "Madhya Pradesh",
+      "country": "India",
+      "type": [
+        "tier_2"
+      ],
+      "latitude": 23.87387,
+      "longitude": 78.15579,
+      "aliases": [
+        "Dewas",
+        "Dewas City"
+      ],
+      "languages": [
+        "en",
+        "hi"
+      ],
+      "popular": false
+    },
+    {
+      "cityId": "city_madhya_pradesh_chhindwara",
+      "name": "Chhindwara",
+      "state": "Madhya Pradesh",
+      "country": "India",
+      "type": [
+        "tier_2"
+      ],
+      "latitude": 25.23119,
+      "longitude": 79.71928,
+      "aliases": [
+        "Chhindwara",
+        "Chhindwara City"
+      ],
+      "languages": [
+        "en",
+        "hi"
+      ],
+      "popular": false
+    },
+    {
+      "cityId": "city_madhya_pradesh_shivpuri",
+      "name": "Shivpuri",
+      "state": "Madhya Pradesh",
+      "country": "India",
+      "type": [
+        "tier_2"
+      ],
+      "latitude": 23.46927,
+      "longitude": 77.59638,
+      "aliases": [
+        "Shivpuri",
+        "Shivpuri City"
+      ],
+      "languages": [
+        "en",
+        "hi"
+      ],
+      "popular": false
+    },
+    {
+      "cityId": "city_madhya_pradesh_mandla",
+      "name": "Mandla",
+      "state": "Madhya Pradesh",
+      "country": "India",
+      "type": [
+        "tier_2"
+      ],
+      "latitude": 22.13967,
+      "longitude": 76.06566,
+      "aliases": [
+        "Mandla",
+        "Mandla City"
+      ],
+      "languages": [
+        "en",
+        "hi"
+      ],
+      "popular": false
+    },
+    {
+      "cityId": "city_maharashtra_mumbai",
+      "name": "Mumbai",
+      "state": "Maharashtra",
+      "country": "India",
+      "type": [
+        "railway_hub",
+        "state_capital",
+        "capital",
+        "tier_1",
+        "airport_hub"
+      ],
+      "latitude": 20.50896,
+      "longitude": 74.58908,
+      "aliases": [
+        "Mumbai",
+        "Mumbai City"
+      ],
+      "languages": [
+        "en",
+        "hi"
+      ],
+      "popular": true
+    },
+    {
+      "cityId": "city_maharashtra_pune",
+      "name": "Pune",
+      "state": "Maharashtra",
+      "country": "India",
+      "type": [
+        "tier_1"
+      ],
+      "latitude": 18.93149,
+      "longitude": 72.76543,
+      "aliases": [
+        "Pune",
+        "Pune City"
+      ],
+      "languages": [
+        "en",
+        "hi"
+      ],
+      "popular": true
+    },
+    {
+      "cityId": "city_maharashtra_nagpur",
+      "name": "Nagpur",
+      "state": "Maharashtra",
+      "country": "India",
+      "type": [
+        "tier_2"
+      ],
+      "latitude": 17.09276,
+      "longitude": 70.4705,
+      "aliases": [
+        "Nagpur",
+        "Nagpur City"
+      ],
+      "languages": [
+        "en",
+        "hi"
+      ],
+      "popular": true
+    },
+    {
+      "cityId": "city_maharashtra_nashik",
+      "name": "Nashik",
+      "state": "Maharashtra",
+      "country": "India",
+      "type": [
+        "tier_2"
+      ],
+      "latitude": 19.2641,
+      "longitude": 73.15851,
+      "aliases": [
+        "Nashik",
+        "Nashik City"
+      ],
+      "languages": [
+        "en",
+        "hi"
+      ],
+      "popular": false
+    },
+    {
+      "cityId": "city_maharashtra_aurangabad",
+      "name": "Aurangabad",
+      "state": "Maharashtra",
+      "country": "India",
+      "type": [
+        "tier_2"
+      ],
+      "latitude": 18.51012,
+      "longitude": 72.26745,
+      "aliases": [
+        "Aurangabad",
+        "Aurangabad City"
+      ],
+      "languages": [
+        "en",
+        "hi"
+      ],
+      "popular": false
+    },
+    {
+      "cityId": "city_maharashtra_thane",
+      "name": "Thane",
+      "state": "Maharashtra",
+      "country": "India",
+      "type": [
+        "tier_2"
+      ],
+      "latitude": 18.32335,
+      "longitude": 71.96546,
+      "aliases": [
+        "Thane",
+        "Thane City"
+      ],
+      "languages": [
+        "en",
+        "hi"
+      ],
+      "popular": false
+    },
+    {
+      "cityId": "city_maharashtra_kolhapur",
+      "name": "Kolhapur",
+      "state": "Maharashtra",
+      "country": "India",
+      "type": [
+        "tier_2"
+      ],
+      "latitude": 18.1961,
+      "longitude": 71.81508,
+      "aliases": [
+        "Kolhapur",
+        "Kolhapur City"
+      ],
+      "languages": [
+        "en",
+        "hi"
+      ],
+      "popular": false
+    },
+    {
+      "cityId": "city_maharashtra_solapur",
+      "name": "Solapur",
+      "state": "Maharashtra",
+      "country": "India",
+      "type": [
+        "tier_2"
+      ],
+      "latitude": 17.58339,
+      "longitude": 71.17222,
+      "aliases": [
+        "Solapur",
+        "Solapur City"
+      ],
+      "languages": [
+        "en",
+        "hi"
+      ],
+      "popular": false
+    },
+    {
+      "cityId": "city_maharashtra_nanded",
+      "name": "Nanded",
+      "state": "Maharashtra",
+      "country": "India",
+      "type": [
+        "tier_2"
+      ],
+      "latitude": 21.24375,
+      "longitude": 70.29809,
+      "aliases": [
+        "Nanded",
+        "Nanded City"
+      ],
+      "languages": [
+        "en",
+        "hi"
+      ],
+      "popular": false
+    },
+    {
+      "cityId": "city_maharashtra_amravati",
+      "name": "Amravati",
+      "state": "Maharashtra",
+      "country": "India",
+      "type": [
+        "tier_2"
+      ],
+      "latitude": 19.77554,
+      "longitude": 73.64106,
+      "aliases": [
+        "Amravati",
+        "Amravati City"
+      ],
+      "languages": [
+        "en",
+        "hi"
+      ],
+      "popular": false
+    },
+    {
+      "cityId": "city_maharashtra_jalgaon",
+      "name": "Jalgaon",
+      "state": "Maharashtra",
+      "country": "India",
+      "type": [
+        "tier_2"
+      ],
+      "latitude": 19.50161,
+      "longitude": 73.35795,
+      "aliases": [
+        "Jalgaon",
+        "Jalgaon City"
+      ],
+      "languages": [
+        "en",
+        "hi"
+      ],
+      "popular": false
+    },
+    {
+      "cityId": "city_maharashtra_latur",
+      "name": "Latur",
+      "state": "Maharashtra",
+      "country": "India",
+      "type": [
+        "tier_2"
+      ],
+      "latitude": 18.55538,
+      "longitude": 72.23968,
+      "aliases": [
+        "Latur",
+        "Latur City"
+      ],
+      "languages": [
+        "en",
+        "hi"
+      ],
+      "popular": false
+    },
+    {
+      "cityId": "city_maharashtra_ratnagiri",
+      "name": "Ratnagiri",
+      "state": "Maharashtra",
+      "country": "India",
+      "type": [
+        "tier_2"
+      ],
+      "latitude": 17.11329,
+      "longitude": 70.49476,
+      "aliases": [
+        "Ratnagiri",
+        "Ratnagiri City"
+      ],
+      "languages": [
+        "en",
+        "hi"
+      ],
+      "popular": false
+    },
+    {
+      "cityId": "city_maharashtra_shirdi",
+      "name": "Shirdi",
+      "state": "Maharashtra",
+      "country": "India",
+      "type": [
+        "tier_2",
+        "tourist_destination"
+      ],
+      "latitude": 19.67962,
+      "longitude": 73.60896,
+      "aliases": [
+        "Shirdi",
+        "Shirdi City"
+      ],
+      "languages": [
+        "en",
+        "hi"
+      ],
+      "popular": true
+    },
+    {
+      "cityId": "city_manipur_imphal",
+      "name": "Imphal",
+      "state": "Manipur",
+      "country": "India",
+      "type": [
+        "railway_hub",
+        "state_capital",
+        "capital",
+        "tier_1",
+        "airport_hub"
+      ],
+      "latitude": 23.66026,
+      "longitude": 92.51846,
+      "aliases": [
+        "Imphal",
+        "Imphal City"
+      ],
+      "languages": [
+        "en",
+        "hi"
+      ],
+      "popular": true
+    },
+    {
+      "cityId": "city_manipur_churachandpur",
+      "name": "Churachandpur",
+      "state": "Manipur",
+      "country": "India",
+      "type": [
+        "tier_1"
+      ],
+      "latitude": 25.52114,
+      "longitude": 94.7583,
+      "aliases": [
+        "Churachandpur",
+        "Churachandpur City"
+      ],
+      "languages": [
+        "en",
+        "hi"
+      ],
+      "popular": true
+    },
+    {
+      "cityId": "city_manipur_ukhrul",
+      "name": "Ukhrul",
+      "state": "Manipur",
+      "country": "India",
+      "type": [
+        "tier_2"
+      ],
+      "latitude": 23.96384,
+      "longitude": 92.87723,
+      "aliases": [
+        "Ukhrul",
+        "Ukhrul City"
+      ],
+      "languages": [
+        "en",
+        "hi"
+      ],
+      "popular": true
+    },
+    {
+      "cityId": "city_manipur_thoubal",
+      "name": "Thoubal",
+      "state": "Manipur",
+      "country": "India",
+      "type": [
+        "tier_2"
+      ],
+      "latitude": 24.87147,
+      "longitude": 94.03114,
+      "aliases": [
+        "Thoubal",
+        "Thoubal City"
+      ],
+      "languages": [
+        "en",
+        "hi"
+      ],
+      "popular": false
+    },
+    {
+      "cityId": "city_manipur_bishnupur",
+      "name": "Bishnupur",
+      "state": "Manipur",
+      "country": "India",
+      "type": [
+        "tier_2"
+      ],
+      "latitude": 22.79774,
+      "longitude": 91.62099,
+      "aliases": [
+        "Bishnupur",
+        "Bishnupur City"
+      ],
+      "languages": [
+        "en",
+        "hi"
+      ],
+      "popular": false
+    },
+    {
+      "cityId": "city_manipur_senapati",
+      "name": "Senapati",
+      "state": "Manipur",
+      "country": "India",
+      "type": [
+        "tier_2"
+      ],
+      "latitude": 23.81306,
+      "longitude": 92.78029,
+      "aliases": [
+        "Senapati",
+        "Senapati City"
+      ],
+      "languages": [
+        "en",
+        "hi"
+      ],
+      "popular": false
+    },
+    {
+      "cityId": "city_manipur_tamenglong",
+      "name": "Tamenglong",
+      "state": "Manipur",
+      "country": "India",
+      "type": [
+        "tier_2"
+      ],
+      "latitude": 24.23319,
+      "longitude": 93.31744,
+      "aliases": [
+        "Tamenglong",
+        "Tamenglong City"
+      ],
+      "languages": [
+        "en",
+        "hi"
+      ],
+      "popular": false
+    },
+    {
+      "cityId": "city_manipur_moreh",
+      "name": "Moreh",
+      "state": "Manipur",
+      "country": "India",
+      "type": [
+        "tier_2"
+      ],
+      "latitude": 26.48732,
+      "longitude": 95.94078,
+      "aliases": [
+        "Moreh",
+        "Moreh City"
+      ],
+      "languages": [
+        "en",
+        "hi"
+      ],
+      "popular": false
+    },
+    {
+      "cityId": "city_manipur_kakching",
+      "name": "Kakching",
+      "state": "Manipur",
+      "country": "India",
+      "type": [
+        "tier_2"
+      ],
+      "latitude": 26.78943,
+      "longitude": 96.2572,
+      "aliases": [
+        "Kakching",
+        "Kakching City"
+      ],
+      "languages": [
+        "en",
+        "hi"
+      ],
+      "popular": false
+    },
+    {
+      "cityId": "city_manipur_jiribam",
+      "name": "Jiribam",
+      "state": "Manipur",
+      "country": "India",
+      "type": [
+        "tier_2"
+      ],
+      "latitude": 23.85059,
+      "longitude": 92.78402,
+      "aliases": [
+        "Jiribam",
+        "Jiribam City"
+      ],
+      "languages": [
+        "en",
+        "hi"
+      ],
+      "popular": false
+    },
+    {
+      "cityId": "city_manipur_noney",
+      "name": "Noney",
+      "state": "Manipur",
+      "country": "India",
+      "type": [
+        "tier_2"
+      ],
+      "latitude": 26.30678,
+      "longitude": 95.64617,
+      "aliases": [
+        "Noney",
+        "Noney City"
+      ],
+      "languages": [
+        "en",
+        "hi"
+      ],
+      "popular": false
+    },
+    {
+      "cityId": "city_manipur_kamjong",
+      "name": "Kamjong",
+      "state": "Manipur",
+      "country": "India",
+      "type": [
+        "tier_2"
+      ],
+      "latitude": 25.67509,
+      "longitude": 94.98087,
+      "aliases": [
+        "Kamjong",
+        "Kamjong City"
+      ],
+      "languages": [
+        "en",
+        "hi"
+      ],
+      "popular": false
+    },
+    {
+      "cityId": "city_manipur_pherzawl",
+      "name": "Pherzawl",
+      "state": "Manipur",
+      "country": "India",
+      "type": [
+        "tier_2"
+      ],
+      "latitude": 23.44679,
+      "longitude": 92.34743,
+      "aliases": [
+        "Pherzawl",
+        "Pherzawl City"
+      ],
+      "languages": [
+        "en",
+        "hi"
+      ],
+      "popular": false
+    },
+    {
+      "cityId": "city_manipur_tengnoupal",
+      "name": "Tengnoupal",
+      "state": "Manipur",
+      "country": "India",
+      "type": [
+        "tier_2"
+      ],
+      "latitude": 26.99658,
+      "longitude": 96.46138,
+      "aliases": [
+        "Tengnoupal",
+        "Tengnoupal City"
+      ],
+      "languages": [
+        "en",
+        "hi"
+      ],
+      "popular": false
+    },
+    {
+      "cityId": "city_meghalaya_shillong",
+      "name": "Shillong",
+      "state": "Meghalaya",
+      "country": "India",
+      "type": [
+        "railway_hub",
+        "state_capital",
+        "capital",
+        "tier_1",
+        "airport_hub"
+      ],
+      "latitude": 27.46672,
+      "longitude": 94.05882,
+      "aliases": [
+        "Shillong",
+        "Shillong City"
+      ],
+      "languages": [
+        "en",
+        "hi"
+      ],
+      "popular": true
+    },
+    {
+      "cityId": "city_meghalaya_tura",
+      "name": "Tura",
+      "state": "Meghalaya",
+      "country": "India",
+      "type": [
+        "tier_1"
+      ],
+      "latitude": 26.22115,
+      "longitude": 92.66804,
+      "aliases": [
+        "Tura",
+        "Tura City"
+      ],
+      "languages": [
+        "en",
+        "hi"
+      ],
+      "popular": true
+    },
+    {
+      "cityId": "city_meghalaya_cherrapunji",
+      "name": "Cherrapunji",
+      "state": "Meghalaya",
+      "country": "India",
+      "type": [
+        "tier_2",
+        "tourist_destination"
+      ],
+      "latitude": 27.52393,
+      "longitude": 94.16705,
+      "aliases": [
+        "Cherrapunji",
+        "Cherrapunji City"
+      ],
+      "languages": [
+        "en",
+        "hi"
+      ],
+      "popular": true
+    },
+    {
+      "cityId": "city_meghalaya_jowai",
+      "name": "Jowai",
+      "state": "Meghalaya",
+      "country": "India",
+      "type": [
+        "tier_2"
+      ],
+      "latitude": 24.58749,
+      "longitude": 90.73734,
+      "aliases": [
+        "Jowai",
+        "Jowai City"
+      ],
+      "languages": [
+        "en",
+        "hi"
+      ],
+      "popular": false
+    },
+    {
+      "cityId": "city_meghalaya_nongpoh",
+      "name": "Nongpoh",
+      "state": "Meghalaya",
+      "country": "India",
+      "type": [
+        "tier_2"
+      ],
+      "latitude": 24.81763,
+      "longitude": 91.04995,
+      "aliases": [
+        "Nongpoh",
+        "Nongpoh City"
+      ],
+      "languages": [
+        "en",
+        "hi"
+      ],
+      "popular": false
+    },
+    {
+      "cityId": "city_meghalaya_williamnagar",
+      "name": "Williamnagar",
+      "state": "Meghalaya",
+      "country": "India",
+      "type": [
+        "tier_2"
+      ],
+      "latitude": 26.93843,
+      "longitude": 93.51573,
+      "aliases": [
+        "Williamnagar",
+        "Williamnagar City"
+      ],
+      "languages": [
+        "en",
+        "hi"
+      ],
+      "popular": false
+    },
+    {
+      "cityId": "city_meghalaya_baghmara",
+      "name": "Baghmara",
+      "state": "Meghalaya",
+      "country": "India",
+      "type": [
+        "tier_2"
+      ],
+      "latitude": 24.55144,
+      "longitude": 90.65412,
+      "aliases": [
+        "Baghmara",
+        "Baghmara City"
+      ],
+      "languages": [
+        "en",
+        "hi"
+      ],
+      "popular": false
+    },
+    {
+      "cityId": "city_meghalaya_mawkyrwat",
+      "name": "Mawkyrwat",
+      "state": "Meghalaya",
+      "country": "India",
+      "type": [
+        "tier_2"
+      ],
+      "latitude": 26.9843,
+      "longitude": 93.52932,
+      "aliases": [
+        "Mawkyrwat",
+        "Mawkyrwat City"
+      ],
+      "languages": [
+        "en",
+        "hi"
+      ],
+      "popular": false
+    },
+    {
+      "cityId": "city_meghalaya_resubelpara",
+      "name": "Resubelpara",
+      "state": "Meghalaya",
+      "country": "India",
+      "type": [
+        "tier_2"
+      ],
+      "latitude": 23.66356,
+      "longitude": 89.64543,
+      "aliases": [
+        "Resubelpara",
+        "Resubelpara City"
+      ],
+      "languages": [
+        "en",
+        "hi"
+      ],
+      "popular": false
+    },
+    {
+      "cityId": "city_meghalaya_nongstoin",
+      "name": "Nongstoin",
+      "state": "Meghalaya",
+      "country": "India",
+      "type": [
+        "tier_2"
+      ],
+      "latitude": 26.63957,
+      "longitude": 93.20316,
+      "aliases": [
+        "Nongstoin",
+        "Nongstoin City"
+      ],
+      "languages": [
+        "en",
+        "hi"
+      ],
+      "popular": false
+    },
+    {
+      "cityId": "city_meghalaya_mairang",
+      "name": "Mairang",
+      "state": "Meghalaya",
+      "country": "India",
+      "type": [
+        "tier_2"
+      ],
+      "latitude": 23.40557,
+      "longitude": 89.38116,
+      "aliases": [
+        "Mairang",
+        "Mairang City"
+      ],
+      "languages": [
+        "en",
+        "hi"
+      ],
+      "popular": false
+    },
+    {
+      "cityId": "city_meghalaya_khliehriat",
+      "name": "Khliehriat",
+      "state": "Meghalaya",
+      "country": "India",
+      "type": [
+        "tier_2"
+      ],
+      "latitude": 24.68171,
+      "longitude": 90.80807,
+      "aliases": [
+        "Khliehriat",
+        "Khliehriat City"
+      ],
+      "languages": [
+        "en",
+        "hi"
+      ],
+      "popular": false
+    },
+    {
+      "cityId": "city_meghalaya_mawlynnong",
+      "name": "Mawlynnong",
+      "state": "Meghalaya",
+      "country": "India",
+      "type": [
+        "tier_2"
+      ],
+      "latitude": 24.47162,
+      "longitude": 90.60041,
+      "aliases": [
+        "Mawlynnong",
+        "Mawlynnong City"
+      ],
+      "languages": [
+        "en",
+        "hi"
+      ],
+      "popular": false
+    },
+    {
+      "cityId": "city_meghalaya_dawki",
+      "name": "Dawki",
+      "state": "Meghalaya",
+      "country": "India",
+      "type": [
+        "tier_2",
+        "tourist_destination"
+      ],
+      "latitude": 27.12439,
+      "longitude": 93.65425,
+      "aliases": [
+        "Dawki",
+        "Dawki City"
+      ],
+      "languages": [
+        "en",
+        "hi"
+      ],
+      "popular": true
+    },
+    {
+      "cityId": "city_mizoram_aizawl",
+      "name": "Aizawl",
+      "state": "Mizoram",
+      "country": "India",
+      "type": [
+        "railway_hub",
+        "state_capital",
+        "capital",
+        "tier_1",
+        "airport_hub"
+      ],
+      "latitude": 24.86924,
+      "longitude": 94.08669,
+      "aliases": [
+        "Aizawl",
+        "Aizawl City"
+      ],
+      "languages": [
+        "en",
+        "hi"
+      ],
+      "popular": true
+    },
+    {
+      "cityId": "city_mizoram_lunglei",
+      "name": "Lunglei",
+      "state": "Mizoram",
+      "country": "India",
+      "type": [
+        "tier_1"
+      ],
+      "latitude": 23.33881,
+      "longitude": 92.19674,
+      "aliases": [
+        "Lunglei",
+        "Lunglei City"
+      ],
+      "languages": [
+        "en",
+        "hi"
+      ],
+      "popular": true
+    },
+    {
+      "cityId": "city_mizoram_champhai",
+      "name": "Champhai",
+      "state": "Mizoram",
+      "country": "India",
+      "type": [
+        "tier_2"
+      ],
+      "latitude": 25.82188,
+      "longitude": 95.17191,
+      "aliases": [
+        "Champhai",
+        "Champhai City"
+      ],
+      "languages": [
+        "en",
+        "hi"
+      ],
+      "popular": true
+    },
+    {
+      "cityId": "city_mizoram_kolasib",
+      "name": "Kolasib",
+      "state": "Mizoram",
+      "country": "India",
+      "type": [
+        "tier_2"
+      ],
+      "latitude": 25.07252,
+      "longitude": 94.36755,
+      "aliases": [
+        "Kolasib",
+        "Kolasib City"
+      ],
+      "languages": [
+        "en",
+        "hi"
+      ],
+      "popular": false
+    },
+    {
+      "cityId": "city_mizoram_serchhip",
+      "name": "Serchhip",
+      "state": "Mizoram",
+      "country": "India",
+      "type": [
+        "tier_2"
+      ],
+      "latitude": 23.47785,
+      "longitude": 92.36107,
+      "aliases": [
+        "Serchhip",
+        "Serchhip City"
+      ],
+      "languages": [
+        "en",
+        "hi"
+      ],
+      "popular": false
+    },
+    {
+      "cityId": "city_mizoram_saiha",
+      "name": "Saiha",
+      "state": "Mizoram",
+      "country": "India",
+      "type": [
+        "tier_2"
+      ],
+      "latitude": 23.36288,
+      "longitude": 92.30644,
+      "aliases": [
+        "Saiha",
+        "Saiha City"
+      ],
+      "languages": [
+        "en",
+        "hi"
+      ],
+      "popular": false
+    },
+    {
+      "cityId": "city_mizoram_lawngtlai",
+      "name": "Lawngtlai",
+      "state": "Mizoram",
+      "country": "India",
+      "type": [
+        "tier_2"
+      ],
+      "latitude": 22.25092,
+      "longitude": 91.03293,
+      "aliases": [
+        "Lawngtlai",
+        "Lawngtlai City"
+      ],
+      "languages": [
+        "en",
+        "hi"
+      ],
+      "popular": false
+    },
+    {
+      "cityId": "city_mizoram_mamit",
+      "name": "Mamit",
+      "state": "Mizoram",
+      "country": "India",
+      "type": [
+        "tier_2"
+      ],
+      "latitude": 24.61655,
+      "longitude": 93.78806,
+      "aliases": [
+        "Mamit",
+        "Mamit City"
+      ],
+      "languages": [
+        "en",
+        "hi"
+      ],
+      "popular": false
+    },
+    {
+      "cityId": "city_mizoram_khawzawl",
+      "name": "Khawzawl",
+      "state": "Mizoram",
+      "country": "India",
+      "type": [
+        "tier_2"
+      ],
+      "latitude": 23.971,
+      "longitude": 93.06575,
+      "aliases": [
+        "Khawzawl",
+        "Khawzawl City"
+      ],
+      "languages": [
+        "en",
+        "hi"
+      ],
+      "popular": false
+    },
+    {
+      "cityId": "city_mizoram_saitual",
+      "name": "Saitual",
+      "state": "Mizoram",
+      "country": "India",
+      "type": [
+        "tier_2"
+      ],
+      "latitude": 22.68949,
+      "longitude": 91.55124,
+      "aliases": [
+        "Saitual",
+        "Saitual City"
+      ],
+      "languages": [
+        "en",
+        "hi"
+      ],
+      "popular": false
+    },
+    {
+      "cityId": "city_mizoram_hnahthial",
+      "name": "Hnahthial",
+      "state": "Mizoram",
+      "country": "India",
+      "type": [
+        "tier_2"
+      ],
+      "latitude": 24.58636,
+      "longitude": 93.71174,
+      "aliases": [
+        "Hnahthial",
+        "Hnahthial City"
+      ],
+      "languages": [
+        "en",
+        "hi"
+      ],
+      "popular": false
+    },
+    {
+      "cityId": "city_mizoram_vairengte",
+      "name": "Vairengte",
+      "state": "Mizoram",
+      "country": "India",
+      "type": [
+        "tier_2"
+      ],
+      "latitude": 25.40614,
+      "longitude": 94.76183,
+      "aliases": [
+        "Vairengte",
+        "Vairengte City"
+      ],
+      "languages": [
+        "en",
+        "hi"
+      ],
+      "popular": false
+    },
+    {
+      "cityId": "city_mizoram_bairabi",
+      "name": "Bairabi",
+      "state": "Mizoram",
+      "country": "India",
+      "type": [
+        "tier_2"
+      ],
+      "latitude": 22.61299,
+      "longitude": 91.42021,
+      "aliases": [
+        "Bairabi",
+        "Bairabi City"
+      ],
+      "languages": [
+        "en",
+        "hi"
+      ],
+      "popular": false
+    },
+    {
+      "cityId": "city_mizoram_thenzawl",
+      "name": "Thenzawl",
+      "state": "Mizoram",
+      "country": "India",
+      "type": [
+        "tier_2"
+      ],
+      "latitude": 22.65842,
+      "longitude": 91.51453,
+      "aliases": [
+        "Thenzawl",
+        "Thenzawl City"
+      ],
+      "languages": [
+        "en",
+        "hi"
+      ],
+      "popular": false
+    },
+    {
+      "cityId": "city_nagaland_kohima",
+      "name": "Kohima",
+      "state": "Nagaland",
+      "country": "India",
+      "type": [
+        "railway_hub",
+        "state_capital",
+        "capital",
+        "tier_1",
+        "airport_hub"
+      ],
+      "latitude": 26.61291,
+      "longitude": 95.16341,
+      "aliases": [
+        "Kohima",
+        "Kohima City"
+      ],
+      "languages": [
+        "en",
+        "hi"
+      ],
+      "popular": true
+    },
+    {
+      "cityId": "city_nagaland_dimapur",
+      "name": "Dimapur",
+      "state": "Nagaland",
+      "country": "India",
+      "type": [
+        "tier_1"
+      ],
+      "latitude": 24.54608,
+      "longitude": 92.76142,
+      "aliases": [
+        "Dimapur",
+        "Dimapur City"
+      ],
+      "languages": [
+        "en",
+        "hi"
+      ],
+      "popular": true
+    },
+    {
+      "cityId": "city_nagaland_mokokchung",
+      "name": "Mokokchung",
+      "state": "Nagaland",
+      "country": "India",
+      "type": [
+        "tier_2"
+      ],
+      "latitude": 25.11143,
+      "longitude": 93.51081,
+      "aliases": [
+        "Mokokchung",
+        "Mokokchung City"
+      ],
+      "languages": [
+        "en",
+        "hi"
+      ],
+      "popular": true
+    },
+    {
+      "cityId": "city_nagaland_wokha",
+      "name": "Wokha",
+      "state": "Nagaland",
+      "country": "India",
+      "type": [
+        "tier_2"
+      ],
+      "latitude": 25.55545,
+      "longitude": 93.95431,
+      "aliases": [
+        "Wokha",
+        "Wokha City"
+      ],
+      "languages": [
+        "en",
+        "hi"
+      ],
+      "popular": false
+    },
+    {
+      "cityId": "city_nagaland_mon",
+      "name": "Mon",
+      "state": "Nagaland",
+      "country": "India",
+      "type": [
+        "tier_2"
+      ],
+      "latitude": 25.98082,
+      "longitude": 94.53828,
+      "aliases": [
+        "Mon",
+        "Mon City"
+      ],
+      "languages": [
+        "en",
+        "hi"
+      ],
+      "popular": false
+    },
+    {
+      "cityId": "city_nagaland_tuensang",
+      "name": "Tuensang",
+      "state": "Nagaland",
+      "country": "India",
+      "type": [
+        "tier_2"
+      ],
+      "latitude": 23.64436,
+      "longitude": 91.65512,
+      "aliases": [
+        "Tuensang",
+        "Tuensang City"
+      ],
+      "languages": [
+        "en",
+        "hi"
+      ],
+      "popular": false
+    },
+    {
+      "cityId": "city_nagaland_zunheboto",
+      "name": "Zunheboto",
+      "state": "Nagaland",
+      "country": "India",
+      "type": [
+        "tier_2"
+      ],
+      "latitude": 26.07878,
+      "longitude": 94.57279,
+      "aliases": [
+        "Zunheboto",
+        "Zunheboto City"
+      ],
+      "languages": [
+        "en",
+        "hi"
+      ],
+      "popular": false
+    },
+    {
+      "cityId": "city_nagaland_phek",
+      "name": "Phek",
+      "state": "Nagaland",
+      "country": "India",
+      "type": [
+        "tier_2"
+      ],
+      "latitude": 24.10339,
+      "longitude": 92.31949,
+      "aliases": [
+        "Phek",
+        "Phek City"
+      ],
+      "languages": [
+        "en",
+        "hi"
+      ],
+      "popular": false
+    },
+    {
+      "cityId": "city_nagaland_kiphire",
+      "name": "Kiphire",
+      "state": "Nagaland",
+      "country": "India",
+      "type": [
+        "tier_2"
+      ],
+      "latitude": 25.68191,
+      "longitude": 94.18501,
+      "aliases": [
+        "Kiphire",
+        "Kiphire City"
+      ],
+      "languages": [
+        "en",
+        "hi"
+      ],
+      "popular": false
+    },
+    {
+      "cityId": "city_nagaland_longleng",
+      "name": "Longleng",
+      "state": "Nagaland",
+      "country": "India",
+      "type": [
+        "tier_2"
+      ],
+      "latitude": 26.73316,
+      "longitude": 95.34615,
+      "aliases": [
+        "Longleng",
+        "Longleng City"
+      ],
+      "languages": [
+        "en",
+        "hi"
+      ],
+      "popular": false
+    },
+    {
+      "cityId": "city_nagaland_peren",
+      "name": "Peren",
+      "state": "Nagaland",
+      "country": "India",
+      "type": [
+        "tier_2"
+      ],
+      "latitude": 25.25887,
+      "longitude": 93.60381,
+      "aliases": [
+        "Peren",
+        "Peren City"
+      ],
+      "languages": [
+        "en",
+        "hi"
+      ],
+      "popular": false
+    },
+    {
+      "cityId": "city_nagaland_chumoukedima",
+      "name": "Chumoukedima",
+      "state": "Nagaland",
+      "country": "India",
+      "type": [
+        "tier_2"
+      ],
+      "latitude": 24.68132,
+      "longitude": 93.0025,
+      "aliases": [
+        "Chumoukedima",
+        "Chumoukedima City"
+      ],
+      "languages": [
+        "en",
+        "hi"
+      ],
+      "popular": false
+    },
+    {
+      "cityId": "city_nagaland_tseminyu",
+      "name": "Tseminyu",
+      "state": "Nagaland",
+      "country": "India",
+      "type": [
+        "tier_2"
+      ],
+      "latitude": 25.66233,
+      "longitude": 94.08062,
+      "aliases": [
+        "Tseminyu",
+        "Tseminyu City"
+      ],
+      "languages": [
+        "en",
+        "hi"
+      ],
+      "popular": false
+    },
+    {
+      "cityId": "city_nagaland_shamator",
+      "name": "Shamator",
+      "state": "Nagaland",
+      "country": "India",
+      "type": [
+        "tier_2"
+      ],
+      "latitude": 25.88571,
+      "longitude": 94.38524,
+      "aliases": [
+        "Shamator",
+        "Shamator City"
+      ],
+      "languages": [
+        "en",
+        "hi"
+      ],
+      "popular": false
+    },
+    {
+      "cityId": "city_odisha_bhubaneswar",
+      "name": "Bhubaneswar",
+      "state": "Odisha",
+      "country": "India",
+      "type": [
+        "railway_hub",
+        "state_capital",
+        "capital",
+        "tier_1",
+        "airport_hub"
+      ],
+      "latitude": 19.47691,
+      "longitude": 84.82695,
+      "aliases": [
+        "Bhubaneswar",
+        "Bhubaneswar City"
+      ],
+      "languages": [
+        "en",
+        "hi"
+      ],
+      "popular": true
+    },
+    {
+      "cityId": "city_odisha_puri",
+      "name": "Puri",
+      "state": "Odisha",
+      "country": "India",
+      "type": [
+        "tier_1",
+        "tourist_destination"
+      ],
+      "latitude": 19.93792,
+      "longitude": 85.37178,
+      "aliases": [
+        "Puri",
+        "Puri City"
+      ],
+      "languages": [
+        "en",
+        "hi"
+      ],
+      "popular": true
+    },
+    {
+      "cityId": "city_odisha_cuttack",
+      "name": "Cuttack",
+      "state": "Odisha",
+      "country": "India",
+      "type": [
+        "tier_2"
+      ],
+      "latitude": 18.88689,
+      "longitude": 84.08902,
+      "aliases": [
+        "Cuttack",
+        "Cuttack City"
+      ],
+      "languages": [
+        "en",
+        "hi"
+      ],
+      "popular": true
+    },
+    {
+      "cityId": "city_odisha_rourkela",
+      "name": "Rourkela",
+      "state": "Odisha",
+      "country": "India",
+      "type": [
+        "tier_2"
+      ],
+      "latitude": 18.75925,
+      "longitude": 83.93818,
+      "aliases": [
+        "Rourkela",
+        "Rourkela City"
+      ],
+      "languages": [
+        "en",
+        "hi"
+      ],
+      "popular": false
+    },
+    {
+      "cityId": "city_odisha_sambalpur",
+      "name": "Sambalpur",
+      "state": "Odisha",
+      "country": "India",
+      "type": [
+        "tier_2"
+      ],
+      "latitude": 20.4284,
+      "longitude": 85.9108,
+      "aliases": [
+        "Sambalpur",
+        "Sambalpur City"
+      ],
+      "languages": [
+        "en",
+        "hi"
+      ],
+      "popular": false
+    },
+    {
+      "cityId": "city_odisha_berhampur",
+      "name": "Berhampur",
+      "state": "Odisha",
+      "country": "India",
+      "type": [
+        "tier_2"
+      ],
+      "latitude": 18.91298,
+      "longitude": 84.16048,
+      "aliases": [
+        "Berhampur",
+        "Berhampur City"
+      ],
+      "languages": [
+        "en",
+        "hi"
+      ],
+      "popular": false
+    },
+    {
+      "cityId": "city_odisha_balasore",
+      "name": "Balasore",
+      "state": "Odisha",
+      "country": "India",
+      "type": [
+        "tier_2"
+      ],
+      "latitude": 18.70642,
+      "longitude": 83.95699,
+      "aliases": [
+        "Balasore",
+        "Balasore City"
+      ],
+      "languages": [
+        "en",
+        "hi"
+      ],
+      "popular": false
+    },
+    {
+      "cityId": "city_odisha_baripada",
+      "name": "Baripada",
+      "state": "Odisha",
+      "country": "India",
+      "type": [
+        "tier_2"
+      ],
+      "latitude": 19.14969,
+      "longitude": 84.52148,
+      "aliases": [
+        "Baripada",
+        "Baripada City"
+      ],
+      "languages": [
+        "en",
+        "hi"
+      ],
+      "popular": false
+    },
+    {
+      "cityId": "city_odisha_jharsuguda",
+      "name": "Jharsuguda",
+      "state": "Odisha",
+      "country": "India",
+      "type": [
+        "tier_2"
+      ],
+      "latitude": 20.63779,
+      "longitude": 86.19889,
+      "aliases": [
+        "Jharsuguda",
+        "Jharsuguda City"
+      ],
+      "languages": [
+        "en",
+        "hi"
+      ],
+      "popular": false
+    },
+    {
+      "cityId": "city_odisha_koraput",
+      "name": "Koraput",
+      "state": "Odisha",
+      "country": "India",
+      "type": [
+        "tier_2"
+      ],
+      "latitude": 18.21327,
+      "longitude": 83.33355,
+      "aliases": [
+        "Koraput",
+        "Koraput City"
+      ],
+      "languages": [
+        "en",
+        "hi"
+      ],
+      "popular": false
+    },
+    {
+      "cityId": "city_odisha_konark",
+      "name": "Konark",
+      "state": "Odisha",
+      "country": "India",
+      "type": [
+        "tier_2",
+        "tourist_destination"
+      ],
+      "latitude": 21.00901,
+      "longitude": 86.71886,
+      "aliases": [
+        "Konark",
+        "Konark City"
+      ],
+      "languages": [
+        "en",
+        "hi"
+      ],
+      "popular": true
+    },
+    {
+      "cityId": "city_odisha_kendrapara",
+      "name": "Kendrapara",
+      "state": "Odisha",
+      "country": "India",
+      "type": [
+        "tier_2"
+      ],
+      "latitude": 19.21127,
+      "longitude": 84.55363,
+      "aliases": [
+        "Kendrapara",
+        "Kendrapara City"
+      ],
+      "languages": [
+        "en",
+        "hi"
+      ],
+      "popular": false
+    },
+    {
+      "cityId": "city_odisha_angul",
+      "name": "Angul",
+      "state": "Odisha",
+      "country": "India",
+      "type": [
+        "tier_2"
+      ],
+      "latitude": 20.37943,
+      "longitude": 85.85293,
+      "aliases": [
+        "Angul",
+        "Angul City"
+      ],
+      "languages": [
+        "en",
+        "hi"
+      ],
+      "popular": false
+    },
+    {
+      "cityId": "city_odisha_bhadrak",
+      "name": "Bhadrak",
+      "state": "Odisha",
+      "country": "India",
+      "type": [
+        "tier_2"
+      ],
+      "latitude": 20.69672,
+      "longitude": 86.30917,
+      "aliases": [
+        "Bhadrak",
+        "Bhadrak City"
+      ],
+      "languages": [
+        "en",
+        "hi"
+      ],
+      "popular": false
+    },
+    {
+      "cityId": "city_punjab_amritsar",
+      "name": "Amritsar",
+      "state": "Punjab",
+      "country": "India",
+      "type": [
+        "railway_hub",
+        "tier_1",
+        "tourist_destination",
+        "airport_hub"
+      ],
+      "latitude": 29.71861,
+      "longitude": 74.48412,
+      "aliases": [
+        "Amritsar",
+        "Amritsar City"
+      ],
+      "languages": [
+        "en",
+        "hi"
+      ],
+      "popular": true
+    },
+    {
+      "cityId": "city_punjab_ludhiana",
+      "name": "Ludhiana",
+      "state": "Punjab",
+      "country": "India",
+      "type": [
+        "tier_1"
+      ],
+      "latitude": 32.40627,
+      "longitude": 77.70107,
+      "aliases": [
+        "Ludhiana",
+        "Ludhiana City"
+      ],
+      "languages": [
+        "en",
+        "hi"
+      ],
+      "popular": true
+    },
+    {
+      "cityId": "city_punjab_jalandhar",
+      "name": "Jalandhar",
+      "state": "Punjab",
+      "country": "India",
+      "type": [
+        "tier_2"
+      ],
+      "latitude": 31.18968,
+      "longitude": 76.22266,
+      "aliases": [
+        "Jalandhar",
+        "Jalandhar City"
+      ],
+      "languages": [
+        "en",
+        "hi"
+      ],
+      "popular": true
+    },
+    {
+      "cityId": "city_punjab_patiala",
+      "name": "Patiala",
+      "state": "Punjab",
+      "country": "India",
+      "type": [
+        "tier_2"
+      ],
+      "latitude": 29.39459,
+      "longitude": 74.06057,
+      "aliases": [
+        "Patiala",
+        "Patiala City"
+      ],
+      "languages": [
+        "en",
+        "hi"
+      ],
+      "popular": false
+    },
+    {
+      "cityId": "city_punjab_bathinda",
+      "name": "Bathinda",
+      "state": "Punjab",
+      "country": "India",
+      "type": [
+        "tier_2"
+      ],
+      "latitude": 32.12708,
+      "longitude": 77.33049,
+      "aliases": [
+        "Bathinda",
+        "Bathinda City"
+      ],
+      "languages": [
+        "en",
+        "hi"
+      ],
+      "popular": false
+    },
+    {
+      "cityId": "city_punjab_mohali",
+      "name": "Mohali",
+      "state": "Punjab",
+      "country": "India",
+      "type": [
+        "tier_2"
+      ],
+      "latitude": 28.75254,
+      "longitude": 73.38304,
+      "aliases": [
+        "Mohali",
+        "Mohali City"
+      ],
+      "languages": [
+        "en",
+        "hi"
+      ],
+      "popular": false
+    },
+    {
+      "cityId": "city_punjab_pathankot",
+      "name": "Pathankot",
+      "state": "Punjab",
+      "country": "India",
+      "type": [
+        "tier_2"
+      ],
+      "latitude": 30.56546,
+      "longitude": 75.52558,
+      "aliases": [
+        "Pathankot",
+        "Pathankot City"
+      ],
+      "languages": [
+        "en",
+        "hi"
+      ],
+      "popular": false
+    },
+    {
+      "cityId": "city_punjab_hoshiarpur",
+      "name": "Hoshiarpur",
+      "state": "Punjab",
+      "country": "India",
+      "type": [
+        "tier_2"
+      ],
+      "latitude": 29.32599,
+      "longitude": 74.02012,
+      "aliases": [
+        "Hoshiarpur",
+        "Hoshiarpur City"
+      ],
+      "languages": [
+        "en",
+        "hi"
+      ],
+      "popular": false
+    },
+    {
+      "cityId": "city_punjab_firozpur",
+      "name": "Firozpur",
+      "state": "Punjab",
+      "country": "India",
+      "type": [
+        "tier_2"
+      ],
+      "latitude": 30.70289,
+      "longitude": 75.56611,
+      "aliases": [
+        "Firozpur",
+        "Firozpur City"
+      ],
+      "languages": [
+        "en",
+        "hi"
+      ],
+      "popular": false
+    },
+    {
+      "cityId": "city_punjab_moga",
+      "name": "Moga",
+      "state": "Punjab",
+      "country": "India",
+      "type": [
+        "tier_2"
+      ],
+      "latitude": 32.38053,
+      "longitude": 77.67065,
+      "aliases": [
+        "Moga",
+        "Moga City"
+      ],
+      "languages": [
+        "en",
+        "hi"
+      ],
+      "popular": false
+    },
+    {
+      "cityId": "city_punjab_kapurthala",
+      "name": "Kapurthala",
+      "state": "Punjab",
+      "country": "India",
+      "type": [
+        "tier_2"
+      ],
+      "latitude": 32.63311,
+      "longitude": 77.92853,
+      "aliases": [
+        "Kapurthala",
+        "Kapurthala City"
+      ],
+      "languages": [
+        "en",
+        "hi"
+      ],
+      "popular": false
+    },
+    {
+      "cityId": "city_punjab_sangrur",
+      "name": "Sangrur",
+      "state": "Punjab",
+      "country": "India",
+      "type": [
+        "tier_2"
+      ],
+      "latitude": 32.56418,
+      "longitude": 77.80645,
+      "aliases": [
+        "Sangrur",
+        "Sangrur City"
+      ],
+      "languages": [
+        "en",
+        "hi"
+      ],
+      "popular": false
+    },
+    {
+      "cityId": "city_punjab_barnala",
+      "name": "Barnala",
+      "state": "Punjab",
+      "country": "India",
+      "type": [
+        "tier_2"
+      ],
+      "latitude": 32.82977,
+      "longitude": 78.16095,
+      "aliases": [
+        "Barnala",
+        "Barnala City"
+      ],
+      "languages": [
+        "en",
+        "hi"
+      ],
+      "popular": false
+    },
+    {
+      "cityId": "city_punjab_faridkot",
+      "name": "Faridkot",
+      "state": "Punjab",
+      "country": "India",
+      "type": [
+        "tier_2"
+      ],
+      "latitude": 29.0837,
+      "longitude": 73.69316,
+      "aliases": [
+        "Faridkot",
+        "Faridkot City"
+      ],
+      "languages": [
+        "en",
+        "hi"
+      ],
+      "popular": false
+    },
+    {
+      "cityId": "city_rajasthan_jaipur",
+      "name": "Jaipur",
+      "state": "Rajasthan",
+      "country": "India",
+      "type": [
+        "railway_hub",
+        "state_capital",
+        "capital",
+        "tier_1",
+        "airport_hub"
+      ],
+      "latitude": 27.70368,
+      "longitude": 76.66705,
+      "aliases": [
+        "Jaipur",
+        "Jaipur City"
+      ],
+      "languages": [
+        "en",
+        "hi"
+      ],
+      "popular": true
+    },
+    {
+      "cityId": "city_rajasthan_udaipur",
+      "name": "Udaipur",
+      "state": "Rajasthan",
+      "country": "India",
+      "type": [
+        "tier_1",
+        "tourist_destination"
+      ],
+      "latitude": 27.78499,
+      "longitude": 76.88501,
+      "aliases": [
+        "Udaipur",
+        "Udaipur City"
+      ],
+      "languages": [
+        "en",
+        "hi"
+      ],
+      "popular": true
+    },
+    {
+      "cityId": "city_rajasthan_jodhpur",
+      "name": "Jodhpur",
+      "state": "Rajasthan",
+      "country": "India",
+      "type": [
+        "tier_2"
+      ],
+      "latitude": 27.25371,
+      "longitude": 76.25714,
+      "aliases": [
+        "Jodhpur",
+        "Jodhpur City"
+      ],
+      "languages": [
+        "en",
+        "hi"
+      ],
+      "popular": true
+    },
+    {
+      "cityId": "city_rajasthan_kota",
+      "name": "Kota",
+      "state": "Rajasthan",
+      "country": "India",
+      "type": [
+        "tier_2"
+      ],
+      "latitude": 26.57107,
+      "longitude": 75.40975,
+      "aliases": [
+        "Kota",
+        "Kota City"
+      ],
+      "languages": [
+        "en",
+        "hi"
+      ],
+      "popular": false
+    },
+    {
+      "cityId": "city_rajasthan_ajmer",
+      "name": "Ajmer",
+      "state": "Rajasthan",
+      "country": "India",
+      "type": [
+        "tier_2"
+      ],
+      "latitude": 25.06388,
+      "longitude": 73.54728,
+      "aliases": [
+        "Ajmer",
+        "Ajmer City"
+      ],
+      "languages": [
+        "en",
+        "hi"
+      ],
+      "popular": false
+    },
+    {
+      "cityId": "city_rajasthan_bikaner",
+      "name": "Bikaner",
+      "state": "Rajasthan",
+      "country": "India",
+      "type": [
+        "tier_2"
+      ],
+      "latitude": 27.25777,
+      "longitude": 76.26195,
+      "aliases": [
+        "Bikaner",
+        "Bikaner City"
+      ],
+      "languages": [
+        "en",
+        "hi"
+      ],
+      "popular": false
+    },
+    {
+      "cityId": "city_rajasthan_jaisalmer",
+      "name": "Jaisalmer",
+      "state": "Rajasthan",
+      "country": "India",
+      "type": [
+        "tier_2",
+        "tourist_destination"
+      ],
+      "latitude": 25.23547,
+      "longitude": 73.7907,
+      "aliases": [
+        "Jaisalmer",
+        "Jaisalmer City"
+      ],
+      "languages": [
+        "en",
+        "hi"
+      ],
+      "popular": true
+    },
+    {
+      "cityId": "city_rajasthan_alwar",
+      "name": "Alwar",
+      "state": "Rajasthan",
+      "country": "India",
+      "type": [
+        "tier_2"
+      ],
+      "latitude": 24.78679,
+      "longitude": 73.21981,
+      "aliases": [
+        "Alwar",
+        "Alwar City"
+      ],
+      "languages": [
+        "en",
+        "hi"
+      ],
+      "popular": false
+    },
+    {
+      "cityId": "city_rajasthan_bharatpur",
+      "name": "Bharatpur",
+      "state": "Rajasthan",
+      "country": "India",
+      "type": [
+        "tier_2"
+      ],
+      "latitude": 26.22434,
+      "longitude": 74.99999,
+      "aliases": [
+        "Bharatpur",
+        "Bharatpur City"
+      ],
+      "languages": [
+        "en",
+        "hi"
+      ],
+      "popular": false
+    },
+    {
+      "cityId": "city_rajasthan_sikar",
+      "name": "Sikar",
+      "state": "Rajasthan",
+      "country": "India",
+      "type": [
+        "tier_2"
+      ],
+      "latitude": 28.0309,
+      "longitude": 77.17563,
+      "aliases": [
+        "Sikar",
+        "Sikar City"
+      ],
+      "languages": [
+        "en",
+        "hi"
+      ],
+      "popular": false
+    },
+    {
+      "cityId": "city_rajasthan_bhilwara",
+      "name": "Bhilwara",
+      "state": "Rajasthan",
+      "country": "India",
+      "type": [
+        "tier_2"
+      ],
+      "latitude": 27.33808,
+      "longitude": 76.2756,
+      "aliases": [
+        "Bhilwara",
+        "Bhilwara City"
+      ],
+      "languages": [
+        "en",
+        "hi"
+      ],
+      "popular": false
+    },
+    {
+      "cityId": "city_rajasthan_chittorgarh",
+      "name": "Chittorgarh",
+      "state": "Rajasthan",
+      "country": "India",
+      "type": [
+        "tier_2"
+      ],
+      "latitude": 25.43158,
+      "longitude": 73.98184,
+      "aliases": [
+        "Chittorgarh",
+        "Chittorgarh City"
+      ],
+      "languages": [
+        "en",
+        "hi"
+      ],
+      "popular": false
+    },
+    {
+      "cityId": "city_rajasthan_mount_abu",
+      "name": "Mount Abu",
+      "state": "Rajasthan",
+      "country": "India",
+      "type": [
+        "tier_2",
+        "tourist_destination"
+      ],
+      "latitude": 25.12552,
+      "longitude": 73.70138,
+      "aliases": [
+        "Mount Abu",
+        "Mount Abu City"
+      ],
+      "languages": [
+        "en",
+        "hi"
+      ],
+      "popular": true
+    },
+    {
+      "cityId": "city_rajasthan_pushkar",
+      "name": "Pushkar",
+      "state": "Rajasthan",
+      "country": "India",
+      "type": [
+        "tier_2",
+        "tourist_destination"
+      ],
+      "latitude": 25.85465,
+      "longitude": 74.60371,
+      "aliases": [
+        "Pushkar",
+        "Pushkar City"
+      ],
+      "languages": [
+        "en",
+        "hi"
+      ],
+      "popular": true
+    },
+    {
+      "cityId": "city_sikkim_gangtok",
+      "name": "Gangtok",
+      "state": "Sikkim",
+      "country": "India",
+      "type": [
+        "railway_hub",
+        "state_capital",
+        "capital",
+        "tier_1",
+        "airport_hub"
+      ],
+      "latitude": 27.33476,
+      "longitude": 88.62412,
+      "aliases": [
+        "Gangtok",
+        "Gangtok City"
+      ],
+      "languages": [
+        "en",
+        "hi"
+      ],
+      "popular": true
+    },
+    {
+      "cityId": "city_sikkim_namchi",
+      "name": "Namchi",
+      "state": "Sikkim",
+      "country": "India",
+      "type": [
+        "tier_1"
+      ],
+      "latitude": 25.73687,
+      "longitude": 86.69508,
+      "aliases": [
+        "Namchi",
+        "Namchi City"
+      ],
+      "languages": [
+        "en",
+        "hi"
+      ],
+      "popular": true
+    },
+    {
+      "cityId": "city_sikkim_gyalshing",
+      "name": "Gyalshing",
+      "state": "Sikkim",
+      "country": "India",
+      "type": [
+        "tier_2"
+      ],
+      "latitude": 28.08307,
+      "longitude": 89.54911,
+      "aliases": [
+        "Gyalshing",
+        "Gyalshing City"
+      ],
+      "languages": [
+        "en",
+        "hi"
+      ],
+      "popular": true
+    },
+    {
+      "cityId": "city_sikkim_mangan",
+      "name": "Mangan",
+      "state": "Sikkim",
+      "country": "India",
+      "type": [
+        "tier_2"
+      ],
+      "latitude": 28.41034,
+      "longitude": 89.85463,
+      "aliases": [
+        "Mangan",
+        "Mangan City"
+      ],
+      "languages": [
+        "en",
+        "hi"
+      ],
+      "popular": false
+    },
+    {
+      "cityId": "city_sikkim_rangpo",
+      "name": "Rangpo",
+      "state": "Sikkim",
+      "country": "India",
+      "type": [
+        "tier_2"
+      ],
+      "latitude": 26.82614,
+      "longitude": 87.94177,
+      "aliases": [
+        "Rangpo",
+        "Rangpo City"
+      ],
+      "languages": [
+        "en",
+        "hi"
+      ],
+      "popular": false
+    },
+    {
+      "cityId": "city_sikkim_pakyong",
+      "name": "Pakyong",
+      "state": "Sikkim",
+      "country": "India",
+      "type": [
+        "tier_2"
+      ],
+      "latitude": 25.18117,
+      "longitude": 86.07897,
+      "aliases": [
+        "Pakyong",
+        "Pakyong City"
+      ],
+      "languages": [
+        "en",
+        "hi"
+      ],
+      "popular": false
+    },
+    {
+      "cityId": "city_sikkim_singtam",
+      "name": "Singtam",
+      "state": "Sikkim",
+      "country": "India",
+      "type": [
+        "tier_2"
+      ],
+      "latitude": 27.91711,
+      "longitude": 89.31235,
+      "aliases": [
+        "Singtam",
+        "Singtam City"
+      ],
+      "languages": [
+        "en",
+        "hi"
+      ],
+      "popular": false
+    },
+    {
+      "cityId": "city_sikkim_ravangla",
+      "name": "Ravangla",
+      "state": "Sikkim",
+      "country": "India",
+      "type": [
+        "tier_2"
+      ],
+      "latitude": 27.02084,
+      "longitude": 88.29375,
+      "aliases": [
+        "Ravangla",
+        "Ravangla City"
+      ],
+      "languages": [
+        "en",
+        "hi"
+      ],
+      "popular": false
+    },
+    {
+      "cityId": "city_sikkim_lachen",
+      "name": "Lachen",
+      "state": "Sikkim",
+      "country": "India",
+      "type": [
+        "tier_2"
+      ],
+      "latitude": 26.29098,
+      "longitude": 87.30931,
+      "aliases": [
+        "Lachen",
+        "Lachen City"
+      ],
+      "languages": [
+        "en",
+        "hi"
+      ],
+      "popular": false
+    },
+    {
+      "cityId": "city_sikkim_lachung",
+      "name": "Lachung",
+      "state": "Sikkim",
+      "country": "India",
+      "type": [
+        "tier_2"
+      ],
+      "latitude": 26.46345,
+      "longitude": 87.55377,
+      "aliases": [
+        "Lachung",
+        "Lachung City"
+      ],
+      "languages": [
+        "en",
+        "hi"
+      ],
+      "popular": false
+    },
+    {
+      "cityId": "city_sikkim_rorathang",
+      "name": "Rorathang",
+      "state": "Sikkim",
+      "country": "India",
+      "type": [
+        "tier_2"
+      ],
+      "latitude": 25.24956,
+      "longitude": 86.20042,
+      "aliases": [
+        "Rorathang",
+        "Rorathang City"
+      ],
+      "languages": [
+        "en",
+        "hi"
+      ],
+      "popular": false
+    },
+    {
+      "cityId": "city_sikkim_jorethang",
+      "name": "Jorethang",
+      "state": "Sikkim",
+      "country": "India",
+      "type": [
+        "tier_2"
+      ],
+      "latitude": 27.98748,
+      "longitude": 89.43614,
+      "aliases": [
+        "Jorethang",
+        "Jorethang City"
+      ],
+      "languages": [
+        "en",
+        "hi"
+      ],
+      "popular": false
+    },
+    {
+      "cityId": "city_sikkim_soreng",
+      "name": "Soreng",
+      "state": "Sikkim",
+      "country": "India",
+      "type": [
+        "tier_2"
+      ],
+      "latitude": 28.80712,
+      "longitude": 90.4048,
+      "aliases": [
+        "Soreng",
+        "Soreng City"
+      ],
+      "languages": [
+        "en",
+        "hi"
+      ],
+      "popular": false
+    },
+    {
+      "cityId": "city_sikkim_yuksom",
+      "name": "Yuksom",
+      "state": "Sikkim",
+      "country": "India",
+      "type": [
+        "tier_2"
+      ],
+      "latitude": 29.53842,
+      "longitude": 86.06907,
+      "aliases": [
+        "Yuksom",
+        "Yuksom City"
+      ],
+      "languages": [
+        "en",
+        "hi"
+      ],
+      "popular": false
+    },
+    {
+      "cityId": "city_tamil_nadu_chennai",
+      "name": "Chennai",
+      "state": "Tamil Nadu",
+      "country": "India",
+      "type": [
+        "railway_hub",
+        "state_capital",
+        "capital",
+        "tier_1",
+        "airport_hub"
+      ],
+      "latitude": 11.72638,
+      "longitude": 78.60933,
+      "aliases": [
+        "Chennai",
+        "Chennai City"
+      ],
+      "languages": [
+        "en",
+        "hi"
+      ],
+      "popular": true
+    },
+    {
+      "cityId": "city_tamil_nadu_coimbatore",
+      "name": "Coimbatore",
+      "state": "Tamil Nadu",
+      "country": "India",
+      "type": [
+        "tier_1"
+      ],
+      "latitude": 11.75136,
+      "longitude": 78.67948,
+      "aliases": [
+        "Coimbatore",
+        "Coimbatore City"
+      ],
+      "languages": [
+        "en",
+        "hi"
+      ],
+      "popular": true
+    },
+    {
+      "cityId": "city_tamil_nadu_madurai",
+      "name": "Madurai",
+      "state": "Tamil Nadu",
+      "country": "India",
+      "type": [
+        "tier_2"
+      ],
+      "latitude": 12.06514,
+      "longitude": 79.13156,
+      "aliases": [
+        "Madurai",
+        "Madurai City"
+      ],
+      "languages": [
+        "en",
+        "hi"
+      ],
+      "popular": true
+    },
+    {
+      "cityId": "city_tamil_nadu_tiruchirappalli",
+      "name": "Tiruchirappalli",
+      "state": "Tamil Nadu",
+      "country": "India",
+      "type": [
+        "tier_2"
+      ],
+      "latitude": 14.55528,
+      "longitude": 82.07446,
+      "aliases": [
+        "Tiruchirappalli",
+        "Tiruchirappalli City"
+      ],
+      "languages": [
+        "en",
+        "hi"
+      ],
+      "popular": false
+    },
+    {
+      "cityId": "city_tamil_nadu_salem",
+      "name": "Salem",
+      "state": "Tamil Nadu",
+      "country": "India",
+      "type": [
+        "tier_2"
+      ],
+      "latitude": 12.59018,
+      "longitude": 79.71143,
+      "aliases": [
+        "Salem",
+        "Salem City"
+      ],
+      "languages": [
+        "en",
+        "hi"
+      ],
+      "popular": false
+    },
+    {
+      "cityId": "city_tamil_nadu_tirunelveli",
+      "name": "Tirunelveli",
+      "state": "Tamil Nadu",
+      "country": "India",
+      "type": [
+        "tier_2"
+      ],
+      "latitude": 11.42382,
+      "longitude": 78.37363,
+      "aliases": [
+        "Tirunelveli",
+        "Tirunelveli City"
+      ],
+      "languages": [
+        "en",
+        "hi"
+      ],
+      "popular": false
+    },
+    {
+      "cityId": "city_tamil_nadu_vellore",
+      "name": "Vellore",
+      "state": "Tamil Nadu",
+      "country": "India",
+      "type": [
+        "tier_2"
+      ],
+      "latitude": 12.63648,
+      "longitude": 79.80678,
+      "aliases": [
+        "Vellore",
+        "Vellore City"
+      ],
+      "languages": [
+        "en",
+        "hi"
+      ],
+      "popular": false
+    },
+    {
+      "cityId": "city_tamil_nadu_thanjavur",
+      "name": "Thanjavur",
+      "state": "Tamil Nadu",
+      "country": "India",
+      "type": [
+        "tier_2"
+      ],
+      "latitude": 11.74989,
+      "longitude": 78.75899,
+      "aliases": [
+        "Thanjavur",
+        "Thanjavur City"
+      ],
+      "languages": [
+        "en",
+        "hi"
+      ],
+      "popular": false
+    },
+    {
+      "cityId": "city_tamil_nadu_ooty",
+      "name": "Ooty",
+      "state": "Tamil Nadu",
+      "country": "India",
+      "type": [
+        "tier_2",
+        "tourist_destination"
+      ],
+      "latitude": 11.003,
+      "longitude": 77.79505,
+      "aliases": [
+        "Ooty",
+        "Ooty City"
+      ],
+      "languages": [
+        "en",
+        "hi"
+      ],
+      "popular": true
+    },
+    {
+      "cityId": "city_tamil_nadu_kanchipuram",
+      "name": "Kanchipuram",
+      "state": "Tamil Nadu",
+      "country": "India",
+      "type": [
+        "tier_2"
+      ],
+      "latitude": 12.21377,
+      "longitude": 79.22596,
+      "aliases": [
+        "Kanchipuram",
+        "Kanchipuram City"
+      ],
+      "languages": [
+        "en",
+        "hi"
+      ],
+      "popular": false
+    },
+    {
+      "cityId": "city_tamil_nadu_rameswaram",
+      "name": "Rameswaram",
+      "state": "Tamil Nadu",
+      "country": "India",
+      "type": [
+        "tier_2",
+        "tourist_destination"
+      ],
+      "latitude": 13.86506,
+      "longitude": 81.13686,
+      "aliases": [
+        "Rameswaram",
+        "Rameswaram City"
+      ],
+      "languages": [
+        "en",
+        "hi"
+      ],
+      "popular": true
+    },
+    {
+      "cityId": "city_tamil_nadu_kanyakumari",
+      "name": "Kanyakumari",
+      "state": "Tamil Nadu",
+      "country": "India",
+      "type": [
+        "tier_2",
+        "tourist_destination"
+      ],
+      "latitude": 14.16915,
+      "longitude": 81.61811,
+      "aliases": [
+        "Kanyakumari",
+        "Kanyakumari City"
+      ],
+      "languages": [
+        "en",
+        "hi"
+      ],
+      "popular": true
+    },
+    {
+      "cityId": "city_tamil_nadu_hosur",
+      "name": "Hosur",
+      "state": "Tamil Nadu",
+      "country": "India",
+      "type": [
+        "tier_2"
+      ],
+      "latitude": 13.92039,
+      "longitude": 81.24287,
+      "aliases": [
+        "Hosur",
+        "Hosur City"
+      ],
+      "languages": [
+        "en",
+        "hi"
+      ],
+      "popular": false
+    },
+    {
+      "cityId": "city_tamil_nadu_erode",
+      "name": "Erode",
+      "state": "Tamil Nadu",
+      "country": "India",
+      "type": [
+        "tier_2"
+      ],
+      "latitude": 12.52725,
+      "longitude": 79.67769,
+      "aliases": [
+        "Erode",
+        "Erode City"
+      ],
+      "languages": [
+        "en",
+        "hi"
+      ],
+      "popular": false
+    },
+    {
+      "cityId": "city_telangana_hyderabad",
+      "name": "Hyderabad",
+      "state": "Telangana",
+      "country": "India",
+      "type": [
+        "railway_hub",
+        "state_capital",
+        "capital",
+        "tier_1",
+        "airport_hub"
+      ],
+      "latitude": 16.82618,
+      "longitude": 77.84398,
+      "aliases": [
+        "Hyderabad",
+        "Hyderabad City"
+      ],
+      "languages": [
+        "en",
+        "hi"
+      ],
+      "popular": true
+    },
+    {
+      "cityId": "city_telangana_warangal",
+      "name": "Warangal",
+      "state": "Telangana",
+      "country": "India",
+      "type": [
+        "tier_1"
+      ],
+      "latitude": 17.16324,
+      "longitude": 78.2017,
+      "aliases": [
+        "Warangal",
+        "Warangal City"
+      ],
+      "languages": [
+        "en",
+        "hi"
+      ],
+      "popular": true
+    },
+    {
+      "cityId": "city_telangana_nizamabad",
+      "name": "Nizamabad",
+      "state": "Telangana",
+      "country": "India",
+      "type": [
+        "tier_2"
+      ],
+      "latitude": 15.39214,
+      "longitude": 76.18984,
+      "aliases": [
+        "Nizamabad",
+        "Nizamabad City"
+      ],
+      "languages": [
+        "en",
+        "hi"
+      ],
+      "popular": true
+    },
+    {
+      "cityId": "city_telangana_karimnagar",
+      "name": "Karimnagar",
+      "state": "Telangana",
+      "country": "India",
+      "type": [
+        "tier_2"
+      ],
+      "latitude": 18.31574,
+      "longitude": 79.645,
+      "aliases": [
+        "Karimnagar",
+        "Karimnagar City"
+      ],
+      "languages": [
+        "en",
+        "hi"
+      ],
+      "popular": false
+    },
+    {
+      "cityId": "city_telangana_khammam",
+      "name": "Khammam",
+      "state": "Telangana",
+      "country": "India",
+      "type": [
+        "tier_2"
+      ],
+      "latitude": 15.24375,
+      "longitude": 75.89259,
+      "aliases": [
+        "Khammam",
+        "Khammam City"
+      ],
+      "languages": [
+        "en",
+        "hi"
+      ],
+      "popular": false
+    },
+    {
+      "cityId": "city_telangana_ramagundam",
+      "name": "Ramagundam",
+      "state": "Telangana",
+      "country": "India",
+      "type": [
+        "tier_2"
+      ],
+      "latitude": 16.17305,
+      "longitude": 77.03147,
+      "aliases": [
+        "Ramagundam",
+        "Ramagundam City"
+      ],
+      "languages": [
+        "en",
+        "hi"
+      ],
+      "popular": false
+    },
+    {
+      "cityId": "city_telangana_nalgonda",
+      "name": "Nalgonda",
+      "state": "Telangana",
+      "country": "India",
+      "type": [
+        "tier_2"
+      ],
+      "latitude": 18.3194,
+      "longitude": 79.52745,
+      "aliases": [
+        "Nalgonda",
+        "Nalgonda City"
+      ],
+      "languages": [
+        "en",
+        "hi"
+      ],
+      "popular": false
+    },
+    {
+      "cityId": "city_telangana_mahbubnagar",
+      "name": "Mahbubnagar",
+      "state": "Telangana",
+      "country": "India",
+      "type": [
+        "tier_2"
+      ],
+      "latitude": 16.36769,
+      "longitude": 77.30213,
+      "aliases": [
+        "Mahbubnagar",
+        "Mahbubnagar City"
+      ],
+      "languages": [
+        "en",
+        "hi"
+      ],
+      "popular": false
+    },
+    {
+      "cityId": "city_telangana_sangareddy",
+      "name": "Sangareddy",
+      "state": "Telangana",
+      "country": "India",
+      "type": [
+        "tier_2"
+      ],
+      "latitude": 16.50468,
+      "longitude": 77.38277,
+      "aliases": [
+        "Sangareddy",
+        "Sangareddy City"
+      ],
+      "languages": [
+        "en",
+        "hi"
+      ],
+      "popular": false
+    },
+    {
+      "cityId": "city_telangana_adilabad",
+      "name": "Adilabad",
+      "state": "Telangana",
+      "country": "India",
+      "type": [
+        "tier_2"
+      ],
+      "latitude": 18.72795,
+      "longitude": 80.01028,
+      "aliases": [
+        "Adilabad",
+        "Adilabad City"
+      ],
+      "languages": [
+        "en",
+        "hi"
+      ],
+      "popular": false
+    },
+    {
+      "cityId": "city_telangana_suryapet",
+      "name": "Suryapet",
+      "state": "Telangana",
+      "country": "India",
+      "type": [
+        "tier_2"
+      ],
+      "latitude": 15.55926,
+      "longitude": 76.38734,
+      "aliases": [
+        "Suryapet",
+        "Suryapet City"
+      ],
+      "languages": [
+        "en",
+        "hi"
+      ],
+      "popular": false
+    },
+    {
+      "cityId": "city_telangana_siddipet",
+      "name": "Siddipet",
+      "state": "Telangana",
+      "country": "India",
+      "type": [
+        "tier_2"
+      ],
+      "latitude": 18.01485,
+      "longitude": 79.24877,
+      "aliases": [
+        "Siddipet",
+        "Siddipet City"
+      ],
+      "languages": [
+        "en",
+        "hi"
+      ],
+      "popular": false
+    },
+    {
+      "cityId": "city_telangana_medak",
+      "name": "Medak",
+      "state": "Telangana",
+      "country": "India",
+      "type": [
+        "tier_2"
+      ],
+      "latitude": 17.33101,
+      "longitude": 78.35934,
+      "aliases": [
+        "Medak",
+        "Medak City"
+      ],
+      "languages": [
+        "en",
+        "hi"
+      ],
+      "popular": false
+    },
+    {
+      "cityId": "city_telangana_bhadrachalam",
+      "name": "Bhadrachalam",
+      "state": "Telangana",
+      "country": "India",
+      "type": [
+        "tier_2"
+      ],
+      "latitude": 19.54146,
+      "longitude": 80.97169,
+      "aliases": [
+        "Bhadrachalam",
+        "Bhadrachalam City"
+      ],
+      "languages": [
+        "en",
+        "hi"
+      ],
+      "popular": false
+    },
+    {
+      "cityId": "city_tripura_agartala",
+      "name": "Agartala",
+      "state": "Tripura",
+      "country": "India",
+      "type": [
+        "railway_hub",
+        "state_capital",
+        "capital",
+        "tier_1",
+        "airport_hub"
+      ],
+      "latitude": 22.13731,
+      "longitude": 89.25923,
+      "aliases": [
+        "Agartala",
+        "Agartala City"
+      ],
+      "languages": [
+        "en",
+        "hi"
+      ],
+      "popular": true
+    },
+    {
+      "cityId": "city_tripura_udaipur",
+      "name": "Udaipur",
+      "state": "Tripura",
+      "country": "India",
+      "type": [
+        "tier_1",
+        "tourist_destination"
+      ],
+      "latitude": 22.94094,
+      "longitude": 90.16836,
+      "aliases": [
+        "Udaipur",
+        "Udaipur City"
+      ],
+      "languages": [
+        "en",
+        "hi"
+      ],
+      "popular": true
+    },
+    {
+      "cityId": "city_tripura_dharmanagar",
+      "name": "Dharmanagar",
+      "state": "Tripura",
+      "country": "India",
+      "type": [
+        "tier_2"
+      ],
+      "latitude": 23.18157,
+      "longitude": 90.45273,
+      "aliases": [
+        "Dharmanagar",
+        "Dharmanagar City"
+      ],
+      "languages": [
+        "en",
+        "hi"
+      ],
+      "popular": true
+    },
+    {
+      "cityId": "city_tripura_kailashahar",
+      "name": "Kailashahar",
+      "state": "Tripura",
+      "country": "India",
+      "type": [
+        "tier_2"
+      ],
+      "latitude": 23.66399,
+      "longitude": 91.14475,
+      "aliases": [
+        "Kailashahar",
+        "Kailashahar City"
+      ],
+      "languages": [
+        "en",
+        "hi"
+      ],
+      "popular": false
+    },
+    {
+      "cityId": "city_tripura_belonia",
+      "name": "Belonia",
+      "state": "Tripura",
+      "country": "India",
+      "type": [
+        "tier_2"
+      ],
+      "latitude": 24.18385,
+      "longitude": 91.7185,
+      "aliases": [
+        "Belonia",
+        "Belonia City"
+      ],
+      "languages": [
+        "en",
+        "hi"
+      ],
+      "popular": false
+    },
+    {
+      "cityId": "city_tripura_khowai",
+      "name": "Khowai",
+      "state": "Tripura",
+      "country": "India",
+      "type": [
+        "tier_2"
+      ],
+      "latitude": 23.42689,
+      "longitude": 90.78328,
+      "aliases": [
+        "Khowai",
+        "Khowai City"
+      ],
+      "languages": [
+        "en",
+        "hi"
+      ],
+      "popular": false
+    },
+    {
+      "cityId": "city_tripura_ambassa",
+      "name": "Ambassa",
+      "state": "Tripura",
+      "country": "India",
+      "type": [
+        "tier_2"
+      ],
+      "latitude": 22.38872,
+      "longitude": 89.59699,
+      "aliases": [
+        "Ambassa",
+        "Ambassa City"
+      ],
+      "languages": [
+        "en",
+        "hi"
+      ],
+      "popular": false
+    },
+    {
+      "cityId": "city_tripura_sonamura",
+      "name": "Sonamura",
+      "state": "Tripura",
+      "country": "India",
+      "type": [
+        "tier_2"
+      ],
+      "latitude": 22.10572,
+      "longitude": 89.26253,
+      "aliases": [
+        "Sonamura",
+        "Sonamura City"
+      ],
+      "languages": [
+        "en",
+        "hi"
+      ],
+      "popular": false
+    },
+    {
+      "cityId": "city_tripura_sabroom",
+      "name": "Sabroom",
+      "state": "Tripura",
+      "country": "India",
+      "type": [
+        "tier_2"
+      ],
+      "latitude": 22.91816,
+      "longitude": 90.2633,
+      "aliases": [
+        "Sabroom",
+        "Sabroom City"
+      ],
+      "languages": [
+        "en",
+        "hi"
+      ],
+      "popular": false
+    },
+    {
+      "cityId": "city_tripura_kamalpur",
+      "name": "Kamalpur",
+      "state": "Tripura",
+      "country": "India",
+      "type": [
+        "tier_2"
+      ],
+      "latitude": 22.6188,
+      "longitude": 89.90952,
+      "aliases": [
+        "Kamalpur",
+        "Kamalpur City"
+      ],
+      "languages": [
+        "en",
+        "hi"
+      ],
+      "popular": false
+    },
+    {
+      "cityId": "city_tripura_teliamura",
+      "name": "Teliamura",
+      "state": "Tripura",
+      "country": "India",
+      "type": [
+        "tier_2"
+      ],
+      "latitude": 22.96082,
+      "longitude": 90.2731,
+      "aliases": [
+        "Teliamura",
+        "Teliamura City"
+      ],
+      "languages": [
+        "en",
+        "hi"
+      ],
+      "popular": false
+    },
+    {
+      "cityId": "city_tripura_jirania",
+      "name": "Jirania",
+      "state": "Tripura",
+      "country": "India",
+      "type": [
+        "tier_2"
+      ],
+      "latitude": 25.45817,
+      "longitude": 93.22451,
+      "aliases": [
+        "Jirania",
+        "Jirania City"
+      ],
+      "languages": [
+        "en",
+        "hi"
+      ],
+      "popular": false
+    },
+    {
+      "cityId": "city_tripura_amarpur",
+      "name": "Amarpur",
+      "state": "Tripura",
+      "country": "India",
+      "type": [
+        "tier_2"
+      ],
+      "latitude": 24.06917,
+      "longitude": 91.58297,
+      "aliases": [
+        "Amarpur",
+        "Amarpur City"
+      ],
+      "languages": [
+        "en",
+        "hi"
+      ],
+      "popular": false
+    },
+    {
+      "cityId": "city_tripura_santirbazar",
+      "name": "Santirbazar",
+      "state": "Tripura",
+      "country": "India",
+      "type": [
+        "tier_2"
+      ],
+      "latitude": 23.73853,
+      "longitude": 91.23283,
+      "aliases": [
+        "Santirbazar",
+        "Santirbazar City"
+      ],
+      "languages": [
+        "en",
+        "hi"
+      ],
+      "popular": false
+    },
+    {
+      "cityId": "city_uttar_pradesh_lucknow",
+      "name": "Lucknow",
+      "state": "Uttar Pradesh",
+      "country": "India",
+      "type": [
+        "railway_hub",
+        "state_capital",
+        "capital",
+        "tier_1",
+        "airport_hub"
+      ],
+      "latitude": 26.78039,
+      "longitude": 80.92867,
+      "aliases": [
+        "Lucknow",
+        "Lucknow City"
+      ],
+      "languages": [
+        "en",
+        "hi"
+      ],
+      "popular": true
+    },
+    {
+      "cityId": "city_uttar_pradesh_varanasi",
+      "name": "Varanasi",
+      "state": "Uttar Pradesh",
+      "country": "India",
+      "type": [
+        "tier_1",
+        "tourist_destination"
+      ],
+      "latitude": 26.04319,
+      "longitude": 79.97618,
+      "aliases": [
+        "Varanasi",
+        "Varanasi City"
+      ],
+      "languages": [
+        "en",
+        "hi"
+      ],
+      "popular": true
+    },
+    {
+      "cityId": "city_uttar_pradesh_agra",
+      "name": "Agra",
+      "state": "Uttar Pradesh",
+      "country": "India",
+      "type": [
+        "tier_2",
+        "tourist_destination"
+      ],
+      "latitude": 26.66044,
+      "longitude": 80.70566,
+      "aliases": [
+        "Agra",
+        "Agra City"
+      ],
+      "languages": [
+        "en",
+        "hi"
+      ],
+      "popular": true
+    },
+    {
+      "cityId": "city_uttar_pradesh_kanpur",
+      "name": "Kanpur",
+      "state": "Uttar Pradesh",
+      "country": "India",
+      "type": [
+        "tier_2"
+      ],
+      "latitude": 24.73913,
+      "longitude": 78.43503,
+      "aliases": [
+        "Kanpur",
+        "Kanpur City"
+      ],
+      "languages": [
+        "en",
+        "hi"
+      ],
+      "popular": false
+    },
+    {
+      "cityId": "city_uttar_pradesh_prayagraj",
+      "name": "Prayagraj",
+      "state": "Uttar Pradesh",
+      "country": "India",
+      "type": [
+        "tier_2"
+      ],
+      "latitude": 27.90102,
+      "longitude": 82.17181,
+      "aliases": [
+        "Prayagraj",
+        "Prayagraj City"
+      ],
+      "languages": [
+        "en",
+        "hi"
+      ],
+      "popular": false
+    },
+    {
+      "cityId": "city_uttar_pradesh_noida",
+      "name": "Noida",
+      "state": "Uttar Pradesh",
+      "country": "India",
+      "type": [
+        "tier_2"
+      ],
+      "latitude": 27.82381,
+      "longitude": 82.08056,
+      "aliases": [
+        "Noida",
+        "Noida City"
+      ],
+      "languages": [
+        "en",
+        "hi"
+      ],
+      "popular": false
+    },
+    {
+      "cityId": "city_uttar_pradesh_meerut",
+      "name": "Meerut",
+      "state": "Uttar Pradesh",
+      "country": "India",
+      "type": [
+        "tier_2"
+      ],
+      "latitude": 28.24151,
+      "longitude": 82.53358,
+      "aliases": [
+        "Meerut",
+        "Meerut City"
+      ],
+      "languages": [
+        "en",
+        "hi"
+      ],
+      "popular": false
+    },
+    {
+      "cityId": "city_uttar_pradesh_ayodhya",
+      "name": "Ayodhya",
+      "state": "Uttar Pradesh",
+      "country": "India",
+      "type": [
+        "tier_2",
+        "tourist_destination"
+      ],
+      "latitude": 28.00311,
+      "longitude": 82.29245,
+      "aliases": [
+        "Ayodhya",
+        "Ayodhya City"
+      ],
+      "languages": [
+        "en",
+        "hi"
+      ],
+      "popular": true
+    },
+    {
+      "cityId": "city_uttar_pradesh_mathura",
+      "name": "Mathura",
+      "state": "Uttar Pradesh",
+      "country": "India",
+      "type": [
+        "tier_2",
+        "tourist_destination"
+      ],
+      "latitude": 25.94524,
+      "longitude": 79.8198,
+      "aliases": [
+        "Mathura",
+        "Mathura City"
+      ],
+      "languages": [
+        "en",
+        "hi"
+      ],
+      "popular": true
+    },
+    {
+      "cityId": "city_uttar_pradesh_gorakhpur",
+      "name": "Gorakhpur",
+      "state": "Uttar Pradesh",
+      "country": "India",
+      "type": [
+        "tier_2"
+      ],
+      "latitude": 26.53946,
+      "longitude": 80.64394,
+      "aliases": [
+        "Gorakhpur",
+        "Gorakhpur City"
+      ],
+      "languages": [
+        "en",
+        "hi"
+      ],
+      "popular": false
+    },
+    {
+      "cityId": "city_uttar_pradesh_jhansi",
+      "name": "Jhansi",
+      "state": "Uttar Pradesh",
+      "country": "India",
+      "type": [
+        "tier_2"
+      ],
+      "latitude": 27.87076,
+      "longitude": 82.13604,
+      "aliases": [
+        "Jhansi",
+        "Jhansi City"
+      ],
+      "languages": [
+        "en",
+        "hi"
+      ],
+      "popular": false
+    },
+    {
+      "cityId": "city_uttar_pradesh_aligarh",
+      "name": "Aligarh",
+      "state": "Uttar Pradesh",
+      "country": "India",
+      "type": [
+        "tier_2"
+      ],
+      "latitude": 25.6519,
+      "longitude": 79.55438,
+      "aliases": [
+        "Aligarh",
+        "Aligarh City"
+      ],
+      "languages": [
+        "en",
+        "hi"
+      ],
+      "popular": false
+    },
+    {
+      "cityId": "city_uttar_pradesh_bareilly",
+      "name": "Bareilly",
+      "state": "Uttar Pradesh",
+      "country": "India",
+      "type": [
+        "tier_2"
+      ],
+      "latitude": 24.75619,
+      "longitude": 78.49581,
+      "aliases": [
+        "Bareilly",
+        "Bareilly City"
+      ],
+      "languages": [
+        "en",
+        "hi"
+      ],
+      "popular": false
+    },
+    {
+      "cityId": "city_uttar_pradesh_ghaziabad",
+      "name": "Ghaziabad",
+      "state": "Uttar Pradesh",
+      "country": "India",
+      "type": [
+        "tier_2"
+      ],
+      "latitude": 24.67378,
+      "longitude": 78.3578,
+      "aliases": [
+        "Ghaziabad",
+        "Ghaziabad City"
+      ],
+      "languages": [
+        "en",
+        "hi"
+      ],
+      "popular": false
+    },
+    {
+      "cityId": "city_uttarakhand_dehradun",
+      "name": "Dehradun",
+      "state": "Uttarakhand",
+      "country": "India",
+      "type": [
+        "railway_hub",
+        "state_capital",
+        "capital",
+        "tier_1",
+        "airport_hub"
+      ],
+      "latitude": 28.24793,
+      "longitude": 75.64213,
+      "aliases": [
+        "Dehradun",
+        "Dehradun City"
+      ],
+      "languages": [
+        "en",
+        "hi"
+      ],
+      "popular": true
+    },
+    {
+      "cityId": "city_uttarakhand_haridwar",
+      "name": "Haridwar",
+      "state": "Uttarakhand",
+      "country": "India",
+      "type": [
+        "tier_1",
+        "tourist_destination"
+      ],
+      "latitude": 28.67126,
+      "longitude": 76.02055,
+      "aliases": [
+        "Haridwar",
+        "Haridwar City"
+      ],
+      "languages": [
+        "en",
+        "hi"
+      ],
+      "popular": true
+    },
+    {
+      "cityId": "city_uttarakhand_rishikesh",
+      "name": "Rishikesh",
+      "state": "Uttarakhand",
+      "country": "India",
+      "type": [
+        "tier_2",
+        "tourist_destination"
+      ],
+      "latitude": 31.02131,
+      "longitude": 78.87914,
+      "aliases": [
+        "Rishikesh",
+        "Rishikesh City"
+      ],
+      "languages": [
+        "en",
+        "hi"
+      ],
+      "popular": true
+    },
+    {
+      "cityId": "city_uttarakhand_nainital",
+      "name": "Nainital",
+      "state": "Uttarakhand",
+      "country": "India",
+      "type": [
+        "tier_2",
+        "tourist_destination"
+      ],
+      "latitude": 31.45002,
+      "longitude": 79.38579,
+      "aliases": [
+        "Nainital",
+        "Nainital City"
+      ],
+      "languages": [
+        "en",
+        "hi"
+      ],
+      "popular": true
+    },
+    {
+      "cityId": "city_uttarakhand_mussoorie",
+      "name": "Mussoorie",
+      "state": "Uttarakhand",
+      "country": "India",
+      "type": [
+        "tier_2",
+        "tourist_destination"
+      ],
+      "latitude": 31.42449,
+      "longitude": 79.35562,
+      "aliases": [
+        "Mussoorie",
+        "Mussoorie City"
+      ],
+      "languages": [
+        "en",
+        "hi"
+      ],
+      "popular": true
+    },
+    {
+      "cityId": "city_uttarakhand_haldwani",
+      "name": "Haldwani",
+      "state": "Uttarakhand",
+      "country": "India",
+      "type": [
+        "tier_2"
+      ],
+      "latitude": 28.53223,
+      "longitude": 75.93749,
+      "aliases": [
+        "Haldwani",
+        "Haldwani City"
+      ],
+      "languages": [
+        "en",
+        "hi"
+      ],
+      "popular": false
+    },
+    {
+      "cityId": "city_uttarakhand_almora",
+      "name": "Almora",
+      "state": "Uttarakhand",
+      "country": "India",
+      "type": [
+        "tier_2"
+      ],
+      "latitude": 31.65762,
+      "longitude": 79.54988,
+      "aliases": [
+        "Almora",
+        "Almora City"
+      ],
+      "languages": [
+        "en",
+        "hi"
+      ],
+      "popular": false
+    },
+    {
+      "cityId": "city_uttarakhand_pithoragarh",
+      "name": "Pithoragarh",
+      "state": "Uttarakhand",
+      "country": "India",
+      "type": [
+        "tier_2"
+      ],
+      "latitude": 31.64428,
+      "longitude": 79.656,
+      "aliases": [
+        "Pithoragarh",
+        "Pithoragarh City"
+      ],
+      "languages": [
+        "en",
+        "hi"
+      ],
+      "popular": false
+    },
+    {
+      "cityId": "city_uttarakhand_rudraprayag",
+      "name": "Rudraprayag",
+      "state": "Uttarakhand",
+      "country": "India",
+      "type": [
+        "tier_2"
+      ],
+      "latitude": 31.53338,
+      "longitude": 79.4843,
+      "aliases": [
+        "Rudraprayag",
+        "Rudraprayag City"
+      ],
+      "languages": [
+        "en",
+        "hi"
+      ],
+      "popular": false
+    },
+    {
+      "cityId": "city_uttarakhand_uttarkashi",
+      "name": "Uttarkashi",
+      "state": "Uttarakhand",
+      "country": "India",
+      "type": [
+        "tier_2"
+      ],
+      "latitude": 28.42273,
+      "longitude": 75.80809,
+      "aliases": [
+        "Uttarkashi",
+        "Uttarkashi City"
+      ],
+      "languages": [
+        "en",
+        "hi"
+      ],
+      "popular": false
+    },
+    {
+      "cityId": "city_uttarakhand_tehri",
+      "name": "Tehri",
+      "state": "Uttarakhand",
+      "country": "India",
+      "type": [
+        "tier_2"
+      ],
+      "latitude": 32.31246,
+      "longitude": 80.32379,
+      "aliases": [
+        "Tehri",
+        "Tehri City"
+      ],
+      "languages": [
+        "en",
+        "hi"
+      ],
+      "popular": false
+    },
+    {
+      "cityId": "city_uttarakhand_kashipur",
+      "name": "Kashipur",
+      "state": "Uttarakhand",
+      "country": "India",
+      "type": [
+        "tier_2"
+      ],
+      "latitude": 31.99979,
+      "longitude": 79.9949,
+      "aliases": [
+        "Kashipur",
+        "Kashipur City"
+      ],
+      "languages": [
+        "en",
+        "hi"
+      ],
+      "popular": false
+    },
+    {
+      "cityId": "city_uttarakhand_roorkee",
+      "name": "Roorkee",
+      "state": "Uttarakhand",
+      "country": "India",
+      "type": [
+        "tier_2"
+      ],
+      "latitude": 28.22495,
+      "longitude": 75.53372,
+      "aliases": [
+        "Roorkee",
+        "Roorkee City"
+      ],
+      "languages": [
+        "en",
+        "hi"
+      ],
+      "popular": false
+    },
+    {
+      "cityId": "city_uttarakhand_chamoli",
+      "name": "Chamoli",
+      "state": "Uttarakhand",
+      "country": "India",
+      "type": [
+        "tier_2"
+      ],
+      "latitude": 28.98421,
+      "longitude": 76.43103,
+      "aliases": [
+        "Chamoli",
+        "Chamoli City"
+      ],
+      "languages": [
+        "en",
+        "hi"
+      ],
+      "popular": false
+    },
+    {
+      "cityId": "city_west_bengal_kolkata",
+      "name": "Kolkata",
+      "state": "West Bengal",
+      "country": "India",
+      "type": [
+        "railway_hub",
+        "state_capital",
+        "capital",
+        "tier_1",
+        "airport_hub"
+      ],
+      "latitude": 21.36281,
+      "longitude": 86.87238,
+      "aliases": [
+        "Kolkata",
+        "Kolkata City"
+      ],
+      "languages": [
+        "en",
+        "hi"
+      ],
+      "popular": true
+    },
+    {
+      "cityId": "city_west_bengal_darjeeling",
+      "name": "Darjeeling",
+      "state": "West Bengal",
+      "country": "India",
+      "type": [
+        "tier_1",
+        "tourist_destination"
+      ],
+      "latitude": 21.44388,
+      "longitude": 87.04944,
+      "aliases": [
+        "Darjeeling",
+        "Darjeeling City"
+      ],
+      "languages": [
+        "en",
+        "hi"
+      ],
+      "popular": true
+    },
+    {
+      "cityId": "city_west_bengal_siliguri",
+      "name": "Siliguri",
+      "state": "West Bengal",
+      "country": "India",
+      "type": [
+        "tier_2"
+      ],
+      "latitude": 23.30056,
+      "longitude": 89.20308,
+      "aliases": [
+        "Siliguri",
+        "Siliguri City"
+      ],
+      "languages": [
+        "en",
+        "hi"
+      ],
+      "popular": true
+    },
+    {
+      "cityId": "city_west_bengal_durgapur",
+      "name": "Durgapur",
+      "state": "West Bengal",
+      "country": "India",
+      "type": [
+        "tier_2"
+      ],
+      "latitude": 23.75399,
+      "longitude": 89.73895,
+      "aliases": [
+        "Durgapur",
+        "Durgapur City"
+      ],
+      "languages": [
+        "en",
+        "hi"
+      ],
+      "popular": false
+    },
+    {
+      "cityId": "city_west_bengal_asansol",
+      "name": "Asansol",
+      "state": "West Bengal",
+      "country": "India",
+      "type": [
+        "tier_2"
+      ],
+      "latitude": 23.52601,
+      "longitude": 89.51014,
+      "aliases": [
+        "Asansol",
+        "Asansol City"
+      ],
+      "languages": [
+        "en",
+        "hi"
+      ],
+      "popular": false
+    },
+    {
+      "cityId": "city_west_bengal_howrah",
+      "name": "Howrah",
+      "state": "West Bengal",
+      "country": "India",
+      "type": [
+        "tier_2"
+      ],
+      "latitude": 21.39818,
+      "longitude": 86.99544,
+      "aliases": [
+        "Howrah",
+        "Howrah City"
+      ],
+      "languages": [
+        "en",
+        "hi"
+      ],
+      "popular": false
+    },
+    {
+      "cityId": "city_west_bengal_kharagpur",
+      "name": "Kharagpur",
+      "state": "West Bengal",
+      "country": "India",
+      "type": [
+        "tier_2"
+      ],
+      "latitude": 21.99251,
+      "longitude": 87.69782,
+      "aliases": [
+        "Kharagpur",
+        "Kharagpur City"
+      ],
+      "languages": [
+        "en",
+        "hi"
+      ],
+      "popular": false
+    },
+    {
+      "cityId": "city_west_bengal_malda",
+      "name": "Malda",
+      "state": "West Bengal",
+      "country": "India",
+      "type": [
+        "tier_2"
+      ],
+      "latitude": 21.98594,
+      "longitude": 87.60881,
+      "aliases": [
+        "Malda",
+        "Malda City"
+      ],
+      "languages": [
+        "en",
+        "hi"
+      ],
+      "popular": false
+    },
+    {
+      "cityId": "city_west_bengal_murshidabad",
+      "name": "Murshidabad",
+      "state": "West Bengal",
+      "country": "India",
+      "type": [
+        "tier_2"
+      ],
+      "latitude": 24.57494,
+      "longitude": 90.70916,
+      "aliases": [
+        "Murshidabad",
+        "Murshidabad City"
+      ],
+      "languages": [
+        "en",
+        "hi"
+      ],
+      "popular": false
+    },
+    {
+      "cityId": "city_west_bengal_santiniketan",
+      "name": "Santiniketan",
+      "state": "West Bengal",
+      "country": "India",
+      "type": [
+        "tier_2"
+      ],
+      "latitude": 22.84589,
+      "longitude": 88.62512,
+      "aliases": [
+        "Santiniketan",
+        "Santiniketan City"
+      ],
+      "languages": [
+        "en",
+        "hi"
+      ],
+      "popular": false
+    },
+    {
+      "cityId": "city_west_bengal_jalpaiguri",
+      "name": "Jalpaiguri",
+      "state": "West Bengal",
+      "country": "India",
+      "type": [
+        "tier_2"
+      ],
+      "latitude": 21.0888,
+      "longitude": 86.58918,
+      "aliases": [
+        "Jalpaiguri",
+        "Jalpaiguri City"
+      ],
+      "languages": [
+        "en",
+        "hi"
+      ],
+      "popular": false
+    },
+    {
+      "cityId": "city_west_bengal_bardhaman",
+      "name": "Bardhaman",
+      "state": "West Bengal",
+      "country": "India",
+      "type": [
+        "tier_2"
+      ],
+      "latitude": 23.7038,
+      "longitude": 89.67963,
+      "aliases": [
+        "Bardhaman",
+        "Bardhaman City"
+      ],
+      "languages": [
+        "en",
+        "hi"
+      ],
+      "popular": false
+    },
+    {
+      "cityId": "city_west_bengal_bankura",
+      "name": "Bankura",
+      "state": "West Bengal",
+      "country": "India",
+      "type": [
+        "tier_2"
+      ],
+      "latitude": 21.44086,
+      "longitude": 87.00524,
+      "aliases": [
+        "Bankura",
+        "Bankura City"
+      ],
+      "languages": [
+        "en",
+        "hi"
+      ],
+      "popular": false
+    },
+    {
+      "cityId": "city_west_bengal_haldia",
+      "name": "Haldia",
+      "state": "West Bengal",
+      "country": "India",
+      "type": [
+        "tier_2"
+      ],
+      "latitude": 21.01718,
+      "longitude": 86.54516,
+      "aliases": [
+        "Haldia",
+        "Haldia City"
+      ],
+      "languages": [
+        "en",
+        "hi"
+      ],
+      "popular": false
+    },
+    {
+      "cityId": "city_delhi_new_delhi",
+      "name": "New Delhi",
+      "state": "Delhi",
+      "country": "India",
+      "type": [
+        "railway_hub",
+        "state_capital",
+        "capital",
+        "tier_1",
+        "airport_hub"
+      ],
+      "latitude": 26.81991,
+      "longitude": 75.07413,
+      "aliases": [
+        "New Delhi",
+        "New Delhi City"
+      ],
+      "languages": [
+        "en",
+        "hi"
+      ],
+      "popular": true
+    },
+    {
+      "cityId": "city_delhi_dwarka",
+      "name": "Dwarka",
+      "state": "Delhi",
+      "country": "India",
+      "type": [
+        "tier_1"
+      ],
+      "latitude": 26.98646,
+      "longitude": 75.27095,
+      "aliases": [
+        "Dwarka",
+        "Dwarka City"
+      ],
+      "languages": [
+        "en",
+        "hi"
+      ],
+      "popular": true
+    },
+    {
+      "cityId": "city_delhi_rohini",
+      "name": "Rohini",
+      "state": "Delhi",
+      "country": "India",
+      "type": [
+        "tier_2"
+      ],
+      "latitude": 27.90426,
+      "longitude": 76.39626,
+      "aliases": [
+        "Rohini",
+        "Rohini City"
+      ],
+      "languages": [
+        "en",
+        "hi"
+      ],
+      "popular": true
+    },
+    {
+      "cityId": "city_delhi_saket",
+      "name": "Saket",
+      "state": "Delhi",
+      "country": "India",
+      "type": [
+        "tier_2"
+      ],
+      "latitude": 28.0115,
+      "longitude": 76.48236,
+      "aliases": [
+        "Saket",
+        "Saket City"
+      ],
+      "languages": [
+        "en",
+        "hi"
+      ],
+      "popular": false
+    },
+    {
+      "cityId": "city_delhi_karol_bagh",
+      "name": "Karol Bagh",
+      "state": "Delhi",
+      "country": "India",
+      "type": [
+        "tier_2"
+      ],
+      "latitude": 27.31589,
+      "longitude": 75.70091,
+      "aliases": [
+        "Karol Bagh",
+        "Karol Bagh City"
+      ],
+      "languages": [
+        "en",
+        "hi"
+      ],
+      "popular": false
+    },
+    {
+      "cityId": "city_delhi_shahdara",
+      "name": "Shahdara",
+      "state": "Delhi",
+      "country": "India",
+      "type": [
+        "tier_2"
+      ],
+      "latitude": 28.11248,
+      "longitude": 76.68296,
+      "aliases": [
+        "Shahdara",
+        "Shahdara City"
+      ],
+      "languages": [
+        "en",
+        "hi"
+      ],
+      "popular": false
+    },
+    {
+      "cityId": "city_delhi_narela",
+      "name": "Narela",
+      "state": "Delhi",
+      "country": "India",
+      "type": [
+        "tier_2"
+      ],
+      "latitude": 28.34255,
+      "longitude": 76.83299,
+      "aliases": [
+        "Narela",
+        "Narela City"
+      ],
+      "languages": [
+        "en",
+        "hi"
+      ],
+      "popular": false
+    },
+    {
+      "cityId": "city_delhi_vasant_kunj",
+      "name": "Vasant Kunj",
+      "state": "Delhi",
+      "country": "India",
+      "type": [
+        "tier_2"
+      ],
+      "latitude": 28.88411,
+      "longitude": 77.47301,
+      "aliases": [
+        "Vasant Kunj",
+        "Vasant Kunj City"
+      ],
+      "languages": [
+        "en",
+        "hi"
+      ],
+      "popular": false
+    },
+    {
+      "cityId": "city_delhi_najafgarh",
+      "name": "Najafgarh",
+      "state": "Delhi",
+      "country": "India",
+      "type": [
+        "tier_2"
+      ],
+      "latitude": 28.84606,
+      "longitude": 77.46867,
+      "aliases": [
+        "Najafgarh",
+        "Najafgarh City"
+      ],
+      "languages": [
+        "en",
+        "hi"
+      ],
+      "popular": false
+    },
+    {
+      "cityId": "city_delhi_mayur_vihar",
+      "name": "Mayur Vihar",
+      "state": "Delhi",
+      "country": "India",
+      "type": [
+        "tier_2"
+      ],
+      "latitude": 27.49427,
+      "longitude": 75.95235,
+      "aliases": [
+        "Mayur Vihar",
+        "Mayur Vihar City"
+      ],
+      "languages": [
+        "en",
+        "hi"
+      ],
+      "popular": false
+    },
+    {
+      "cityId": "city_delhi_janakpuri",
+      "name": "Janakpuri",
+      "state": "Delhi",
+      "country": "India",
+      "type": [
+        "tier_2"
+      ],
+      "latitude": 28.59669,
+      "longitude": 77.21458,
+      "aliases": [
+        "Janakpuri",
+        "Janakpuri City"
+      ],
+      "languages": [
+        "en",
+        "hi"
+      ],
+      "popular": false
+    },
+    {
+      "cityId": "city_delhi_pitampura",
+      "name": "Pitampura",
+      "state": "Delhi",
+      "country": "India",
+      "type": [
+        "tier_2"
+      ],
+      "latitude": 26.48326,
+      "longitude": 74.63564,
+      "aliases": [
+        "Pitampura",
+        "Pitampura City"
+      ],
+      "languages": [
+        "en",
+        "hi"
+      ],
+      "popular": false
+    },
+    {
+      "cityId": "city_delhi_lajpat_nagar",
+      "name": "Lajpat Nagar",
+      "state": "Delhi",
+      "country": "India",
+      "type": [
+        "tier_2"
+      ],
+      "latitude": 28.25417,
+      "longitude": 76.80978,
+      "aliases": [
+        "Lajpat Nagar",
+        "Lajpat Nagar City"
+      ],
+      "languages": [
+        "en",
+        "hi"
+      ],
+      "popular": false
+    },
+    {
+      "cityId": "city_delhi_connaught_place",
+      "name": "Connaught Place",
+      "state": "Delhi",
+      "country": "India",
+      "type": [
+        "tier_2"
+      ],
+      "latitude": 30.58717,
+      "longitude": 79.6076,
+      "aliases": [
+        "Connaught Place",
+        "Connaught Place City"
+      ],
+      "languages": [
+        "en",
+        "hi"
+      ],
+      "popular": false
+    },
+    {
+      "cityId": "city_jammu_and_kashmir_srinagar",
+      "name": "Srinagar",
+      "state": "Jammu and Kashmir",
+      "country": "India",
+      "type": [
+        "railway_hub",
+        "state_capital",
+        "capital",
+        "tier_1",
+        "tourist_destination",
+        "airport_hub"
+      ],
+      "latitude": 35.45501,
+      "longitude": 76.44532,
+      "aliases": [
+        "Srinagar",
+        "Srinagar City"
+      ],
+      "languages": [
+        "en",
+        "hi"
+      ],
+      "popular": true
+    },
+    {
+      "cityId": "city_jammu_and_kashmir_jammu",
+      "name": "Jammu",
+      "state": "Jammu and Kashmir",
+      "country": "India",
+      "type": [
+        "tier_1"
+      ],
+      "latitude": 34.3626,
+      "longitude": 75.19493,
+      "aliases": [
+        "Jammu",
+        "Jammu City"
+      ],
+      "languages": [
+        "en",
+        "hi"
+      ],
+      "popular": true
+    },
+    {
+      "cityId": "city_jammu_and_kashmir_gulmarg",
+      "name": "Gulmarg",
+      "state": "Jammu and Kashmir",
+      "country": "India",
+      "type": [
+        "tier_2",
+        "tourist_destination"
+      ],
+      "latitude": 33.90695,
+      "longitude": 74.53454,
+      "aliases": [
+        "Gulmarg",
+        "Gulmarg City"
+      ],
+      "languages": [
+        "en",
+        "hi"
+      ],
+      "popular": true
+    },
+    {
+      "cityId": "city_jammu_and_kashmir_pahalgam",
+      "name": "Pahalgam",
+      "state": "Jammu and Kashmir",
+      "country": "India",
+      "type": [
+        "tier_2",
+        "tourist_destination"
+      ],
+      "latitude": 34.97522,
+      "longitude": 75.79705,
+      "aliases": [
+        "Pahalgam",
+        "Pahalgam City"
+      ],
+      "languages": [
+        "en",
+        "hi"
+      ],
+      "popular": true
+    },
+    {
+      "cityId": "city_jammu_and_kashmir_sonamarg",
+      "name": "Sonamarg",
+      "state": "Jammu and Kashmir",
+      "country": "India",
+      "type": [
+        "tier_2"
+      ],
+      "latitude": 32.2164,
+      "longitude": 72.57726,
+      "aliases": [
+        "Sonamarg",
+        "Sonamarg City"
+      ],
+      "languages": [
+        "en",
+        "hi"
+      ],
+      "popular": false
+    },
+    {
+      "cityId": "city_jammu_and_kashmir_anantnag",
+      "name": "Anantnag",
+      "state": "Jammu and Kashmir",
+      "country": "India",
+      "type": [
+        "tier_2"
+      ],
+      "latitude": 33.33,
+      "longitude": 73.89332,
+      "aliases": [
+        "Anantnag",
+        "Anantnag City"
+      ],
+      "languages": [
+        "en",
+        "hi"
+      ],
+      "popular": false
+    },
+    {
+      "cityId": "city_jammu_and_kashmir_baramulla",
+      "name": "Baramulla",
+      "state": "Jammu and Kashmir",
+      "country": "India",
+      "type": [
+        "tier_2"
+      ],
+      "latitude": 32.76733,
+      "longitude": 73.18773,
+      "aliases": [
+        "Baramulla",
+        "Baramulla City"
+      ],
+      "languages": [
+        "en",
+        "hi"
+      ],
+      "popular": false
+    },
+    {
+      "cityId": "city_jammu_and_kashmir_katra",
+      "name": "Katra",
+      "state": "Jammu and Kashmir",
+      "country": "India",
+      "type": [
+        "tier_2",
+        "tourist_destination"
+      ],
+      "latitude": 32.36597,
+      "longitude": 72.71339,
+      "aliases": [
+        "Katra",
+        "Katra City"
+      ],
+      "languages": [
+        "en",
+        "hi"
+      ],
+      "popular": true
+    },
+    {
+      "cityId": "city_jammu_and_kashmir_kupwara",
+      "name": "Kupwara",
+      "state": "Jammu and Kashmir",
+      "country": "India",
+      "type": [
+        "tier_2"
+      ],
+      "latitude": 35.04953,
+      "longitude": 75.88487,
+      "aliases": [
+        "Kupwara",
+        "Kupwara City"
+      ],
+      "languages": [
+        "en",
+        "hi"
+      ],
+      "popular": false
+    },
+    {
+      "cityId": "city_jammu_and_kashmir_pulwama",
+      "name": "Pulwama",
+      "state": "Jammu and Kashmir",
+      "country": "India",
+      "type": [
+        "tier_2"
+      ],
+      "latitude": 35.71376,
+      "longitude": 76.75112,
+      "aliases": [
+        "Pulwama",
+        "Pulwama City"
+      ],
+      "languages": [
+        "en",
+        "hi"
+      ],
+      "popular": false
+    },
+    {
+      "cityId": "city_jammu_and_kashmir_leh",
+      "name": "Leh",
+      "state": "Jammu and Kashmir",
+      "country": "India",
+      "type": [
+        "tier_2",
+        "tourist_destination"
+      ],
+      "latitude": 32.75902,
+      "longitude": 73.17791,
+      "aliases": [
+        "Leh",
+        "Leh City"
+      ],
+      "languages": [
+        "en",
+        "hi"
+      ],
+      "popular": true
+    },
+    {
+      "cityId": "city_jammu_and_kashmir_kargil",
+      "name": "Kargil",
+      "state": "Jammu and Kashmir",
+      "country": "India",
+      "type": [
+        "tier_2"
+      ],
+      "latitude": 34.20527,
+      "longitude": 74.92773,
+      "aliases": [
+        "Kargil",
+        "Kargil City"
+      ],
+      "languages": [
+        "en",
+        "hi"
+      ],
+      "popular": false
+    },
+    {
+      "cityId": "city_jammu_and_kashmir_udhampur",
+      "name": "Udhampur",
+      "state": "Jammu and Kashmir",
+      "country": "India",
+      "type": [
+        "tier_2"
+      ],
+      "latitude": 32.57894,
+      "longitude": 73.08696,
+      "aliases": [
+        "Udhampur",
+        "Udhampur City"
+      ],
+      "languages": [
+        "en",
+        "hi"
+      ],
+      "popular": false
+    },
+    {
+      "cityId": "city_jammu_and_kashmir_doda",
+      "name": "Doda",
+      "state": "Jammu and Kashmir",
+      "country": "India",
+      "type": [
+        "tier_2"
+      ],
+      "latitude": 33.89026,
+      "longitude": 74.55545,
+      "aliases": [
+        "Doda",
+        "Doda City"
+      ],
+      "languages": [
+        "en",
+        "hi"
+      ],
+      "popular": false
+    }
+  ]
+}

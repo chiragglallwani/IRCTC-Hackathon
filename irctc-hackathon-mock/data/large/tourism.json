@@ -1,0 +1,4976 @@
+{
+  "meta": {
+    "dataset": "bharat-journey-hackathon",
+    "version": "2.0.0",
+    "generatedAt": "2026-08-23T00:00:00.000Z",
+    "synthetic": true,
+    "recordCount": 120
+  },
+  "records": [
+    {
+      "destinationId": "destination_001",
+      "cityId": "city_andhra_pradesh_tirupati",
+      "title": "Discover Tirupati",
+      "themes": [
+        "heritage",
+        "local_food",
+        "weekend"
+      ],
+      "bestMonths": [
+        "Oct",
+        "Nov",
+        "Dec",
+        "Jan",
+        "Feb",
+        "Mar"
+      ],
+      "nearestStationId": "station_003_central",
+      "attractions": [
+        {
+          "attractionId": "attraction_001_1",
+          "name": "Tirupati Heritage Walk",
+          "category": "heritage",
+          "durationMinutes": 120,
+          "fromPrice": 250
+        },
+        {
+          "attractionId": "attraction_001_2",
+          "name": "Tirupati Local Food Trail",
+          "category": "food",
+          "durationMinutes": 150,
+          "fromPrice": 500
+        },
+        {
+          "attractionId": "attraction_001_3",
+          "name": "Tirupati City Landmark",
+          "category": "sightseeing",
+          "durationMinutes": 180,
+          "fromPrice": 750
+        }
+      ]
+    },
+    {
+      "destinationId": "destination_002",
+      "cityId": "city_arunachal_pradesh_tawang",
+      "title": "Discover Tawang",
+      "themes": [
+        "heritage",
+        "local_food",
+        "weekend"
+      ],
+      "bestMonths": [
+        "Oct",
+        "Nov",
+        "Dec",
+        "Jan",
+        "Feb",
+        "Mar"
+      ],
+      "nearestStationId": "station_016_central",
+      "attractions": [
+        {
+          "attractionId": "attraction_002_1",
+          "name": "Tawang Heritage Walk",
+          "category": "heritage",
+          "durationMinutes": 120,
+          "fromPrice": 250
+        },
+        {
+          "attractionId": "attraction_002_2",
+          "name": "Tawang Local Food Trail",
+          "category": "food",
+          "durationMinutes": 150,
+          "fromPrice": 500
+        },
+        {
+          "attractionId": "attraction_002_3",
+          "name": "Tawang City Landmark",
+          "category": "sightseeing",
+          "durationMinutes": 180,
+          "fromPrice": 750
+        }
+      ]
+    },
+    {
+      "destinationId": "destination_003",
+      "cityId": "city_arunachal_pradesh_ziro",
+      "title": "Discover Ziro",
+      "themes": [
+        "heritage",
+        "local_food",
+        "weekend"
+      ],
+      "bestMonths": [
+        "Oct",
+        "Nov",
+        "Dec",
+        "Jan",
+        "Feb",
+        "Mar"
+      ],
+      "nearestStationId": "station_017_central",
+      "attractions": [
+        {
+          "attractionId": "attraction_003_1",
+          "name": "Ziro Heritage Walk",
+          "category": "heritage",
+          "durationMinutes": 120,
+          "fromPrice": 250
+        },
+        {
+          "attractionId": "attraction_003_2",
+          "name": "Ziro Local Food Trail",
+          "category": "food",
+          "durationMinutes": 150,
+          "fromPrice": 500
+        },
+        {
+          "attractionId": "attraction_003_3",
+          "name": "Ziro City Landmark",
+          "category": "sightseeing",
+          "durationMinutes": 180,
+          "fromPrice": 750
+        }
+      ]
+    },
+    {
+      "destinationId": "destination_004",
+      "cityId": "city_assam_sivasagar",
+      "title": "Discover Sivasagar",
+      "themes": [
+        "heritage",
+        "local_food",
+        "weekend"
+      ],
+      "bestMonths": [
+        "Oct",
+        "Nov",
+        "Dec",
+        "Jan",
+        "Feb",
+        "Mar"
+      ],
+      "nearestStationId": "station_035_central",
+      "attractions": [
+        {
+          "attractionId": "attraction_004_1",
+          "name": "Sivasagar Heritage Walk",
+          "category": "heritage",
+          "durationMinutes": 120,
+          "fromPrice": 250
+        },
+        {
+          "attractionId": "attraction_004_2",
+          "name": "Sivasagar Local Food Trail",
+          "category": "food",
+          "durationMinutes": 150,
+          "fromPrice": 500
+        },
+        {
+          "attractionId": "attraction_004_3",
+          "name": "Sivasagar City Landmark",
+          "category": "sightseeing",
+          "durationMinutes": 180,
+          "fromPrice": 750
+        }
+      ]
+    },
+    {
+      "destinationId": "destination_005",
+      "cityId": "city_bihar_gaya",
+      "title": "Discover Gaya",
+      "themes": [
+        "heritage",
+        "local_food",
+        "weekend"
+      ],
+      "bestMonths": [
+        "Oct",
+        "Nov",
+        "Dec",
+        "Jan",
+        "Feb",
+        "Mar"
+      ],
+      "nearestStationId": "station_044_central",
+      "attractions": [
+        {
+          "attractionId": "attraction_005_1",
+          "name": "Gaya Heritage Walk",
+          "category": "heritage",
+          "durationMinutes": 120,
+          "fromPrice": 250
+        },
+        {
+          "attractionId": "attraction_005_2",
+          "name": "Gaya Local Food Trail",
+          "category": "food",
+          "durationMinutes": 150,
+          "fromPrice": 500
+        },
+        {
+          "attractionId": "attraction_005_3",
+          "name": "Gaya City Landmark",
+          "category": "sightseeing",
+          "durationMinutes": 180,
+          "fromPrice": 750
+        }
+      ]
+    },
+    {
+      "destinationId": "destination_006",
+      "cityId": "city_chhattisgarh_jagdalpur",
+      "title": "Discover Jagdalpur",
+      "themes": [
+        "heritage",
+        "local_food",
+        "weekend"
+      ],
+      "bestMonths": [
+        "Oct",
+        "Nov",
+        "Dec",
+        "Jan",
+        "Feb",
+        "Mar"
+      ],
+      "nearestStationId": "station_062_central",
+      "attractions": [
+        {
+          "attractionId": "attraction_006_1",
+          "name": "Jagdalpur Heritage Walk",
+          "category": "heritage",
+          "durationMinutes": 120,
+          "fromPrice": 250
+        },
+        {
+          "attractionId": "attraction_006_2",
+          "name": "Jagdalpur Local Food Trail",
+          "category": "food",
+          "durationMinutes": 150,
+          "fromPrice": 500
+        },
+        {
+          "attractionId": "attraction_006_3",
+          "name": "Jagdalpur City Landmark",
+          "category": "sightseeing",
+          "durationMinutes": 180,
+          "fromPrice": 750
+        }
+      ]
+    },
+    {
+      "destinationId": "destination_007",
+      "cityId": "city_goa_calangute",
+      "title": "Discover Calangute",
+      "themes": [
+        "heritage",
+        "local_food",
+        "weekend"
+      ],
+      "bestMonths": [
+        "Oct",
+        "Nov",
+        "Dec",
+        "Jan",
+        "Feb",
+        "Mar"
+      ],
+      "nearestStationId": "station_076_central",
+      "attractions": [
+        {
+          "attractionId": "attraction_007_1",
+          "name": "Calangute Heritage Walk",
+          "category": "heritage",
+          "durationMinutes": 120,
+          "fromPrice": 250
+        },
+        {
+          "attractionId": "attraction_007_2",
+          "name": "Calangute Local Food Trail",
+          "category": "food",
+          "durationMinutes": 150,
+          "fromPrice": 500
+        },
+        {
+          "attractionId": "attraction_007_3",
+          "name": "Calangute City Landmark",
+          "category": "sightseeing",
+          "durationMinutes": 180,
+          "fromPrice": 750
+        }
+      ]
+    },
+    {
+      "destinationId": "destination_008",
+      "cityId": "city_gujarat_mundra",
+      "title": "Discover Mundra",
+      "themes": [
+        "heritage",
+        "local_food",
+        "weekend"
+      ],
+      "bestMonths": [
+        "Oct",
+        "Nov",
+        "Dec",
+        "Jan",
+        "Feb",
+        "Mar"
+      ],
+      "nearestStationId": "station_097_central",
+      "attractions": [
+        {
+          "attractionId": "attraction_008_1",
+          "name": "Mundra Heritage Walk",
+          "category": "heritage",
+          "durationMinutes": 120,
+          "fromPrice": 250
+        },
+        {
+          "attractionId": "attraction_008_2",
+          "name": "Mundra Local Food Trail",
+          "category": "food",
+          "durationMinutes": 150,
+          "fromPrice": 500
+        },
+        {
+          "attractionId": "attraction_008_3",
+          "name": "Mundra City Landmark",
+          "category": "sightseeing",
+          "durationMinutes": 180,
+          "fromPrice": 750
+        }
+      ]
+    },
+    {
+      "destinationId": "destination_009",
+      "cityId": "city_haryana_kurukshetra",
+      "title": "Discover Kurukshetra",
+      "themes": [
+        "heritage",
+        "local_food",
+        "weekend"
+      ],
+      "bestMonths": [
+        "Oct",
+        "Nov",
+        "Dec",
+        "Jan",
+        "Feb",
+        "Mar"
+      ],
+      "nearestStationId": "station_108_central",
+      "attractions": [
+        {
+          "attractionId": "attraction_009_1",
+          "name": "Kurukshetra Heritage Walk",
+          "category": "heritage",
+          "durationMinutes": 120,
+          "fromPrice": 250
+        },
+        {
+          "attractionId": "attraction_009_2",
+          "name": "Kurukshetra Local Food Trail",
+          "category": "food",
+          "durationMinutes": 150,
+          "fromPrice": 500
+        },
+        {
+          "attractionId": "attraction_009_3",
+          "name": "Kurukshetra City Landmark",
+          "category": "sightseeing",
+          "durationMinutes": 180,
+          "fromPrice": 750
+        }
+      ]
+    },
+    {
+      "destinationId": "destination_010",
+      "cityId": "city_himachal_pradesh_manali",
+      "title": "Discover Manali",
+      "themes": [
+        "heritage",
+        "local_food",
+        "weekend"
+      ],
+      "bestMonths": [
+        "Oct",
+        "Nov",
+        "Dec",
+        "Jan",
+        "Feb",
+        "Mar"
+      ],
+      "nearestStationId": "station_114_central",
+      "attractions": [
+        {
+          "attractionId": "attraction_010_1",
+          "name": "Manali Heritage Walk",
+          "category": "heritage",
+          "durationMinutes": 120,
+          "fromPrice": 250
+        },
+        {
+          "attractionId": "attraction_010_2",
+          "name": "Manali Local Food Trail",
+          "category": "food",
+          "durationMinutes": 150,
+          "fromPrice": 500
+        },
+        {
+          "attractionId": "attraction_010_3",
+          "name": "Manali City Landmark",
+          "category": "sightseeing",
+          "durationMinutes": 180,
+          "fromPrice": 750
+        }
+      ]
+    },
+    {
+      "destinationId": "destination_011",
+      "cityId": "city_himachal_pradesh_dharamshala",
+      "title": "Discover Dharamshala",
+      "themes": [
+        "heritage",
+        "local_food",
+        "weekend"
+      ],
+      "bestMonths": [
+        "Oct",
+        "Nov",
+        "Dec",
+        "Jan",
+        "Feb",
+        "Mar"
+      ],
+      "nearestStationId": "station_115_central",
+      "attractions": [
+        {
+          "attractionId": "attraction_011_1",
+          "name": "Dharamshala Heritage Walk",
+          "category": "heritage",
+          "durationMinutes": 120,
+          "fromPrice": 250
+        },
+        {
+          "attractionId": "attraction_011_2",
+          "name": "Dharamshala Local Food Trail",
+          "category": "food",
+          "durationMinutes": 150,
+          "fromPrice": 500
+        },
+        {
+          "attractionId": "attraction_011_3",
+          "name": "Dharamshala City Landmark",
+          "category": "sightseeing",
+          "durationMinutes": 180,
+          "fromPrice": 750
+        }
+      ]
+    },
+    {
+      "destinationId": "destination_012",
+      "cityId": "city_jharkhand_deoghar",
+      "title": "Discover Deoghar",
+      "themes": [
+        "heritage",
+        "local_food",
+        "weekend"
+      ],
+      "bestMonths": [
+        "Oct",
+        "Nov",
+        "Dec",
+        "Jan",
+        "Feb",
+        "Mar"
+      ],
+      "nearestStationId": "station_131_central",
+      "attractions": [
+        {
+          "attractionId": "attraction_012_1",
+          "name": "Deoghar Heritage Walk",
+          "category": "heritage",
+          "durationMinutes": 120,
+          "fromPrice": 250
+        },
+        {
+          "attractionId": "attraction_012_2",
+          "name": "Deoghar Local Food Trail",
+          "category": "food",
+          "durationMinutes": 150,
+          "fromPrice": 500
+        },
+        {
+          "attractionId": "attraction_012_3",
+          "name": "Deoghar City Landmark",
+          "category": "sightseeing",
+          "durationMinutes": 180,
+          "fromPrice": 750
+        }
+      ]
+    },
+    {
+      "destinationId": "destination_013",
+      "cityId": "city_karnataka_mysuru",
+      "title": "Discover Mysuru",
+      "themes": [
+        "heritage",
+        "local_food",
+        "weekend"
+      ],
+      "bestMonths": [
+        "Oct",
+        "Nov",
+        "Dec",
+        "Jan",
+        "Feb",
+        "Mar"
+      ],
+      "nearestStationId": "station_142_central",
+      "attractions": [
+        {
+          "attractionId": "attraction_013_1",
+          "name": "Mysuru Heritage Walk",
+          "category": "heritage",
+          "durationMinutes": 120,
+          "fromPrice": 250
+        },
+        {
+          "attractionId": "attraction_013_2",
+          "name": "Mysuru Local Food Trail",
+          "category": "food",
+          "durationMinutes": 150,
+          "fromPrice": 500
+        },
+        {
+          "attractionId": "attraction_013_3",
+          "name": "Mysuru City Landmark",
+          "category": "sightseeing",
+          "durationMinutes": 180,
+          "fromPrice": 750
+        }
+      ]
+    },
+    {
+      "destinationId": "destination_014",
+      "cityId": "city_karnataka_udupi",
+      "title": "Discover Udupi",
+      "themes": [
+        "heritage",
+        "local_food",
+        "weekend"
+      ],
+      "bestMonths": [
+        "Oct",
+        "Nov",
+        "Dec",
+        "Jan",
+        "Feb",
+        "Mar"
+      ],
+      "nearestStationId": "station_148_central",
+      "attractions": [
+        {
+          "attractionId": "attraction_014_1",
+          "name": "Udupi Heritage Walk",
+          "category": "heritage",
+          "durationMinutes": 120,
+          "fromPrice": 250
+        },
+        {
+          "attractionId": "attraction_014_2",
+          "name": "Udupi Local Food Trail",
+          "category": "food",
+          "durationMinutes": 150,
+          "fromPrice": 500
+        },
+        {
+          "attractionId": "attraction_014_3",
+          "name": "Udupi City Landmark",
+          "category": "sightseeing",
+          "durationMinutes": 180,
+          "fromPrice": 750
+        }
+      ]
+    },
+    {
+      "destinationId": "destination_015",
+      "cityId": "city_kerala_munnar",
+      "title": "Discover Munnar",
+      "themes": [
+        "heritage",
+        "local_food",
+        "weekend"
+      ],
+      "bestMonths": [
+        "Oct",
+        "Nov",
+        "Dec",
+        "Jan",
+        "Feb",
+        "Mar"
+      ],
+      "nearestStationId": "station_164_central",
+      "attractions": [
+        {
+          "attractionId": "attraction_015_1",
+          "name": "Munnar Heritage Walk",
+          "category": "heritage",
+          "durationMinutes": 120,
+          "fromPrice": 250
+        },
+        {
+          "attractionId": "attraction_015_2",
+          "name": "Munnar Local Food Trail",
+          "category": "food",
+          "durationMinutes": 150,
+          "fromPrice": 500
+        },
+        {
+          "attractionId": "attraction_015_3",
+          "name": "Munnar City Landmark",
+          "category": "sightseeing",
+          "durationMinutes": 180,
+          "fromPrice": 750
+        }
+      ]
+    },
+    {
+      "destinationId": "destination_016",
+      "cityId": "city_kerala_varkala",
+      "title": "Discover Varkala",
+      "themes": [
+        "heritage",
+        "local_food",
+        "weekend"
+      ],
+      "bestMonths": [
+        "Oct",
+        "Nov",
+        "Dec",
+        "Jan",
+        "Feb",
+        "Mar"
+      ],
+      "nearestStationId": "station_166_central",
+      "attractions": [
+        {
+          "attractionId": "attraction_016_1",
+          "name": "Varkala Heritage Walk",
+          "category": "heritage",
+          "durationMinutes": 120,
+          "fromPrice": 250
+        },
+        {
+          "attractionId": "attraction_016_2",
+          "name": "Varkala Local Food Trail",
+          "category": "food",
+          "durationMinutes": 150,
+          "fromPrice": 500
+        },
+        {
+          "attractionId": "attraction_016_3",
+          "name": "Varkala City Landmark",
+          "category": "sightseeing",
+          "durationMinutes": 180,
+          "fromPrice": 750
+        }
+      ]
+    },
+    {
+      "destinationId": "destination_017",
+      "cityId": "city_madhya_pradesh_ujjain",
+      "title": "Discover Ujjain",
+      "themes": [
+        "heritage",
+        "local_food",
+        "weekend"
+      ],
+      "bestMonths": [
+        "Oct",
+        "Nov",
+        "Dec",
+        "Jan",
+        "Feb",
+        "Mar"
+      ],
+      "nearestStationId": "station_173_central",
+      "attractions": [
+        {
+          "attractionId": "attraction_017_1",
+          "name": "Ujjain Heritage Walk",
+          "category": "heritage",
+          "durationMinutes": 120,
+          "fromPrice": 250
+        },
+        {
+          "attractionId": "attraction_017_2",
+          "name": "Ujjain Local Food Trail",
+          "category": "food",
+          "durationMinutes": 150,
+          "fromPrice": 500
+        },
+        {
+          "attractionId": "attraction_017_3",
+          "name": "Ujjain City Landmark",
+          "category": "sightseeing",
+          "durationMinutes": 180,
+          "fromPrice": 750
+        }
+      ]
+    },
+    {
+      "destinationId": "destination_018",
+      "cityId": "city_maharashtra_shirdi",
+      "title": "Discover Shirdi",
+      "themes": [
+        "heritage",
+        "local_food",
+        "weekend"
+      ],
+      "bestMonths": [
+        "Oct",
+        "Nov",
+        "Dec",
+        "Jan",
+        "Feb",
+        "Mar"
+      ],
+      "nearestStationId": "station_196_central",
+      "attractions": [
+        {
+          "attractionId": "attraction_018_1",
+          "name": "Shirdi Heritage Walk",
+          "category": "heritage",
+          "durationMinutes": 120,
+          "fromPrice": 250
+        },
+        {
+          "attractionId": "attraction_018_2",
+          "name": "Shirdi Local Food Trail",
+          "category": "food",
+          "durationMinutes": 150,
+          "fromPrice": 500
+        },
+        {
+          "attractionId": "attraction_018_3",
+          "name": "Shirdi City Landmark",
+          "category": "sightseeing",
+          "durationMinutes": 180,
+          "fromPrice": 750
+        }
+      ]
+    },
+    {
+      "destinationId": "destination_019",
+      "cityId": "city_meghalaya_cherrapunji",
+      "title": "Discover Cherrapunji",
+      "themes": [
+        "heritage",
+        "local_food",
+        "weekend"
+      ],
+      "bestMonths": [
+        "Oct",
+        "Nov",
+        "Dec",
+        "Jan",
+        "Feb",
+        "Mar"
+      ],
+      "nearestStationId": "station_213_central",
+      "attractions": [
+        {
+          "attractionId": "attraction_019_1",
+          "name": "Cherrapunji Heritage Walk",
+          "category": "heritage",
+          "durationMinutes": 120,
+          "fromPrice": 250
+        },
+        {
+          "attractionId": "attraction_019_2",
+          "name": "Cherrapunji Local Food Trail",
+          "category": "food",
+          "durationMinutes": 150,
+          "fromPrice": 500
+        },
+        {
+          "attractionId": "attraction_019_3",
+          "name": "Cherrapunji City Landmark",
+          "category": "sightseeing",
+          "durationMinutes": 180,
+          "fromPrice": 750
+        }
+      ]
+    },
+    {
+      "destinationId": "destination_020",
+      "cityId": "city_meghalaya_dawki",
+      "title": "Discover Dawki",
+      "themes": [
+        "heritage",
+        "local_food",
+        "weekend"
+      ],
+      "bestMonths": [
+        "Oct",
+        "Nov",
+        "Dec",
+        "Jan",
+        "Feb",
+        "Mar"
+      ],
+      "nearestStationId": "station_224_central",
+      "attractions": [
+        {
+          "attractionId": "attraction_020_1",
+          "name": "Dawki Heritage Walk",
+          "category": "heritage",
+          "durationMinutes": 120,
+          "fromPrice": 250
+        },
+        {
+          "attractionId": "attraction_020_2",
+          "name": "Dawki Local Food Trail",
+          "category": "food",
+          "durationMinutes": 150,
+          "fromPrice": 500
+        },
+        {
+          "attractionId": "attraction_020_3",
+          "name": "Dawki City Landmark",
+          "category": "sightseeing",
+          "durationMinutes": 180,
+          "fromPrice": 750
+        }
+      ]
+    },
+    {
+      "destinationId": "destination_021",
+      "cityId": "city_odisha_puri",
+      "title": "Discover Puri",
+      "themes": [
+        "heritage",
+        "local_food",
+        "weekend"
+      ],
+      "bestMonths": [
+        "Oct",
+        "Nov",
+        "Dec",
+        "Jan",
+        "Feb",
+        "Mar"
+      ],
+      "nearestStationId": "station_254_central",
+      "attractions": [
+        {
+          "attractionId": "attraction_021_1",
+          "name": "Puri Heritage Walk",
+          "category": "heritage",
+          "durationMinutes": 120,
+          "fromPrice": 250
+        },
+        {
+          "attractionId": "attraction_021_2",
+          "name": "Puri Local Food Trail",
+          "category": "food",
+          "durationMinutes": 150,
+          "fromPrice": 500
+        },
+        {
+          "attractionId": "attraction_021_3",
+          "name": "Puri City Landmark",
+          "category": "sightseeing",
+          "durationMinutes": 180,
+          "fromPrice": 750
+        }
+      ]
+    },
+    {
+      "destinationId": "destination_022",
+      "cityId": "city_odisha_konark",
+      "title": "Discover Konark",
+      "themes": [
+        "heritage",
+        "local_food",
+        "weekend"
+      ],
+      "bestMonths": [
+        "Oct",
+        "Nov",
+        "Dec",
+        "Jan",
+        "Feb",
+        "Mar"
+      ],
+      "nearestStationId": "station_263_central",
+      "attractions": [
+        {
+          "attractionId": "attraction_022_1",
+          "name": "Konark Heritage Walk",
+          "category": "heritage",
+          "durationMinutes": 120,
+          "fromPrice": 250
+        },
+        {
+          "attractionId": "attraction_022_2",
+          "name": "Konark Local Food Trail",
+          "category": "food",
+          "durationMinutes": 150,
+          "fromPrice": 500
+        },
+        {
+          "attractionId": "attraction_022_3",
+          "name": "Konark City Landmark",
+          "category": "sightseeing",
+          "durationMinutes": 180,
+          "fromPrice": 750
+        }
+      ]
+    },
+    {
+      "destinationId": "destination_023",
+      "cityId": "city_punjab_amritsar",
+      "title": "Discover Amritsar",
+      "themes": [
+        "heritage",
+        "local_food",
+        "weekend"
+      ],
+      "bestMonths": [
+        "Oct",
+        "Nov",
+        "Dec",
+        "Jan",
+        "Feb",
+        "Mar"
+      ],
+      "nearestStationId": "station_267_central",
+      "attractions": [
+        {
+          "attractionId": "attraction_023_1",
+          "name": "Amritsar Heritage Walk",
+          "category": "heritage",
+          "durationMinutes": 120,
+          "fromPrice": 250
+        },
+        {
+          "attractionId": "attraction_023_2",
+          "name": "Amritsar Local Food Trail",
+          "category": "food",
+          "durationMinutes": 150,
+          "fromPrice": 500
+        },
+        {
+          "attractionId": "attraction_023_3",
+          "name": "Amritsar City Landmark",
+          "category": "sightseeing",
+          "durationMinutes": 180,
+          "fromPrice": 750
+        }
+      ]
+    },
+    {
+      "destinationId": "destination_024",
+      "cityId": "city_rajasthan_udaipur",
+      "title": "Discover Udaipur",
+      "themes": [
+        "heritage",
+        "local_food",
+        "weekend"
+      ],
+      "bestMonths": [
+        "Oct",
+        "Nov",
+        "Dec",
+        "Jan",
+        "Feb",
+        "Mar"
+      ],
+      "nearestStationId": "station_282_central",
+      "attractions": [
+        {
+          "attractionId": "attraction_024_1",
+          "name": "Udaipur Heritage Walk",
+          "category": "heritage",
+          "durationMinutes": 120,
+          "fromPrice": 250
+        },
+        {
+          "attractionId": "attraction_024_2",
+          "name": "Udaipur Local Food Trail",
+          "category": "food",
+          "durationMinutes": 150,
+          "fromPrice": 500
+        },
+        {
+          "attractionId": "attraction_024_3",
+          "name": "Udaipur City Landmark",
+          "category": "sightseeing",
+          "durationMinutes": 180,
+          "fromPrice": 750
+        }
+      ]
+    },
+    {
+      "destinationId": "destination_025",
+      "cityId": "city_rajasthan_jaisalmer",
+      "title": "Discover Jaisalmer",
+      "themes": [
+        "heritage",
+        "local_food",
+        "weekend"
+      ],
+      "bestMonths": [
+        "Oct",
+        "Nov",
+        "Dec",
+        "Jan",
+        "Feb",
+        "Mar"
+      ],
+      "nearestStationId": "station_287_central",
+      "attractions": [
+        {
+          "attractionId": "attraction_025_1",
+          "name": "Jaisalmer Heritage Walk",
+          "category": "heritage",
+          "durationMinutes": 120,
+          "fromPrice": 250
+        },
+        {
+          "attractionId": "attraction_025_2",
+          "name": "Jaisalmer Local Food Trail",
+          "category": "food",
+          "durationMinutes": 150,
+          "fromPrice": 500
+        },
+        {
+          "attractionId": "attraction_025_3",
+          "name": "Jaisalmer City Landmark",
+          "category": "sightseeing",
+          "durationMinutes": 180,
+          "fromPrice": 750
+        }
+      ]
+    },
+    {
+      "destinationId": "destination_026",
+      "cityId": "city_rajasthan_mount_abu",
+      "title": "Discover Mount Abu",
+      "themes": [
+        "heritage",
+        "local_food",
+        "weekend"
+      ],
+      "bestMonths": [
+        "Oct",
+        "Nov",
+        "Dec",
+        "Jan",
+        "Feb",
+        "Mar"
+      ],
+      "nearestStationId": "station_293_central",
+      "attractions": [
+        {
+          "attractionId": "attraction_026_1",
+          "name": "Mount Abu Heritage Walk",
+          "category": "heritage",
+          "durationMinutes": 120,
+          "fromPrice": 250
+        },
+        {
+          "attractionId": "attraction_026_2",
+          "name": "Mount Abu Local Food Trail",
+          "category": "food",
+          "durationMinutes": 150,
+          "fromPrice": 500
+        },
+        {
+          "attractionId": "attraction_026_3",
+          "name": "Mount Abu City Landmark",
+          "category": "sightseeing",
+          "durationMinutes": 180,
+          "fromPrice": 750
+        }
+      ]
+    },
+    {
+      "destinationId": "destination_027",
+      "cityId": "city_rajasthan_pushkar",
+      "title": "Discover Pushkar",
+      "themes": [
+        "heritage",
+        "local_food",
+        "weekend"
+      ],
+      "bestMonths": [
+        "Oct",
+        "Nov",
+        "Dec",
+        "Jan",
+        "Feb",
+        "Mar"
+      ],
+      "nearestStationId": "station_294_central",
+      "attractions": [
+        {
+          "attractionId": "attraction_027_1",
+          "name": "Pushkar Heritage Walk",
+          "category": "heritage",
+          "durationMinutes": 120,
+          "fromPrice": 250
+        },
+        {
+          "attractionId": "attraction_027_2",
+          "name": "Pushkar Local Food Trail",
+          "category": "food",
+          "durationMinutes": 150,
+          "fromPrice": 500
+        },
+        {
+          "attractionId": "attraction_027_3",
+          "name": "Pushkar City Landmark",
+          "category": "sightseeing",
+          "durationMinutes": 180,
+          "fromPrice": 750
+        }
+      ]
+    },
+    {
+      "destinationId": "destination_028",
+      "cityId": "city_tamil_nadu_ooty",
+      "title": "Discover Ooty",
+      "themes": [
+        "heritage",
+        "local_food",
+        "weekend"
+      ],
+      "bestMonths": [
+        "Oct",
+        "Nov",
+        "Dec",
+        "Jan",
+        "Feb",
+        "Mar"
+      ],
+      "nearestStationId": "station_317_central",
+      "attractions": [
+        {
+          "attractionId": "attraction_028_1",
+          "name": "Ooty Heritage Walk",
+          "category": "heritage",
+          "durationMinutes": 120,
+          "fromPrice": 250
+        },
+        {
+          "attractionId": "attraction_028_2",
+          "name": "Ooty Local Food Trail",
+          "category": "food",
+          "durationMinutes": 150,
+          "fromPrice": 500
+        },
+        {
+          "attractionId": "attraction_028_3",
+          "name": "Ooty City Landmark",
+          "category": "sightseeing",
+          "durationMinutes": 180,
+          "fromPrice": 750
+        }
+      ]
+    },
+    {
+      "destinationId": "destination_029",
+      "cityId": "city_tamil_nadu_rameswaram",
+      "title": "Discover Rameswaram",
+      "themes": [
+        "heritage",
+        "local_food",
+        "weekend"
+      ],
+      "bestMonths": [
+        "Oct",
+        "Nov",
+        "Dec",
+        "Jan",
+        "Feb",
+        "Mar"
+      ],
+      "nearestStationId": "station_319_central",
+      "attractions": [
+        {
+          "attractionId": "attraction_029_1",
+          "name": "Rameswaram Heritage Walk",
+          "category": "heritage",
+          "durationMinutes": 120,
+          "fromPrice": 250
+        },
+        {
+          "attractionId": "attraction_029_2",
+          "name": "Rameswaram Local Food Trail",
+          "category": "food",
+          "durationMinutes": 150,
+          "fromPrice": 500
+        },
+        {
+          "attractionId": "attraction_029_3",
+          "name": "Rameswaram City Landmark",
+          "category": "sightseeing",
+          "durationMinutes": 180,
+          "fromPrice": 750
+        }
+      ]
+    },
+    {
+      "destinationId": "destination_030",
+      "cityId": "city_tamil_nadu_kanyakumari",
+      "title": "Discover Kanyakumari",
+      "themes": [
+        "heritage",
+        "local_food",
+        "weekend"
+      ],
+      "bestMonths": [
+        "Oct",
+        "Nov",
+        "Dec",
+        "Jan",
+        "Feb",
+        "Mar"
+      ],
+      "nearestStationId": "station_320_central",
+      "attractions": [
+        {
+          "attractionId": "attraction_030_1",
+          "name": "Kanyakumari Heritage Walk",
+          "category": "heritage",
+          "durationMinutes": 120,
+          "fromPrice": 250
+        },
+        {
+          "attractionId": "attraction_030_2",
+          "name": "Kanyakumari Local Food Trail",
+          "category": "food",
+          "durationMinutes": 150,
+          "fromPrice": 500
+        },
+        {
+          "attractionId": "attraction_030_3",
+          "name": "Kanyakumari City Landmark",
+          "category": "sightseeing",
+          "durationMinutes": 180,
+          "fromPrice": 750
+        }
+      ]
+    },
+    {
+      "destinationId": "destination_031",
+      "cityId": "city_tripura_udaipur",
+      "title": "Discover Udaipur",
+      "themes": [
+        "heritage",
+        "local_food",
+        "weekend"
+      ],
+      "bestMonths": [
+        "Oct",
+        "Nov",
+        "Dec",
+        "Jan",
+        "Feb",
+        "Mar"
+      ],
+      "nearestStationId": "station_338_central",
+      "attractions": [
+        {
+          "attractionId": "attraction_031_1",
+          "name": "Udaipur Heritage Walk",
+          "category": "heritage",
+          "durationMinutes": 120,
+          "fromPrice": 250
+        },
+        {
+          "attractionId": "attraction_031_2",
+          "name": "Udaipur Local Food Trail",
+          "category": "food",
+          "durationMinutes": 150,
+          "fromPrice": 500
+        },
+        {
+          "attractionId": "attraction_031_3",
+          "name": "Udaipur City Landmark",
+          "category": "sightseeing",
+          "durationMinutes": 180,
+          "fromPrice": 750
+        }
+      ]
+    },
+    {
+      "destinationId": "destination_032",
+      "cityId": "city_uttar_pradesh_varanasi",
+      "title": "Discover Varanasi",
+      "themes": [
+        "heritage",
+        "local_food",
+        "weekend"
+      ],
+      "bestMonths": [
+        "Oct",
+        "Nov",
+        "Dec",
+        "Jan",
+        "Feb",
+        "Mar"
+      ],
+      "nearestStationId": "station_352_central",
+      "attractions": [
+        {
+          "attractionId": "attraction_032_1",
+          "name": "Varanasi Heritage Walk",
+          "category": "heritage",
+          "durationMinutes": 120,
+          "fromPrice": 250
+        },
+        {
+          "attractionId": "attraction_032_2",
+          "name": "Varanasi Local Food Trail",
+          "category": "food",
+          "durationMinutes": 150,
+          "fromPrice": 500
+        },
+        {
+          "attractionId": "attraction_032_3",
+          "name": "Varanasi City Landmark",
+          "category": "sightseeing",
+          "durationMinutes": 180,
+          "fromPrice": 750
+        }
+      ]
+    },
+    {
+      "destinationId": "destination_033",
+      "cityId": "city_uttar_pradesh_agra",
+      "title": "Discover Agra",
+      "themes": [
+        "heritage",
+        "local_food",
+        "weekend"
+      ],
+      "bestMonths": [
+        "Oct",
+        "Nov",
+        "Dec",
+        "Jan",
+        "Feb",
+        "Mar"
+      ],
+      "nearestStationId": "station_353_central",
+      "attractions": [
+        {
+          "attractionId": "attraction_033_1",
+          "name": "Agra Heritage Walk",
+          "category": "heritage",
+          "durationMinutes": 120,
+          "fromPrice": 250
+        },
+        {
+          "attractionId": "attraction_033_2",
+          "name": "Agra Local Food Trail",
+          "category": "food",
+          "durationMinutes": 150,
+          "fromPrice": 500
+        },
+        {
+          "attractionId": "attraction_033_3",
+          "name": "Agra City Landmark",
+          "category": "sightseeing",
+          "durationMinutes": 180,
+          "fromPrice": 750
+        }
+      ]
+    },
+    {
+      "destinationId": "destination_034",
+      "cityId": "city_uttar_pradesh_ayodhya",
+      "title": "Discover Ayodhya",
+      "themes": [
+        "heritage",
+        "local_food",
+        "weekend"
+      ],
+      "bestMonths": [
+        "Oct",
+        "Nov",
+        "Dec",
+        "Jan",
+        "Feb",
+        "Mar"
+      ],
+      "nearestStationId": "station_358_central",
+      "attractions": [
+        {
+          "attractionId": "attraction_034_1",
+          "name": "Ayodhya Heritage Walk",
+          "category": "heritage",
+          "durationMinutes": 120,
+          "fromPrice": 250
+        },
+        {
+          "attractionId": "attraction_034_2",
+          "name": "Ayodhya Local Food Trail",
+          "category": "food",
+          "durationMinutes": 150,
+          "fromPrice": 500
+        },
+        {
+          "attractionId": "attraction_034_3",
+          "name": "Ayodhya City Landmark",
+          "category": "sightseeing",
+          "durationMinutes": 180,
+          "fromPrice": 750
+        }
+      ]
+    },
+    {
+      "destinationId": "destination_035",
+      "cityId": "city_uttar_pradesh_mathura",
+      "title": "Discover Mathura",
+      "themes": [
+        "heritage",
+        "local_food",
+        "weekend"
+      ],
+      "bestMonths": [
+        "Oct",
+        "Nov",
+        "Dec",
+        "Jan",
+        "Feb",
+        "Mar"
+      ],
+      "nearestStationId": "station_359_central",
+      "attractions": [
+        {
+          "attractionId": "attraction_035_1",
+          "name": "Mathura Heritage Walk",
+          "category": "heritage",
+          "durationMinutes": 120,
+          "fromPrice": 250
+        },
+        {
+          "attractionId": "attraction_035_2",
+          "name": "Mathura Local Food Trail",
+          "category": "food",
+          "durationMinutes": 150,
+          "fromPrice": 500
+        },
+        {
+          "attractionId": "attraction_035_3",
+          "name": "Mathura City Landmark",
+          "category": "sightseeing",
+          "durationMinutes": 180,
+          "fromPrice": 750
+        }
+      ]
+    },
+    {
+      "destinationId": "destination_036",
+      "cityId": "city_uttarakhand_haridwar",
+      "title": "Discover Haridwar",
+      "themes": [
+        "heritage",
+        "local_food",
+        "weekend"
+      ],
+      "bestMonths": [
+        "Oct",
+        "Nov",
+        "Dec",
+        "Jan",
+        "Feb",
+        "Mar"
+      ],
+      "nearestStationId": "station_366_central",
+      "attractions": [
+        {
+          "attractionId": "attraction_036_1",
+          "name": "Haridwar Heritage Walk",
+          "category": "heritage",
+          "durationMinutes": 120,
+          "fromPrice": 250
+        },
+        {
+          "attractionId": "attraction_036_2",
+          "name": "Haridwar Local Food Trail",
+          "category": "food",
+          "durationMinutes": 150,
+          "fromPrice": 500
+        },
+        {
+          "attractionId": "attraction_036_3",
+          "name": "Haridwar City Landmark",
+          "category": "sightseeing",
+          "durationMinutes": 180,
+          "fromPrice": 750
+        }
+      ]
+    },
+    {
+      "destinationId": "destination_037",
+      "cityId": "city_uttarakhand_rishikesh",
+      "title": "Discover Rishikesh",
+      "themes": [
+        "heritage",
+        "local_food",
+        "weekend"
+      ],
+      "bestMonths": [
+        "Oct",
+        "Nov",
+        "Dec",
+        "Jan",
+        "Feb",
+        "Mar"
+      ],
+      "nearestStationId": "station_367_central",
+      "attractions": [
+        {
+          "attractionId": "attraction_037_1",
+          "name": "Rishikesh Heritage Walk",
+          "category": "heritage",
+          "durationMinutes": 120,
+          "fromPrice": 250
+        },
+        {
+          "attractionId": "attraction_037_2",
+          "name": "Rishikesh Local Food Trail",
+          "category": "food",
+          "durationMinutes": 150,
+          "fromPrice": 500
+        },
+        {
+          "attractionId": "attraction_037_3",
+          "name": "Rishikesh City Landmark",
+          "category": "sightseeing",
+          "durationMinutes": 180,
+          "fromPrice": 750
+        }
+      ]
+    },
+    {
+      "destinationId": "destination_038",
+      "cityId": "city_uttarakhand_nainital",
+      "title": "Discover Nainital",
+      "themes": [
+        "heritage",
+        "local_food",
+        "weekend"
+      ],
+      "bestMonths": [
+        "Oct",
+        "Nov",
+        "Dec",
+        "Jan",
+        "Feb",
+        "Mar"
+      ],
+      "nearestStationId": "station_368_central",
+      "attractions": [
+        {
+          "attractionId": "attraction_038_1",
+          "name": "Nainital Heritage Walk",
+          "category": "heritage",
+          "durationMinutes": 120,
+          "fromPrice": 250
+        },
+        {
+          "attractionId": "attraction_038_2",
+          "name": "Nainital Local Food Trail",
+          "category": "food",
+          "durationMinutes": 150,
+          "fromPrice": 500
+        },
+        {
+          "attractionId": "attraction_038_3",
+          "name": "Nainital City Landmark",
+          "category": "sightseeing",
+          "durationMinutes": 180,
+          "fromPrice": 750
+        }
+      ]
+    },
+    {
+      "destinationId": "destination_039",
+      "cityId": "city_uttarakhand_mussoorie",
+      "title": "Discover Mussoorie",
+      "themes": [
+        "heritage",
+        "local_food",
+        "weekend"
+      ],
+      "bestMonths": [
+        "Oct",
+        "Nov",
+        "Dec",
+        "Jan",
+        "Feb",
+        "Mar"
+      ],
+      "nearestStationId": "station_369_central",
+      "attractions": [
+        {
+          "attractionId": "attraction_039_1",
+          "name": "Mussoorie Heritage Walk",
+          "category": "heritage",
+          "durationMinutes": 120,
+          "fromPrice": 250
+        },
+        {
+          "attractionId": "attraction_039_2",
+          "name": "Mussoorie Local Food Trail",
+          "category": "food",
+          "durationMinutes": 150,
+          "fromPrice": 500
+        },
+        {
+          "attractionId": "attraction_039_3",
+          "name": "Mussoorie City Landmark",
+          "category": "sightseeing",
+          "durationMinutes": 180,
+          "fromPrice": 750
+        }
+      ]
+    },
+    {
+      "destinationId": "destination_040",
+      "cityId": "city_west_bengal_darjeeling",
+      "title": "Discover Darjeeling",
+      "themes": [
+        "heritage",
+        "local_food",
+        "weekend"
+      ],
+      "bestMonths": [
+        "Oct",
+        "Nov",
+        "Dec",
+        "Jan",
+        "Feb",
+        "Mar"
+      ],
+      "nearestStationId": "station_380_central",
+      "attractions": [
+        {
+          "attractionId": "attraction_040_1",
+          "name": "Darjeeling Heritage Walk",
+          "category": "heritage",
+          "durationMinutes": 120,
+          "fromPrice": 250
+        },
+        {
+          "attractionId": "attraction_040_2",
+          "name": "Darjeeling Local Food Trail",
+          "category": "food",
+          "durationMinutes": 150,
+          "fromPrice": 500
+        },
+        {
+          "attractionId": "attraction_040_3",
+          "name": "Darjeeling City Landmark",
+          "category": "sightseeing",
+          "durationMinutes": 180,
+          "fromPrice": 750
+        }
+      ]
+    },
+    {
+      "destinationId": "destination_041",
+      "cityId": "city_jammu_and_kashmir_srinagar",
+      "title": "Discover Srinagar",
+      "themes": [
+        "heritage",
+        "local_food",
+        "weekend"
+      ],
+      "bestMonths": [
+        "Oct",
+        "Nov",
+        "Dec",
+        "Jan",
+        "Feb",
+        "Mar"
+      ],
+      "nearestStationId": "station_407_central",
+      "attractions": [
+        {
+          "attractionId": "attraction_041_1",
+          "name": "Srinagar Heritage Walk",
+          "category": "heritage",
+          "durationMinutes": 120,
+          "fromPrice": 250
+        },
+        {
+          "attractionId": "attraction_041_2",
+          "name": "Srinagar Local Food Trail",
+          "category": "food",
+          "durationMinutes": 150,
+          "fromPrice": 500
+        },
+        {
+          "attractionId": "attraction_041_3",
+          "name": "Srinagar City Landmark",
+          "category": "sightseeing",
+          "durationMinutes": 180,
+          "fromPrice": 750
+        }
+      ]
+    },
+    {
+      "destinationId": "destination_042",
+      "cityId": "city_jammu_and_kashmir_gulmarg",
+      "title": "Discover Gulmarg",
+      "themes": [
+        "heritage",
+        "local_food",
+        "weekend"
+      ],
+      "bestMonths": [
+        "Oct",
+        "Nov",
+        "Dec",
+        "Jan",
+        "Feb",
+        "Mar"
+      ],
+      "nearestStationId": "station_409_central",
+      "attractions": [
+        {
+          "attractionId": "attraction_042_1",
+          "name": "Gulmarg Heritage Walk",
+          "category": "heritage",
+          "durationMinutes": 120,
+          "fromPrice": 250
+        },
+        {
+          "attractionId": "attraction_042_2",
+          "name": "Gulmarg Local Food Trail",
+          "category": "food",
+          "durationMinutes": 150,
+          "fromPrice": 500
+        },
+        {
+          "attractionId": "attraction_042_3",
+          "name": "Gulmarg City Landmark",
+          "category": "sightseeing",
+          "durationMinutes": 180,
+          "fromPrice": 750
+        }
+      ]
+    },
+    {
+      "destinationId": "destination_043",
+      "cityId": "city_jammu_and_kashmir_pahalgam",
+      "title": "Discover Pahalgam",
+      "themes": [
+        "heritage",
+        "local_food",
+        "weekend"
+      ],
+      "bestMonths": [
+        "Oct",
+        "Nov",
+        "Dec",
+        "Jan",
+        "Feb",
+        "Mar"
+      ],
+      "nearestStationId": "station_410_central",
+      "attractions": [
+        {
+          "attractionId": "attraction_043_1",
+          "name": "Pahalgam Heritage Walk",
+          "category": "heritage",
+          "durationMinutes": 120,
+          "fromPrice": 250
+        },
+        {
+          "attractionId": "attraction_043_2",
+          "name": "Pahalgam Local Food Trail",
+          "category": "food",
+          "durationMinutes": 150,
+          "fromPrice": 500
+        },
+        {
+          "attractionId": "attraction_043_3",
+          "name": "Pahalgam City Landmark",
+          "category": "sightseeing",
+          "durationMinutes": 180,
+          "fromPrice": 750
+        }
+      ]
+    },
+    {
+      "destinationId": "destination_044",
+      "cityId": "city_jammu_and_kashmir_katra",
+      "title": "Discover Katra",
+      "themes": [
+        "heritage",
+        "local_food",
+        "weekend"
+      ],
+      "bestMonths": [
+        "Oct",
+        "Nov",
+        "Dec",
+        "Jan",
+        "Feb",
+        "Mar"
+      ],
+      "nearestStationId": "station_414_central",
+      "attractions": [
+        {
+          "attractionId": "attraction_044_1",
+          "name": "Katra Heritage Walk",
+          "category": "heritage",
+          "durationMinutes": 120,
+          "fromPrice": 250
+        },
+        {
+          "attractionId": "attraction_044_2",
+          "name": "Katra Local Food Trail",
+          "category": "food",
+          "durationMinutes": 150,
+          "fromPrice": 500
+        },
+        {
+          "attractionId": "attraction_044_3",
+          "name": "Katra City Landmark",
+          "category": "sightseeing",
+          "durationMinutes": 180,
+          "fromPrice": 750
+        }
+      ]
+    },
+    {
+      "destinationId": "destination_045",
+      "cityId": "city_jammu_and_kashmir_leh",
+      "title": "Discover Leh",
+      "themes": [
+        "heritage",
+        "local_food",
+        "weekend"
+      ],
+      "bestMonths": [
+        "Oct",
+        "Nov",
+        "Dec",
+        "Jan",
+        "Feb",
+        "Mar"
+      ],
+      "nearestStationId": "station_417_central",
+      "attractions": [
+        {
+          "attractionId": "attraction_045_1",
+          "name": "Leh Heritage Walk",
+          "category": "heritage",
+          "durationMinutes": 120,
+          "fromPrice": 250
+        },
+        {
+          "attractionId": "attraction_045_2",
+          "name": "Leh Local Food Trail",
+          "category": "food",
+          "durationMinutes": 150,
+          "fromPrice": 500
+        },
+        {
+          "attractionId": "attraction_045_3",
+          "name": "Leh City Landmark",
+          "category": "sightseeing",
+          "durationMinutes": 180,
+          "fromPrice": 750
+        }
+      ]
+    },
+    {
+      "destinationId": "destination_046",
+      "cityId": "city_andhra_pradesh_visakhapatnam",
+      "title": "Discover Visakhapatnam",
+      "themes": [
+        "city_break",
+        "local_food"
+      ],
+      "bestMonths": [
+        "Oct",
+        "Nov",
+        "Dec",
+        "Jan",
+        "Feb",
+        "Mar"
+      ],
+      "nearestStationId": "station_001_central",
+      "attractions": [
+        {
+          "attractionId": "attraction_046_1",
+          "name": "Visakhapatnam Heritage Walk",
+          "category": "heritage",
+          "durationMinutes": 120,
+          "fromPrice": 250
+        },
+        {
+          "attractionId": "attraction_046_2",
+          "name": "Visakhapatnam Local Food Trail",
+          "category": "food",
+          "durationMinutes": 150,
+          "fromPrice": 500
+        },
+        {
+          "attractionId": "attraction_046_3",
+          "name": "Visakhapatnam City Landmark",
+          "category": "sightseeing",
+          "durationMinutes": 180,
+          "fromPrice": 750
+        }
+      ]
+    },
+    {
+      "destinationId": "destination_047",
+      "cityId": "city_andhra_pradesh_vijayawada",
+      "title": "Discover Vijayawada",
+      "themes": [
+        "city_break",
+        "local_food"
+      ],
+      "bestMonths": [
+        "Oct",
+        "Nov",
+        "Dec",
+        "Jan",
+        "Feb",
+        "Mar"
+      ],
+      "nearestStationId": "station_002_central",
+      "attractions": [
+        {
+          "attractionId": "attraction_047_1",
+          "name": "Vijayawada Heritage Walk",
+          "category": "heritage",
+          "durationMinutes": 120,
+          "fromPrice": 250
+        },
+        {
+          "attractionId": "attraction_047_2",
+          "name": "Vijayawada Local Food Trail",
+          "category": "food",
+          "durationMinutes": 150,
+          "fromPrice": 500
+        },
+        {
+          "attractionId": "attraction_047_3",
+          "name": "Vijayawada City Landmark",
+          "category": "sightseeing",
+          "durationMinutes": 180,
+          "fromPrice": 750
+        }
+      ]
+    },
+    {
+      "destinationId": "destination_048",
+      "cityId": "city_andhra_pradesh_guntur",
+      "title": "Discover Guntur",
+      "themes": [
+        "city_break",
+        "local_food"
+      ],
+      "bestMonths": [
+        "Oct",
+        "Nov",
+        "Dec",
+        "Jan",
+        "Feb",
+        "Mar"
+      ],
+      "nearestStationId": "station_004_central",
+      "attractions": [
+        {
+          "attractionId": "attraction_048_1",
+          "name": "Guntur Heritage Walk",
+          "category": "heritage",
+          "durationMinutes": 120,
+          "fromPrice": 250
+        },
+        {
+          "attractionId": "attraction_048_2",
+          "name": "Guntur Local Food Trail",
+          "category": "food",
+          "durationMinutes": 150,
+          "fromPrice": 500
+        },
+        {
+          "attractionId": "attraction_048_3",
+          "name": "Guntur City Landmark",
+          "category": "sightseeing",
+          "durationMinutes": 180,
+          "fromPrice": 750
+        }
+      ]
+    },
+    {
+      "destinationId": "destination_049",
+      "cityId": "city_andhra_pradesh_nellore",
+      "title": "Discover Nellore",
+      "themes": [
+        "city_break",
+        "local_food"
+      ],
+      "bestMonths": [
+        "Oct",
+        "Nov",
+        "Dec",
+        "Jan",
+        "Feb",
+        "Mar"
+      ],
+      "nearestStationId": "station_005_central",
+      "attractions": [
+        {
+          "attractionId": "attraction_049_1",
+          "name": "Nellore Heritage Walk",
+          "category": "heritage",
+          "durationMinutes": 120,
+          "fromPrice": 250
+        },
+        {
+          "attractionId": "attraction_049_2",
+          "name": "Nellore Local Food Trail",
+          "category": "food",
+          "durationMinutes": 150,
+          "fromPrice": 500
+        },
+        {
+          "attractionId": "attraction_049_3",
+          "name": "Nellore City Landmark",
+          "category": "sightseeing",
+          "durationMinutes": 180,
+          "fromPrice": 750
+        }
+      ]
+    },
+    {
+      "destinationId": "destination_050",
+      "cityId": "city_andhra_pradesh_kurnool",
+      "title": "Discover Kurnool",
+      "themes": [
+        "city_break",
+        "local_food"
+      ],
+      "bestMonths": [
+        "Oct",
+        "Nov",
+        "Dec",
+        "Jan",
+        "Feb",
+        "Mar"
+      ],
+      "nearestStationId": "station_006_central",
+      "attractions": [
+        {
+          "attractionId": "attraction_050_1",
+          "name": "Kurnool Heritage Walk",
+          "category": "heritage",
+          "durationMinutes": 120,
+          "fromPrice": 250
+        },
+        {
+          "attractionId": "attraction_050_2",
+          "name": "Kurnool Local Food Trail",
+          "category": "food",
+          "durationMinutes": 150,
+          "fromPrice": 500
+        },
+        {
+          "attractionId": "attraction_050_3",
+          "name": "Kurnool City Landmark",
+          "category": "sightseeing",
+          "durationMinutes": 180,
+          "fromPrice": 750
+        }
+      ]
+    },
+    {
+      "destinationId": "destination_051",
+      "cityId": "city_andhra_pradesh_rajahmundry",
+      "title": "Discover Rajahmundry",
+      "themes": [
+        "city_break",
+        "local_food"
+      ],
+      "bestMonths": [
+        "Oct",
+        "Nov",
+        "Dec",
+        "Jan",
+        "Feb",
+        "Mar"
+      ],
+      "nearestStationId": "station_007_central",
+      "attractions": [
+        {
+          "attractionId": "attraction_051_1",
+          "name": "Rajahmundry Heritage Walk",
+          "category": "heritage",
+          "durationMinutes": 120,
+          "fromPrice": 250
+        },
+        {
+          "attractionId": "attraction_051_2",
+          "name": "Rajahmundry Local Food Trail",
+          "category": "food",
+          "durationMinutes": 150,
+          "fromPrice": 500
+        },
+        {
+          "attractionId": "attraction_051_3",
+          "name": "Rajahmundry City Landmark",
+          "category": "sightseeing",
+          "durationMinutes": 180,
+          "fromPrice": 750
+        }
+      ]
+    },
+    {
+      "destinationId": "destination_052",
+      "cityId": "city_andhra_pradesh_kakinada",
+      "title": "Discover Kakinada",
+      "themes": [
+        "city_break",
+        "local_food"
+      ],
+      "bestMonths": [
+        "Oct",
+        "Nov",
+        "Dec",
+        "Jan",
+        "Feb",
+        "Mar"
+      ],
+      "nearestStationId": "station_008_central",
+      "attractions": [
+        {
+          "attractionId": "attraction_052_1",
+          "name": "Kakinada Heritage Walk",
+          "category": "heritage",
+          "durationMinutes": 120,
+          "fromPrice": 250
+        },
+        {
+          "attractionId": "attraction_052_2",
+          "name": "Kakinada Local Food Trail",
+          "category": "food",
+          "durationMinutes": 150,
+          "fromPrice": 500
+        },
+        {
+          "attractionId": "attraction_052_3",
+          "name": "Kakinada City Landmark",
+          "category": "sightseeing",
+          "durationMinutes": 180,
+          "fromPrice": 750
+        }
+      ]
+    },
+    {
+      "destinationId": "destination_053",
+      "cityId": "city_andhra_pradesh_anantapur",
+      "title": "Discover Anantapur",
+      "themes": [
+        "city_break",
+        "local_food"
+      ],
+      "bestMonths": [
+        "Oct",
+        "Nov",
+        "Dec",
+        "Jan",
+        "Feb",
+        "Mar"
+      ],
+      "nearestStationId": "station_009_central",
+      "attractions": [
+        {
+          "attractionId": "attraction_053_1",
+          "name": "Anantapur Heritage Walk",
+          "category": "heritage",
+          "durationMinutes": 120,
+          "fromPrice": 250
+        },
+        {
+          "attractionId": "attraction_053_2",
+          "name": "Anantapur Local Food Trail",
+          "category": "food",
+          "durationMinutes": 150,
+          "fromPrice": 500
+        },
+        {
+          "attractionId": "attraction_053_3",
+          "name": "Anantapur City Landmark",
+          "category": "sightseeing",
+          "durationMinutes": 180,
+          "fromPrice": 750
+        }
+      ]
+    },
+    {
+      "destinationId": "destination_054",
+      "cityId": "city_andhra_pradesh_kadapa",
+      "title": "Discover Kadapa",
+      "themes": [
+        "city_break",
+        "local_food"
+      ],
+      "bestMonths": [
+        "Oct",
+        "Nov",
+        "Dec",
+        "Jan",
+        "Feb",
+        "Mar"
+      ],
+      "nearestStationId": "station_010_central",
+      "attractions": [
+        {
+          "attractionId": "attraction_054_1",
+          "name": "Kadapa Heritage Walk",
+          "category": "heritage",
+          "durationMinutes": 120,
+          "fromPrice": 250
+        },
+        {
+          "attractionId": "attraction_054_2",
+          "name": "Kadapa Local Food Trail",
+          "category": "food",
+          "durationMinutes": 150,
+          "fromPrice": 500
+        },
+        {
+          "attractionId": "attraction_054_3",
+          "name": "Kadapa City Landmark",
+          "category": "sightseeing",
+          "durationMinutes": 180,
+          "fromPrice": 750
+        }
+      ]
+    },
+    {
+      "destinationId": "destination_055",
+      "cityId": "city_andhra_pradesh_ongole",
+      "title": "Discover Ongole",
+      "themes": [
+        "city_break",
+        "local_food"
+      ],
+      "bestMonths": [
+        "Oct",
+        "Nov",
+        "Dec",
+        "Jan",
+        "Feb",
+        "Mar"
+      ],
+      "nearestStationId": "station_011_central",
+      "attractions": [
+        {
+          "attractionId": "attraction_055_1",
+          "name": "Ongole Heritage Walk",
+          "category": "heritage",
+          "durationMinutes": 120,
+          "fromPrice": 250
+        },
+        {
+          "attractionId": "attraction_055_2",
+          "name": "Ongole Local Food Trail",
+          "category": "food",
+          "durationMinutes": 150,
+          "fromPrice": 500
+        },
+        {
+          "attractionId": "attraction_055_3",
+          "name": "Ongole City Landmark",
+          "category": "sightseeing",
+          "durationMinutes": 180,
+          "fromPrice": 750
+        }
+      ]
+    },
+    {
+      "destinationId": "destination_056",
+      "cityId": "city_andhra_pradesh_eluru",
+      "title": "Discover Eluru",
+      "themes": [
+        "city_break",
+        "local_food"
+      ],
+      "bestMonths": [
+        "Oct",
+        "Nov",
+        "Dec",
+        "Jan",
+        "Feb",
+        "Mar"
+      ],
+      "nearestStationId": "station_012_central",
+      "attractions": [
+        {
+          "attractionId": "attraction_056_1",
+          "name": "Eluru Heritage Walk",
+          "category": "heritage",
+          "durationMinutes": 120,
+          "fromPrice": 250
+        },
+        {
+          "attractionId": "attraction_056_2",
+          "name": "Eluru Local Food Trail",
+          "category": "food",
+          "durationMinutes": 150,
+          "fromPrice": 500
+        },
+        {
+          "attractionId": "attraction_056_3",
+          "name": "Eluru City Landmark",
+          "category": "sightseeing",
+          "durationMinutes": 180,
+          "fromPrice": 750
+        }
+      ]
+    },
+    {
+      "destinationId": "destination_057",
+      "cityId": "city_andhra_pradesh_srikakulam",
+      "title": "Discover Srikakulam",
+      "themes": [
+        "city_break",
+        "local_food"
+      ],
+      "bestMonths": [
+        "Oct",
+        "Nov",
+        "Dec",
+        "Jan",
+        "Feb",
+        "Mar"
+      ],
+      "nearestStationId": "station_013_central",
+      "attractions": [
+        {
+          "attractionId": "attraction_057_1",
+          "name": "Srikakulam Heritage Walk",
+          "category": "heritage",
+          "durationMinutes": 120,
+          "fromPrice": 250
+        },
+        {
+          "attractionId": "attraction_057_2",
+          "name": "Srikakulam Local Food Trail",
+          "category": "food",
+          "durationMinutes": 150,
+          "fromPrice": 500
+        },
+        {
+          "attractionId": "attraction_057_3",
+          "name": "Srikakulam City Landmark",
+          "category": "sightseeing",
+          "durationMinutes": 180,
+          "fromPrice": 750
+        }
+      ]
+    },
+    {
+      "destinationId": "destination_058",
+      "cityId": "city_andhra_pradesh_amaravati",
+      "title": "Discover Amaravati",
+      "themes": [
+        "city_break",
+        "local_food"
+      ],
+      "bestMonths": [
+        "Oct",
+        "Nov",
+        "Dec",
+        "Jan",
+        "Feb",
+        "Mar"
+      ],
+      "nearestStationId": "station_014_central",
+      "attractions": [
+        {
+          "attractionId": "attraction_058_1",
+          "name": "Amaravati Heritage Walk",
+          "category": "heritage",
+          "durationMinutes": 120,
+          "fromPrice": 250
+        },
+        {
+          "attractionId": "attraction_058_2",
+          "name": "Amaravati Local Food Trail",
+          "category": "food",
+          "durationMinutes": 150,
+          "fromPrice": 500
+        },
+        {
+          "attractionId": "attraction_058_3",
+          "name": "Amaravati City Landmark",
+          "category": "sightseeing",
+          "durationMinutes": 180,
+          "fromPrice": 750
+        }
+      ]
+    },
+    {
+      "destinationId": "destination_059",
+      "cityId": "city_arunachal_pradesh_itanagar",
+      "title": "Discover Itanagar",
+      "themes": [
+        "city_break",
+        "local_food"
+      ],
+      "bestMonths": [
+        "Oct",
+        "Nov",
+        "Dec",
+        "Jan",
+        "Feb",
+        "Mar"
+      ],
+      "nearestStationId": "station_015_central",
+      "attractions": [
+        {
+          "attractionId": "attraction_059_1",
+          "name": "Itanagar Heritage Walk",
+          "category": "heritage",
+          "durationMinutes": 120,
+          "fromPrice": 250
+        },
+        {
+          "attractionId": "attraction_059_2",
+          "name": "Itanagar Local Food Trail",
+          "category": "food",
+          "durationMinutes": 150,
+          "fromPrice": 500
+        },
+        {
+          "attractionId": "attraction_059_3",
+          "name": "Itanagar City Landmark",
+          "category": "sightseeing",
+          "durationMinutes": 180,
+          "fromPrice": 750
+        }
+      ]
+    },
+    {
+      "destinationId": "destination_060",
+      "cityId": "city_arunachal_pradesh_pasighat",
+      "title": "Discover Pasighat",
+      "themes": [
+        "city_break",
+        "local_food"
+      ],
+      "bestMonths": [
+        "Oct",
+        "Nov",
+        "Dec",
+        "Jan",
+        "Feb",
+        "Mar"
+      ],
+      "nearestStationId": "station_018_central",
+      "attractions": [
+        {
+          "attractionId": "attraction_060_1",
+          "name": "Pasighat Heritage Walk",
+          "category": "heritage",
+          "durationMinutes": 120,
+          "fromPrice": 250
+        },
+        {
+          "attractionId": "attraction_060_2",
+          "name": "Pasighat Local Food Trail",
+          "category": "food",
+          "durationMinutes": 150,
+          "fromPrice": 500
+        },
+        {
+          "attractionId": "attraction_060_3",
+          "name": "Pasighat City Landmark",
+          "category": "sightseeing",
+          "durationMinutes": 180,
+          "fromPrice": 750
+        }
+      ]
+    },
+    {
+      "destinationId": "destination_061",
+      "cityId": "city_arunachal_pradesh_bomdila",
+      "title": "Discover Bomdila",
+      "themes": [
+        "city_break",
+        "local_food"
+      ],
+      "bestMonths": [
+        "Oct",
+        "Nov",
+        "Dec",
+        "Jan",
+        "Feb",
+        "Mar"
+      ],
+      "nearestStationId": "station_019_central",
+      "attractions": [
+        {
+          "attractionId": "attraction_061_1",
+          "name": "Bomdila Heritage Walk",
+          "category": "heritage",
+          "durationMinutes": 120,
+          "fromPrice": 250
+        },
+        {
+          "attractionId": "attraction_061_2",
+          "name": "Bomdila Local Food Trail",
+          "category": "food",
+          "durationMinutes": 150,
+          "fromPrice": 500
+        },
+        {
+          "attractionId": "attraction_061_3",
+          "name": "Bomdila City Landmark",
+          "category": "sightseeing",
+          "durationMinutes": 180,
+          "fromPrice": 750
+        }
+      ]
+    },
+    {
+      "destinationId": "destination_062",
+      "cityId": "city_arunachal_pradesh_naharlagun",
+      "title": "Discover Naharlagun",
+      "themes": [
+        "city_break",
+        "local_food"
+      ],
+      "bestMonths": [
+        "Oct",
+        "Nov",
+        "Dec",
+        "Jan",
+        "Feb",
+        "Mar"
+      ],
+      "nearestStationId": "station_020_central",
+      "attractions": [
+        {
+          "attractionId": "attraction_062_1",
+          "name": "Naharlagun Heritage Walk",
+          "category": "heritage",
+          "durationMinutes": 120,
+          "fromPrice": 250
+        },
+        {
+          "attractionId": "attraction_062_2",
+          "name": "Naharlagun Local Food Trail",
+          "category": "food",
+          "durationMinutes": 150,
+          "fromPrice": 500
+        },
+        {
+          "attractionId": "attraction_062_3",
+          "name": "Naharlagun City Landmark",
+          "category": "sightseeing",
+          "durationMinutes": 180,
+          "fromPrice": 750
+        }
+      ]
+    },
+    {
+      "destinationId": "destination_063",
+      "cityId": "city_arunachal_pradesh_aalo",
+      "title": "Discover Aalo",
+      "themes": [
+        "city_break",
+        "local_food"
+      ],
+      "bestMonths": [
+        "Oct",
+        "Nov",
+        "Dec",
+        "Jan",
+        "Feb",
+        "Mar"
+      ],
+      "nearestStationId": "station_021_central",
+      "attractions": [
+        {
+          "attractionId": "attraction_063_1",
+          "name": "Aalo Heritage Walk",
+          "category": "heritage",
+          "durationMinutes": 120,
+          "fromPrice": 250
+        },
+        {
+          "attractionId": "attraction_063_2",
+          "name": "Aalo Local Food Trail",
+          "category": "food",
+          "durationMinutes": 150,
+          "fromPrice": 500
+        },
+        {
+          "attractionId": "attraction_063_3",
+          "name": "Aalo City Landmark",
+          "category": "sightseeing",
+          "durationMinutes": 180,
+          "fromPrice": 750
+        }
+      ]
+    },
+    {
+      "destinationId": "destination_064",
+      "cityId": "city_arunachal_pradesh_tezu",
+      "title": "Discover Tezu",
+      "themes": [
+        "city_break",
+        "local_food"
+      ],
+      "bestMonths": [
+        "Oct",
+        "Nov",
+        "Dec",
+        "Jan",
+        "Feb",
+        "Mar"
+      ],
+      "nearestStationId": "station_022_central",
+      "attractions": [
+        {
+          "attractionId": "attraction_064_1",
+          "name": "Tezu Heritage Walk",
+          "category": "heritage",
+          "durationMinutes": 120,
+          "fromPrice": 250
+        },
+        {
+          "attractionId": "attraction_064_2",
+          "name": "Tezu Local Food Trail",
+          "category": "food",
+          "durationMinutes": 150,
+          "fromPrice": 500
+        },
+        {
+          "attractionId": "attraction_064_3",
+          "name": "Tezu City Landmark",
+          "category": "sightseeing",
+          "durationMinutes": 180,
+          "fromPrice": 750
+        }
+      ]
+    },
+    {
+      "destinationId": "destination_065",
+      "cityId": "city_arunachal_pradesh_roing",
+      "title": "Discover Roing",
+      "themes": [
+        "city_break",
+        "local_food"
+      ],
+      "bestMonths": [
+        "Oct",
+        "Nov",
+        "Dec",
+        "Jan",
+        "Feb",
+        "Mar"
+      ],
+      "nearestStationId": "station_023_central",
+      "attractions": [
+        {
+          "attractionId": "attraction_065_1",
+          "name": "Roing Heritage Walk",
+          "category": "heritage",
+          "durationMinutes": 120,
+          "fromPrice": 250
+        },
+        {
+          "attractionId": "attraction_065_2",
+          "name": "Roing Local Food Trail",
+          "category": "food",
+          "durationMinutes": 150,
+          "fromPrice": 500
+        },
+        {
+          "attractionId": "attraction_065_3",
+          "name": "Roing City Landmark",
+          "category": "sightseeing",
+          "durationMinutes": 180,
+          "fromPrice": 750
+        }
+      ]
+    },
+    {
+      "destinationId": "destination_066",
+      "cityId": "city_arunachal_pradesh_seppa",
+      "title": "Discover Seppa",
+      "themes": [
+        "city_break",
+        "local_food"
+      ],
+      "bestMonths": [
+        "Oct",
+        "Nov",
+        "Dec",
+        "Jan",
+        "Feb",
+        "Mar"
+      ],
+      "nearestStationId": "station_024_central",
+      "attractions": [
+        {
+          "attractionId": "attraction_066_1",
+          "name": "Seppa Heritage Walk",
+          "category": "heritage",
+          "durationMinutes": 120,
+          "fromPrice": 250
+        },
+        {
+          "attractionId": "attraction_066_2",
+          "name": "Seppa Local Food Trail",
+          "category": "food",
+          "durationMinutes": 150,
+          "fromPrice": 500
+        },
+        {
+          "attractionId": "attraction_066_3",
+          "name": "Seppa City Landmark",
+          "category": "sightseeing",
+          "durationMinutes": 180,
+          "fromPrice": 750
+        }
+      ]
+    },
+    {
+      "destinationId": "destination_067",
+      "cityId": "city_arunachal_pradesh_namsai",
+      "title": "Discover Namsai",
+      "themes": [
+        "city_break",
+        "local_food"
+      ],
+      "bestMonths": [
+        "Oct",
+        "Nov",
+        "Dec",
+        "Jan",
+        "Feb",
+        "Mar"
+      ],
+      "nearestStationId": "station_025_central",
+      "attractions": [
+        {
+          "attractionId": "attraction_067_1",
+          "name": "Namsai Heritage Walk",
+          "category": "heritage",
+          "durationMinutes": 120,
+          "fromPrice": 250
+        },
+        {
+          "attractionId": "attraction_067_2",
+          "name": "Namsai Local Food Trail",
+          "category": "food",
+          "durationMinutes": 150,
+          "fromPrice": 500
+        },
+        {
+          "attractionId": "attraction_067_3",
+          "name": "Namsai City Landmark",
+          "category": "sightseeing",
+          "durationMinutes": 180,
+          "fromPrice": 750
+        }
+      ]
+    },
+    {
+      "destinationId": "destination_068",
+      "cityId": "city_arunachal_pradesh_changlang",
+      "title": "Discover Changlang",
+      "themes": [
+        "city_break",
+        "local_food"
+      ],
+      "bestMonths": [
+        "Oct",
+        "Nov",
+        "Dec",
+        "Jan",
+        "Feb",
+        "Mar"
+      ],
+      "nearestStationId": "station_026_central",
+      "attractions": [
+        {
+          "attractionId": "attraction_068_1",
+          "name": "Changlang Heritage Walk",
+          "category": "heritage",
+          "durationMinutes": 120,
+          "fromPrice": 250
+        },
+        {
+          "attractionId": "attraction_068_2",
+          "name": "Changlang Local Food Trail",
+          "category": "food",
+          "durationMinutes": 150,
+          "fromPrice": 500
+        },
+        {
+          "attractionId": "attraction_068_3",
+          "name": "Changlang City Landmark",
+          "category": "sightseeing",
+          "durationMinutes": 180,
+          "fromPrice": 750
+        }
+      ]
+    },
+    {
+      "destinationId": "destination_069",
+      "cityId": "city_arunachal_pradesh_yingkiong",
+      "title": "Discover Yingkiong",
+      "themes": [
+        "city_break",
+        "local_food"
+      ],
+      "bestMonths": [
+        "Oct",
+        "Nov",
+        "Dec",
+        "Jan",
+        "Feb",
+        "Mar"
+      ],
+      "nearestStationId": "station_027_central",
+      "attractions": [
+        {
+          "attractionId": "attraction_069_1",
+          "name": "Yingkiong Heritage Walk",
+          "category": "heritage",
+          "durationMinutes": 120,
+          "fromPrice": 250
+        },
+        {
+          "attractionId": "attraction_069_2",
+          "name": "Yingkiong Local Food Trail",
+          "category": "food",
+          "durationMinutes": 150,
+          "fromPrice": 500
+        },
+        {
+          "attractionId": "attraction_069_3",
+          "name": "Yingkiong City Landmark",
+          "category": "sightseeing",
+          "durationMinutes": 180,
+          "fromPrice": 750
+        }
+      ]
+    },
+    {
+      "destinationId": "destination_070",
+      "cityId": "city_arunachal_pradesh_anini",
+      "title": "Discover Anini",
+      "themes": [
+        "city_break",
+        "local_food"
+      ],
+      "bestMonths": [
+        "Oct",
+        "Nov",
+        "Dec",
+        "Jan",
+        "Feb",
+        "Mar"
+      ],
+      "nearestStationId": "station_028_central",
+      "attractions": [
+        {
+          "attractionId": "attraction_070_1",
+          "name": "Anini Heritage Walk",
+          "category": "heritage",
+          "durationMinutes": 120,
+          "fromPrice": 250
+        },
+        {
+          "attractionId": "attraction_070_2",
+          "name": "Anini Local Food Trail",
+          "category": "food",
+          "durationMinutes": 150,
+          "fromPrice": 500
+        },
+        {
+          "attractionId": "attraction_070_3",
+          "name": "Anini City Landmark",
+          "category": "sightseeing",
+          "durationMinutes": 180,
+          "fromPrice": 750
+        }
+      ]
+    },
+    {
+      "destinationId": "destination_071",
+      "cityId": "city_assam_guwahati",
+      "title": "Discover Guwahati",
+      "themes": [
+        "city_break",
+        "local_food"
+      ],
+      "bestMonths": [
+        "Oct",
+        "Nov",
+        "Dec",
+        "Jan",
+        "Feb",
+        "Mar"
+      ],
+      "nearestStationId": "station_029_central",
+      "attractions": [
+        {
+          "attractionId": "attraction_071_1",
+          "name": "Guwahati Heritage Walk",
+          "category": "heritage",
+          "durationMinutes": 120,
+          "fromPrice": 250
+        },
+        {
+          "attractionId": "attraction_071_2",
+          "name": "Guwahati Local Food Trail",
+          "category": "food",
+          "durationMinutes": 150,
+          "fromPrice": 500
+        },
+        {
+          "attractionId": "attraction_071_3",
+          "name": "Guwahati City Landmark",
+          "category": "sightseeing",
+          "durationMinutes": 180,
+          "fromPrice": 750
+        }
+      ]
+    },
+    {
+      "destinationId": "destination_072",
+      "cityId": "city_assam_dibrugarh",
+      "title": "Discover Dibrugarh",
+      "themes": [
+        "city_break",
+        "local_food"
+      ],
+      "bestMonths": [
+        "Oct",
+        "Nov",
+        "Dec",
+        "Jan",
+        "Feb",
+        "Mar"
+      ],
+      "nearestStationId": "station_030_central",
+      "attractions": [
+        {
+          "attractionId": "attraction_072_1",
+          "name": "Dibrugarh Heritage Walk",
+          "category": "heritage",
+          "durationMinutes": 120,
+          "fromPrice": 250
+        },
+        {
+          "attractionId": "attraction_072_2",
+          "name": "Dibrugarh Local Food Trail",
+          "category": "food",
+          "durationMinutes": 150,
+          "fromPrice": 500
+        },
+        {
+          "attractionId": "attraction_072_3",
+          "name": "Dibrugarh City Landmark",
+          "category": "sightseeing",
+          "durationMinutes": 180,
+          "fromPrice": 750
+        }
+      ]
+    },
+    {
+      "destinationId": "destination_073",
+      "cityId": "city_assam_jorhat",
+      "title": "Discover Jorhat",
+      "themes": [
+        "city_break",
+        "local_food"
+      ],
+      "bestMonths": [
+        "Oct",
+        "Nov",
+        "Dec",
+        "Jan",
+        "Feb",
+        "Mar"
+      ],
+      "nearestStationId": "station_031_central",
+      "attractions": [
+        {
+          "attractionId": "attraction_073_1",
+          "name": "Jorhat Heritage Walk",
+          "category": "heritage",
+          "durationMinutes": 120,
+          "fromPrice": 250
+        },
+        {
+          "attractionId": "attraction_073_2",
+          "name": "Jorhat Local Food Trail",
+          "category": "food",
+          "durationMinutes": 150,
+          "fromPrice": 500
+        },
+        {
+          "attractionId": "attraction_073_3",
+          "name": "Jorhat City Landmark",
+          "category": "sightseeing",
+          "durationMinutes": 180,
+          "fromPrice": 750
+        }
+      ]
+    },
+    {
+      "destinationId": "destination_074",
+      "cityId": "city_assam_silchar",
+      "title": "Discover Silchar",
+      "themes": [
+        "city_break",
+        "local_food"
+      ],
+      "bestMonths": [
+        "Oct",
+        "Nov",
+        "Dec",
+        "Jan",
+        "Feb",
+        "Mar"
+      ],
+      "nearestStationId": "station_032_central",
+      "attractions": [
+        {
+          "attractionId": "attraction_074_1",
+          "name": "Silchar Heritage Walk",
+          "category": "heritage",
+          "durationMinutes": 120,
+          "fromPrice": 250
+        },
+        {
+          "attractionId": "attraction_074_2",
+          "name": "Silchar Local Food Trail",
+          "category": "food",
+          "durationMinutes": 150,
+          "fromPrice": 500
+        },
+        {
+          "attractionId": "attraction_074_3",
+          "name": "Silchar City Landmark",
+          "category": "sightseeing",
+          "durationMinutes": 180,
+          "fromPrice": 750
+        }
+      ]
+    },
+    {
+      "destinationId": "destination_075",
+      "cityId": "city_assam_tezpur",
+      "title": "Discover Tezpur",
+      "themes": [
+        "city_break",
+        "local_food"
+      ],
+      "bestMonths": [
+        "Oct",
+        "Nov",
+        "Dec",
+        "Jan",
+        "Feb",
+        "Mar"
+      ],
+      "nearestStationId": "station_033_central",
+      "attractions": [
+        {
+          "attractionId": "attraction_075_1",
+          "name": "Tezpur Heritage Walk",
+          "category": "heritage",
+          "durationMinutes": 120,
+          "fromPrice": 250
+        },
+        {
+          "attractionId": "attraction_075_2",
+          "name": "Tezpur Local Food Trail",
+          "category": "food",
+          "durationMinutes": 150,
+          "fromPrice": 500
+        },
+        {
+          "attractionId": "attraction_075_3",
+          "name": "Tezpur City Landmark",
+          "category": "sightseeing",
+          "durationMinutes": 180,
+          "fromPrice": 750
+        }
+      ]
+    },
+    {
+      "destinationId": "destination_076",
+      "cityId": "city_assam_nagaon",
+      "title": "Discover Nagaon",
+      "themes": [
+        "city_break",
+        "local_food"
+      ],
+      "bestMonths": [
+        "Oct",
+        "Nov",
+        "Dec",
+        "Jan",
+        "Feb",
+        "Mar"
+      ],
+      "nearestStationId": "station_034_central",
+      "attractions": [
+        {
+          "attractionId": "attraction_076_1",
+          "name": "Nagaon Heritage Walk",
+          "category": "heritage",
+          "durationMinutes": 120,
+          "fromPrice": 250
+        },
+        {
+          "attractionId": "attraction_076_2",
+          "name": "Nagaon Local Food Trail",
+          "category": "food",
+          "durationMinutes": 150,
+          "fromPrice": 500
+        },
+        {
+          "attractionId": "attraction_076_3",
+          "name": "Nagaon City Landmark",
+          "category": "sightseeing",
+          "durationMinutes": 180,
+          "fromPrice": 750
+        }
+      ]
+    },
+    {
+      "destinationId": "destination_077",
+      "cityId": "city_assam_tinsukia",
+      "title": "Discover Tinsukia",
+      "themes": [
+        "city_break",
+        "local_food"
+      ],
+      "bestMonths": [
+        "Oct",
+        "Nov",
+        "Dec",
+        "Jan",
+        "Feb",
+        "Mar"
+      ],
+      "nearestStationId": "station_036_central",
+      "attractions": [
+        {
+          "attractionId": "attraction_077_1",
+          "name": "Tinsukia Heritage Walk",
+          "category": "heritage",
+          "durationMinutes": 120,
+          "fromPrice": 250
+        },
+        {
+          "attractionId": "attraction_077_2",
+          "name": "Tinsukia Local Food Trail",
+          "category": "food",
+          "durationMinutes": 150,
+          "fromPrice": 500
+        },
+        {
+          "attractionId": "attraction_077_3",
+          "name": "Tinsukia City Landmark",
+          "category": "sightseeing",
+          "durationMinutes": 180,
+          "fromPrice": 750
+        }
+      ]
+    },
+    {
+      "destinationId": "destination_078",
+      "cityId": "city_assam_bongaigaon",
+      "title": "Discover Bongaigaon",
+      "themes": [
+        "city_break",
+        "local_food"
+      ],
+      "bestMonths": [
+        "Oct",
+        "Nov",
+        "Dec",
+        "Jan",
+        "Feb",
+        "Mar"
+      ],
+      "nearestStationId": "station_037_central",
+      "attractions": [
+        {
+          "attractionId": "attraction_078_1",
+          "name": "Bongaigaon Heritage Walk",
+          "category": "heritage",
+          "durationMinutes": 120,
+          "fromPrice": 250
+        },
+        {
+          "attractionId": "attraction_078_2",
+          "name": "Bongaigaon Local Food Trail",
+          "category": "food",
+          "durationMinutes": 150,
+          "fromPrice": 500
+        },
+        {
+          "attractionId": "attraction_078_3",
+          "name": "Bongaigaon City Landmark",
+          "category": "sightseeing",
+          "durationMinutes": 180,
+          "fromPrice": 750
+        }
+      ]
+    },
+    {
+      "destinationId": "destination_079",
+      "cityId": "city_assam_dhubri",
+      "title": "Discover Dhubri",
+      "themes": [
+        "city_break",
+        "local_food"
+      ],
+      "bestMonths": [
+        "Oct",
+        "Nov",
+        "Dec",
+        "Jan",
+        "Feb",
+        "Mar"
+      ],
+      "nearestStationId": "station_038_central",
+      "attractions": [
+        {
+          "attractionId": "attraction_079_1",
+          "name": "Dhubri Heritage Walk",
+          "category": "heritage",
+          "durationMinutes": 120,
+          "fromPrice": 250
+        },
+        {
+          "attractionId": "attraction_079_2",
+          "name": "Dhubri Local Food Trail",
+          "category": "food",
+          "durationMinutes": 150,
+          "fromPrice": 500
+        },
+        {
+          "attractionId": "attraction_079_3",
+          "name": "Dhubri City Landmark",
+          "category": "sightseeing",
+          "durationMinutes": 180,
+          "fromPrice": 750
+        }
+      ]
+    },
+    {
+      "destinationId": "destination_080",
+      "cityId": "city_assam_haflong",
+      "title": "Discover Haflong",
+      "themes": [
+        "city_break",
+        "local_food"
+      ],
+      "bestMonths": [
+        "Oct",
+        "Nov",
+        "Dec",
+        "Jan",
+        "Feb",
+        "Mar"
+      ],
+      "nearestStationId": "station_039_central",
+      "attractions": [
+        {
+          "attractionId": "attraction_080_1",
+          "name": "Haflong Heritage Walk",
+          "category": "heritage",
+          "durationMinutes": 120,
+          "fromPrice": 250
+        },
+        {
+          "attractionId": "attraction_080_2",
+          "name": "Haflong Local Food Trail",
+          "category": "food",
+          "durationMinutes": 150,
+          "fromPrice": 500
+        },
+        {
+          "attractionId": "attraction_080_3",
+          "name": "Haflong City Landmark",
+          "category": "sightseeing",
+          "durationMinutes": 180,
+          "fromPrice": 750
+        }
+      ]
+    },
+    {
+      "destinationId": "destination_081",
+      "cityId": "city_assam_goalpara",
+      "title": "Discover Goalpara",
+      "themes": [
+        "city_break",
+        "local_food"
+      ],
+      "bestMonths": [
+        "Oct",
+        "Nov",
+        "Dec",
+        "Jan",
+        "Feb",
+        "Mar"
+      ],
+      "nearestStationId": "station_040_central",
+      "attractions": [
+        {
+          "attractionId": "attraction_081_1",
+          "name": "Goalpara Heritage Walk",
+          "category": "heritage",
+          "durationMinutes": 120,
+          "fromPrice": 250
+        },
+        {
+          "attractionId": "attraction_081_2",
+          "name": "Goalpara Local Food Trail",
+          "category": "food",
+          "durationMinutes": 150,
+          "fromPrice": 500
+        },
+        {
+          "attractionId": "attraction_081_3",
+          "name": "Goalpara City Landmark",
+          "category": "sightseeing",
+          "durationMinutes": 180,
+          "fromPrice": 750
+        }
+      ]
+    },
+    {
+      "destinationId": "destination_082",
+      "cityId": "city_assam_barpeta",
+      "title": "Discover Barpeta",
+      "themes": [
+        "city_break",
+        "local_food"
+      ],
+      "bestMonths": [
+        "Oct",
+        "Nov",
+        "Dec",
+        "Jan",
+        "Feb",
+        "Mar"
+      ],
+      "nearestStationId": "station_041_central",
+      "attractions": [
+        {
+          "attractionId": "attraction_082_1",
+          "name": "Barpeta Heritage Walk",
+          "category": "heritage",
+          "durationMinutes": 120,
+          "fromPrice": 250
+        },
+        {
+          "attractionId": "attraction_082_2",
+          "name": "Barpeta Local Food Trail",
+          "category": "food",
+          "durationMinutes": 150,
+          "fromPrice": 500
+        },
+        {
+          "attractionId": "attraction_082_3",
+          "name": "Barpeta City Landmark",
+          "category": "sightseeing",
+          "durationMinutes": 180,
+          "fromPrice": 750
+        }
+      ]
+    },
+    {
+      "destinationId": "destination_083",
+      "cityId": "city_assam_karimganj",
+      "title": "Discover Karimganj",
+      "themes": [
+        "city_break",
+        "local_food"
+      ],
+      "bestMonths": [
+        "Oct",
+        "Nov",
+        "Dec",
+        "Jan",
+        "Feb",
+        "Mar"
+      ],
+      "nearestStationId": "station_042_central",
+      "attractions": [
+        {
+          "attractionId": "attraction_083_1",
+          "name": "Karimganj Heritage Walk",
+          "category": "heritage",
+          "durationMinutes": 120,
+          "fromPrice": 250
+        },
+        {
+          "attractionId": "attraction_083_2",
+          "name": "Karimganj Local Food Trail",
+          "category": "food",
+          "durationMinutes": 150,
+          "fromPrice": 500
+        },
+        {
+          "attractionId": "attraction_083_3",
+          "name": "Karimganj City Landmark",
+          "category": "sightseeing",
+          "durationMinutes": 180,
+          "fromPrice": 750
+        }
+      ]
+    },
+    {
+      "destinationId": "destination_084",
+      "cityId": "city_bihar_patna",
+      "title": "Discover Patna",
+      "themes": [
+        "city_break",
+        "local_food"
+      ],
+      "bestMonths": [
+        "Oct",
+        "Nov",
+        "Dec",
+        "Jan",
+        "Feb",
+        "Mar"
+      ],
+      "nearestStationId": "station_043_central",
+      "attractions": [
+        {
+          "attractionId": "attraction_084_1",
+          "name": "Patna Heritage Walk",
+          "category": "heritage",
+          "durationMinutes": 120,
+          "fromPrice": 250
+        },
+        {
+          "attractionId": "attraction_084_2",
+          "name": "Patna Local Food Trail",
+          "category": "food",
+          "durationMinutes": 150,
+          "fromPrice": 500
+        },
+        {
+          "attractionId": "attraction_084_3",
+          "name": "Patna City Landmark",
+          "category": "sightseeing",
+          "durationMinutes": 180,
+          "fromPrice": 750
+        }
+      ]
+    },
+    {
+      "destinationId": "destination_085",
+      "cityId": "city_bihar_muzaffarpur",
+      "title": "Discover Muzaffarpur",
+      "themes": [
+        "city_break",
+        "local_food"
+      ],
+      "bestMonths": [
+        "Oct",
+        "Nov",
+        "Dec",
+        "Jan",
+        "Feb",
+        "Mar"
+      ],
+      "nearestStationId": "station_045_central",
+      "attractions": [
+        {
+          "attractionId": "attraction_085_1",
+          "name": "Muzaffarpur Heritage Walk",
+          "category": "heritage",
+          "durationMinutes": 120,
+          "fromPrice": 250
+        },
+        {
+          "attractionId": "attraction_085_2",
+          "name": "Muzaffarpur Local Food Trail",
+          "category": "food",
+          "durationMinutes": 150,
+          "fromPrice": 500
+        },
+        {
+          "attractionId": "attraction_085_3",
+          "name": "Muzaffarpur City Landmark",
+          "category": "sightseeing",
+          "durationMinutes": 180,
+          "fromPrice": 750
+        }
+      ]
+    },
+    {
+      "destinationId": "destination_086",
+      "cityId": "city_bihar_bhagalpur",
+      "title": "Discover Bhagalpur",
+      "themes": [
+        "city_break",
+        "local_food"
+      ],
+      "bestMonths": [
+        "Oct",
+        "Nov",
+        "Dec",
+        "Jan",
+        "Feb",
+        "Mar"
+      ],
+      "nearestStationId": "station_046_central",
+      "attractions": [
+        {
+          "attractionId": "attraction_086_1",
+          "name": "Bhagalpur Heritage Walk",
+          "category": "heritage",
+          "durationMinutes": 120,
+          "fromPrice": 250
+        },
+        {
+          "attractionId": "attraction_086_2",
+          "name": "Bhagalpur Local Food Trail",
+          "category": "food",
+          "durationMinutes": 150,
+          "fromPrice": 500
+        },
+        {
+          "attractionId": "attraction_086_3",
+          "name": "Bhagalpur City Landmark",
+          "category": "sightseeing",
+          "durationMinutes": 180,
+          "fromPrice": 750
+        }
+      ]
+    },
+    {
+      "destinationId": "destination_087",
+      "cityId": "city_bihar_darbhanga",
+      "title": "Discover Darbhanga",
+      "themes": [
+        "city_break",
+        "local_food"
+      ],
+      "bestMonths": [
+        "Oct",
+        "Nov",
+        "Dec",
+        "Jan",
+        "Feb",
+        "Mar"
+      ],
+      "nearestStationId": "station_047_central",
+      "attractions": [
+        {
+          "attractionId": "attraction_087_1",
+          "name": "Darbhanga Heritage Walk",
+          "category": "heritage",
+          "durationMinutes": 120,
+          "fromPrice": 250
+        },
+        {
+          "attractionId": "attraction_087_2",
+          "name": "Darbhanga Local Food Trail",
+          "category": "food",
+          "durationMinutes": 150,
+          "fromPrice": 500
+        },
+        {
+          "attractionId": "attraction_087_3",
+          "name": "Darbhanga City Landmark",
+          "category": "sightseeing",
+          "durationMinutes": 180,
+          "fromPrice": 750
+        }
+      ]
+    },
+    {
+      "destinationId": "destination_088",
+      "cityId": "city_bihar_purnia",
+      "title": "Discover Purnia",
+      "themes": [
+        "city_break",
+        "local_food"
+      ],
+      "bestMonths": [
+        "Oct",
+        "Nov",
+        "Dec",
+        "Jan",
+        "Feb",
+        "Mar"
+      ],
+      "nearestStationId": "station_048_central",
+      "attractions": [
+        {
+          "attractionId": "attraction_088_1",
+          "name": "Purnia Heritage Walk",
+          "category": "heritage",
+          "durationMinutes": 120,
+          "fromPrice": 250
+        },
+        {
+          "attractionId": "attraction_088_2",
+          "name": "Purnia Local Food Trail",
+          "category": "food",
+          "durationMinutes": 150,
+          "fromPrice": 500
+        },
+        {
+          "attractionId": "attraction_088_3",
+          "name": "Purnia City Landmark",
+          "category": "sightseeing",
+          "durationMinutes": 180,
+          "fromPrice": 750
+        }
+      ]
+    },
+    {
+      "destinationId": "destination_089",
+      "cityId": "city_bihar_ara",
+      "title": "Discover Ara",
+      "themes": [
+        "city_break",
+        "local_food"
+      ],
+      "bestMonths": [
+        "Oct",
+        "Nov",
+        "Dec",
+        "Jan",
+        "Feb",
+        "Mar"
+      ],
+      "nearestStationId": "station_049_central",
+      "attractions": [
+        {
+          "attractionId": "attraction_089_1",
+          "name": "Ara Heritage Walk",
+          "category": "heritage",
+          "durationMinutes": 120,
+          "fromPrice": 250
+        },
+        {
+          "attractionId": "attraction_089_2",
+          "name": "Ara Local Food Trail",
+          "category": "food",
+          "durationMinutes": 150,
+          "fromPrice": 500
+        },
+        {
+          "attractionId": "attraction_089_3",
+          "name": "Ara City Landmark",
+          "category": "sightseeing",
+          "durationMinutes": 180,
+          "fromPrice": 750
+        }
+      ]
+    },
+    {
+      "destinationId": "destination_090",
+      "cityId": "city_bihar_begusarai",
+      "title": "Discover Begusarai",
+      "themes": [
+        "city_break",
+        "local_food"
+      ],
+      "bestMonths": [
+        "Oct",
+        "Nov",
+        "Dec",
+        "Jan",
+        "Feb",
+        "Mar"
+      ],
+      "nearestStationId": "station_050_central",
+      "attractions": [
+        {
+          "attractionId": "attraction_090_1",
+          "name": "Begusarai Heritage Walk",
+          "category": "heritage",
+          "durationMinutes": 120,
+          "fromPrice": 250
+        },
+        {
+          "attractionId": "attraction_090_2",
+          "name": "Begusarai Local Food Trail",
+          "category": "food",
+          "durationMinutes": 150,
+          "fromPrice": 500
+        },
+        {
+          "attractionId": "attraction_090_3",
+          "name": "Begusarai City Landmark",
+          "category": "sightseeing",
+          "durationMinutes": 180,
+          "fromPrice": 750
+        }
+      ]
+    },
+    {
+      "destinationId": "destination_091",
+      "cityId": "city_bihar_bihar_sharif",
+      "title": "Discover Bihar Sharif",
+      "themes": [
+        "city_break",
+        "local_food"
+      ],
+      "bestMonths": [
+        "Oct",
+        "Nov",
+        "Dec",
+        "Jan",
+        "Feb",
+        "Mar"
+      ],
+      "nearestStationId": "station_051_central",
+      "attractions": [
+        {
+          "attractionId": "attraction_091_1",
+          "name": "Bihar Sharif Heritage Walk",
+          "category": "heritage",
+          "durationMinutes": 120,
+          "fromPrice": 250
+        },
+        {
+          "attractionId": "attraction_091_2",
+          "name": "Bihar Sharif Local Food Trail",
+          "category": "food",
+          "durationMinutes": 150,
+          "fromPrice": 500
+        },
+        {
+          "attractionId": "attraction_091_3",
+          "name": "Bihar Sharif City Landmark",
+          "category": "sightseeing",
+          "durationMinutes": 180,
+          "fromPrice": 750
+        }
+      ]
+    },
+    {
+      "destinationId": "destination_092",
+      "cityId": "city_bihar_katihar",
+      "title": "Discover Katihar",
+      "themes": [
+        "city_break",
+        "local_food"
+      ],
+      "bestMonths": [
+        "Oct",
+        "Nov",
+        "Dec",
+        "Jan",
+        "Feb",
+        "Mar"
+      ],
+      "nearestStationId": "station_052_central",
+      "attractions": [
+        {
+          "attractionId": "attraction_092_1",
+          "name": "Katihar Heritage Walk",
+          "category": "heritage",
+          "durationMinutes": 120,
+          "fromPrice": 250
+        },
+        {
+          "attractionId": "attraction_092_2",
+          "name": "Katihar Local Food Trail",
+          "category": "food",
+          "durationMinutes": 150,
+          "fromPrice": 500
+        },
+        {
+          "attractionId": "attraction_092_3",
+          "name": "Katihar City Landmark",
+          "category": "sightseeing",
+          "durationMinutes": 180,
+          "fromPrice": 750
+        }
+      ]
+    },
+    {
+      "destinationId": "destination_093",
+      "cityId": "city_bihar_munger",
+      "title": "Discover Munger",
+      "themes": [
+        "city_break",
+        "local_food"
+      ],
+      "bestMonths": [
+        "Oct",
+        "Nov",
+        "Dec",
+        "Jan",
+        "Feb",
+        "Mar"
+      ],
+      "nearestStationId": "station_053_central",
+      "attractions": [
+        {
+          "attractionId": "attraction_093_1",
+          "name": "Munger Heritage Walk",
+          "category": "heritage",
+          "durationMinutes": 120,
+          "fromPrice": 250
+        },
+        {
+          "attractionId": "attraction_093_2",
+          "name": "Munger Local Food Trail",
+          "category": "food",
+          "durationMinutes": 150,
+          "fromPrice": 500
+        },
+        {
+          "attractionId": "attraction_093_3",
+          "name": "Munger City Landmark",
+          "category": "sightseeing",
+          "durationMinutes": 180,
+          "fromPrice": 750
+        }
+      ]
+    },
+    {
+      "destinationId": "destination_094",
+      "cityId": "city_bihar_sasaram",
+      "title": "Discover Sasaram",
+      "themes": [
+        "city_break",
+        "local_food"
+      ],
+      "bestMonths": [
+        "Oct",
+        "Nov",
+        "Dec",
+        "Jan",
+        "Feb",
+        "Mar"
+      ],
+      "nearestStationId": "station_054_central",
+      "attractions": [
+        {
+          "attractionId": "attraction_094_1",
+          "name": "Sasaram Heritage Walk",
+          "category": "heritage",
+          "durationMinutes": 120,
+          "fromPrice": 250
+        },
+        {
+          "attractionId": "attraction_094_2",
+          "name": "Sasaram Local Food Trail",
+          "category": "food",
+          "durationMinutes": 150,
+          "fromPrice": 500
+        },
+        {
+          "attractionId": "attraction_094_3",
+          "name": "Sasaram City Landmark",
+          "category": "sightseeing",
+          "durationMinutes": 180,
+          "fromPrice": 750
+        }
+      ]
+    },
+    {
+      "destinationId": "destination_095",
+      "cityId": "city_bihar_samastipur",
+      "title": "Discover Samastipur",
+      "themes": [
+        "city_break",
+        "local_food"
+      ],
+      "bestMonths": [
+        "Oct",
+        "Nov",
+        "Dec",
+        "Jan",
+        "Feb",
+        "Mar"
+      ],
+      "nearestStationId": "station_055_central",
+      "attractions": [
+        {
+          "attractionId": "attraction_095_1",
+          "name": "Samastipur Heritage Walk",
+          "category": "heritage",
+          "durationMinutes": 120,
+          "fromPrice": 250
+        },
+        {
+          "attractionId": "attraction_095_2",
+          "name": "Samastipur Local Food Trail",
+          "category": "food",
+          "durationMinutes": 150,
+          "fromPrice": 500
+        },
+        {
+          "attractionId": "attraction_095_3",
+          "name": "Samastipur City Landmark",
+          "category": "sightseeing",
+          "durationMinutes": 180,
+          "fromPrice": 750
+        }
+      ]
+    },
+    {
+      "destinationId": "destination_096",
+      "cityId": "city_bihar_bettiah",
+      "title": "Discover Bettiah",
+      "themes": [
+        "city_break",
+        "local_food"
+      ],
+      "bestMonths": [
+        "Oct",
+        "Nov",
+        "Dec",
+        "Jan",
+        "Feb",
+        "Mar"
+      ],
+      "nearestStationId": "station_056_central",
+      "attractions": [
+        {
+          "attractionId": "attraction_096_1",
+          "name": "Bettiah Heritage Walk",
+          "category": "heritage",
+          "durationMinutes": 120,
+          "fromPrice": 250
+        },
+        {
+          "attractionId": "attraction_096_2",
+          "name": "Bettiah Local Food Trail",
+          "category": "food",
+          "durationMinutes": 150,
+          "fromPrice": 500
+        },
+        {
+          "attractionId": "attraction_096_3",
+          "name": "Bettiah City Landmark",
+          "category": "sightseeing",
+          "durationMinutes": 180,
+          "fromPrice": 750
+        }
+      ]
+    },
+    {
+      "destinationId": "destination_097",
+      "cityId": "city_chhattisgarh_raipur",
+      "title": "Discover Raipur",
+      "themes": [
+        "city_break",
+        "local_food"
+      ],
+      "bestMonths": [
+        "Oct",
+        "Nov",
+        "Dec",
+        "Jan",
+        "Feb",
+        "Mar"
+      ],
+      "nearestStationId": "station_057_central",
+      "attractions": [
+        {
+          "attractionId": "attraction_097_1",
+          "name": "Raipur Heritage Walk",
+          "category": "heritage",
+          "durationMinutes": 120,
+          "fromPrice": 250
+        },
+        {
+          "attractionId": "attraction_097_2",
+          "name": "Raipur Local Food Trail",
+          "category": "food",
+          "durationMinutes": 150,
+          "fromPrice": 500
+        },
+        {
+          "attractionId": "attraction_097_3",
+          "name": "Raipur City Landmark",
+          "category": "sightseeing",
+          "durationMinutes": 180,
+          "fromPrice": 750
+        }
+      ]
+    },
+    {
+      "destinationId": "destination_098",
+      "cityId": "city_chhattisgarh_bilaspur",
+      "title": "Discover Bilaspur",
+      "themes": [
+        "city_break",
+        "local_food"
+      ],
+      "bestMonths": [
+        "Oct",
+        "Nov",
+        "Dec",
+        "Jan",
+        "Feb",
+        "Mar"
+      ],
+      "nearestStationId": "station_058_central",
+      "attractions": [
+        {
+          "attractionId": "attraction_098_1",
+          "name": "Bilaspur Heritage Walk",
+          "category": "heritage",
+          "durationMinutes": 120,
+          "fromPrice": 250
+        },
+        {
+          "attractionId": "attraction_098_2",
+          "name": "Bilaspur Local Food Trail",
+          "category": "food",
+          "durationMinutes": 150,
+          "fromPrice": 500
+        },
+        {
+          "attractionId": "attraction_098_3",
+          "name": "Bilaspur City Landmark",
+          "category": "sightseeing",
+          "durationMinutes": 180,
+          "fromPrice": 750
+        }
+      ]
+    },
+    {
+      "destinationId": "destination_099",
+      "cityId": "city_chhattisgarh_durg",
+      "title": "Discover Durg",
+      "themes": [
+        "city_break",
+        "local_food"
+      ],
+      "bestMonths": [
+        "Oct",
+        "Nov",
+        "Dec",
+        "Jan",
+        "Feb",
+        "Mar"
+      ],
+      "nearestStationId": "station_059_central",
+      "attractions": [
+        {
+          "attractionId": "attraction_099_1",
+          "name": "Durg Heritage Walk",
+          "category": "heritage",
+          "durationMinutes": 120,
+          "fromPrice": 250
+        },
+        {
+          "attractionId": "attraction_099_2",
+          "name": "Durg Local Food Trail",
+          "category": "food",
+          "durationMinutes": 150,
+          "fromPrice": 500
+        },
+        {
+          "attractionId": "attraction_099_3",
+          "name": "Durg City Landmark",
+          "category": "sightseeing",
+          "durationMinutes": 180,
+          "fromPrice": 750
+        }
+      ]
+    },
+    {
+      "destinationId": "destination_100",
+      "cityId": "city_chhattisgarh_bhilai",
+      "title": "Discover Bhilai",
+      "themes": [
+        "city_break",
+        "local_food"
+      ],
+      "bestMonths": [
+        "Oct",
+        "Nov",
+        "Dec",
+        "Jan",
+        "Feb",
+        "Mar"
+      ],
+      "nearestStationId": "station_060_central",
+      "attractions": [
+        {
+          "attractionId": "attraction_100_1",
+          "name": "Bhilai Heritage Walk",
+          "category": "heritage",
+          "durationMinutes": 120,
+          "fromPrice": 250
+        },
+        {
+          "attractionId": "attraction_100_2",
+          "name": "Bhilai Local Food Trail",
+          "category": "food",
+          "durationMinutes": 150,
+          "fromPrice": 500
+        },
+        {
+          "attractionId": "attraction_100_3",
+          "name": "Bhilai City Landmark",
+          "category": "sightseeing",
+          "durationMinutes": 180,
+          "fromPrice": 750
+        }
+      ]
+    },
+    {
+      "destinationId": "destination_101",
+      "cityId": "city_chhattisgarh_korba",
+      "title": "Discover Korba",
+      "themes": [
+        "city_break",
+        "local_food"
+      ],
+      "bestMonths": [
+        "Oct",
+        "Nov",
+        "Dec",
+        "Jan",
+        "Feb",
+        "Mar"
+      ],
+      "nearestStationId": "station_061_central",
+      "attractions": [
+        {
+          "attractionId": "attraction_101_1",
+          "name": "Korba Heritage Walk",
+          "category": "heritage",
+          "durationMinutes": 120,
+          "fromPrice": 250
+        },
+        {
+          "attractionId": "attraction_101_2",
+          "name": "Korba Local Food Trail",
+          "category": "food",
+          "durationMinutes": 150,
+          "fromPrice": 500
+        },
+        {
+          "attractionId": "attraction_101_3",
+          "name": "Korba City Landmark",
+          "category": "sightseeing",
+          "durationMinutes": 180,
+          "fromPrice": 750
+        }
+      ]
+    },
+    {
+      "destinationId": "destination_102",
+      "cityId": "city_chhattisgarh_raigarh",
+      "title": "Discover Raigarh",
+      "themes": [
+        "city_break",
+        "local_food"
+      ],
+      "bestMonths": [
+        "Oct",
+        "Nov",
+        "Dec",
+        "Jan",
+        "Feb",
+        "Mar"
+      ],
+      "nearestStationId": "station_063_central",
+      "attractions": [
+        {
+          "attractionId": "attraction_102_1",
+          "name": "Raigarh Heritage Walk",
+          "category": "heritage",
+          "durationMinutes": 120,
+          "fromPrice": 250
+        },
+        {
+          "attractionId": "attraction_102_2",
+          "name": "Raigarh Local Food Trail",
+          "category": "food",
+          "durationMinutes": 150,
+          "fromPrice": 500
+        },
+        {
+          "attractionId": "attraction_102_3",
+          "name": "Raigarh City Landmark",
+          "category": "sightseeing",
+          "durationMinutes": 180,
+          "fromPrice": 750
+        }
+      ]
+    },
+    {
+      "destinationId": "destination_103",
+      "cityId": "city_chhattisgarh_rajnandgaon",
+      "title": "Discover Rajnandgaon",
+      "themes": [
+        "city_break",
+        "local_food"
+      ],
+      "bestMonths": [
+        "Oct",
+        "Nov",
+        "Dec",
+        "Jan",
+        "Feb",
+        "Mar"
+      ],
+      "nearestStationId": "station_064_central",
+      "attractions": [
+        {
+          "attractionId": "attraction_103_1",
+          "name": "Rajnandgaon Heritage Walk",
+          "category": "heritage",
+          "durationMinutes": 120,
+          "fromPrice": 250
+        },
+        {
+          "attractionId": "attraction_103_2",
+          "name": "Rajnandgaon Local Food Trail",
+          "category": "food",
+          "durationMinutes": 150,
+          "fromPrice": 500
+        },
+        {
+          "attractionId": "attraction_103_3",
+          "name": "Rajnandgaon City Landmark",
+          "category": "sightseeing",
+          "durationMinutes": 180,
+          "fromPrice": 750
+        }
+      ]
+    },
+    {
+      "destinationId": "destination_104",
+      "cityId": "city_chhattisgarh_ambikapur",
+      "title": "Discover Ambikapur",
+      "themes": [
+        "city_break",
+        "local_food"
+      ],
+      "bestMonths": [
+        "Oct",
+        "Nov",
+        "Dec",
+        "Jan",
+        "Feb",
+        "Mar"
+      ],
+      "nearestStationId": "station_065_central",
+      "attractions": [
+        {
+          "attractionId": "attraction_104_1",
+          "name": "Ambikapur Heritage Walk",
+          "category": "heritage",
+          "durationMinutes": 120,
+          "fromPrice": 250
+        },
+        {
+          "attractionId": "attraction_104_2",
+          "name": "Ambikapur Local Food Trail",
+          "category": "food",
+          "durationMinutes": 150,
+          "fromPrice": 500
+        },
+        {
+          "attractionId": "attraction_104_3",
+          "name": "Ambikapur City Landmark",
+          "category": "sightseeing",
+          "durationMinutes": 180,
+          "fromPrice": 750
+        }
+      ]
+    },
+    {
+      "destinationId": "destination_105",
+      "cityId": "city_chhattisgarh_dhamtari",
+      "title": "Discover Dhamtari",
+      "themes": [
+        "city_break",
+        "local_food"
+      ],
+      "bestMonths": [
+        "Oct",
+        "Nov",
+        "Dec",
+        "Jan",
+        "Feb",
+        "Mar"
+      ],
+      "nearestStationId": "station_066_central",
+      "attractions": [
+        {
+          "attractionId": "attraction_105_1",
+          "name": "Dhamtari Heritage Walk",
+          "category": "heritage",
+          "durationMinutes": 120,
+          "fromPrice": 250
+        },
+        {
+          "attractionId": "attraction_105_2",
+          "name": "Dhamtari Local Food Trail",
+          "category": "food",
+          "durationMinutes": 150,
+          "fromPrice": 500
+        },
+        {
+          "attractionId": "attraction_105_3",
+          "name": "Dhamtari City Landmark",
+          "category": "sightseeing",
+          "durationMinutes": 180,
+          "fromPrice": 750
+        }
+      ]
+    },
+    {
+      "destinationId": "destination_106",
+      "cityId": "city_chhattisgarh_mahasamund",
+      "title": "Discover Mahasamund",
+      "themes": [
+        "city_break",
+        "local_food"
+      ],
+      "bestMonths": [
+        "Oct",
+        "Nov",
+        "Dec",
+        "Jan",
+        "Feb",
+        "Mar"
+      ],
+      "nearestStationId": "station_067_central",
+      "attractions": [
+        {
+          "attractionId": "attraction_106_1",
+          "name": "Mahasamund Heritage Walk",
+          "category": "heritage",
+          "durationMinutes": 120,
+          "fromPrice": 250
+        },
+        {
+          "attractionId": "attraction_106_2",
+          "name": "Mahasamund Local Food Trail",
+          "category": "food",
+          "durationMinutes": 150,
+          "fromPrice": 500
+        },
+        {
+          "attractionId": "attraction_106_3",
+          "name": "Mahasamund City Landmark",
+          "category": "sightseeing",
+          "durationMinutes": 180,
+          "fromPrice": 750
+        }
+      ]
+    },
+    {
+      "destinationId": "destination_107",
+      "cityId": "city_chhattisgarh_kanker",
+      "title": "Discover Kanker",
+      "themes": [
+        "city_break",
+        "local_food"
+      ],
+      "bestMonths": [
+        "Oct",
+        "Nov",
+        "Dec",
+        "Jan",
+        "Feb",
+        "Mar"
+      ],
+      "nearestStationId": "station_068_central",
+      "attractions": [
+        {
+          "attractionId": "attraction_107_1",
+          "name": "Kanker Heritage Walk",
+          "category": "heritage",
+          "durationMinutes": 120,
+          "fromPrice": 250
+        },
+        {
+          "attractionId": "attraction_107_2",
+          "name": "Kanker Local Food Trail",
+          "category": "food",
+          "durationMinutes": 150,
+          "fromPrice": 500
+        },
+        {
+          "attractionId": "attraction_107_3",
+          "name": "Kanker City Landmark",
+          "category": "sightseeing",
+          "durationMinutes": 180,
+          "fromPrice": 750
+        }
+      ]
+    },
+    {
+      "destinationId": "destination_108",
+      "cityId": "city_chhattisgarh_dantewada",
+      "title": "Discover Dantewada",
+      "themes": [
+        "city_break",
+        "local_food"
+      ],
+      "bestMonths": [
+        "Oct",
+        "Nov",
+        "Dec",
+        "Jan",
+        "Feb",
+        "Mar"
+      ],
+      "nearestStationId": "station_069_central",
+      "attractions": [
+        {
+          "attractionId": "attraction_108_1",
+          "name": "Dantewada Heritage Walk",
+          "category": "heritage",
+          "durationMinutes": 120,
+          "fromPrice": 250
+        },
+        {
+          "attractionId": "attraction_108_2",
+          "name": "Dantewada Local Food Trail",
+          "category": "food",
+          "durationMinutes": 150,
+          "fromPrice": 500
+        },
+        {
+          "attractionId": "attraction_108_3",
+          "name": "Dantewada City Landmark",
+          "category": "sightseeing",
+          "durationMinutes": 180,
+          "fromPrice": 750
+        }
+      ]
+    },
+    {
+      "destinationId": "destination_109",
+      "cityId": "city_chhattisgarh_surguja",
+      "title": "Discover Surguja",
+      "themes": [
+        "city_break",
+        "local_food"
+      ],
+      "bestMonths": [
+        "Oct",
+        "Nov",
+        "Dec",
+        "Jan",
+        "Feb",
+        "Mar"
+      ],
+      "nearestStationId": "station_070_central",
+      "attractions": [
+        {
+          "attractionId": "attraction_109_1",
+          "name": "Surguja Heritage Walk",
+          "category": "heritage",
+          "durationMinutes": 120,
+          "fromPrice": 250
+        },
+        {
+          "attractionId": "attraction_109_2",
+          "name": "Surguja Local Food Trail",
+          "category": "food",
+          "durationMinutes": 150,
+          "fromPrice": 500
+        },
+        {
+          "attractionId": "attraction_109_3",
+          "name": "Surguja City Landmark",
+          "category": "sightseeing",
+          "durationMinutes": 180,
+          "fromPrice": 750
+        }
+      ]
+    },
+    {
+      "destinationId": "destination_110",
+      "cityId": "city_goa_panaji",
+      "title": "Discover Panaji",
+      "themes": [
+        "city_break",
+        "local_food"
+      ],
+      "bestMonths": [
+        "Oct",
+        "Nov",
+        "Dec",
+        "Jan",
+        "Feb",
+        "Mar"
+      ],
+      "nearestStationId": "station_071_central",
+      "attractions": [
+        {
+          "attractionId": "attraction_110_1",
+          "name": "Panaji Heritage Walk",
+          "category": "heritage",
+          "durationMinutes": 120,
+          "fromPrice": 250
+        },
+        {
+          "attractionId": "attraction_110_2",
+          "name": "Panaji Local Food Trail",
+          "category": "food",
+          "durationMinutes": 150,
+          "fromPrice": 500
+        },
+        {
+          "attractionId": "attraction_110_3",
+          "name": "Panaji City Landmark",
+          "category": "sightseeing",
+          "durationMinutes": 180,
+          "fromPrice": 750
+        }
+      ]
+    },
+    {
+      "destinationId": "destination_111",
+      "cityId": "city_goa_margao",
+      "title": "Discover Margao",
+      "themes": [
+        "city_break",
+        "local_food"
+      ],
+      "bestMonths": [
+        "Oct",
+        "Nov",
+        "Dec",
+        "Jan",
+        "Feb",
+        "Mar"
+      ],
+      "nearestStationId": "station_072_central",
+      "attractions": [
+        {
+          "attractionId": "attraction_111_1",
+          "name": "Margao Heritage Walk",
+          "category": "heritage",
+          "durationMinutes": 120,
+          "fromPrice": 250
+        },
+        {
+          "attractionId": "attraction_111_2",
+          "name": "Margao Local Food Trail",
+          "category": "food",
+          "durationMinutes": 150,
+          "fromPrice": 500
+        },
+        {
+          "attractionId": "attraction_111_3",
+          "name": "Margao City Landmark",
+          "category": "sightseeing",
+          "durationMinutes": 180,
+          "fromPrice": 750
+        }
+      ]
+    },
+    {
+      "destinationId": "destination_112",
+      "cityId": "city_goa_vasco_da_gama",
+      "title": "Discover Vasco da Gama",
+      "themes": [
+        "city_break",
+        "local_food"
+      ],
+      "bestMonths": [
+        "Oct",
+        "Nov",
+        "Dec",
+        "Jan",
+        "Feb",
+        "Mar"
+      ],
+      "nearestStationId": "station_073_central",
+      "attractions": [
+        {
+          "attractionId": "attraction_112_1",
+          "name": "Vasco da Gama Heritage Walk",
+          "category": "heritage",
+          "durationMinutes": 120,
+          "fromPrice": 250
+        },
+        {
+          "attractionId": "attraction_112_2",
+          "name": "Vasco da Gama Local Food Trail",
+          "category": "food",
+          "durationMinutes": 150,
+          "fromPrice": 500
+        },
+        {
+          "attractionId": "attraction_112_3",
+          "name": "Vasco da Gama City Landmark",
+          "category": "sightseeing",
+          "durationMinutes": 180,
+          "fromPrice": 750
+        }
+      ]
+    },
+    {
+      "destinationId": "destination_113",
+      "cityId": "city_goa_mapusa",
+      "title": "Discover Mapusa",
+      "themes": [
+        "city_break",
+        "local_food"
+      ],
+      "bestMonths": [
+        "Oct",
+        "Nov",
+        "Dec",
+        "Jan",
+        "Feb",
+        "Mar"
+      ],
+      "nearestStationId": "station_074_central",
+      "attractions": [
+        {
+          "attractionId": "attraction_113_1",
+          "name": "Mapusa Heritage Walk",
+          "category": "heritage",
+          "durationMinutes": 120,
+          "fromPrice": 250
+        },
+        {
+          "attractionId": "attraction_113_2",
+          "name": "Mapusa Local Food Trail",
+          "category": "food",
+          "durationMinutes": 150,
+          "fromPrice": 500
+        },
+        {
+          "attractionId": "attraction_113_3",
+          "name": "Mapusa City Landmark",
+          "category": "sightseeing",
+          "durationMinutes": 180,
+          "fromPrice": 750
+        }
+      ]
+    },
+    {
+      "destinationId": "destination_114",
+      "cityId": "city_goa_ponda",
+      "title": "Discover Ponda",
+      "themes": [
+        "city_break",
+        "local_food"
+      ],
+      "bestMonths": [
+        "Oct",
+        "Nov",
+        "Dec",
+        "Jan",
+        "Feb",
+        "Mar"
+      ],
+      "nearestStationId": "station_075_central",
+      "attractions": [
+        {
+          "attractionId": "attraction_114_1",
+          "name": "Ponda Heritage Walk",
+          "category": "heritage",
+          "durationMinutes": 120,
+          "fromPrice": 250
+        },
+        {
+          "attractionId": "attraction_114_2",
+          "name": "Ponda Local Food Trail",
+          "category": "food",
+          "durationMinutes": 150,
+          "fromPrice": 500
+        },
+        {
+          "attractionId": "attraction_114_3",
+          "name": "Ponda City Landmark",
+          "category": "sightseeing",
+          "durationMinutes": 180,
+          "fromPrice": 750
+        }
+      ]
+    },
+    {
+      "destinationId": "destination_115",
+      "cityId": "city_goa_canacona",
+      "title": "Discover Canacona",
+      "themes": [
+        "city_break",
+        "local_food"
+      ],
+      "bestMonths": [
+        "Oct",
+        "Nov",
+        "Dec",
+        "Jan",
+        "Feb",
+        "Mar"
+      ],
+      "nearestStationId": "station_077_central",
+      "attractions": [
+        {
+          "attractionId": "attraction_115_1",
+          "name": "Canacona Heritage Walk",
+          "category": "heritage",
+          "durationMinutes": 120,
+          "fromPrice": 250
+        },
+        {
+          "attractionId": "attraction_115_2",
+          "name": "Canacona Local Food Trail",
+          "category": "food",
+          "durationMinutes": 150,
+          "fromPrice": 500
+        },
+        {
+          "attractionId": "attraction_115_3",
+          "name": "Canacona City Landmark",
+          "category": "sightseeing",
+          "durationMinutes": 180,
+          "fromPrice": 750
+        }
+      ]
+    },
+    {
+      "destinationId": "destination_116",
+      "cityId": "city_goa_bicholim",
+      "title": "Discover Bicholim",
+      "themes": [
+        "city_break",
+        "local_food"
+      ],
+      "bestMonths": [
+        "Oct",
+        "Nov",
+        "Dec",
+        "Jan",
+        "Feb",
+        "Mar"
+      ],
+      "nearestStationId": "station_078_central",
+      "attractions": [
+        {
+          "attractionId": "attraction_116_1",
+          "name": "Bicholim Heritage Walk",
+          "category": "heritage",
+          "durationMinutes": 120,
+          "fromPrice": 250
+        },
+        {
+          "attractionId": "attraction_116_2",
+          "name": "Bicholim Local Food Trail",
+          "category": "food",
+          "durationMinutes": 150,
+          "fromPrice": 500
+        },
+        {
+          "attractionId": "attraction_116_3",
+          "name": "Bicholim City Landmark",
+          "category": "sightseeing",
+          "durationMinutes": 180,
+          "fromPrice": 750
+        }
+      ]
+    },
+    {
+      "destinationId": "destination_117",
+      "cityId": "city_goa_valpoi",
+      "title": "Discover Valpoi",
+      "themes": [
+        "city_break",
+        "local_food"
+      ],
+      "bestMonths": [
+        "Oct",
+        "Nov",
+        "Dec",
+        "Jan",
+        "Feb",
+        "Mar"
+      ],
+      "nearestStationId": "station_079_central",
+      "attractions": [
+        {
+          "attractionId": "attraction_117_1",
+          "name": "Valpoi Heritage Walk",
+          "category": "heritage",
+          "durationMinutes": 120,
+          "fromPrice": 250
+        },
+        {
+          "attractionId": "attraction_117_2",
+          "name": "Valpoi Local Food Trail",
+          "category": "food",
+          "durationMinutes": 150,
+          "fromPrice": 500
+        },
+        {
+          "attractionId": "attraction_117_3",
+          "name": "Valpoi City Landmark",
+          "category": "sightseeing",
+          "durationMinutes": 180,
+          "fromPrice": 750
+        }
+      ]
+    },
+    {
+      "destinationId": "destination_118",
+      "cityId": "city_goa_pernem",
+      "title": "Discover Pernem",
+      "themes": [
+        "city_break",
+        "local_food"
+      ],
+      "bestMonths": [
+        "Oct",
+        "Nov",
+        "Dec",
+        "Jan",
+        "Feb",
+        "Mar"
+      ],
+      "nearestStationId": "station_080_central",
+      "attractions": [
+        {
+          "attractionId": "attraction_118_1",
+          "name": "Pernem Heritage Walk",
+          "category": "heritage",
+          "durationMinutes": 120,
+          "fromPrice": 250
+        },
+        {
+          "attractionId": "attraction_118_2",
+          "name": "Pernem Local Food Trail",
+          "category": "food",
+          "durationMinutes": 150,
+          "fromPrice": 500
+        },
+        {
+          "attractionId": "attraction_118_3",
+          "name": "Pernem City Landmark",
+          "category": "sightseeing",
+          "durationMinutes": 180,
+          "fromPrice": 750
+        }
+      ]
+    },
+    {
+      "destinationId": "destination_119",
+      "cityId": "city_goa_curchorem",
+      "title": "Discover Curchorem",
+      "themes": [
+        "city_break",
+        "local_food"
+      ],
+      "bestMonths": [
+        "Oct",
+        "Nov",
+        "Dec",
+        "Jan",
+        "Feb",
+        "Mar"
+      ],
+      "nearestStationId": "station_081_central",
+      "attractions": [
+        {
+          "attractionId": "attraction_119_1",
+          "name": "Curchorem Heritage Walk",
+          "category": "heritage",
+          "durationMinutes": 120,
+          "fromPrice": 250
+        },
+        {
+          "attractionId": "attraction_119_2",
+          "name": "Curchorem Local Food Trail",
+          "category": "food",
+          "durationMinutes": 150,
+          "fromPrice": 500
+        },
+        {
+          "attractionId": "attraction_119_3",
+          "name": "Curchorem City Landmark",
+          "category": "sightseeing",
+          "durationMinutes": 180,
+          "fromPrice": 750
+        }
+      ]
+    },
+    {
+      "destinationId": "destination_120",
+      "cityId": "city_goa_sanquelim",
+      "title": "Discover Sanquelim",
+      "themes": [
+        "city_break",
+        "local_food"
+      ],
+      "bestMonths": [
+        "Oct",
+        "Nov",
+        "Dec",
+        "Jan",
+        "Feb",
+        "Mar"
+      ],
+      "nearestStationId": "station_082_central",
+      "attractions": [
+        {
+          "attractionId": "attraction_120_1",
+          "name": "Sanquelim Heritage Walk",
+          "category": "heritage",
+          "durationMinutes": 120,
+          "fromPrice": 250
+        },
+        {
+          "attractionId": "attraction_120_2",
+          "name": "Sanquelim Local Food Trail",
+          "category": "food",
+          "durationMinutes": 150,
+          "fromPrice": 500
+        },
+        {
+          "attractionId": "attraction_120_3",
+          "name": "Sanquelim City Landmark",
+          "category": "sightseeing",
+          "durationMinutes": 180,
+          "fromPrice": 750
+        }
+      ]
+    }
+  ]
+}

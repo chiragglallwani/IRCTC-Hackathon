@@ -1,0 +1,1667 @@
+{
+  "meta": {
+    "dataset": "bharat-journey-hackathon",
+    "version": "2.0.0",
+    "generatedAt": "2026-08-23T00:00:00.000Z",
+    "synthetic": true,
+    "recordCount": 72
+  },
+  "records": [
+    {
+      "scenarioId": "scenario_001",
+      "name": "quick_booking route 1",
+      "input": {
+        "originStationId": "station_393_central",
+        "destinationStationId": "station_281_central",
+        "travelDate": "2026-08-24",
+        "passengers": [
+          {
+            "type": "senior_female",
+            "count": 1,
+            "gender": "female"
+          }
+        ],
+        "mode": "quick_booking",
+        "locale": "hi-IN"
+      },
+      "expected": {
+        "minResults": 1,
+        "sortBy": "recommended",
+        "authenticationAt": "checkout"
+      }
+    },
+    {
+      "scenarioId": "scenario_002",
+      "name": "tatkal route 2",
+      "input": {
+        "originStationId": "station_043_central",
+        "destinationStationId": "station_418_central",
+        "travelDate": "2026-08-25",
+        "passengers": [
+          {
+            "type": "adult",
+            "count": 2,
+            "gender": "unspecified"
+          }
+        ],
+        "mode": "tatkal",
+        "locale": "en-IN"
+      },
+      "expected": {
+        "minResults": 1,
+        "sortBy": "fastest",
+        "authenticationAt": "checkout"
+      }
+    },
+    {
+      "scenarioId": "scenario_003",
+      "name": "explore route 3",
+      "input": {
+        "originStationId": "station_064_central",
+        "destinationStationId": "station_045_central",
+        "travelDate": "2026-08-26",
+        "passengers": [
+          {
+            "type": "adult",
+            "count": 3,
+            "gender": "unspecified"
+          }
+        ],
+        "mode": "explore",
+        "locale": "en-IN"
+      },
+      "expected": {
+        "minResults": 1,
+        "sortBy": "cheapest",
+        "authenticationAt": "checkout"
+      }
+    },
+    {
+      "scenarioId": "scenario_004",
+      "name": "tourism route 4",
+      "input": {
+        "originStationId": "station_140_central",
+        "destinationStationId": "station_388_central",
+        "travelDate": "2026-08-27",
+        "passengers": [
+          {
+            "type": "adult",
+            "count": 4,
+            "gender": "female"
+          }
+        ],
+        "mode": "tourism",
+        "locale": "hi-IN"
+      },
+      "expected": {
+        "minResults": 1,
+        "sortBy": "fewest_transfers",
+        "authenticationAt": "checkout"
+      }
+    },
+    {
+      "scenarioId": "scenario_005",
+      "name": "quick_booking route 5",
+      "input": {
+        "originStationId": "station_081_central",
+        "destinationStationId": "station_153_central",
+        "travelDate": "2026-08-28",
+        "passengers": [
+          {
+            "type": "adult",
+            "count": 1,
+            "gender": "unspecified"
+          }
+        ],
+        "mode": "quick_booking",
+        "locale": "en-IN"
+      },
+      "expected": {
+        "minResults": 1,
+        "sortBy": "recommended",
+        "authenticationAt": "checkout"
+      }
+    },
+    {
+      "scenarioId": "scenario_006",
+      "name": "tatkal route 6",
+      "input": {
+        "originStationId": "station_131_central",
+        "destinationStationId": "station_381_central",
+        "travelDate": "2026-08-29",
+        "passengers": [
+          {
+            "type": "senior_female",
+            "count": 2,
+            "gender": "unspecified"
+          }
+        ],
+        "mode": "tatkal",
+        "locale": "en-IN"
+      },
+      "expected": {
+        "minResults": 1,
+        "sortBy": "fastest",
+        "authenticationAt": "checkout"
+      }
+    },
+    {
+      "scenarioId": "scenario_007",
+      "name": "explore route 7",
+      "input": {
+        "originStationId": "station_262_central",
+        "destinationStationId": "station_006_central",
+        "travelDate": "2026-08-30",
+        "passengers": [
+          {
+            "type": "adult",
+            "count": 3,
+            "gender": "female"
+          }
+        ],
+        "mode": "explore",
+        "locale": "hi-IN"
+      },
+      "expected": {
+        "minResults": 1,
+        "sortBy": "cheapest",
+        "authenticationAt": "checkout"
+      }
+    },
+    {
+      "scenarioId": "scenario_008",
+      "name": "tourism route 8",
+      "input": {
+        "originStationId": "station_057_central",
+        "destinationStationId": "station_334_central",
+        "travelDate": "2026-08-24",
+        "passengers": [
+          {
+            "type": "adult",
+            "count": 4,
+            "gender": "unspecified"
+          }
+        ],
+        "mode": "tourism",
+        "locale": "en-IN"
+      },
+      "expected": {
+        "minResults": 1,
+        "sortBy": "fewest_transfers",
+        "authenticationAt": "checkout"
+      }
+    },
+    {
+      "scenarioId": "scenario_009",
+      "name": "quick_booking route 9",
+      "input": {
+        "originStationId": "station_101_central",
+        "destinationStationId": "station_364_central",
+        "travelDate": "2026-08-25",
+        "passengers": [
+          {
+            "type": "adult",
+            "count": 1,
+            "gender": "unspecified"
+          }
+        ],
+        "mode": "quick_booking",
+        "locale": "en-IN"
+      },
+      "expected": {
+        "minResults": 1,
+        "sortBy": "recommended",
+        "authenticationAt": "checkout"
+      }
+    },
+    {
+      "scenarioId": "scenario_010",
+      "name": "tatkal route 10",
+      "input": {
+        "originStationId": "station_313_central",
+        "destinationStationId": "station_014_central",
+        "travelDate": "2026-08-26",
+        "passengers": [
+          {
+            "type": "adult",
+            "count": 2,
+            "gender": "female"
+          }
+        ],
+        "mode": "tatkal",
+        "locale": "hi-IN"
+      },
+      "expected": {
+        "minResults": 1,
+        "sortBy": "fastest",
+        "authenticationAt": "checkout"
+      }
+    },
+    {
+      "scenarioId": "scenario_011",
+      "name": "explore route 11",
+      "input": {
+        "originStationId": "station_381_central",
+        "destinationStationId": "station_129_central",
+        "travelDate": "2026-08-27",
+        "passengers": [
+          {
+            "type": "senior_female",
+            "count": 3,
+            "gender": "unspecified"
+          }
+        ],
+        "mode": "explore",
+        "locale": "en-IN"
+      },
+      "expected": {
+        "minResults": 1,
+        "sortBy": "cheapest",
+        "authenticationAt": "checkout"
+      }
+    },
+    {
+      "scenarioId": "scenario_012",
+      "name": "tourism route 12",
+      "input": {
+        "originStationId": "station_180_central",
+        "destinationStationId": "station_354_central",
+        "travelDate": "2026-08-28",
+        "passengers": [
+          {
+            "type": "adult",
+            "count": 4,
+            "gender": "unspecified"
+          }
+        ],
+        "mode": "tourism",
+        "locale": "en-IN"
+      },
+      "expected": {
+        "minResults": 1,
+        "sortBy": "fewest_transfers",
+        "authenticationAt": "checkout"
+      }
+    },
+    {
+      "scenarioId": "scenario_013",
+      "name": "quick_booking route 13",
+      "input": {
+        "originStationId": "station_401_central",
+        "destinationStationId": "station_122_central",
+        "travelDate": "2026-08-29",
+        "passengers": [
+          {
+            "type": "adult",
+            "count": 1,
+            "gender": "female"
+          }
+        ],
+        "mode": "quick_booking",
+        "locale": "hi-IN"
+      },
+      "expected": {
+        "minResults": 1,
+        "sortBy": "recommended",
+        "authenticationAt": "checkout"
+      }
+    },
+    {
+      "scenarioId": "scenario_014",
+      "name": "tatkal route 14",
+      "input": {
+        "originStationId": "station_346_central",
+        "destinationStationId": "station_237_central",
+        "travelDate": "2026-08-30",
+        "passengers": [
+          {
+            "type": "adult",
+            "count": 2,
+            "gender": "unspecified"
+          }
+        ],
+        "mode": "tatkal",
+        "locale": "en-IN"
+      },
+      "expected": {
+        "minResults": 1,
+        "sortBy": "fastest",
+        "authenticationAt": "checkout"
+      }
+    },
+    {
+      "scenarioId": "scenario_015",
+      "name": "explore route 15",
+      "input": {
+        "originStationId": "station_061_central",
+        "destinationStationId": "station_068_central",
+        "travelDate": "2026-08-24",
+        "passengers": [
+          {
+            "type": "adult",
+            "count": 3,
+            "gender": "unspecified"
+          }
+        ],
+        "mode": "explore",
+        "locale": "en-IN"
+      },
+      "expected": {
+        "minResults": 1,
+        "sortBy": "cheapest",
+        "authenticationAt": "checkout"
+      }
+    },
+    {
+      "scenarioId": "scenario_016",
+      "name": "tourism route 16",
+      "input": {
+        "originStationId": "station_124_central",
+        "destinationStationId": "station_277_central",
+        "travelDate": "2026-08-25",
+        "passengers": [
+          {
+            "type": "senior_female",
+            "count": 4,
+            "gender": "female"
+          }
+        ],
+        "mode": "tourism",
+        "locale": "hi-IN"
+      },
+      "expected": {
+        "minResults": 1,
+        "sortBy": "fewest_transfers",
+        "authenticationAt": "checkout"
+      }
+    },
+    {
+      "scenarioId": "scenario_017",
+      "name": "quick_booking route 17",
+      "input": {
+        "originStationId": "station_181_central",
+        "destinationStationId": "station_087_central",
+        "travelDate": "2026-08-26",
+        "passengers": [
+          {
+            "type": "adult",
+            "count": 1,
+            "gender": "unspecified"
+          }
+        ],
+        "mode": "quick_booking",
+        "locale": "en-IN"
+      },
+      "expected": {
+        "minResults": 1,
+        "sortBy": "recommended",
+        "authenticationAt": "checkout"
+      }
+    },
+    {
+      "scenarioId": "scenario_018",
+      "name": "tatkal route 18",
+      "input": {
+        "originStationId": "station_254_central",
+        "destinationStationId": "station_259_central",
+        "travelDate": "2026-08-27",
+        "passengers": [
+          {
+            "type": "adult",
+            "count": 2,
+            "gender": "unspecified"
+          }
+        ],
+        "mode": "tatkal",
+        "locale": "en-IN"
+      },
+      "expected": {
+        "minResults": 1,
+        "sortBy": "fastest",
+        "authenticationAt": "checkout"
+      }
+    },
+    {
+      "scenarioId": "scenario_019",
+      "name": "explore route 19",
+      "input": {
+        "originStationId": "station_145_central",
+        "destinationStationId": "station_142_central",
+        "travelDate": "2026-08-28",
+        "passengers": [
+          {
+            "type": "adult",
+            "count": 3,
+            "gender": "female"
+          }
+        ],
+        "mode": "explore",
+        "locale": "hi-IN"
+      },
+      "expected": {
+        "minResults": 1,
+        "sortBy": "cheapest",
+        "authenticationAt": "checkout"
+      }
+    },
+    {
+      "scenarioId": "scenario_020",
+      "name": "tourism route 20",
+      "input": {
+        "originStationId": "station_352_central",
+        "destinationStationId": "station_353_central",
+        "travelDate": "2026-08-29",
+        "passengers": [
+          {
+            "type": "adult",
+            "count": 4,
+            "gender": "unspecified"
+          }
+        ],
+        "mode": "tourism",
+        "locale": "en-IN"
+      },
+      "expected": {
+        "minResults": 1,
+        "sortBy": "fewest_transfers",
+        "authenticationAt": "checkout"
+      }
+    },
+    {
+      "scenarioId": "scenario_021",
+      "name": "quick_booking route 21",
+      "input": {
+        "originStationId": "station_086_central",
+        "destinationStationId": "station_187_central",
+        "travelDate": "2026-08-30",
+        "passengers": [
+          {
+            "type": "senior_female",
+            "count": 1,
+            "gender": "unspecified"
+          }
+        ],
+        "mode": "quick_booking",
+        "locale": "en-IN"
+      },
+      "expected": {
+        "minResults": 1,
+        "sortBy": "recommended",
+        "authenticationAt": "checkout"
+      }
+    },
+    {
+      "scenarioId": "scenario_022",
+      "name": "tatkal route 22",
+      "input": {
+        "originStationId": "station_170_central",
+        "destinationStationId": "station_057_central",
+        "travelDate": "2026-08-24",
+        "passengers": [
+          {
+            "type": "adult",
+            "count": 2,
+            "gender": "female"
+          }
+        ],
+        "mode": "tatkal",
+        "locale": "hi-IN"
+      },
+      "expected": {
+        "minResults": 1,
+        "sortBy": "fastest",
+        "authenticationAt": "checkout"
+      }
+    },
+    {
+      "scenarioId": "scenario_023",
+      "name": "explore route 23",
+      "input": {
+        "originStationId": "station_171_central",
+        "destinationStationId": "station_056_central",
+        "travelDate": "2026-08-25",
+        "passengers": [
+          {
+            "type": "adult",
+            "count": 3,
+            "gender": "unspecified"
+          }
+        ],
+        "mode": "explore",
+        "locale": "en-IN"
+      },
+      "expected": {
+        "minResults": 1,
+        "sortBy": "cheapest",
+        "authenticationAt": "checkout"
+      }
+    },
+    {
+      "scenarioId": "scenario_024",
+      "name": "tourism route 24",
+      "input": {
+        "originStationId": "station_383_central",
+        "destinationStationId": "station_136_central",
+        "travelDate": "2026-08-26",
+        "passengers": [
+          {
+            "type": "adult",
+            "count": 4,
+            "gender": "unspecified"
+          }
+        ],
+        "mode": "tourism",
+        "locale": "en-IN"
+      },
+      "expected": {
+        "minResults": 1,
+        "sortBy": "fewest_transfers",
+        "authenticationAt": "checkout"
+      }
+    },
+    {
+      "scenarioId": "scenario_025",
+      "name": "quick_booking route 25",
+      "input": {
+        "originStationId": "station_051_central",
+        "destinationStationId": "station_055_central",
+        "travelDate": "2026-08-27",
+        "passengers": [
+          {
+            "type": "adult",
+            "count": 1,
+            "gender": "female"
+          }
+        ],
+        "mode": "quick_booking",
+        "locale": "hi-IN"
+      },
+      "expected": {
+        "minResults": 1,
+        "sortBy": "recommended",
+        "authenticationAt": "checkout"
+      }
+    },
+    {
+      "scenarioId": "scenario_026",
+      "name": "tatkal route 26",
+      "input": {
+        "originStationId": "station_290_central",
+        "destinationStationId": "station_104_central",
+        "travelDate": "2026-08-28",
+        "passengers": [
+          {
+            "type": "senior_female",
+            "count": 2,
+            "gender": "unspecified"
+          }
+        ],
+        "mode": "tatkal",
+        "locale": "en-IN"
+      },
+      "expected": {
+        "minResults": 1,
+        "sortBy": "fastest",
+        "authenticationAt": "checkout"
+      }
+    },
+    {
+      "scenarioId": "scenario_027",
+      "name": "explore route 27",
+      "input": {
+        "originStationId": "station_260_central",
+        "destinationStationId": "station_265_central",
+        "travelDate": "2026-08-29",
+        "passengers": [
+          {
+            "type": "adult",
+            "count": 3,
+            "gender": "unspecified"
+          }
+        ],
+        "mode": "explore",
+        "locale": "en-IN"
+      },
+      "expected": {
+        "minResults": 1,
+        "sortBy": "cheapest",
+        "authenticationAt": "checkout"
+      }
+    },
+    {
+      "scenarioId": "scenario_028",
+      "name": "tourism route 28",
+      "input": {
+        "originStationId": "station_080_central",
+        "destinationStationId": "station_152_central",
+        "travelDate": "2026-08-30",
+        "passengers": [
+          {
+            "type": "adult",
+            "count": 4,
+            "gender": "female"
+          }
+        ],
+        "mode": "tourism",
+        "locale": "hi-IN"
+      },
+      "expected": {
+        "minResults": 1,
+        "sortBy": "fewest_transfers",
+        "authenticationAt": "checkout"
+      }
+    },
+    {
+      "scenarioId": "scenario_029",
+      "name": "quick_booking route 29",
+      "input": {
+        "originStationId": "station_334_central",
+        "destinationStationId": "station_170_central",
+        "travelDate": "2026-08-24",
+        "passengers": [
+          {
+            "type": "adult",
+            "count": 1,
+            "gender": "unspecified"
+          }
+        ],
+        "mode": "quick_booking",
+        "locale": "en-IN"
+      },
+      "expected": {
+        "minResults": 1,
+        "sortBy": "recommended",
+        "authenticationAt": "checkout"
+      }
+    },
+    {
+      "scenarioId": "scenario_030",
+      "name": "tatkal route 30",
+      "input": {
+        "originStationId": "station_197_central",
+        "destinationStationId": "station_244_central",
+        "travelDate": "2026-08-25",
+        "passengers": [
+          {
+            "type": "adult",
+            "count": 2,
+            "gender": "unspecified"
+          }
+        ],
+        "mode": "tatkal",
+        "locale": "en-IN"
+      },
+      "expected": {
+        "minResults": 1,
+        "sortBy": "fastest",
+        "authenticationAt": "checkout"
+      }
+    },
+    {
+      "scenarioId": "scenario_031",
+      "name": "explore route 31",
+      "input": {
+        "originStationId": "station_049_central",
+        "destinationStationId": "station_055_central",
+        "travelDate": "2026-08-26",
+        "passengers": [
+          {
+            "type": "senior_female",
+            "count": 3,
+            "gender": "female"
+          }
+        ],
+        "mode": "explore",
+        "locale": "hi-IN"
+      },
+      "expected": {
+        "minResults": 1,
+        "sortBy": "cheapest",
+        "authenticationAt": "checkout"
+      }
+    },
+    {
+      "scenarioId": "scenario_032",
+      "name": "tourism route 32",
+      "input": {
+        "originStationId": "station_011_central",
+        "destinationStationId": "station_002_central",
+        "travelDate": "2026-08-27",
+        "passengers": [
+          {
+            "type": "adult",
+            "count": 4,
+            "gender": "unspecified"
+          }
+        ],
+        "mode": "tourism",
+        "locale": "en-IN"
+      },
+      "expected": {
+        "minResults": 1,
+        "sortBy": "fewest_transfers",
+        "authenticationAt": "checkout"
+      }
+    },
+    {
+      "scenarioId": "scenario_033",
+      "name": "quick_booking route 33",
+      "input": {
+        "originStationId": "station_183_central",
+        "destinationStationId": "station_186_central",
+        "travelDate": "2026-08-28",
+        "passengers": [
+          {
+            "type": "adult",
+            "count": 1,
+            "gender": "unspecified"
+          }
+        ],
+        "mode": "quick_booking",
+        "locale": "en-IN"
+      },
+      "expected": {
+        "minResults": 1,
+        "sortBy": "recommended",
+        "authenticationAt": "checkout"
+      }
+    },
+    {
+      "scenarioId": "scenario_034",
+      "name": "tatkal route 34",
+      "input": {
+        "originStationId": "station_133_central",
+        "destinationStationId": "station_011_central",
+        "travelDate": "2026-08-29",
+        "passengers": [
+          {
+            "type": "adult",
+            "count": 2,
+            "gender": "female"
+          }
+        ],
+        "mode": "tatkal",
+        "locale": "hi-IN"
+      },
+      "expected": {
+        "minResults": 1,
+        "sortBy": "fastest",
+        "authenticationAt": "checkout"
+      }
+    },
+    {
+      "scenarioId": "scenario_035",
+      "name": "explore route 35",
+      "input": {
+        "originStationId": "station_117_central",
+        "destinationStationId": "station_268_central",
+        "travelDate": "2026-08-30",
+        "passengers": [
+          {
+            "type": "adult",
+            "count": 3,
+            "gender": "unspecified"
+          }
+        ],
+        "mode": "explore",
+        "locale": "en-IN"
+      },
+      "expected": {
+        "minResults": 1,
+        "sortBy": "cheapest",
+        "authenticationAt": "checkout"
+      }
+    },
+    {
+      "scenarioId": "scenario_036",
+      "name": "tourism route 36",
+      "input": {
+        "originStationId": "station_179_central",
+        "destinationStationId": "station_180_central",
+        "travelDate": "2026-08-24",
+        "passengers": [
+          {
+            "type": "senior_female",
+            "count": 4,
+            "gender": "unspecified"
+          }
+        ],
+        "mode": "tourism",
+        "locale": "en-IN"
+      },
+      "expected": {
+        "minResults": 1,
+        "sortBy": "fewest_transfers",
+        "authenticationAt": "checkout"
+      }
+    },
+    {
+      "scenarioId": "scenario_037",
+      "name": "quick_booking route 37",
+      "input": {
+        "originStationId": "station_134_central",
+        "destinationStationId": "station_135_central",
+        "travelDate": "2026-08-25",
+        "passengers": [
+          {
+            "type": "adult",
+            "count": 1,
+            "gender": "female"
+          }
+        ],
+        "mode": "quick_booking",
+        "locale": "hi-IN"
+      },
+      "expected": {
+        "minResults": 1,
+        "sortBy": "recommended",
+        "authenticationAt": "checkout"
+      }
+    },
+    {
+      "scenarioId": "scenario_038",
+      "name": "tatkal route 38",
+      "input": {
+        "originStationId": "station_356_central",
+        "destinationStationId": "station_372_central",
+        "travelDate": "2026-08-26",
+        "passengers": [
+          {
+            "type": "adult",
+            "count": 2,
+            "gender": "unspecified"
+          }
+        ],
+        "mode": "tatkal",
+        "locale": "en-IN"
+      },
+      "expected": {
+        "minResults": 1,
+        "sortBy": "fastest",
+        "authenticationAt": "checkout"
+      }
+    },
+    {
+      "scenarioId": "scenario_039",
+      "name": "explore route 39",
+      "input": {
+        "originStationId": "station_049_central",
+        "destinationStationId": "station_301_central",
+        "travelDate": "2026-08-27",
+        "passengers": [
+          {
+            "type": "adult",
+            "count": 3,
+            "gender": "unspecified"
+          }
+        ],
+        "mode": "explore",
+        "locale": "en-IN"
+      },
+      "expected": {
+        "minResults": 1,
+        "sortBy": "cheapest",
+        "authenticationAt": "checkout"
+      }
+    },
+    {
+      "scenarioId": "scenario_040",
+      "name": "tourism route 40",
+      "input": {
+        "originStationId": "station_042_central",
+        "destinationStationId": "station_039_central",
+        "travelDate": "2026-08-28",
+        "passengers": [
+          {
+            "type": "adult",
+            "count": 4,
+            "gender": "female"
+          }
+        ],
+        "mode": "tourism",
+        "locale": "hi-IN"
+      },
+      "expected": {
+        "minResults": 1,
+        "sortBy": "fewest_transfers",
+        "authenticationAt": "checkout"
+      }
+    },
+    {
+      "scenarioId": "scenario_041",
+      "name": "quick_booking route 41",
+      "input": {
+        "originStationId": "station_177_central",
+        "destinationStationId": "station_292_central",
+        "travelDate": "2026-08-29",
+        "passengers": [
+          {
+            "type": "senior_female",
+            "count": 1,
+            "gender": "unspecified"
+          }
+        ],
+        "mode": "quick_booking",
+        "locale": "en-IN"
+      },
+      "expected": {
+        "minResults": 1,
+        "sortBy": "recommended",
+        "authenticationAt": "checkout"
+      }
+    },
+    {
+      "scenarioId": "scenario_042",
+      "name": "tatkal route 42",
+      "input": {
+        "originStationId": "station_183_central",
+        "destinationStationId": "station_181_central",
+        "travelDate": "2026-08-30",
+        "passengers": [
+          {
+            "type": "adult",
+            "count": 2,
+            "gender": "unspecified"
+          }
+        ],
+        "mode": "tatkal",
+        "locale": "en-IN"
+      },
+      "expected": {
+        "minResults": 1,
+        "sortBy": "fastest",
+        "authenticationAt": "checkout"
+      }
+    },
+    {
+      "scenarioId": "scenario_043",
+      "name": "explore route 43",
+      "input": {
+        "originStationId": "station_386_central",
+        "destinationStationId": "station_130_central",
+        "travelDate": "2026-08-24",
+        "passengers": [
+          {
+            "type": "adult",
+            "count": 3,
+            "gender": "female"
+          }
+        ],
+        "mode": "explore",
+        "locale": "hi-IN"
+      },
+      "expected": {
+        "minResults": 1,
+        "sortBy": "cheapest",
+        "authenticationAt": "checkout"
+      }
+    },
+    {
+      "scenarioId": "scenario_044",
+      "name": "tourism route 44",
+      "input": {
+        "originStationId": "station_352_central",
+        "destinationStationId": "station_045_central",
+        "travelDate": "2026-08-25",
+        "passengers": [
+          {
+            "type": "adult",
+            "count": 4,
+            "gender": "unspecified"
+          }
+        ],
+        "mode": "tourism",
+        "locale": "en-IN"
+      },
+      "expected": {
+        "minResults": 1,
+        "sortBy": "fewest_transfers",
+        "authenticationAt": "checkout"
+      }
+    },
+    {
+      "scenarioId": "scenario_045",
+      "name": "quick_booking route 45",
+      "input": {
+        "originStationId": "station_053_central",
+        "destinationStationId": "station_353_central",
+        "travelDate": "2026-08-26",
+        "passengers": [
+          {
+            "type": "adult",
+            "count": 1,
+            "gender": "unspecified"
+          }
+        ],
+        "mode": "quick_booking",
+        "locale": "en-IN"
+      },
+      "expected": {
+        "minResults": 1,
+        "sortBy": "recommended",
+        "authenticationAt": "checkout"
+      }
+    },
+    {
+      "scenarioId": "scenario_046",
+      "name": "tatkal route 46",
+      "input": {
+        "originStationId": "station_176_central",
+        "destinationStationId": "station_194_central",
+        "travelDate": "2026-08-27",
+        "passengers": [
+          {
+            "type": "senior_female",
+            "count": 2,
+            "gender": "female"
+          }
+        ],
+        "mode": "tatkal",
+        "locale": "hi-IN"
+      },
+      "expected": {
+        "minResults": 1,
+        "sortBy": "fastest",
+        "authenticationAt": "checkout"
+      }
+    },
+    {
+      "scenarioId": "scenario_047",
+      "name": "explore route 47",
+      "input": {
+        "originStationId": "station_131_central",
+        "destinationStationId": "station_132_central",
+        "travelDate": "2026-08-28",
+        "passengers": [
+          {
+            "type": "adult",
+            "count": 3,
+            "gender": "unspecified"
+          }
+        ],
+        "mode": "explore",
+        "locale": "en-IN"
+      },
+      "expected": {
+        "minResults": 1,
+        "sortBy": "cheapest",
+        "authenticationAt": "checkout"
+      }
+    },
+    {
+      "scenarioId": "scenario_048",
+      "name": "tourism route 48",
+      "input": {
+        "originStationId": "station_295_central",
+        "destinationStationId": "station_239_central",
+        "travelDate": "2026-08-29",
+        "passengers": [
+          {
+            "type": "adult",
+            "count": 4,
+            "gender": "unspecified"
+          }
+        ],
+        "mode": "tourism",
+        "locale": "en-IN"
+      },
+      "expected": {
+        "minResults": 1,
+        "sortBy": "fewest_transfers",
+        "authenticationAt": "checkout"
+      }
+    },
+    {
+      "scenarioId": "scenario_049",
+      "name": "quick_booking route 49",
+      "input": {
+        "originStationId": "station_351_central",
+        "destinationStationId": "station_056_central",
+        "travelDate": "2026-08-30",
+        "passengers": [
+          {
+            "type": "adult",
+            "count": 1,
+            "gender": "female"
+          }
+        ],
+        "mode": "quick_booking",
+        "locale": "hi-IN"
+      },
+      "expected": {
+        "minResults": 1,
+        "sortBy": "recommended",
+        "authenticationAt": "checkout"
+      }
+    },
+    {
+      "scenarioId": "scenario_050",
+      "name": "tatkal route 50",
+      "input": {
+        "originStationId": "station_352_central",
+        "destinationStationId": "station_171_central",
+        "travelDate": "2026-08-24",
+        "passengers": [
+          {
+            "type": "adult",
+            "count": 2,
+            "gender": "unspecified"
+          }
+        ],
+        "mode": "tatkal",
+        "locale": "en-IN"
+      },
+      "expected": {
+        "minResults": 1,
+        "sortBy": "fastest",
+        "authenticationAt": "checkout"
+      }
+    },
+    {
+      "scenarioId": "scenario_051",
+      "name": "explore route 51",
+      "input": {
+        "originStationId": "station_178_central",
+        "destinationStationId": "station_175_central",
+        "travelDate": "2026-08-25",
+        "passengers": [
+          {
+            "type": "senior_female",
+            "count": 3,
+            "gender": "unspecified"
+          }
+        ],
+        "mode": "explore",
+        "locale": "en-IN"
+      },
+      "expected": {
+        "minResults": 1,
+        "sortBy": "cheapest",
+        "authenticationAt": "checkout"
+      }
+    },
+    {
+      "scenarioId": "scenario_052",
+      "name": "tourism route 52",
+      "input": {
+        "originStationId": "station_303_central",
+        "destinationStationId": "station_034_central",
+        "travelDate": "2026-08-26",
+        "passengers": [
+          {
+            "type": "adult",
+            "count": 4,
+            "gender": "female"
+          }
+        ],
+        "mode": "tourism",
+        "locale": "hi-IN"
+      },
+      "expected": {
+        "minResults": 1,
+        "sortBy": "fewest_transfers",
+        "authenticationAt": "checkout"
+      }
+    },
+    {
+      "scenarioId": "scenario_053",
+      "name": "quick_booking route 53",
+      "input": {
+        "originStationId": "station_264_central",
+        "destinationStationId": "station_003_central",
+        "travelDate": "2026-08-27",
+        "passengers": [
+          {
+            "type": "adult",
+            "count": 1,
+            "gender": "unspecified"
+          }
+        ],
+        "mode": "quick_booking",
+        "locale": "en-IN"
+      },
+      "expected": {
+        "minResults": 1,
+        "sortBy": "recommended",
+        "authenticationAt": "checkout"
+      }
+    },
+    {
+      "scenarioId": "scenario_054",
+      "name": "tatkal route 54",
+      "input": {
+        "originStationId": "station_132_central",
+        "destinationStationId": "station_257_central",
+        "travelDate": "2026-08-28",
+        "passengers": [
+          {
+            "type": "adult",
+            "count": 2,
+            "gender": "unspecified"
+          }
+        ],
+        "mode": "tatkal",
+        "locale": "en-IN"
+      },
+      "expected": {
+        "minResults": 1,
+        "sortBy": "fastest",
+        "authenticationAt": "checkout"
+      }
+    },
+    {
+      "scenarioId": "scenario_055",
+      "name": "explore route 55",
+      "input": {
+        "originStationId": "station_014_central",
+        "destinationStationId": "station_002_central",
+        "travelDate": "2026-08-29",
+        "passengers": [
+          {
+            "type": "adult",
+            "count": 3,
+            "gender": "female"
+          }
+        ],
+        "mode": "explore",
+        "locale": "hi-IN"
+      },
+      "expected": {
+        "minResults": 1,
+        "sortBy": "cheapest",
+        "authenticationAt": "checkout"
+      }
+    },
+    {
+      "scenarioId": "scenario_056",
+      "name": "tourism route 56",
+      "input": {
+        "originStationId": "station_019_central",
+        "destinationStationId": "station_020_central",
+        "travelDate": "2026-08-30",
+        "passengers": [
+          {
+            "type": "senior_female",
+            "count": 4,
+            "gender": "unspecified"
+          }
+        ],
+        "mode": "tourism",
+        "locale": "en-IN"
+      },
+      "expected": {
+        "minResults": 1,
+        "sortBy": "fewest_transfers",
+        "authenticationAt": "checkout"
+      }
+    },
+    {
+      "scenarioId": "scenario_057",
+      "name": "quick_booking route 57",
+      "input": {
+        "originStationId": "station_281_central",
+        "destinationStationId": "station_362_central",
+        "travelDate": "2026-08-24",
+        "passengers": [
+          {
+            "type": "adult",
+            "count": 1,
+            "gender": "unspecified"
+          }
+        ],
+        "mode": "quick_booking",
+        "locale": "en-IN"
+      },
+      "expected": {
+        "minResults": 1,
+        "sortBy": "recommended",
+        "authenticationAt": "checkout"
+      }
+    },
+    {
+      "scenarioId": "scenario_058",
+      "name": "tatkal route 58",
+      "input": {
+        "originStationId": "station_131_central",
+        "destinationStationId": "station_137_central",
+        "travelDate": "2026-08-25",
+        "passengers": [
+          {
+            "type": "adult",
+            "count": 2,
+            "gender": "female"
+          }
+        ],
+        "mode": "tatkal",
+        "locale": "hi-IN"
+      },
+      "expected": {
+        "minResults": 1,
+        "sortBy": "fastest",
+        "authenticationAt": "checkout"
+      }
+    },
+    {
+      "scenarioId": "scenario_059",
+      "name": "explore route 59",
+      "input": {
+        "originStationId": "station_044_central",
+        "destinationStationId": "station_304_central",
+        "travelDate": "2026-08-26",
+        "passengers": [
+          {
+            "type": "adult",
+            "count": 3,
+            "gender": "unspecified"
+          }
+        ],
+        "mode": "explore",
+        "locale": "en-IN"
+      },
+      "expected": {
+        "minResults": 1,
+        "sortBy": "cheapest",
+        "authenticationAt": "checkout"
+      }
+    },
+    {
+      "scenarioId": "scenario_060",
+      "name": "tourism route 60",
+      "input": {
+        "originStationId": "station_099_central",
+        "destinationStationId": "station_369_central",
+        "travelDate": "2026-08-27",
+        "passengers": [
+          {
+            "type": "adult",
+            "count": 4,
+            "gender": "unspecified"
+          }
+        ],
+        "mode": "tourism",
+        "locale": "en-IN"
+      },
+      "expected": {
+        "minResults": 1,
+        "sortBy": "fewest_transfers",
+        "authenticationAt": "checkout"
+      }
+    },
+    {
+      "scenarioId": "scenario_061",
+      "name": "quick_booking route 61",
+      "input": {
+        "originStationId": "station_364_central",
+        "destinationStationId": "station_173_central",
+        "travelDate": "2026-08-28",
+        "passengers": [
+          {
+            "type": "senior_female",
+            "count": 1,
+            "gender": "female"
+          }
+        ],
+        "mode": "quick_booking",
+        "locale": "hi-IN"
+      },
+      "expected": {
+        "minResults": 1,
+        "sortBy": "recommended",
+        "authenticationAt": "checkout"
+      }
+    },
+    {
+      "scenarioId": "scenario_062",
+      "name": "tatkal route 62",
+      "input": {
+        "originStationId": "station_092_central",
+        "destinationStationId": "station_087_central",
+        "travelDate": "2026-08-29",
+        "passengers": [
+          {
+            "type": "adult",
+            "count": 2,
+            "gender": "unspecified"
+          }
+        ],
+        "mode": "tatkal",
+        "locale": "en-IN"
+      },
+      "expected": {
+        "minResults": 1,
+        "sortBy": "fastest",
+        "authenticationAt": "checkout"
+      }
+    },
+    {
+      "scenarioId": "scenario_063",
+      "name": "explore route 63",
+      "input": {
+        "originStationId": "station_352_central",
+        "destinationStationId": "station_283_central",
+        "travelDate": "2026-08-30",
+        "passengers": [
+          {
+            "type": "adult",
+            "count": 3,
+            "gender": "unspecified"
+          }
+        ],
+        "mode": "explore",
+        "locale": "en-IN"
+      },
+      "expected": {
+        "minResults": 1,
+        "sortBy": "cheapest",
+        "authenticationAt": "checkout"
+      }
+    },
+    {
+      "scenarioId": "scenario_064",
+      "name": "tourism route 64",
+      "input": {
+        "originStationId": "station_262_central",
+        "destinationStationId": "station_254_central",
+        "travelDate": "2026-08-24",
+        "passengers": [
+          {
+            "type": "adult",
+            "count": 4,
+            "gender": "female"
+          }
+        ],
+        "mode": "tourism",
+        "locale": "hi-IN"
+      },
+      "expected": {
+        "minResults": 1,
+        "sortBy": "fewest_transfers",
+        "authenticationAt": "checkout"
+      }
+    },
+    {
+      "scenarioId": "scenario_065",
+      "name": "quick_booking route 65",
+      "input": {
+        "originStationId": "station_214_central",
+        "destinationStationId": "station_388_central",
+        "travelDate": "2026-08-25",
+        "passengers": [
+          {
+            "type": "adult",
+            "count": 1,
+            "gender": "unspecified"
+          }
+        ],
+        "mode": "quick_booking",
+        "locale": "en-IN"
+      },
+      "expected": {
+        "minResults": 1,
+        "sortBy": "recommended",
+        "authenticationAt": "checkout"
+      }
+    },
+    {
+      "scenarioId": "scenario_066",
+      "name": "tatkal route 66",
+      "input": {
+        "originStationId": "station_297_central",
+        "destinationStationId": "station_358_central",
+        "travelDate": "2026-08-26",
+        "passengers": [
+          {
+            "type": "senior_female",
+            "count": 2,
+            "gender": "unspecified"
+          }
+        ],
+        "mode": "tatkal",
+        "locale": "en-IN"
+      },
+      "expected": {
+        "minResults": 1,
+        "sortBy": "fastest",
+        "authenticationAt": "checkout"
+      }
+    },
+    {
+      "scenarioId": "scenario_067",
+      "name": "explore route 67",
+      "input": {
+        "originStationId": "station_187_central",
+        "destinationStationId": "station_188_central",
+        "travelDate": "2026-08-27",
+        "passengers": [
+          {
+            "type": "adult",
+            "count": 3,
+            "gender": "female"
+          }
+        ],
+        "mode": "explore",
+        "locale": "hi-IN"
+      },
+      "expected": {
+        "minResults": 1,
+        "sortBy": "cheapest",
+        "authenticationAt": "checkout"
+      }
+    },
+    {
+      "scenarioId": "scenario_068",
+      "name": "tourism route 68",
+      "input": {
+        "originStationId": "station_160_central",
+        "destinationStationId": "station_162_central",
+        "travelDate": "2026-08-28",
+        "passengers": [
+          {
+            "type": "adult",
+            "count": 4,
+            "gender": "unspecified"
+          }
+        ],
+        "mode": "tourism",
+        "locale": "en-IN"
+      },
+      "expected": {
+        "minResults": 1,
+        "sortBy": "fewest_transfers",
+        "authenticationAt": "checkout"
+      }
+    },
+    {
+      "scenarioId": "scenario_069",
+      "name": "quick_booking route 69",
+      "input": {
+        "originStationId": "station_296_central",
+        "destinationStationId": "station_304_central",
+        "travelDate": "2026-08-29",
+        "passengers": [
+          {
+            "type": "adult",
+            "count": 1,
+            "gender": "unspecified"
+          }
+        ],
+        "mode": "quick_booking",
+        "locale": "en-IN"
+      },
+      "expected": {
+        "minResults": 1,
+        "sortBy": "recommended",
+        "authenticationAt": "checkout"
+      }
+    },
+    {
+      "scenarioId": "scenario_070",
+      "name": "tatkal route 70",
+      "input": {
+        "originStationId": "station_283_central",
+        "destinationStationId": "station_110_central",
+        "travelDate": "2026-08-30",
+        "passengers": [
+          {
+            "type": "adult",
+            "count": 2,
+            "gender": "female"
+          }
+        ],
+        "mode": "tatkal",
+        "locale": "hi-IN"
+      },
+      "expected": {
+        "minResults": 1,
+        "sortBy": "fastest",
+        "authenticationAt": "checkout"
+      }
+    },
+    {
+      "scenarioId": "scenario_071",
+      "name": "explore route 71",
+      "input": {
+        "originStationId": "station_178_central",
+        "destinationStationId": "station_086_central",
+        "travelDate": "2026-08-24",
+        "passengers": [
+          {
+            "type": "senior_female",
+            "count": 3,
+            "gender": "unspecified"
+          }
+        ],
+        "mode": "explore",
+        "locale": "en-IN"
+      },
+      "expected": {
+        "minResults": 1,
+        "sortBy": "cheapest",
+        "authenticationAt": "checkout"
+      }
+    },
+    {
+      "scenarioId": "scenario_072",
+      "name": "tourism route 72",
+      "input": {
+        "originStationId": "station_114_central",
+        "destinationStationId": "station_280_central",
+        "travelDate": "2026-08-25",
+        "passengers": [
+          {
+            "type": "adult",
+            "count": 4,
+            "gender": "unspecified"
+          }
+        ],
+        "mode": "tourism",
+        "locale": "en-IN"
+      },
+      "expected": {
+        "minResults": 1,
+        "sortBy": "fewest_transfers",
+        "authenticationAt": "checkout"
+      }
+    }
+  ]
+}
