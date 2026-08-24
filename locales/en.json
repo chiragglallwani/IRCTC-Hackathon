@@ -1,0 +1,535 @@
+{
+  "common": {
+    "brand": "RailEase",
+    "actions": {
+      "help": "Help",
+      "close": "Close",
+      "done": "Done",
+      "send": "Send",
+      "remove": "Remove",
+      "replace": "Replace",
+      "moveUp": "Move up",
+      "moveDown": "Move down",
+      "clearFilters": "Clear filters",
+      "startSearch": "Start a search",
+      "planJourney": "Plan a journey",
+      "continueBooking": "Continue to booking"
+    },
+    "status": {
+      "available": "Available",
+      "confirmed": "Confirmed",
+      "cancelled": "Cancelled",
+      "recommended": "Recommended",
+      "selected": "Selected",
+      "pending": "Pending",
+      "success": "Success",
+      "failure": "Failure",
+      "processing": "Processing",
+      "opening": "Opening",
+      "regret": "Regret",
+      "rac": "RAC",
+      "waitlist": "Waitlist",
+      "fastest": "Fastest",
+      "cheapest": "Cheapest"
+    },
+    "fields": {
+      "from": "From",
+      "to": "To",
+      "date": "Date of Journey",
+      "passengers": "Passengers",
+      "class": "Class",
+      "quota": "Quota",
+      "email": "Email address",
+      "name": "Full name",
+      "age": "Age",
+      "gender": "Gender",
+      "citizenship": "Citizenship",
+      "berth": "Berth preference"
+    },
+    "classes": {
+      "any": "Any class",
+      "best": "Best available",
+      "firstAc": "First AC (1A)",
+      "secondAc": "AC 2 Tier (2A)",
+      "thirdAc": "AC 3 Tier (3A)",
+      "chairCar": "Chair Car (CC)",
+      "sleeper": "Sleeper (SL)"
+    },
+    "gender": { "female": "Female", "male": "Male", "other": "Other" },
+    "berths": {
+      "none": "No preference",
+      "lower": "Lower",
+      "middle": "Middle",
+      "upper": "Upper",
+      "sideLower": "Side lower"
+    },
+    "quotas": {
+      "gn": {
+        "name": "General",
+        "description": "Available to every passenger"
+      },
+      "ld": {
+        "name": "Ladies",
+        "description": "All passengers must identify as women"
+      },
+      "ss": {
+        "name": "Senior citizen",
+        "description": "All passengers must meet the senior-age criteria"
+      },
+      "tq": {
+        "name": "Tatkal",
+        "description": "Opens at the scheduled Tatkal time"
+      },
+      "pt": {
+        "name": "Premium Tatkal",
+        "description": "Dynamic premium Tatkal fare"
+      },
+      "df": {
+        "name": "Defence",
+        "description": "Requires a verified defence profile"
+      },
+      "ft": {
+        "name": "Foreign Tourist",
+        "description": "Requires passport verification"
+      },
+      "hp": {
+        "name": "Divyangjan",
+        "description": "Requires disability verification"
+      },
+      "dp": {
+        "name": "Duty Pass",
+        "description": "Requires a railway employee profile"
+      },
+      "re": {
+        "name": "Railway Employee",
+        "description": "Requires a railway employee profile"
+      },
+      "yu": {
+        "name": "Youth Group",
+        "description": "Group travel eligibility applies"
+      },
+      "ph": {
+        "name": "Parliament House",
+        "description": "Official-travel eligibility applies"
+      }
+    },
+    "months": {
+      "any": "Any",
+      "Jan": "Jan",
+      "Feb": "Feb",
+      "Mar": "Mar",
+      "Apr": "Apr",
+      "May": "May",
+      "Jun": "Jun",
+      "Jul": "Jul",
+      "Aug": "Aug",
+      "Sep": "Sep",
+      "Oct": "Oct",
+      "Nov": "Nov",
+      "Dec": "Dec"
+    }
+  },
+  "navigation": {
+    "primary": {
+      "label": "Primary navigation",
+      "home": "Home",
+      "book": "Book",
+      "explore": "Explore",
+      "tourism": "Tourism",
+      "trips": "My Trips"
+    },
+    "mobile": {
+      "label": "Mobile navigation",
+      "home": "Home",
+      "book": "Book",
+      "explore": "Explore",
+      "trips": "Trips",
+      "more": "More"
+    },
+    "language": "Language",
+    "signIn": "Sign in",
+    "signOut": "Sign out"
+  },
+  "components": {
+    "accessibility": {
+      "title": "Accessibility",
+      "settings": "Accessibility settings",
+      "textSize": "Text size",
+      "highContrast": "High contrast"
+    },
+    "auth": {
+      "secure": "Secure booking",
+      "welcome": "Welcome back",
+      "createTitle": "Create your RailEase profile",
+      "description": "Sign in to continue. Your journey, class, quota and passengers will stay exactly as selected.",
+      "signInTab": "Sign in",
+      "signUpTab": "Sign up",
+      "namePlaceholder": "As per government ID",
+      "emailPlaceholder": "you@example.com",
+      "createProfile": "Create profile",
+      "invalidEmail": "Enter a valid email address.",
+      "invalidName": "Enter your full name.",
+      "prototype": "Prototype authentication only. RailEase never stores a real password in this demo."
+    },
+    "assistant": {
+      "open": "Open RailEase assistant",
+      "label": "RailEase assistant",
+      "title": "Journey assistant",
+      "welcome": "Hello! I can explain railway terms, recommendations, quotas, bookings and itineraries.",
+      "fallback": "I can help with RAC, quota eligibility, cancellation, tickets, or making an itinerary cheaper.",
+      "promptRac": "What does RAC mean?",
+      "promptQuota": "Why can't I select this quota?",
+      "promptTicket": "Where is my ticket?",
+      "placeholder": "Ask a question…",
+      "answers": {
+        "rac": "RAC means Reservation Against Cancellation. You can board the train, and a full berth may be assigned if cancellations occur.",
+        "quota": "Quota eligibility is checked before payment. Choose ‘View all quotas’ to see requirements in plain language.",
+        "cancellation": "Cancellation charges depend on time before departure and booking status. No confirmed booking is created after a failed payment.",
+        "ticket": "Open My Trips, choose the relevant tab, then select View ticket.",
+        "cheaper": "Try removing premium activities, choosing a 3-star stay, or switching the itinerary pace to Relaxed."
+      }
+    },
+    "footer": {
+      "description": "Prototype for citizen-first Indian travel. Not an official railway booking service."
+    },
+    "searchCard": {
+      "tabsLabel": "Booking experiences",
+      "tabs": {
+        "tatkal": "Tatkal",
+        "quick": "Quick Booking",
+        "explore": "Explore",
+        "tourism": "Tourism"
+      },
+      "swap": "Swap origin and destination",
+      "selectPlaces": "Select both places from the suggested stations.",
+      "samePlace": "Origin and destination must be different.",
+      "adult": "{{count}} Adult",
+      "adults": "{{count}} Adults",
+      "child": "{{count}} Child",
+      "children": "{{count}} Children",
+      "adultLabel": "Adults",
+      "childLabel": "Children",
+      "infantLabel": "Infants",
+      "adultAge": "12+ years",
+      "childAge": "5–11 years",
+      "infantAge": "Under 5 years",
+      "removePassenger": "Remove {{type}}",
+      "addPassenger": "Add {{type}}",
+      "find": "Find Journeys",
+      "exploreIndia": "Explore India",
+      "tatkalTitle": "⚡ Tatkal Ready",
+      "tatkalNote": "Confirmed availability is prioritised. Have passenger details ready before the booking window opens.",
+      "exploreNote": "Explore unlocks multimodal alternatives, advanced filters, comparisons and explainable recommendations."
+    },
+    "journeyCard": {
+      "option": "Journey option",
+      "score": "{{score}}/100",
+      "why": "Why this journey?",
+      "transfer": "{{count}} transfer",
+      "transfers": "{{count}} transfers",
+      "direct": "Direct",
+      "transferTime": "{{minutes}}m transfer",
+      "generalQuota": "General — {{status}}",
+      "seniorQuota": "Senior Citizen — Check",
+      "allQuotas": "View all quotas",
+      "excellent": "Excellent choice",
+      "balance": "This option balances price, duration, transfers and seat confidence.",
+      "hideDetails": "Hide details",
+      "details": "Journey details",
+      "timeline": "Complete journey timeline",
+      "platform": "Platform {{number}}",
+      "checkBooking": "Check at booking",
+      "quotaLabel": "Quota availability",
+      "quotaTitle": "Quota availability",
+      "quotaDescription": "Eligibility is explained and checked before payment.",
+      "verification": "Verification required",
+      "rac": "RAC 8",
+      "availableSeats": "Available {{count}}",
+      "reasons": {
+        "cheaper": "₹{{amount}} cheaper than the fastest option",
+        "fastest": "One of the fastest options",
+        "direct": "Direct journey",
+        "transfer": "Only {{count}} transfer",
+        "transfers": "Only {{count}} transfers",
+        "availability": "Good seat availability",
+        "status": "{{status}} seats with transparent status",
+        "faster": "{{hours}} hours faster than the cheapest option",
+        "lowest": "Lowest available fare"
+      }
+    },
+    "checkout": {
+      "progress": "Checkout progress",
+      "steps": {
+        "confirm": "Confirm Journey",
+        "passengers": "Passenger Details",
+        "payment": "Payment"
+      },
+      "emptyTitle": "No journey selected",
+      "emptyText": "Choose a journey first. Your search and selections will be carried into checkout.",
+      "summary": "Booking Summary",
+      "ticketFare": "Ticket fare",
+      "fee": "Convenience fee",
+      "gst": "GST",
+      "total": "Total",
+      "secure": "Secure prototype transaction"
+    }
+  },
+  "pages": {
+    "home": {
+      "hero": {
+        "title": "Where do you want to go?",
+        "subtitle": "Search, compare, plan, and book journeys in a language you understand.",
+        "imageAlt": "Vande Bharat Express travelling through green Indian countryside"
+      },
+      "features": {
+        "optionsTitle": "Understand your options",
+        "optionsText": "Clear routes, prices, transfers, quotas and availability without railway jargon.",
+        "confidenceTitle": "Book with confidence",
+        "confidenceText": "Eligibility is checked early and your exact context stays with you through checkout.",
+        "languageTitle": "Travel in your language",
+        "languageText": "English and Hindi with persistent accessibility preferences."
+      }
+    },
+    "search": {
+      "eyebrow": "Search results",
+      "origin": "Origin",
+      "destination": "Destination",
+      "traveller": "{{count}} traveller",
+      "travellers": "{{count}} travellers",
+      "edit": "Edit search",
+      "datesLabel": "Travel dates",
+      "checkFare": "Check fare",
+      "found": "{{count}} journeys found",
+      "directChip": "Direct",
+      "transferChip": "{{count}} transfer",
+      "sort": "Sort by",
+      "sortRecommended": "Recommended",
+      "sortFastest": "Fastest",
+      "sortCheapest": "Cheapest",
+      "filtersLabel": "Journey filters",
+      "filters": "Filters",
+      "transport": "Transport mode",
+      "train": "Train",
+      "metro": "Metro",
+      "transfers": "Transfers",
+      "oneTransfer": "1 transfer",
+      "twoTransfers": "2+ transfers",
+      "maxFare": "Maximum fare: ₹{{amount}}",
+      "availabilityOnly": "Confirmed availability only",
+      "wheelchair": "Wheelchair access",
+      "charging": "Charging points",
+      "emptyTitle": "No matching journey",
+      "emptyText": "Try clearing a filter or moving to another date. Multimodal alternatives appear automatically when the graph contains them.",
+      "alternatives": "View alternatives",
+      "loading": "Finding the clearest routes…"
+    },
+    "checkout": {
+      "confirm": {
+        "classQuota": "Class & quota",
+        "travelClass": "Travel class",
+        "eligibility": "{{description}}. Eligibility will be checked against every passenger before payment.",
+        "important": "Important information",
+        "infoFare": "Fare and availability can change until payment is verified.",
+        "infoId": "Carry valid government identification during the journey.",
+        "infoFailure": "Failed or cancelled payments never create a confirmed booking.",
+        "unavailable": "This journey is no longer bookable. Return to results and choose an alternative.",
+        "selectQuota": "Select a quota before continuing.",
+        "continue": "Continue to passenger details"
+      },
+      "passengers": {
+        "saved": "Saved Passengers",
+        "noneSaved": "No saved passengers yet. Add one below.",
+        "edit": "Edit passenger",
+        "add": "Add New Passenger",
+        "namePlaceholder": "As per government ID",
+        "indian": "Indian",
+        "foreign": "Foreign national",
+        "saveFuture": "Save passenger for future bookings",
+        "saveChanges": "Save changes",
+        "addPassenger": "Add passenger",
+        "continue": "Continue to payment",
+        "nameError": "Enter the passenger's full name.",
+        "ageNegative": "Age cannot be negative.",
+        "ageInvalid": "Enter a valid age.",
+        "citizenshipError": "Select citizenship.",
+        "passengerSummary": "{{age}} yrs · {{gender}} · {{berth}}",
+        "selectExactly": "Select exactly {{count}} passenger(s).",
+        "quotaError": "One or more passengers do not meet the eligibility requirements for this quota. Change the quota or passenger selection."
+      },
+      "payment": {
+        "title": "Select Payment Method",
+        "secureText": "Your payment is handled by Razorpay Standard Checkout in test mode. RailEase never receives full card details.",
+        "upi": "UPI",
+        "upiText": "GPay, PhonePe, Paytm or any UPI app",
+        "card": "Debit / Credit Card",
+        "cardText": "Visa, Mastercard, RuPay",
+        "opening": "Opening secure checkout…",
+        "verifying": "Verifying payment…",
+        "confirmed": "Booking confirmed. Preparing your ticket…",
+        "noCredentials": "Test credentials are not configured. Choose a simulation result below.",
+        "createError": "Unable to create a payment order.",
+        "verifyError": "Payment could not be verified. No booking was created.",
+        "cancelled": "Payment was cancelled. Your journey is still saved.",
+        "openError": "The secure checkout could not open. Check your connection and try again.",
+        "startError": "Payment could not start.",
+        "simulateSuccess": "Simulate success",
+        "simulateFailure": "Simulate failure",
+        "simulateCancel": "Cancel",
+        "failed": "Test payment failed. No booking was created.",
+        "testCancelled": "Test payment cancelled. No booking was created.",
+        "processing": "Processing…",
+        "pay": "Pay ₹{{amount}}",
+        "description": "Test-mode railway booking"
+      }
+    },
+    "booking": {
+      "notFound": "Ticket not found",
+      "notFoundText": "This prototype ticket may belong to another browser profile.",
+      "openTrips": "Open My Trips",
+      "verified": "Test payment verified",
+      "confirmed": "Booking confirmed",
+      "pnr": "Your mock PNR is {{pnr}}",
+      "pnrNote": "This is a prototype reference, not a real Indian Railways PNR.",
+      "print": "View / print ticket",
+      "goTrips": "Go to My Trips"
+    },
+    "myTrips": {
+      "title": "My Trips",
+      "subtitle": "Manage upcoming journeys and view past travel.",
+      "tabs": {
+        "upcoming": "Upcoming",
+        "completed": "Completed",
+        "cancelled": "Cancelled"
+      },
+      "departure": "Departure",
+      "refund": "Refund {{status}}",
+      "cancellationDate": "Cancellation {{date}}",
+      "viewTicket": "View ticket",
+      "track": "Track journey",
+      "cancel": "Cancel",
+      "bookAgain": "Book again",
+      "download": "Download ticket",
+      "help": "Help",
+      "empty": "No {{tab}} trips",
+      "emptyUpcoming": "Bookings made after a verified test payment will appear here.",
+      "emptyOther": "Your {{tab}} journeys will be kept here for easy reference."
+    },
+    "auth": {
+      "signInTitle": "Sign in to RailEase",
+      "signInText": "The secure prototype sign-in dialog is open. Your pending booking context will be preserved.",
+      "openSignIn": "Open sign in",
+      "signUpTitle": "Create your RailEase profile",
+      "signUpText": "Prototype profiles are stored only in this browser and never save a real password.",
+      "openSignUp": "Open sign up"
+    },
+    "journey": {
+      "eyebrow": "Journey details",
+      "missing": "Journey context not found",
+      "missingText": "Return to search and select a journey to see its complete timeline."
+    },
+    "tourism": {
+      "discovery": {
+        "eyebrow": "Plan more than a ticket",
+        "title": "Discover India, your way",
+        "subtitle": "Destination ideas, rail connections and editable day-by-day plans in one clear flow.",
+        "build": "Build an itinerary",
+        "search": "Search destinations",
+        "searchPlaceholder": "Try beaches, heritage, Tirupati…",
+        "bestMonth": "Best month",
+        "maxBudget": "Maximum budget: ₹{{amount}}",
+        "destinations": "{{count}} destinations",
+        "instant": "Filters update results instantly",
+        "bestIn": "Best in {{months}} · {{count}} curated experiences",
+        "explore": "Explore destination",
+        "empty": "No destination matches every filter",
+        "heroAlt": "Goa coast with coconut palms and fishing boats",
+        "categories": {
+          "all": "All",
+          "heritage": "Heritage",
+          "spiritual": "Spiritual",
+          "weekend": "Weekend",
+          "localfood": "Local food",
+          "nature": "Nature",
+          "adventure": "Adventure",
+          "citybreak": "City break"
+        }
+      },
+      "destination": {
+        "notFound": "Destination not found",
+        "explore": "Explore destinations",
+        "days": "4 days",
+        "from": "From ₹{{amount}}",
+        "overview": "Overview",
+        "overviewText": "A citizen-friendly starting point for exploring {{city}}: transparent travel, stay and activity estimates built from the RailEase mock dataset.",
+        "bestTime": "Best time to visit",
+        "peak": "Peak season",
+        "shoulder": "Shoulder season",
+        "quieter": "Quieter choice",
+        "suggested": "Suggested itinerary",
+        "day": "Day {{day}}: {{name}}",
+        "hours": "{{hours}} hours · from ₹{{price}}",
+        "journeyTo": "Journey to {{city}}",
+        "nearest": "Nearest station: {{station}} ({{code}})",
+        "searchTrains": "Search trains",
+        "stay": "Stay options",
+        "hotel": "{{stars}} star · {{score}}/5",
+        "customize": "Customize this itinerary"
+      },
+      "planner": {
+        "eyebrow": "Itinerary planner",
+        "title": "Build a trip around you",
+        "subtitle": "The generator uses destination attractions and hotels from the provided mock dataset.",
+        "destination": "Destination",
+        "start": "Start date",
+        "end": "End date",
+        "budget": "Budget: ₹{{amount}}",
+        "style": "Travel style",
+        "pace": "Pace",
+        "mode": "Travel mode",
+        "stay": "Accommodation",
+        "family": "Family",
+        "couple": "Couple",
+        "solo": "Solo",
+        "senior": "Senior-friendly",
+        "relaxed": "Relaxed",
+        "balanced": "Balanced",
+        "packed": "Packed",
+        "train": "Train",
+        "trainLocal": "Train + local transport",
+        "bus": "Bus",
+        "budgetStay": "Budget",
+        "threeStar": "3-star",
+        "fourStar": "4-star",
+        "luxury": "Luxury",
+        "generate": "Generate itinerary",
+        "opening": "Opening planner…",
+        "arrival": "Arrival & orientation",
+        "departure": "Local morning & departure",
+        "highlights": "{{city}} highlights"
+      },
+      "itinerary": {
+        "notFound": "Itinerary not found",
+        "create": "Create a plan",
+        "alternative": "Alternative {{category}} experience",
+        "eyebrow": "Editable itinerary",
+        "title": "{{city}} · {{count}} days",
+        "subtitle": "{{start}} to {{end}} · {{style}} · {{pace}}",
+        "day": "Day {{day}}: {{title}}",
+        "activityMeta": "{{hours}}h · ₹{{price}} · {{minutes}} min by {{transport}}",
+        "cost": "Cost estimate",
+        "transport": "Transportation",
+        "accommodation": "Accommodation",
+        "activities": "Activities",
+        "meals": "Meals",
+        "included": "Included",
+        "estimated": "Estimated",
+        "serviceFee": "Service fee",
+        "total": "Total estimate",
+        "notIncluded": "Personal shopping and unlisted transfers are not included.",
+        "confirm": "Test pay & confirm",
+        "confirmed": "Itinerary confirmed",
+        "saved": "Saved under railease_itineraries. This is a prototype payment state."
+      }
+    }
+  }
+}

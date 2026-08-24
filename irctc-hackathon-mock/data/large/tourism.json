@@ -11,19 +11,8 @@
       "destinationId": "destination_001",
       "cityId": "city_andhra_pradesh_tirupati",
       "title": "Discover Tirupati",
-      "themes": [
-        "heritage",
-        "local_food",
-        "weekend"
-      ],
-      "bestMonths": [
-        "Oct",
-        "Nov",
-        "Dec",
-        "Jan",
-        "Feb",
-        "Mar"
-      ],
+      "themes": ["heritage", "local_food", "weekend"],
+      "bestMonths": ["Oct", "Nov", "Dec", "Jan", "Feb", "Mar"],
       "nearestStationId": "station_003_central",
       "attractions": [
         {
@@ -53,19 +42,8 @@
       "destinationId": "destination_002",
       "cityId": "city_arunachal_pradesh_tawang",
       "title": "Discover Tawang",
-      "themes": [
-        "heritage",
-        "local_food",
-        "weekend"
-      ],
-      "bestMonths": [
-        "Oct",
-        "Nov",
-        "Dec",
-        "Jan",
-        "Feb",
-        "Mar"
-      ],
+      "themes": ["heritage", "local_food", "weekend"],
+      "bestMonths": ["Oct", "Nov", "Dec", "Jan", "Feb", "Mar"],
       "nearestStationId": "station_016_central",
       "attractions": [
         {
@@ -95,19 +73,8 @@
       "destinationId": "destination_003",
       "cityId": "city_arunachal_pradesh_ziro",
       "title": "Discover Ziro",
-      "themes": [
-        "heritage",
-        "local_food",
-        "weekend"
-      ],
-      "bestMonths": [
-        "Oct",
-        "Nov",
-        "Dec",
-        "Jan",
-        "Feb",
-        "Mar"
-      ],
+      "themes": ["heritage", "local_food", "weekend"],
+      "bestMonths": ["Oct", "Nov", "Dec", "Jan", "Feb", "Mar"],
       "nearestStationId": "station_017_central",
       "attractions": [
         {
@@ -137,19 +104,8 @@
       "destinationId": "destination_004",
       "cityId": "city_assam_sivasagar",
       "title": "Discover Sivasagar",
-      "themes": [
-        "heritage",
-        "local_food",
-        "weekend"
-      ],
-      "bestMonths": [
-        "Oct",
-        "Nov",
-        "Dec",
-        "Jan",
-        "Feb",
-        "Mar"
-      ],
+      "themes": ["heritage", "local_food", "weekend"],
+      "bestMonths": ["Oct", "Nov", "Dec", "Jan", "Feb", "Mar"],
       "nearestStationId": "station_035_central",
       "attractions": [
         {
@@ -179,19 +135,8 @@
       "destinationId": "destination_005",
       "cityId": "city_bihar_gaya",
       "title": "Discover Gaya",
-      "themes": [
-        "heritage",
-        "local_food",
-        "weekend"
-      ],
-      "bestMonths": [
-        "Oct",
-        "Nov",
-        "Dec",
-        "Jan",
-        "Feb",
-        "Mar"
-      ],
+      "themes": ["heritage", "local_food", "weekend"],
+      "bestMonths": ["Oct", "Nov", "Dec", "Jan", "Feb", "Mar"],
       "nearestStationId": "station_044_central",
       "attractions": [
         {
@@ -221,19 +166,8 @@
       "destinationId": "destination_006",
       "cityId": "city_chhattisgarh_jagdalpur",
       "title": "Discover Jagdalpur",
-      "themes": [
-        "heritage",
-        "local_food",
-        "weekend"
-      ],
-      "bestMonths": [
-        "Oct",
-        "Nov",
-        "Dec",
-        "Jan",
-        "Feb",
-        "Mar"
-      ],
+      "themes": ["heritage", "local_food", "weekend"],
+      "bestMonths": ["Oct", "Nov", "Dec", "Jan", "Feb", "Mar"],
       "nearestStationId": "station_062_central",
       "attractions": [
         {
@@ -263,19 +197,8 @@
       "destinationId": "destination_007",
       "cityId": "city_goa_calangute",
       "title": "Discover Calangute",
-      "themes": [
-        "heritage",
-        "local_food",
-        "weekend"
-      ],
-      "bestMonths": [
-        "Oct",
-        "Nov",
-        "Dec",
-        "Jan",
-        "Feb",
-        "Mar"
-      ],
+      "themes": ["heritage", "local_food", "weekend"],
+      "bestMonths": ["Oct", "Nov", "Dec", "Jan", "Feb", "Mar"],
       "nearestStationId": "station_076_central",
       "attractions": [
         {
@@ -305,19 +228,8 @@
       "destinationId": "destination_008",
       "cityId": "city_gujarat_mundra",
       "title": "Discover Mundra",
-      "themes": [
-        "heritage",
-        "local_food",
-        "weekend"
-      ],
-      "bestMonths": [
-        "Oct",
-        "Nov",
-        "Dec",
-        "Jan",
-        "Feb",
-        "Mar"
-      ],
+      "themes": ["heritage", "local_food", "weekend"],
+      "bestMonths": ["Oct", "Nov", "Dec", "Jan", "Feb", "Mar"],
       "nearestStationId": "station_097_central",
       "attractions": [
         {
@@ -347,19 +259,8 @@
       "destinationId": "destination_009",
       "cityId": "city_haryana_kurukshetra",
       "title": "Discover Kurukshetra",
-      "themes": [
-        "heritage",
-        "local_food",
-        "weekend"
-      ],
-      "bestMonths": [
-        "Oct",
-        "Nov",
-        "Dec",
-        "Jan",
-        "Feb",
-        "Mar"
-      ],
+      "themes": ["heritage", "local_food", "weekend"],
+      "bestMonths": ["Oct", "Nov", "Dec", "Jan", "Feb", "Mar"],
       "nearestStationId": "station_108_central",
       "attractions": [
         {
@@ -389,19 +290,8 @@
       "destinationId": "destination_010",
       "cityId": "city_himachal_pradesh_manali",
       "title": "Discover Manali",
-      "themes": [
-        "heritage",
-        "local_food",
-        "weekend"
-      ],
-      "bestMonths": [
-        "Oct",
-        "Nov",
-        "Dec",
-        "Jan",
-        "Feb",
-        "Mar"
-      ],
+      "themes": ["heritage", "local_food", "weekend"],
+      "bestMonths": ["Oct", "Nov", "Dec", "Jan", "Feb", "Mar"],
       "nearestStationId": "station_114_central",
       "attractions": [
         {
@@ -431,19 +321,8 @@
       "destinationId": "destination_011",
       "cityId": "city_himachal_pradesh_dharamshala",
       "title": "Discover Dharamshala",
-      "themes": [
-        "heritage",
-        "local_food",
-        "weekend"
-      ],
-      "bestMonths": [
-        "Oct",
-        "Nov",
-        "Dec",
-        "Jan",
-        "Feb",
-        "Mar"
-      ],
+      "themes": ["heritage", "local_food", "weekend"],
+      "bestMonths": ["Oct", "Nov", "Dec", "Jan", "Feb", "Mar"],
       "nearestStationId": "station_115_central",
       "attractions": [
         {
@@ -473,19 +352,8 @@
       "destinationId": "destination_012",
       "cityId": "city_jharkhand_deoghar",
       "title": "Discover Deoghar",
-      "themes": [
-        "heritage",
-        "local_food",
-        "weekend"
-      ],
-      "bestMonths": [
-        "Oct",
-        "Nov",
-        "Dec",
-        "Jan",
-        "Feb",
-        "Mar"
-      ],
+      "themes": ["heritage", "local_food", "weekend"],
+      "bestMonths": ["Oct", "Nov", "Dec", "Jan", "Feb", "Mar"],
       "nearestStationId": "station_131_central",
       "attractions": [
         {
@@ -515,19 +383,8 @@
       "destinationId": "destination_013",
       "cityId": "city_karnataka_mysuru",
       "title": "Discover Mysuru",
-      "themes": [
-        "heritage",
-        "local_food",
-        "weekend"
-      ],
-      "bestMonths": [
-        "Oct",
-        "Nov",
-        "Dec",
-        "Jan",
-        "Feb",
-        "Mar"
-      ],
+      "themes": ["heritage", "local_food", "weekend"],
+      "bestMonths": ["Oct", "Nov", "Dec", "Jan", "Feb", "Mar"],
       "nearestStationId": "station_142_central",
       "attractions": [
         {
@@ -557,19 +414,8 @@
       "destinationId": "destination_014",
       "cityId": "city_karnataka_udupi",
       "title": "Discover Udupi",
-      "themes": [
-        "heritage",
-        "local_food",
-        "weekend"
-      ],
-      "bestMonths": [
-        "Oct",
-        "Nov",
-        "Dec",
-        "Jan",
-        "Feb",
-        "Mar"
-      ],
+      "themes": ["heritage", "local_food", "weekend"],
+      "bestMonths": ["Oct", "Nov", "Dec", "Jan", "Feb", "Mar"],
       "nearestStationId": "station_148_central",
       "attractions": [
         {
@@ -599,19 +445,8 @@
       "destinationId": "destination_015",
       "cityId": "city_kerala_munnar",
       "title": "Discover Munnar",
-      "themes": [
-        "heritage",
-        "local_food",
-        "weekend"
-      ],
-      "bestMonths": [
-        "Oct",
-        "Nov",
-        "Dec",
-        "Jan",
-        "Feb",
-        "Mar"
-      ],
+      "themes": ["heritage", "local_food", "weekend"],
+      "bestMonths": ["Oct", "Nov", "Dec", "Jan", "Feb", "Mar"],
       "nearestStationId": "station_164_central",
       "attractions": [
         {
@@ -641,19 +476,8 @@
       "destinationId": "destination_016",
       "cityId": "city_kerala_varkala",
       "title": "Discover Varkala",
-      "themes": [
-        "heritage",
-        "local_food",
-        "weekend"
-      ],
-      "bestMonths": [
-        "Oct",
-        "Nov",
-        "Dec",
-        "Jan",
-        "Feb",
-        "Mar"
-      ],
+      "themes": ["heritage", "local_food", "weekend"],
+      "bestMonths": ["Oct", "Nov", "Dec", "Jan", "Feb", "Mar"],
       "nearestStationId": "station_166_central",
       "attractions": [
         {
@@ -683,19 +507,8 @@
       "destinationId": "destination_017",
       "cityId": "city_madhya_pradesh_ujjain",
       "title": "Discover Ujjain",
-      "themes": [
-        "heritage",
-        "local_food",
-        "weekend"
-      ],
-      "bestMonths": [
-        "Oct",
-        "Nov",
-        "Dec",
-        "Jan",
-        "Feb",
-        "Mar"
-      ],
+      "themes": ["heritage", "local_food", "weekend"],
+      "bestMonths": ["Oct", "Nov", "Dec", "Jan", "Feb", "Mar"],
       "nearestStationId": "station_173_central",
       "attractions": [
         {
@@ -725,19 +538,8 @@
       "destinationId": "destination_018",
       "cityId": "city_maharashtra_shirdi",
       "title": "Discover Shirdi",
-      "themes": [
-        "heritage",
-        "local_food",
-        "weekend"
-      ],
-      "bestMonths": [
-        "Oct",
-        "Nov",
-        "Dec",
-        "Jan",
-        "Feb",
-        "Mar"
-      ],
+      "themes": ["heritage", "local_food", "weekend"],
+      "bestMonths": ["Oct", "Nov", "Dec", "Jan", "Feb", "Mar"],
       "nearestStationId": "station_196_central",
       "attractions": [
         {
@@ -767,19 +569,8 @@
       "destinationId": "destination_019",
       "cityId": "city_meghalaya_cherrapunji",
       "title": "Discover Cherrapunji",
-      "themes": [
-        "heritage",
-        "local_food",
-        "weekend"
-      ],
-      "bestMonths": [
-        "Oct",
-        "Nov",
-        "Dec",
-        "Jan",
-        "Feb",
-        "Mar"
-      ],
+      "themes": ["heritage", "local_food", "weekend"],
+      "bestMonths": ["Oct", "Nov", "Dec", "Jan", "Feb", "Mar"],
       "nearestStationId": "station_213_central",
       "attractions": [
         {
@@ -809,19 +600,8 @@
       "destinationId": "destination_020",
       "cityId": "city_meghalaya_dawki",
       "title": "Discover Dawki",
-      "themes": [
-        "heritage",
-        "local_food",
-        "weekend"
-      ],
-      "bestMonths": [
-        "Oct",
-        "Nov",
-        "Dec",
-        "Jan",
-        "Feb",
-        "Mar"
-      ],
+      "themes": ["heritage", "local_food", "weekend"],
+      "bestMonths": ["Oct", "Nov", "Dec", "Jan", "Feb", "Mar"],
       "nearestStationId": "station_224_central",
       "attractions": [
         {
@@ -851,19 +631,8 @@
       "destinationId": "destination_021",
       "cityId": "city_odisha_puri",
       "title": "Discover Puri",
-      "themes": [
-        "heritage",
-        "local_food",
-        "weekend"
-      ],
-      "bestMonths": [
-        "Oct",
-        "Nov",
-        "Dec",
-        "Jan",
-        "Feb",
-        "Mar"
-      ],
+      "themes": ["heritage", "local_food", "weekend"],
+      "bestMonths": ["Oct", "Nov", "Dec", "Jan", "Feb", "Mar"],
       "nearestStationId": "station_254_central",
       "attractions": [
         {
@@ -893,19 +662,8 @@
       "destinationId": "destination_022",
       "cityId": "city_odisha_konark",
       "title": "Discover Konark",
-      "themes": [
-        "heritage",
-        "local_food",
-        "weekend"
-      ],
-      "bestMonths": [
-        "Oct",
-        "Nov",
-        "Dec",
-        "Jan",
-        "Feb",
-        "Mar"
-      ],
+      "themes": ["heritage", "local_food", "weekend"],
+      "bestMonths": ["Oct", "Nov", "Dec", "Jan", "Feb", "Mar"],
       "nearestStationId": "station_263_central",
       "attractions": [
         {
@@ -935,19 +693,8 @@
       "destinationId": "destination_023",
       "cityId": "city_punjab_amritsar",
       "title": "Discover Amritsar",
-      "themes": [
-        "heritage",
-        "local_food",
-        "weekend"
-      ],
-      "bestMonths": [
-        "Oct",
-        "Nov",
-        "Dec",
-        "Jan",
-        "Feb",
-        "Mar"
-      ],
+      "themes": ["heritage", "local_food", "weekend"],
+      "bestMonths": ["Oct", "Nov", "Dec", "Jan", "Feb", "Mar"],
       "nearestStationId": "station_267_central",
       "attractions": [
         {
@@ -977,19 +724,8 @@
       "destinationId": "destination_024",
       "cityId": "city_rajasthan_udaipur",
       "title": "Discover Udaipur",
-      "themes": [
-        "heritage",
-        "local_food",
-        "weekend"
-      ],
-      "bestMonths": [
-        "Oct",
-        "Nov",
-        "Dec",
-        "Jan",
-        "Feb",
-        "Mar"
-      ],
+      "themes": ["heritage", "local_food", "weekend"],
+      "bestMonths": ["Oct", "Nov", "Dec", "Jan", "Feb", "Mar"],
       "nearestStationId": "station_282_central",
       "attractions": [
         {
@@ -1019,19 +755,8 @@
       "destinationId": "destination_025",
       "cityId": "city_rajasthan_jaisalmer",
       "title": "Discover Jaisalmer",
-      "themes": [
-        "heritage",
-        "local_food",
-        "weekend"
-      ],
-      "bestMonths": [
-        "Oct",
-        "Nov",
-        "Dec",
-        "Jan",
-        "Feb",
-        "Mar"
-      ],
+      "themes": ["heritage", "local_food", "weekend"],
+      "bestMonths": ["Oct", "Nov", "Dec", "Jan", "Feb", "Mar"],
       "nearestStationId": "station_287_central",
       "attractions": [
         {
@@ -1061,19 +786,8 @@
       "destinationId": "destination_026",
       "cityId": "city_rajasthan_mount_abu",
       "title": "Discover Mount Abu",
-      "themes": [
-        "heritage",
-        "local_food",
-        "weekend"
-      ],
-      "bestMonths": [
-        "Oct",
-        "Nov",
-        "Dec",
-        "Jan",
-        "Feb",
-        "Mar"
-      ],
+      "themes": ["heritage", "local_food", "weekend"],
+      "bestMonths": ["Oct", "Nov", "Dec", "Jan", "Feb", "Mar"],
       "nearestStationId": "station_293_central",
       "attractions": [
         {
@@ -1103,19 +817,8 @@
       "destinationId": "destination_027",
       "cityId": "city_rajasthan_pushkar",
       "title": "Discover Pushkar",
-      "themes": [
-        "heritage",
-        "local_food",
-        "weekend"
-      ],
-      "bestMonths": [
-        "Oct",
-        "Nov",
-        "Dec",
-        "Jan",
-        "Feb",
-        "Mar"
-      ],
+      "themes": ["heritage", "local_food", "weekend"],
+      "bestMonths": ["Oct", "Nov", "Dec", "Jan", "Feb", "Mar"],
       "nearestStationId": "station_294_central",
       "attractions": [
         {
@@ -1145,19 +848,8 @@
       "destinationId": "destination_028",
       "cityId": "city_tamil_nadu_ooty",
       "title": "Discover Ooty",
-      "themes": [
-        "heritage",
-        "local_food",
-        "weekend"
-      ],
-      "bestMonths": [
-        "Oct",
-        "Nov",
-        "Dec",
-        "Jan",
-        "Feb",
-        "Mar"
-      ],
+      "themes": ["heritage", "local_food", "weekend"],
+      "bestMonths": ["Oct", "Nov", "Dec", "Jan", "Feb", "Mar"],
       "nearestStationId": "station_317_central",
       "attractions": [
         {
@@ -1187,19 +879,8 @@
       "destinationId": "destination_029",
       "cityId": "city_tamil_nadu_rameswaram",
       "title": "Discover Rameswaram",
-      "themes": [
-        "heritage",
-        "local_food",
-        "weekend"
-      ],
-      "bestMonths": [
-        "Oct",
-        "Nov",
-        "Dec",
-        "Jan",
-        "Feb",
-        "Mar"
-      ],
+      "themes": ["heritage", "local_food", "weekend"],
+      "bestMonths": ["Oct", "Nov", "Dec", "Jan", "Feb", "Mar"],
       "nearestStationId": "station_319_central",
       "attractions": [
         {
@@ -1229,19 +910,8 @@
       "destinationId": "destination_030",
       "cityId": "city_tamil_nadu_kanyakumari",
       "title": "Discover Kanyakumari",
-      "themes": [
-        "heritage",
-        "local_food",
-        "weekend"
-      ],
-      "bestMonths": [
-        "Oct",
-        "Nov",
-        "Dec",
-        "Jan",
-        "Feb",
-        "Mar"
-      ],
+      "themes": ["heritage", "local_food", "weekend"],
+      "bestMonths": ["Oct", "Nov", "Dec", "Jan", "Feb", "Mar"],
       "nearestStationId": "station_320_central",
       "attractions": [
         {
@@ -1271,19 +941,8 @@
       "destinationId": "destination_031",
       "cityId": "city_tripura_udaipur",
       "title": "Discover Udaipur",
-      "themes": [
-        "heritage",
-        "local_food",
-        "weekend"
-      ],
-      "bestMonths": [
-        "Oct",
-        "Nov",
-        "Dec",
-        "Jan",
-        "Feb",
-        "Mar"
-      ],
+      "themes": ["heritage", "local_food", "weekend"],
+      "bestMonths": ["Oct", "Nov", "Dec", "Jan", "Feb", "Mar"],
       "nearestStationId": "station_338_central",
       "attractions": [
         {
@@ -1313,19 +972,8 @@
       "destinationId": "destination_032",
       "cityId": "city_uttar_pradesh_varanasi",
       "title": "Discover Varanasi",
-      "themes": [
-        "heritage",
-        "local_food",
-        "weekend"
-      ],
-      "bestMonths": [
-        "Oct",
-        "Nov",
-        "Dec",
-        "Jan",
-        "Feb",
-        "Mar"
-      ],
+      "themes": ["heritage", "local_food", "weekend"],
+      "bestMonths": ["Oct", "Nov", "Dec", "Jan", "Feb", "Mar"],
       "nearestStationId": "station_352_central",
       "attractions": [
         {
@@ -1355,19 +1003,8 @@
       "destinationId": "destination_033",
       "cityId": "city_uttar_pradesh_agra",
       "title": "Discover Agra",
-      "themes": [
-        "heritage",
-        "local_food",
-        "weekend"
-      ],
-      "bestMonths": [
-        "Oct",
-        "Nov",
-        "Dec",
-        "Jan",
-        "Feb",
-        "Mar"
-      ],
+      "themes": ["heritage", "local_food", "weekend"],
+      "bestMonths": ["Oct", "Nov", "Dec", "Jan", "Feb", "Mar"],
       "nearestStationId": "station_353_central",
       "attractions": [
         {
@@ -1397,19 +1034,8 @@
       "destinationId": "destination_034",
       "cityId": "city_uttar_pradesh_ayodhya",
       "title": "Discover Ayodhya",
-      "themes": [
-        "heritage",
-        "local_food",
-        "weekend"
-      ],
-      "bestMonths": [
-        "Oct",
-        "Nov",
-        "Dec",
-        "Jan",
-        "Feb",
-        "Mar"
-      ],
+      "themes": ["heritage", "local_food", "weekend"],
+      "bestMonths": ["Oct", "Nov", "Dec", "Jan", "Feb", "Mar"],
       "nearestStationId": "station_358_central",
       "attractions": [
         {
@@ -1439,19 +1065,8 @@
       "destinationId": "destination_035",
       "cityId": "city_uttar_pradesh_mathura",
       "title": "Discover Mathura",
-      "themes": [
-        "heritage",
-        "local_food",
-        "weekend"
-      ],
-      "bestMonths": [
-        "Oct",
-        "Nov",
-        "Dec",
-        "Jan",
-        "Feb",
-        "Mar"
-      ],
+      "themes": ["heritage", "local_food", "weekend"],
+      "bestMonths": ["Oct", "Nov", "Dec", "Jan", "Feb", "Mar"],
       "nearestStationId": "station_359_central",
       "attractions": [
         {
@@ -1481,19 +1096,8 @@
       "destinationId": "destination_036",
       "cityId": "city_uttarakhand_haridwar",
       "title": "Discover Haridwar",
-      "themes": [
-        "heritage",
-        "local_food",
-        "weekend"
-      ],
-      "bestMonths": [
-        "Oct",
-        "Nov",
-        "Dec",
-        "Jan",
-        "Feb",
-        "Mar"
-      ],
+      "themes": ["heritage", "local_food", "weekend"],
+      "bestMonths": ["Oct", "Nov", "Dec", "Jan", "Feb", "Mar"],
       "nearestStationId": "station_366_central",
       "attractions": [
         {
@@ -1523,19 +1127,8 @@
       "destinationId": "destination_037",
       "cityId": "city_uttarakhand_rishikesh",
       "title": "Discover Rishikesh",
-      "themes": [
-        "heritage",
-        "local_food",
-        "weekend"
-      ],
-      "bestMonths": [
-        "Oct",
-        "Nov",
-        "Dec",
-        "Jan",
-        "Feb",
-        "Mar"
-      ],
+      "themes": ["heritage", "local_food", "weekend"],
+      "bestMonths": ["Oct", "Nov", "Dec", "Jan", "Feb", "Mar"],
       "nearestStationId": "station_367_central",
       "attractions": [
         {
@@ -1565,19 +1158,8 @@
       "destinationId": "destination_038",
       "cityId": "city_uttarakhand_nainital",
       "title": "Discover Nainital",
-      "themes": [
-        "heritage",
-        "local_food",
-        "weekend"
-      ],
-      "bestMonths": [
-        "Oct",
-        "Nov",
-        "Dec",
-        "Jan",
-        "Feb",
-        "Mar"
-      ],
+      "themes": ["heritage", "local_food", "weekend"],
+      "bestMonths": ["Oct", "Nov", "Dec", "Jan", "Feb", "Mar"],
       "nearestStationId": "station_368_central",
       "attractions": [
         {
@@ -1607,19 +1189,8 @@
       "destinationId": "destination_039",
       "cityId": "city_uttarakhand_mussoorie",
       "title": "Discover Mussoorie",
-      "themes": [
-        "heritage",
-        "local_food",
-        "weekend"
-      ],
-      "bestMonths": [
-        "Oct",
-        "Nov",
-        "Dec",
-        "Jan",
-        "Feb",
-        "Mar"
-      ],
+      "themes": ["heritage", "local_food", "weekend"],
+      "bestMonths": ["Oct", "Nov", "Dec", "Jan", "Feb", "Mar"],
       "nearestStationId": "station_369_central",
       "attractions": [
         {
@@ -1649,19 +1220,8 @@
       "destinationId": "destination_040",
       "cityId": "city_west_bengal_darjeeling",
       "title": "Discover Darjeeling",
-      "themes": [
-        "heritage",
-        "local_food",
-        "weekend"
-      ],
-      "bestMonths": [
-        "Oct",
-        "Nov",
-        "Dec",
-        "Jan",
-        "Feb",
-        "Mar"
-      ],
+      "themes": ["heritage", "local_food", "weekend"],
+      "bestMonths": ["Oct", "Nov", "Dec", "Jan", "Feb", "Mar"],
       "nearestStationId": "station_380_central",
       "attractions": [
         {
@@ -1691,19 +1251,8 @@
       "destinationId": "destination_041",
       "cityId": "city_jammu_and_kashmir_srinagar",
       "title": "Discover Srinagar",
-      "themes": [
-        "heritage",
-        "local_food",
-        "weekend"
-      ],
-      "bestMonths": [
-        "Oct",
-        "Nov",
-        "Dec",
-        "Jan",
-        "Feb",
-        "Mar"
-      ],
+      "themes": ["heritage", "local_food", "weekend"],
+      "bestMonths": ["Oct", "Nov", "Dec", "Jan", "Feb", "Mar"],
       "nearestStationId": "station_407_central",
       "attractions": [
         {
@@ -1733,19 +1282,8 @@
       "destinationId": "destination_042",
       "cityId": "city_jammu_and_kashmir_gulmarg",
       "title": "Discover Gulmarg",
-      "themes": [
-        "heritage",
-        "local_food",
-        "weekend"
-      ],
-      "bestMonths": [
-        "Oct",
-        "Nov",
-        "Dec",
-        "Jan",
-        "Feb",
-        "Mar"
-      ],
+      "themes": ["heritage", "local_food", "weekend"],
+      "bestMonths": ["Oct", "Nov", "Dec", "Jan", "Feb", "Mar"],
       "nearestStationId": "station_409_central",
       "attractions": [
         {
@@ -1775,19 +1313,8 @@
       "destinationId": "destination_043",
       "cityId": "city_jammu_and_kashmir_pahalgam",
       "title": "Discover Pahalgam",
-      "themes": [
-        "heritage",
-        "local_food",
-        "weekend"
-      ],
-      "bestMonths": [
-        "Oct",
-        "Nov",
-        "Dec",
-        "Jan",
-        "Feb",
-        "Mar"
-      ],
+      "themes": ["heritage", "local_food", "weekend"],
+      "bestMonths": ["Oct", "Nov", "Dec", "Jan", "Feb", "Mar"],
       "nearestStationId": "station_410_central",
       "attractions": [
         {
@@ -1817,19 +1344,8 @@
       "destinationId": "destination_044",
       "cityId": "city_jammu_and_kashmir_katra",
       "title": "Discover Katra",
-      "themes": [
-        "heritage",
-        "local_food",
-        "weekend"
-      ],
-      "bestMonths": [
-        "Oct",
-        "Nov",
-        "Dec",
-        "Jan",
-        "Feb",
-        "Mar"
-      ],
+      "themes": ["heritage", "local_food", "weekend"],
+      "bestMonths": ["Oct", "Nov", "Dec", "Jan", "Feb", "Mar"],
       "nearestStationId": "station_414_central",
       "attractions": [
         {
@@ -1859,19 +1375,8 @@
       "destinationId": "destination_045",
       "cityId": "city_jammu_and_kashmir_leh",
       "title": "Discover Leh",
-      "themes": [
-        "heritage",
-        "local_food",
-        "weekend"
-      ],
-      "bestMonths": [
-        "Oct",
-        "Nov",
-        "Dec",
-        "Jan",
-        "Feb",
-        "Mar"
-      ],
+      "themes": ["heritage", "local_food", "weekend"],
+      "bestMonths": ["Oct", "Nov", "Dec", "Jan", "Feb", "Mar"],
       "nearestStationId": "station_417_central",
       "attractions": [
         {
@@ -1901,18 +1406,8 @@
       "destinationId": "destination_046",
       "cityId": "city_andhra_pradesh_visakhapatnam",
       "title": "Discover Visakhapatnam",
-      "themes": [
-        "city_break",
-        "local_food"
-      ],
-      "bestMonths": [
-        "Oct",
-        "Nov",
-        "Dec",
-        "Jan",
-        "Feb",
-        "Mar"
-      ],
+      "themes": ["city_break", "local_food"],
+      "bestMonths": ["Oct", "Nov", "Dec", "Jan", "Feb", "Mar"],
       "nearestStationId": "station_001_central",
       "attractions": [
         {
@@ -1942,18 +1437,8 @@
       "destinationId": "destination_047",
       "cityId": "city_andhra_pradesh_vijayawada",
       "title": "Discover Vijayawada",
-      "themes": [
-        "city_break",
-        "local_food"
-      ],
-      "bestMonths": [
-        "Oct",
-        "Nov",
-        "Dec",
-        "Jan",
-        "Feb",
-        "Mar"
-      ],
+      "themes": ["city_break", "local_food"],
+      "bestMonths": ["Oct", "Nov", "Dec", "Jan", "Feb", "Mar"],
       "nearestStationId": "station_002_central",
       "attractions": [
         {
@@ -1983,18 +1468,8 @@
       "destinationId": "destination_048",
       "cityId": "city_andhra_pradesh_guntur",
       "title": "Discover Guntur",
-      "themes": [
-        "city_break",
-        "local_food"
-      ],
-      "bestMonths": [
-        "Oct",
-        "Nov",
-        "Dec",
-        "Jan",
-        "Feb",
-        "Mar"
-      ],
+      "themes": ["city_break", "local_food"],
+      "bestMonths": ["Oct", "Nov", "Dec", "Jan", "Feb", "Mar"],
       "nearestStationId": "station_004_central",
       "attractions": [
         {
@@ -2024,18 +1499,8 @@
       "destinationId": "destination_049",
       "cityId": "city_andhra_pradesh_nellore",
       "title": "Discover Nellore",
-      "themes": [
-        "city_break",
-        "local_food"
-      ],
-      "bestMonths": [
-        "Oct",
-        "Nov",
-        "Dec",
-        "Jan",
-        "Feb",
-        "Mar"
-      ],
+      "themes": ["city_break", "local_food"],
+      "bestMonths": ["Oct", "Nov", "Dec", "Jan", "Feb", "Mar"],
       "nearestStationId": "station_005_central",
       "attractions": [
         {
@@ -2065,18 +1530,8 @@
       "destinationId": "destination_050",
       "cityId": "city_andhra_pradesh_kurnool",
       "title": "Discover Kurnool",
-      "themes": [
-        "city_break",
-        "local_food"
-      ],
-      "bestMonths": [
-        "Oct",
-        "Nov",
-        "Dec",
-        "Jan",
-        "Feb",
-        "Mar"
-      ],
+      "themes": ["city_break", "local_food"],
+      "bestMonths": ["Oct", "Nov", "Dec", "Jan", "Feb", "Mar"],
       "nearestStationId": "station_006_central",
       "attractions": [
         {
@@ -2106,18 +1561,8 @@
       "destinationId": "destination_051",
       "cityId": "city_andhra_pradesh_rajahmundry",
       "title": "Discover Rajahmundry",
-      "themes": [
-        "city_break",
-        "local_food"
-      ],
-      "bestMonths": [
-        "Oct",
-        "Nov",
-        "Dec",
-        "Jan",
-        "Feb",
-        "Mar"
-      ],
+      "themes": ["city_break", "local_food"],
+      "bestMonths": ["Oct", "Nov", "Dec", "Jan", "Feb", "Mar"],
       "nearestStationId": "station_007_central",
       "attractions": [
         {
@@ -2147,18 +1592,8 @@
       "destinationId": "destination_052",
       "cityId": "city_andhra_pradesh_kakinada",
       "title": "Discover Kakinada",
-      "themes": [
-        "city_break",
-        "local_food"
-      ],
-      "bestMonths": [
-        "Oct",
-        "Nov",
-        "Dec",
-        "Jan",
-        "Feb",
-        "Mar"
-      ],
+      "themes": ["city_break", "local_food"],
+      "bestMonths": ["Oct", "Nov", "Dec", "Jan", "Feb", "Mar"],
       "nearestStationId": "station_008_central",
       "attractions": [
         {
@@ -2188,18 +1623,8 @@
       "destinationId": "destination_053",
       "cityId": "city_andhra_pradesh_anantapur",
       "title": "Discover Anantapur",
-      "themes": [
-        "city_break",
-        "local_food"
-      ],
-      "bestMonths": [
-        "Oct",
-        "Nov",
-        "Dec",
-        "Jan",
-        "Feb",
-        "Mar"
-      ],
+      "themes": ["city_break", "local_food"],
+      "bestMonths": ["Oct", "Nov", "Dec", "Jan", "Feb", "Mar"],
       "nearestStationId": "station_009_central",
       "attractions": [
         {
@@ -2229,18 +1654,8 @@
       "destinationId": "destination_054",
       "cityId": "city_andhra_pradesh_kadapa",
       "title": "Discover Kadapa",
-      "themes": [
-        "city_break",
-        "local_food"
-      ],
-      "bestMonths": [
-        "Oct",
-        "Nov",
-        "Dec",
-        "Jan",
-        "Feb",
-        "Mar"
-      ],
+      "themes": ["city_break", "local_food"],
+      "bestMonths": ["Oct", "Nov", "Dec", "Jan", "Feb", "Mar"],
       "nearestStationId": "station_010_central",
       "attractions": [
         {
@@ -2270,18 +1685,8 @@
       "destinationId": "destination_055",
       "cityId": "city_andhra_pradesh_ongole",
       "title": "Discover Ongole",
-      "themes": [
-        "city_break",
-        "local_food"
-      ],
-      "bestMonths": [
-        "Oct",
-        "Nov",
-        "Dec",
-        "Jan",
-        "Feb",
-        "Mar"
-      ],
+      "themes": ["city_break", "local_food"],
+      "bestMonths": ["Oct", "Nov", "Dec", "Jan", "Feb", "Mar"],
       "nearestStationId": "station_011_central",
       "attractions": [
         {
@@ -2311,18 +1716,8 @@
       "destinationId": "destination_056",
       "cityId": "city_andhra_pradesh_eluru",
       "title": "Discover Eluru",
-      "themes": [
-        "city_break",
-        "local_food"
-      ],
-      "bestMonths": [
-        "Oct",
-        "Nov",
-        "Dec",
-        "Jan",
-        "Feb",
-        "Mar"
-      ],
+      "themes": ["city_break", "local_food"],
+      "bestMonths": ["Oct", "Nov", "Dec", "Jan", "Feb", "Mar"],
       "nearestStationId": "station_012_central",
       "attractions": [
         {
@@ -2352,18 +1747,8 @@
       "destinationId": "destination_057",
       "cityId": "city_andhra_pradesh_srikakulam",
       "title": "Discover Srikakulam",
-      "themes": [
-        "city_break",
-        "local_food"
-      ],
-      "bestMonths": [
-        "Oct",
-        "Nov",
-        "Dec",
-        "Jan",
-        "Feb",
-        "Mar"
-      ],
+      "themes": ["city_break", "local_food"],
+      "bestMonths": ["Oct", "Nov", "Dec", "Jan", "Feb", "Mar"],
       "nearestStationId": "station_013_central",
       "attractions": [
         {
@@ -2393,18 +1778,8 @@
       "destinationId": "destination_058",
       "cityId": "city_andhra_pradesh_amaravati",
       "title": "Discover Amaravati",
-      "themes": [
-        "city_break",
-        "local_food"
-      ],
-      "bestMonths": [
-        "Oct",
-        "Nov",
-        "Dec",
-        "Jan",
-        "Feb",
-        "Mar"
-      ],
+      "themes": ["city_break", "local_food"],
+      "bestMonths": ["Oct", "Nov", "Dec", "Jan", "Feb", "Mar"],
       "nearestStationId": "station_014_central",
       "attractions": [
         {
@@ -2434,18 +1809,8 @@
       "destinationId": "destination_059",
       "cityId": "city_arunachal_pradesh_itanagar",
       "title": "Discover Itanagar",
-      "themes": [
-        "city_break",
-        "local_food"
-      ],
-      "bestMonths": [
-        "Oct",
-        "Nov",
-        "Dec",
-        "Jan",
-        "Feb",
-        "Mar"
-      ],
+      "themes": ["city_break", "local_food"],
+      "bestMonths": ["Oct", "Nov", "Dec", "Jan", "Feb", "Mar"],
       "nearestStationId": "station_015_central",
       "attractions": [
         {
@@ -2475,18 +1840,8 @@
       "destinationId": "destination_060",
       "cityId": "city_arunachal_pradesh_pasighat",
       "title": "Discover Pasighat",
-      "themes": [
-        "city_break",
-        "local_food"
-      ],
-      "bestMonths": [
-        "Oct",
-        "Nov",
-        "Dec",
-        "Jan",
-        "Feb",
-        "Mar"
-      ],
+      "themes": ["city_break", "local_food"],
+      "bestMonths": ["Oct", "Nov", "Dec", "Jan", "Feb", "Mar"],
       "nearestStationId": "station_018_central",
       "attractions": [
         {
@@ -2516,18 +1871,8 @@
       "destinationId": "destination_061",
       "cityId": "city_arunachal_pradesh_bomdila",
       "title": "Discover Bomdila",
-      "themes": [
-        "city_break",
-        "local_food"
-      ],
-      "bestMonths": [
-        "Oct",
-        "Nov",
-        "Dec",
-        "Jan",
-        "Feb",
-        "Mar"
-      ],
+      "themes": ["city_break", "local_food"],
+      "bestMonths": ["Oct", "Nov", "Dec", "Jan", "Feb", "Mar"],
       "nearestStationId": "station_019_central",
       "attractions": [
         {
@@ -2557,18 +1902,8 @@
       "destinationId": "destination_062",
       "cityId": "city_arunachal_pradesh_naharlagun",
       "title": "Discover Naharlagun",
-      "themes": [
-        "city_break",
-        "local_food"
-      ],
-      "bestMonths": [
-        "Oct",
-        "Nov",
-        "Dec",
-        "Jan",
-        "Feb",
-        "Mar"
-      ],
+      "themes": ["city_break", "local_food"],
+      "bestMonths": ["Oct", "Nov", "Dec", "Jan", "Feb", "Mar"],
       "nearestStationId": "station_020_central",
       "attractions": [
         {
@@ -2598,18 +1933,8 @@
       "destinationId": "destination_063",
       "cityId": "city_arunachal_pradesh_aalo",
       "title": "Discover Aalo",
-      "themes": [
-        "city_break",
-        "local_food"
-      ],
-      "bestMonths": [
-        "Oct",
-        "Nov",
-        "Dec",
-        "Jan",
-        "Feb",
-        "Mar"
-      ],
+      "themes": ["city_break", "local_food"],
+      "bestMonths": ["Oct", "Nov", "Dec", "Jan", "Feb", "Mar"],
       "nearestStationId": "station_021_central",
       "attractions": [
         {
@@ -2639,18 +1964,8 @@
       "destinationId": "destination_064",
       "cityId": "city_arunachal_pradesh_tezu",
       "title": "Discover Tezu",
-      "themes": [
-        "city_break",
-        "local_food"
-      ],
-      "bestMonths": [
-        "Oct",
-        "Nov",
-        "Dec",
-        "Jan",
-        "Feb",
-        "Mar"
-      ],
+      "themes": ["city_break", "local_food"],
+      "bestMonths": ["Oct", "Nov", "Dec", "Jan", "Feb", "Mar"],
       "nearestStationId": "station_022_central",
       "attractions": [
         {
@@ -2680,18 +1995,8 @@
       "destinationId": "destination_065",
       "cityId": "city_arunachal_pradesh_roing",
       "title": "Discover Roing",
-      "themes": [
-        "city_break",
-        "local_food"
-      ],
-      "bestMonths": [
-        "Oct",
-        "Nov",
-        "Dec",
-        "Jan",
-        "Feb",
-        "Mar"
-      ],
+      "themes": ["city_break", "local_food"],
+      "bestMonths": ["Oct", "Nov", "Dec", "Jan", "Feb", "Mar"],
       "nearestStationId": "station_023_central",
       "attractions": [
         {
@@ -2721,18 +2026,8 @@
       "destinationId": "destination_066",
       "cityId": "city_arunachal_pradesh_seppa",
       "title": "Discover Seppa",
-      "themes": [
-        "city_break",
-        "local_food"
-      ],
-      "bestMonths": [
-        "Oct",
-        "Nov",
-        "Dec",
-        "Jan",
-        "Feb",
-        "Mar"
-      ],
+      "themes": ["city_break", "local_food"],
+      "bestMonths": ["Oct", "Nov", "Dec", "Jan", "Feb", "Mar"],
       "nearestStationId": "station_024_central",
       "attractions": [
         {
@@ -2762,18 +2057,8 @@
       "destinationId": "destination_067",
       "cityId": "city_arunachal_pradesh_namsai",
       "title": "Discover Namsai",
-      "themes": [
-        "city_break",
-        "local_food"
-      ],
-      "bestMonths": [
-        "Oct",
-        "Nov",
-        "Dec",
-        "Jan",
-        "Feb",
-        "Mar"
-      ],
+      "themes": ["city_break", "local_food"],
+      "bestMonths": ["Oct", "Nov", "Dec", "Jan", "Feb", "Mar"],
       "nearestStationId": "station_025_central",
       "attractions": [
         {
@@ -2803,18 +2088,8 @@
       "destinationId": "destination_068",
       "cityId": "city_arunachal_pradesh_changlang",
       "title": "Discover Changlang",
-      "themes": [
-        "city_break",
-        "local_food"
-      ],
-      "bestMonths": [
-        "Oct",
-        "Nov",
-        "Dec",
-        "Jan",
-        "Feb",
-        "Mar"
-      ],
+      "themes": ["city_break", "local_food"],
+      "bestMonths": ["Oct", "Nov", "Dec", "Jan", "Feb", "Mar"],
       "nearestStationId": "station_026_central",
       "attractions": [
         {
@@ -2844,18 +2119,8 @@
       "destinationId": "destination_069",
       "cityId": "city_arunachal_pradesh_yingkiong",
       "title": "Discover Yingkiong",
-      "themes": [
-        "city_break",
-        "local_food"
-      ],
-      "bestMonths": [
-        "Oct",
-        "Nov",
-        "Dec",
-        "Jan",
-        "Feb",
-        "Mar"
-      ],
+      "themes": ["city_break", "local_food"],
+      "bestMonths": ["Oct", "Nov", "Dec", "Jan", "Feb", "Mar"],
       "nearestStationId": "station_027_central",
       "attractions": [
         {
@@ -2885,18 +2150,8 @@
       "destinationId": "destination_070",
       "cityId": "city_arunachal_pradesh_anini",
       "title": "Discover Anini",
-      "themes": [
-        "city_break",
-        "local_food"
-      ],
-      "bestMonths": [
-        "Oct",
-        "Nov",
-        "Dec",
-        "Jan",
-        "Feb",
-        "Mar"
-      ],
+      "themes": ["city_break", "local_food"],
+      "bestMonths": ["Oct", "Nov", "Dec", "Jan", "Feb", "Mar"],
       "nearestStationId": "station_028_central",
       "attractions": [
         {
@@ -2926,18 +2181,8 @@
       "destinationId": "destination_071",
       "cityId": "city_assam_guwahati",
       "title": "Discover Guwahati",
-      "themes": [
-        "city_break",
-        "local_food"
-      ],
-      "bestMonths": [
-        "Oct",
-        "Nov",
-        "Dec",
-        "Jan",
-        "Feb",
-        "Mar"
-      ],
+      "themes": ["city_break", "local_food"],
+      "bestMonths": ["Oct", "Nov", "Dec", "Jan", "Feb", "Mar"],
       "nearestStationId": "station_029_central",
       "attractions": [
         {
@@ -2967,18 +2212,8 @@
       "destinationId": "destination_072",
       "cityId": "city_assam_dibrugarh",
       "title": "Discover Dibrugarh",
-      "themes": [
-        "city_break",
-        "local_food"
-      ],
-      "bestMonths": [
-        "Oct",
-        "Nov",
-        "Dec",
-        "Jan",
-        "Feb",
-        "Mar"
-      ],
+      "themes": ["city_break", "local_food"],
+      "bestMonths": ["Oct", "Nov", "Dec", "Jan", "Feb", "Mar"],
       "nearestStationId": "station_030_central",
       "attractions": [
         {
@@ -3008,18 +2243,8 @@
       "destinationId": "destination_073",
       "cityId": "city_assam_jorhat",
       "title": "Discover Jorhat",
-      "themes": [
-        "city_break",
-        "local_food"
-      ],
-      "bestMonths": [
-        "Oct",
-        "Nov",
-        "Dec",
-        "Jan",
-        "Feb",
-        "Mar"
-      ],
+      "themes": ["city_break", "local_food"],
+      "bestMonths": ["Oct", "Nov", "Dec", "Jan", "Feb", "Mar"],
       "nearestStationId": "station_031_central",
       "attractions": [
         {
@@ -3049,18 +2274,8 @@
       "destinationId": "destination_074",
       "cityId": "city_assam_silchar",
       "title": "Discover Silchar",
-      "themes": [
-        "city_break",
-        "local_food"
-      ],
-      "bestMonths": [
-        "Oct",
-        "Nov",
-        "Dec",
-        "Jan",
-        "Feb",
-        "Mar"
-      ],
+      "themes": ["city_break", "local_food"],
+      "bestMonths": ["Oct", "Nov", "Dec", "Jan", "Feb", "Mar"],
       "nearestStationId": "station_032_central",
       "attractions": [
         {
@@ -3090,18 +2305,8 @@
       "destinationId": "destination_075",
       "cityId": "city_assam_tezpur",
       "title": "Discover Tezpur",
-      "themes": [
-        "city_break",
-        "local_food"
-      ],
-      "bestMonths": [
-        "Oct",
-        "Nov",
-        "Dec",
-        "Jan",
-        "Feb",
-        "Mar"
-      ],
+      "themes": ["city_break", "local_food"],
+      "bestMonths": ["Oct", "Nov", "Dec", "Jan", "Feb", "Mar"],
       "nearestStationId": "station_033_central",
       "attractions": [
         {
@@ -3131,18 +2336,8 @@
       "destinationId": "destination_076",
       "cityId": "city_assam_nagaon",
       "title": "Discover Nagaon",
-      "themes": [
-        "city_break",
-        "local_food"
-      ],
-      "bestMonths": [
-        "Oct",
-        "Nov",
-        "Dec",
-        "Jan",
-        "Feb",
-        "Mar"
-      ],
+      "themes": ["city_break", "local_food"],
+      "bestMonths": ["Oct", "Nov", "Dec", "Jan", "Feb", "Mar"],
       "nearestStationId": "station_034_central",
       "attractions": [
         {
@@ -3172,18 +2367,8 @@
       "destinationId": "destination_077",
       "cityId": "city_assam_tinsukia",
       "title": "Discover Tinsukia",
-      "themes": [
-        "city_break",
-        "local_food"
-      ],
-      "bestMonths": [
-        "Oct",
-        "Nov",
-        "Dec",
-        "Jan",
-        "Feb",
-        "Mar"
-      ],
+      "themes": ["city_break", "local_food"],
+      "bestMonths": ["Oct", "Nov", "Dec", "Jan", "Feb", "Mar"],
       "nearestStationId": "station_036_central",
       "attractions": [
         {
@@ -3213,18 +2398,8 @@
       "destinationId": "destination_078",
       "cityId": "city_assam_bongaigaon",
       "title": "Discover Bongaigaon",
-      "themes": [
-        "city_break",
-        "local_food"
-      ],
-      "bestMonths": [
-        "Oct",
-        "Nov",
-        "Dec",
-        "Jan",
-        "Feb",
-        "Mar"
-      ],
+      "themes": ["city_break", "local_food"],
+      "bestMonths": ["Oct", "Nov", "Dec", "Jan", "Feb", "Mar"],
       "nearestStationId": "station_037_central",
       "attractions": [
         {
@@ -3254,18 +2429,8 @@
       "destinationId": "destination_079",
       "cityId": "city_assam_dhubri",
       "title": "Discover Dhubri",
-      "themes": [
-        "city_break",
-        "local_food"
-      ],
-      "bestMonths": [
-        "Oct",
-        "Nov",
-        "Dec",
-        "Jan",
-        "Feb",
-        "Mar"
-      ],
+      "themes": ["city_break", "local_food"],
+      "bestMonths": ["Oct", "Nov", "Dec", "Jan", "Feb", "Mar"],
       "nearestStationId": "station_038_central",
       "attractions": [
         {
@@ -3295,18 +2460,8 @@
       "destinationId": "destination_080",
       "cityId": "city_assam_haflong",
       "title": "Discover Haflong",
-      "themes": [
-        "city_break",
-        "local_food"
-      ],
-      "bestMonths": [
-        "Oct",
-        "Nov",
-        "Dec",
-        "Jan",
-        "Feb",
-        "Mar"
-      ],
+      "themes": ["city_break", "local_food"],
+      "bestMonths": ["Oct", "Nov", "Dec", "Jan", "Feb", "Mar"],
       "nearestStationId": "station_039_central",
       "attractions": [
         {
@@ -3336,18 +2491,8 @@
       "destinationId": "destination_081",
       "cityId": "city_assam_goalpara",
       "title": "Discover Goalpara",
-      "themes": [
-        "city_break",
-        "local_food"
-      ],
-      "bestMonths": [
-        "Oct",
-        "Nov",
-        "Dec",
-        "Jan",
-        "Feb",
-        "Mar"
-      ],
+      "themes": ["city_break", "local_food"],
+      "bestMonths": ["Oct", "Nov", "Dec", "Jan", "Feb", "Mar"],
       "nearestStationId": "station_040_central",
       "attractions": [
         {
@@ -3377,18 +2522,8 @@
       "destinationId": "destination_082",
       "cityId": "city_assam_barpeta",
       "title": "Discover Barpeta",
-      "themes": [
-        "city_break",
-        "local_food"
-      ],
-      "bestMonths": [
-        "Oct",
-        "Nov",
-        "Dec",
-        "Jan",
-        "Feb",
-        "Mar"
-      ],
+      "themes": ["city_break", "local_food"],
+      "bestMonths": ["Oct", "Nov", "Dec", "Jan", "Feb", "Mar"],
       "nearestStationId": "station_041_central",
       "attractions": [
         {
@@ -3418,18 +2553,8 @@
       "destinationId": "destination_083",
       "cityId": "city_assam_karimganj",
       "title": "Discover Karimganj",
-      "themes": [
-        "city_break",
-        "local_food"
-      ],
-      "bestMonths": [
-        "Oct",
-        "Nov",
-        "Dec",
-        "Jan",
-        "Feb",
-        "Mar"
-      ],
+      "themes": ["city_break", "local_food"],
+      "bestMonths": ["Oct", "Nov", "Dec", "Jan", "Feb", "Mar"],
       "nearestStationId": "station_042_central",
       "attractions": [
         {
@@ -3459,18 +2584,8 @@
       "destinationId": "destination_084",
       "cityId": "city_bihar_patna",
       "title": "Discover Patna",
-      "themes": [
-        "city_break",
-        "local_food"
-      ],
-      "bestMonths": [
-        "Oct",
-        "Nov",
-        "Dec",
-        "Jan",
-        "Feb",
-        "Mar"
-      ],
+      "themes": ["city_break", "local_food"],
+      "bestMonths": ["Oct", "Nov", "Dec", "Jan", "Feb", "Mar"],
       "nearestStationId": "station_043_central",
       "attractions": [
         {
@@ -3500,18 +2615,8 @@
       "destinationId": "destination_085",
       "cityId": "city_bihar_muzaffarpur",
       "title": "Discover Muzaffarpur",
-      "themes": [
-        "city_break",
-        "local_food"
-      ],
-      "bestMonths": [
-        "Oct",
-        "Nov",
-        "Dec",
-        "Jan",
-        "Feb",
-        "Mar"
-      ],
+      "themes": ["city_break", "local_food"],
+      "bestMonths": ["Oct", "Nov", "Dec", "Jan", "Feb", "Mar"],
       "nearestStationId": "station_045_central",
       "attractions": [
         {
@@ -3541,18 +2646,8 @@
       "destinationId": "destination_086",
       "cityId": "city_bihar_bhagalpur",
       "title": "Discover Bhagalpur",
-      "themes": [
-        "city_break",
-        "local_food"
-      ],
-      "bestMonths": [
-        "Oct",
-        "Nov",
-        "Dec",
-        "Jan",
-        "Feb",
-        "Mar"
-      ],
+      "themes": ["city_break", "local_food"],
+      "bestMonths": ["Oct", "Nov", "Dec", "Jan", "Feb", "Mar"],
       "nearestStationId": "station_046_central",
       "attractions": [
         {
@@ -3582,18 +2677,8 @@
       "destinationId": "destination_087",
       "cityId": "city_bihar_darbhanga",
       "title": "Discover Darbhanga",
-      "themes": [
-        "city_break",
-        "local_food"
-      ],
-      "bestMonths": [
-        "Oct",
-        "Nov",
-        "Dec",
-        "Jan",
-        "Feb",
-        "Mar"
-      ],
+      "themes": ["city_break", "local_food"],
+      "bestMonths": ["Oct", "Nov", "Dec", "Jan", "Feb", "Mar"],
       "nearestStationId": "station_047_central",
       "attractions": [
         {
@@ -3623,18 +2708,8 @@
       "destinationId": "destination_088",
       "cityId": "city_bihar_purnia",
       "title": "Discover Purnia",
-      "themes": [
-        "city_break",
-        "local_food"
-      ],
-      "bestMonths": [
-        "Oct",
-        "Nov",
-        "Dec",
-        "Jan",
-        "Feb",
-        "Mar"
-      ],
+      "themes": ["city_break", "local_food"],
+      "bestMonths": ["Oct", "Nov", "Dec", "Jan", "Feb", "Mar"],
       "nearestStationId": "station_048_central",
       "attractions": [
         {
@@ -3664,18 +2739,8 @@
       "destinationId": "destination_089",
       "cityId": "city_bihar_ara",
       "title": "Discover Ara",
-      "themes": [
-        "city_break",
-        "local_food"
-      ],
-      "bestMonths": [
-        "Oct",
-        "Nov",
-        "Dec",
-        "Jan",
-        "Feb",
-        "Mar"
-      ],
+      "themes": ["city_break", "local_food"],
+      "bestMonths": ["Oct", "Nov", "Dec", "Jan", "Feb", "Mar"],
       "nearestStationId": "station_049_central",
       "attractions": [
         {
@@ -3705,18 +2770,8 @@
       "destinationId": "destination_090",
       "cityId": "city_bihar_begusarai",
       "title": "Discover Begusarai",
-      "themes": [
-        "city_break",
-        "local_food"
-      ],
-      "bestMonths": [
-        "Oct",
-        "Nov",
-        "Dec",
-        "Jan",
-        "Feb",
-        "Mar"
-      ],
+      "themes": ["city_break", "local_food"],
+      "bestMonths": ["Oct", "Nov", "Dec", "Jan", "Feb", "Mar"],
       "nearestStationId": "station_050_central",
       "attractions": [
         {
@@ -3746,18 +2801,8 @@
       "destinationId": "destination_091",
       "cityId": "city_bihar_bihar_sharif",
       "title": "Discover Bihar Sharif",
-      "themes": [
-        "city_break",
-        "local_food"
-      ],
-      "bestMonths": [
-        "Oct",
-        "Nov",
-        "Dec",
-        "Jan",
-        "Feb",
-        "Mar"
-      ],
+      "themes": ["city_break", "local_food"],
+      "bestMonths": ["Oct", "Nov", "Dec", "Jan", "Feb", "Mar"],
       "nearestStationId": "station_051_central",
       "attractions": [
         {
@@ -3787,18 +2832,8 @@
       "destinationId": "destination_092",
       "cityId": "city_bihar_katihar",
       "title": "Discover Katihar",
-      "themes": [
-        "city_break",
-        "local_food"
-      ],
-      "bestMonths": [
-        "Oct",
-        "Nov",
-        "Dec",
-        "Jan",
-        "Feb",
-        "Mar"
-      ],
+      "themes": ["city_break", "local_food"],
+      "bestMonths": ["Oct", "Nov", "Dec", "Jan", "Feb", "Mar"],
       "nearestStationId": "station_052_central",
       "attractions": [
         {
@@ -3828,18 +2863,8 @@
       "destinationId": "destination_093",
       "cityId": "city_bihar_munger",
       "title": "Discover Munger",
-      "themes": [
-        "city_break",
-        "local_food"
-      ],
-      "bestMonths": [
-        "Oct",
-        "Nov",
-        "Dec",
-        "Jan",
-        "Feb",
-        "Mar"
-      ],
+      "themes": ["city_break", "local_food"],
+      "bestMonths": ["Oct", "Nov", "Dec", "Jan", "Feb", "Mar"],
       "nearestStationId": "station_053_central",
       "attractions": [
         {
@@ -3869,18 +2894,8 @@
       "destinationId": "destination_094",
       "cityId": "city_bihar_sasaram",
       "title": "Discover Sasaram",
-      "themes": [
-        "city_break",
-        "local_food"
-      ],
-      "bestMonths": [
-        "Oct",
-        "Nov",
-        "Dec",
-        "Jan",
-        "Feb",
-        "Mar"
-      ],
+      "themes": ["city_break", "local_food"],
+      "bestMonths": ["Oct", "Nov", "Dec", "Jan", "Feb", "Mar"],
       "nearestStationId": "station_054_central",
       "attractions": [
         {
@@ -3910,18 +2925,8 @@
       "destinationId": "destination_095",
       "cityId": "city_bihar_samastipur",
       "title": "Discover Samastipur",
-      "themes": [
-        "city_break",
-        "local_food"
-      ],
-      "bestMonths": [
-        "Oct",
-        "Nov",
-        "Dec",
-        "Jan",
-        "Feb",
-        "Mar"
-      ],
+      "themes": ["city_break", "local_food"],
+      "bestMonths": ["Oct", "Nov", "Dec", "Jan", "Feb", "Mar"],
       "nearestStationId": "station_055_central",
       "attractions": [
         {
@@ -3951,18 +2956,8 @@
       "destinationId": "destination_096",
       "cityId": "city_bihar_bettiah",
       "title": "Discover Bettiah",
-      "themes": [
-        "city_break",
-        "local_food"
-      ],
-      "bestMonths": [
-        "Oct",
-        "Nov",
-        "Dec",
-        "Jan",
-        "Feb",
-        "Mar"
-      ],
+      "themes": ["city_break", "local_food"],
+      "bestMonths": ["Oct", "Nov", "Dec", "Jan", "Feb", "Mar"],
       "nearestStationId": "station_056_central",
       "attractions": [
         {
@@ -3992,18 +2987,8 @@
       "destinationId": "destination_097",
       "cityId": "city_chhattisgarh_raipur",
       "title": "Discover Raipur",
-      "themes": [
-        "city_break",
-        "local_food"
-      ],
-      "bestMonths": [
-        "Oct",
-        "Nov",
-        "Dec",
-        "Jan",
-        "Feb",
-        "Mar"
-      ],
+      "themes": ["city_break", "local_food"],
+      "bestMonths": ["Oct", "Nov", "Dec", "Jan", "Feb", "Mar"],
       "nearestStationId": "station_057_central",
       "attractions": [
         {
@@ -4033,18 +3018,8 @@
       "destinationId": "destination_098",
       "cityId": "city_chhattisgarh_bilaspur",
       "title": "Discover Bilaspur",
-      "themes": [
-        "city_break",
-        "local_food"
-      ],
-      "bestMonths": [
-        "Oct",
-        "Nov",
-        "Dec",
-        "Jan",
-        "Feb",
-        "Mar"
-      ],
+      "themes": ["city_break", "local_food"],
+      "bestMonths": ["Oct", "Nov", "Dec", "Jan", "Feb", "Mar"],
       "nearestStationId": "station_058_central",
       "attractions": [
         {
@@ -4074,18 +3049,8 @@
       "destinationId": "destination_099",
       "cityId": "city_chhattisgarh_durg",
       "title": "Discover Durg",
-      "themes": [
-        "city_break",
-        "local_food"
-      ],
-      "bestMonths": [
-        "Oct",
-        "Nov",
-        "Dec",
-        "Jan",
-        "Feb",
-        "Mar"
-      ],
+      "themes": ["city_break", "local_food"],
+      "bestMonths": ["Oct", "Nov", "Dec", "Jan", "Feb", "Mar"],
       "nearestStationId": "station_059_central",
       "attractions": [
         {
@@ -4115,18 +3080,8 @@
       "destinationId": "destination_100",
       "cityId": "city_chhattisgarh_bhilai",
       "title": "Discover Bhilai",
-      "themes": [
-        "city_break",
-        "local_food"
-      ],
-      "bestMonths": [
-        "Oct",
-        "Nov",
-        "Dec",
-        "Jan",
-        "Feb",
-        "Mar"
-      ],
+      "themes": ["city_break", "local_food"],
+      "bestMonths": ["Oct", "Nov", "Dec", "Jan", "Feb", "Mar"],
       "nearestStationId": "station_060_central",
       "attractions": [
         {
@@ -4156,18 +3111,8 @@
       "destinationId": "destination_101",
       "cityId": "city_chhattisgarh_korba",
       "title": "Discover Korba",
-      "themes": [
-        "city_break",
-        "local_food"
-      ],
-      "bestMonths": [
-        "Oct",
-        "Nov",
-        "Dec",
-        "Jan",
-        "Feb",
-        "Mar"
-      ],
+      "themes": ["city_break", "local_food"],
+      "bestMonths": ["Oct", "Nov", "Dec", "Jan", "Feb", "Mar"],
       "nearestStationId": "station_061_central",
       "attractions": [
         {
@@ -4197,18 +3142,8 @@
       "destinationId": "destination_102",
       "cityId": "city_chhattisgarh_raigarh",
       "title": "Discover Raigarh",
-      "themes": [
-        "city_break",
-        "local_food"
-      ],
-      "bestMonths": [
-        "Oct",
-        "Nov",
-        "Dec",
-        "Jan",
-        "Feb",
-        "Mar"
-      ],
+      "themes": ["city_break", "local_food"],
+      "bestMonths": ["Oct", "Nov", "Dec", "Jan", "Feb", "Mar"],
       "nearestStationId": "station_063_central",
       "attractions": [
         {
@@ -4238,18 +3173,8 @@
       "destinationId": "destination_103",
       "cityId": "city_chhattisgarh_rajnandgaon",
       "title": "Discover Rajnandgaon",
-      "themes": [
-        "city_break",
-        "local_food"
-      ],
-      "bestMonths": [
-        "Oct",
-        "Nov",
-        "Dec",
-        "Jan",
-        "Feb",
-        "Mar"
-      ],
+      "themes": ["city_break", "local_food"],
+      "bestMonths": ["Oct", "Nov", "Dec", "Jan", "Feb", "Mar"],
       "nearestStationId": "station_064_central",
       "attractions": [
         {
@@ -4279,18 +3204,8 @@
       "destinationId": "destination_104",
       "cityId": "city_chhattisgarh_ambikapur",
       "title": "Discover Ambikapur",
-      "themes": [
-        "city_break",
-        "local_food"
-      ],
-      "bestMonths": [
-        "Oct",
-        "Nov",
-        "Dec",
-        "Jan",
-        "Feb",
-        "Mar"
-      ],
+      "themes": ["city_break", "local_food"],
+      "bestMonths": ["Oct", "Nov", "Dec", "Jan", "Feb", "Mar"],
       "nearestStationId": "station_065_central",
       "attractions": [
         {
@@ -4320,18 +3235,8 @@
       "destinationId": "destination_105",
       "cityId": "city_chhattisgarh_dhamtari",
       "title": "Discover Dhamtari",
-      "themes": [
-        "city_break",
-        "local_food"
-      ],
-      "bestMonths": [
-        "Oct",
-        "Nov",
-        "Dec",
-        "Jan",
-        "Feb",
-        "Mar"
-      ],
+      "themes": ["city_break", "local_food"],
+      "bestMonths": ["Oct", "Nov", "Dec", "Jan", "Feb", "Mar"],
       "nearestStationId": "station_066_central",
       "attractions": [
         {
@@ -4361,18 +3266,8 @@
       "destinationId": "destination_106",
       "cityId": "city_chhattisgarh_mahasamund",
       "title": "Discover Mahasamund",
-      "themes": [
-        "city_break",
-        "local_food"
-      ],
-      "bestMonths": [
-        "Oct",
-        "Nov",
-        "Dec",
-        "Jan",
-        "Feb",
-        "Mar"
-      ],
+      "themes": ["city_break", "local_food"],
+      "bestMonths": ["Oct", "Nov", "Dec", "Jan", "Feb", "Mar"],
       "nearestStationId": "station_067_central",
       "attractions": [
         {
@@ -4402,18 +3297,8 @@
       "destinationId": "destination_107",
       "cityId": "city_chhattisgarh_kanker",
       "title": "Discover Kanker",
-      "themes": [
-        "city_break",
-        "local_food"
-      ],
-      "bestMonths": [
-        "Oct",
-        "Nov",
-        "Dec",
-        "Jan",
-        "Feb",
-        "Mar"
-      ],
+      "themes": ["city_break", "local_food"],
+      "bestMonths": ["Oct", "Nov", "Dec", "Jan", "Feb", "Mar"],
       "nearestStationId": "station_068_central",
       "attractions": [
         {
@@ -4443,18 +3328,8 @@
       "destinationId": "destination_108",
       "cityId": "city_chhattisgarh_dantewada",
       "title": "Discover Dantewada",
-      "themes": [
-        "city_break",
-        "local_food"
-      ],
-      "bestMonths": [
-        "Oct",
-        "Nov",
-        "Dec",
-        "Jan",
-        "Feb",
-        "Mar"
-      ],
+      "themes": ["city_break", "local_food"],
+      "bestMonths": ["Oct", "Nov", "Dec", "Jan", "Feb", "Mar"],
       "nearestStationId": "station_069_central",
       "attractions": [
         {
@@ -4484,18 +3359,8 @@
       "destinationId": "destination_109",
       "cityId": "city_chhattisgarh_surguja",
       "title": "Discover Surguja",
-      "themes": [
-        "city_break",
-        "local_food"
-      ],
-      "bestMonths": [
-        "Oct",
-        "Nov",
-        "Dec",
-        "Jan",
-        "Feb",
-        "Mar"
-      ],
+      "themes": ["city_break", "local_food"],
+      "bestMonths": ["Oct", "Nov", "Dec", "Jan", "Feb", "Mar"],
       "nearestStationId": "station_070_central",
       "attractions": [
         {
@@ -4525,18 +3390,8 @@
       "destinationId": "destination_110",
       "cityId": "city_goa_panaji",
       "title": "Discover Panaji",
-      "themes": [
-        "city_break",
-        "local_food"
-      ],
-      "bestMonths": [
-        "Oct",
-        "Nov",
-        "Dec",
-        "Jan",
-        "Feb",
-        "Mar"
-      ],
+      "themes": ["city_break", "local_food"],
+      "bestMonths": ["Oct", "Nov", "Dec", "Jan", "Feb", "Mar"],
       "nearestStationId": "station_071_central",
       "attractions": [
         {
@@ -4566,18 +3421,8 @@
       "destinationId": "destination_111",
       "cityId": "city_goa_margao",
       "title": "Discover Margao",
-      "themes": [
-        "city_break",
-        "local_food"
-      ],
-      "bestMonths": [
-        "Oct",
-        "Nov",
-        "Dec",
-        "Jan",
-        "Feb",
-        "Mar"
-      ],
+      "themes": ["city_break", "local_food"],
+      "bestMonths": ["Oct", "Nov", "Dec", "Jan", "Feb", "Mar"],
       "nearestStationId": "station_072_central",
       "attractions": [
         {
@@ -4607,18 +3452,8 @@
       "destinationId": "destination_112",
       "cityId": "city_goa_vasco_da_gama",
       "title": "Discover Vasco da Gama",
-      "themes": [
-        "city_break",
-        "local_food"
-      ],
-      "bestMonths": [
-        "Oct",
-        "Nov",
-        "Dec",
-        "Jan",
-        "Feb",
-        "Mar"
-      ],
+      "themes": ["city_break", "local_food"],
+      "bestMonths": ["Oct", "Nov", "Dec", "Jan", "Feb", "Mar"],
       "nearestStationId": "station_073_central",
       "attractions": [
         {
@@ -4648,18 +3483,8 @@
       "destinationId": "destination_113",
       "cityId": "city_goa_mapusa",
       "title": "Discover Mapusa",
-      "themes": [
-        "city_break",
-        "local_food"
-      ],
-      "bestMonths": [
-        "Oct",
-        "Nov",
-        "Dec",
-        "Jan",
-        "Feb",
-        "Mar"
-      ],
+      "themes": ["city_break", "local_food"],
+      "bestMonths": ["Oct", "Nov", "Dec", "Jan", "Feb", "Mar"],
       "nearestStationId": "station_074_central",
       "attractions": [
         {
@@ -4689,18 +3514,8 @@
       "destinationId": "destination_114",
       "cityId": "city_goa_ponda",
       "title": "Discover Ponda",
-      "themes": [
-        "city_break",
-        "local_food"
-      ],
-      "bestMonths": [
-        "Oct",
-        "Nov",
-        "Dec",
-        "Jan",
-        "Feb",
-        "Mar"
-      ],
+      "themes": ["city_break", "local_food"],
+      "bestMonths": ["Oct", "Nov", "Dec", "Jan", "Feb", "Mar"],
       "nearestStationId": "station_075_central",
       "attractions": [
         {
@@ -4730,18 +3545,8 @@
       "destinationId": "destination_115",
       "cityId": "city_goa_canacona",
       "title": "Discover Canacona",
-      "themes": [
-        "city_break",
-        "local_food"
-      ],
-      "bestMonths": [
-        "Oct",
-        "Nov",
-        "Dec",
-        "Jan",
-        "Feb",
-        "Mar"
-      ],
+      "themes": ["city_break", "local_food"],
+      "bestMonths": ["Oct", "Nov", "Dec", "Jan", "Feb", "Mar"],
       "nearestStationId": "station_077_central",
       "attractions": [
         {
@@ -4771,18 +3576,8 @@
       "destinationId": "destination_116",
       "cityId": "city_goa_bicholim",
       "title": "Discover Bicholim",
-      "themes": [
-        "city_break",
-        "local_food"
-      ],
-      "bestMonths": [
-        "Oct",
-        "Nov",
-        "Dec",
-        "Jan",
-        "Feb",
-        "Mar"
-      ],
+      "themes": ["city_break", "local_food"],
+      "bestMonths": ["Oct", "Nov", "Dec", "Jan", "Feb", "Mar"],
       "nearestStationId": "station_078_central",
       "attractions": [
         {
@@ -4812,18 +3607,8 @@
       "destinationId": "destination_117",
       "cityId": "city_goa_valpoi",
       "title": "Discover Valpoi",
-      "themes": [
-        "city_break",
-        "local_food"
-      ],
-      "bestMonths": [
-        "Oct",
-        "Nov",
-        "Dec",
-        "Jan",
-        "Feb",
-        "Mar"
-      ],
+      "themes": ["city_break", "local_food"],
+      "bestMonths": ["Oct", "Nov", "Dec", "Jan", "Feb", "Mar"],
       "nearestStationId": "station_079_central",
       "attractions": [
         {
@@ -4853,18 +3638,8 @@
       "destinationId": "destination_118",
       "cityId": "city_goa_pernem",
       "title": "Discover Pernem",
-      "themes": [
-        "city_break",
-        "local_food"
-      ],
-      "bestMonths": [
-        "Oct",
-        "Nov",
-        "Dec",
-        "Jan",
-        "Feb",
-        "Mar"
-      ],
+      "themes": ["city_break", "local_food"],
+      "bestMonths": ["Oct", "Nov", "Dec", "Jan", "Feb", "Mar"],
       "nearestStationId": "station_080_central",
       "attractions": [
         {
@@ -4894,18 +3669,8 @@
       "destinationId": "destination_119",
       "cityId": "city_goa_curchorem",
       "title": "Discover Curchorem",
-      "themes": [
-        "city_break",
-        "local_food"
-      ],
-      "bestMonths": [
-        "Oct",
-        "Nov",
-        "Dec",
-        "Jan",
-        "Feb",
-        "Mar"
-      ],
+      "themes": ["city_break", "local_food"],
+      "bestMonths": ["Oct", "Nov", "Dec", "Jan", "Feb", "Mar"],
       "nearestStationId": "station_081_central",
       "attractions": [
         {
@@ -4935,18 +3700,8 @@
       "destinationId": "destination_120",
       "cityId": "city_goa_sanquelim",
       "title": "Discover Sanquelim",
-      "themes": [
-        "city_break",
-        "local_food"
-      ],
-      "bestMonths": [
-        "Oct",
-        "Nov",
-        "Dec",
-        "Jan",
-        "Feb",
-        "Mar"
-      ],
+      "themes": ["city_break", "local_food"],
+      "bestMonths": ["Oct", "Nov", "Dec", "Jan", "Feb", "Mar"],
       "nearestStationId": "station_082_central",
       "attractions": [
         {
