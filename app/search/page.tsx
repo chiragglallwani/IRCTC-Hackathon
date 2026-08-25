@@ -8,6 +8,16 @@ import { useApp } from "@/components/providers";
 import { searchJourneys } from "@/lib/search";
 import { stationById } from "@/lib/data";
 import type { SearchInput } from "@/lib/types";
+import { Checkbox } from "@/components/ui/checkbox";
+import { Badge } from "@/components/ui/badge";
+import { Button } from "@/components/ui/button";
+import {
+  Select,
+  SelectContent,
+  SelectItem,
+  SelectTrigger,
+  SelectValue,
+} from "@/components/ui/select";
 
 function dateOffset(date: string, offset: number) {
   const d = new Date(`${date}T00:00:00`);
@@ -86,7 +96,7 @@ function SearchResults() {
   const destination = stationById.get(base.destination);
   return (
     <div className="page">
-      <section className="card search-summary">
+      <section className="card flex items-start justify-between gap-[15px] px-[30px] py-[26px] lg:items-center">
         <div>
           <span className="eyebrow">{t("pages.search.eyebrow")}</span>
           <h2>
@@ -108,11 +118,14 @@ function SearchResults() {
             )}
           </p>
         </div>
-        <Link className="btn btn-secondary" href="/">
-          {t("pages.search.edit")}
-        </Link>
+        <Button variant="secondary" asChild>
+          <Link href="/">{t("pages.search.edit")}</Link>
+        </Button>
       </section>
-      <div className="date-carousel" aria-label={t("pages.search.datesLabel")}>
+      <div
+        className="-mx-4 my-7 flex gap-2 overflow-auto px-4 lg:mx-0 lg:px-0"
+        aria-label={t("pages.search.datesLabel")}
+      >
         {[-2, -1, 0, 1, 2, 3, 4].map((offset) => {
           const value = dateOffset(date, offset);
           const d = new Date(`${value}T00:00:00`);
@@ -142,10 +155,10 @@ function SearchResults() {
       <div className="results-toolbar">
         <div>
           <h3>{t("pages.search.found", { count: results.length })}</h3>
-          <div className="active-chips">
+          <div className="flex flex-wrap items-center gap-2 [&_button]:border-0 [&_button]:bg-transparent [&_button]:p-0">
             {modes.map((x) => (
               <button onClick={() => toggle(x, modes, setModes)} key={x}>
-                {t(`pages.search.${x}`)} ×
+                <Badge variant="success">{t(`pages.search.${x}`)} ×</Badge>
               </button>
             ))}
             {transfers.map((x) => (
@@ -153,12 +166,14 @@ function SearchResults() {
                 onClick={() => toggle(x, transfers, setTransfers)}
                 key={x}
               >
-                {x === 0
-                  ? t("pages.search.directChip")
-                  : t("pages.search.transferChip", {
-                      count: `${x}${x === 2 ? "+" : ""}`,
-                    })}{" "}
-                ×
+                <Badge variant="success">
+                  {x === 0
+                    ? t("pages.search.directChip")
+                    : t("pages.search.transferChip", {
+                        count: `${x}${x === 2 ? "+" : ""}`,
+                      })}{" "}
+                  ×
+                </Badge>
               </button>
             ))}
             {modes.length || transfers.length || onlyAvailable ? (
@@ -169,25 +184,36 @@ function SearchResults() {
                   setOnlyAvailable(false);
                 }}
               >
-                {t("common.actions.clearFilters")}
+                <Badge variant="outline">
+                  {t("common.actions.clearFilters")}
+                </Badge>
               </button>
             ) : null}
           </div>
         </div>
         <label>
           {t("pages.search.sort")}
-          <select value={sort} onChange={(e) => setSort(e.target.value)}>
-            <option value="recommended">
-              {t("pages.search.sortRecommended")}
-            </option>
-            <option value="fastest">{t("pages.search.sortFastest")}</option>
-            <option value="cheapest">{t("pages.search.sortCheapest")}</option>
-          </select>
+          <Select value={sort} onValueChange={setSort}>
+            <SelectTrigger className="min-w-44">
+              <SelectValue />
+            </SelectTrigger>
+            <SelectContent>
+              <SelectItem value="recommended">
+                {t("pages.search.sortRecommended")}
+              </SelectItem>
+              <SelectItem value="fastest">
+                {t("pages.search.sortFastest")}
+              </SelectItem>
+              <SelectItem value="cheapest">
+                {t("pages.search.sortCheapest")}
+              </SelectItem>
+            </SelectContent>
+          </Select>
         </label>
       </div>
-      <div className="results-layout">
+      <div className="mt-[34px] grid grid-cols-1 gap-[34px] lg:grid-cols-[280px_minmax(0,1fr)]">
         <aside
-          className="filter-sidebar"
+          className="rounded-xl border-0 bg-white p-[18px] lg:rounded-none lg:border-r lg:border-[var(--line)] lg:bg-transparent lg:p-0 lg:pr-6 [&_h3]:flex [&_h3]:items-center [&_h3]:gap-2 [&_section]:border-b [&_section]:border-[var(--line)] [&_section]:py-5"
           aria-label={t("pages.search.filtersLabel")}
         >
           <h3>
@@ -198,10 +224,9 @@ function SearchResults() {
             <div className="check-list">
               {["train", "metro"].map((x) => (
                 <label key={x}>
-                  <input
-                    type="checkbox"
+                  <Checkbox
                     checked={modes.includes(x)}
-                    onChange={() => toggle(x, modes, setModes)}
+                    onCheckedChange={() => toggle(x, modes, setModes)}
                   />
                   {t(`pages.search.${x}`)}
                 </label>
@@ -213,10 +238,9 @@ function SearchResults() {
             <div className="check-list">
               {[0, 1, 2].map((x) => (
                 <label key={x}>
-                  <input
-                    type="checkbox"
+                  <Checkbox
                     checked={transfers.includes(x)}
-                    onChange={() => toggle(x, transfers, setTransfers)}
+                    onCheckedChange={() => toggle(x, transfers, setTransfers)}
                   />
                   {t(
                     x === 0
@@ -247,25 +271,26 @@ function SearchResults() {
           <section>
             <div className="check-list">
               <label>
-                <input
-                  type="checkbox"
+                <Checkbox
                   checked={onlyAvailable}
-                  onChange={(e) => setOnlyAvailable(e.target.checked)}
+                  onCheckedChange={(checked) =>
+                    setOnlyAvailable(checked === true)
+                  }
                 />
                 {t("pages.search.availabilityOnly")}
               </label>
               <label>
-                <input type="checkbox" />
+                <Checkbox />
                 {t("pages.search.wheelchair")}
               </label>
               <label>
-                <input type="checkbox" />
+                <Checkbox />
                 {t("pages.search.charging")}
               </label>
             </div>
           </section>
         </aside>
-        <div className="result-list">
+        <div className="grid gap-5">
           {results.length ? (
             results.map((x) => (
               <JourneyCard key={x.id} journey={x} input={input} />
@@ -275,8 +300,7 @@ function SearchResults() {
               <SearchX />
               <h2>{t("pages.search.emptyTitle")}</h2>
               <p>{t("pages.search.emptyText")}</p>
-              <button
-                className="btn btn-primary"
+              <Button
                 onClick={() => {
                   setModes([]);
                   setTransfers([]);
@@ -285,7 +309,7 @@ function SearchResults() {
                 }}
               >
                 {t("pages.search.alternatives")}
-              </button>
+              </Button>
             </div>
           )}
         </div>

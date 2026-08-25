@@ -148,13 +148,19 @@
     },
     "language": "Language",
     "signIn": "Sign in",
-    "signOut": "Sign out"
+    "signOut": "Sign out",
+    "profileMenu": "Open profile menu",
+    "signedInAs": "Signed in as",
+    "logout": "Log out"
   },
   "components": {
     "accessibility": {
       "title": "Accessibility",
       "settings": "Accessibility settings",
       "textSize": "Text size",
+      "decreaseText": "Decrease text size",
+      "increaseText": "Increase text size",
+      "currentSize": "{{size}} px",
       "highContrast": "High contrast"
     },
     "auth": {
@@ -201,8 +207,12 @@
         "tourism": "Tourism"
       },
       "swap": "Swap origin and destination",
+      "searchStations": "Search stations or cities…",
+      "noStations": "No station found.",
       "selectPlaces": "Select both places from the suggested stations.",
       "samePlace": "Origin and destination must be different.",
+      "tatkalDateOnly": "Tatkal bookings are available only for tomorrow's journey date.",
+      "pastDate": "The journey date cannot be earlier than today.",
       "adult": "{{count}} Adult",
       "adults": "{{count}} Adults",
       "child": "{{count}} Child",
@@ -279,7 +289,33 @@
       "hero": {
         "title": "Where do you want to go?",
         "subtitle": "Search, compare, plan, and book journeys in a language you understand.",
-        "imageAlt": "Vande Bharat Express travelling through green Indian countryside"
+        "imageAlt": "Saffron Vande Bharat Express travelling through the Indian countryside at sunrise"
+      },
+      "stats": {
+        "eyebrow": "India on the move",
+        "title": "A network built to connect everyone",
+        "subtitle": "From nationwide reach to cleaner journeys and inclusive language support.",
+        "coverage": {
+          "value": "7325",
+          "decimals": "0",
+          "suffix": "+",
+          "title": "Cities, towns and villages connected",
+          "description": "Railway stations link communities across every corner of India."
+        },
+        "electrification": {
+          "value": "99.6",
+          "decimals": "1",
+          "suffix": "%",
+          "title": "Broad-gauge network electrified",
+          "description": "Cleaner electric traction now powers nearly the entire network."
+        },
+        "languages": {
+          "value": "2",
+          "decimals": "0",
+          "suffix": "",
+          "title": "Languages supported",
+          "description": "Plan journeys comfortably in English or Hindi."
+        }
       },
       "features": {
         "optionsTitle": "Understand your options",

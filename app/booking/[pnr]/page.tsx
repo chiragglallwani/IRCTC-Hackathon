@@ -6,6 +6,8 @@ import { CheckCircle2, Download, TrainFront } from "lucide-react";
 import { savedBookings } from "@/lib/storage";
 import type { Booking } from "@/lib/types";
 import { useApp } from "@/components/providers";
+import { Badge } from "@/components/ui/badge";
+import { Button } from "@/components/ui/button";
 
 export default function BookingPage() {
   const { t } = useApp();
@@ -24,9 +26,9 @@ export default function BookingPage() {
         <div className="card empty-state">
           <h2>{t("pages.booking.notFound")}</h2>
           <p>{t("pages.booking.notFoundText")}</p>
-          <Link className="btn btn-primary" href="/my-trips">
-            {t("pages.booking.openTrips")}
-          </Link>
+          <Button asChild>
+            <Link href="/my-trips">{t("pages.booking.openTrips")}</Link>
+          </Button>
         </div>
       </div>
     );
@@ -49,9 +51,7 @@ export default function BookingPage() {
               {booking.date} · {booking.travelClass} · {booking.quota}
             </p>
           </div>
-          <span className="badge badge-success">
-            {t("common.status.confirmed")}
-          </span>
+          <Badge variant="success">{t("common.status.confirmed")}</Badge>
         </div>
         <div className="route-line">
           <strong>
@@ -83,12 +83,12 @@ export default function BookingPage() {
           ))}
         </div>
         <div className="journey-actions mt-6">
-          <button className="btn btn-secondary" onClick={() => window.print()}>
+          <Button variant="secondary" onClick={() => window.print()}>
             <Download /> {t("pages.booking.print")}
-          </button>
-          <Link className="btn btn-primary" href="/my-trips">
-            {t("pages.booking.goTrips")}
-          </Link>
+          </Button>
+          <Button asChild>
+            <Link href="/my-trips">{t("pages.booking.goTrips")}</Link>
+          </Button>
         </div>
       </section>
     </div>

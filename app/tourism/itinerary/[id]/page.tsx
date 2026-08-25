@@ -13,6 +13,7 @@ import { cityById } from "@/lib/data";
 import { saveStorage, savedItineraries, storageKeys } from "@/lib/storage";
 import type { Itinerary } from "@/lib/types";
 import { useApp } from "@/components/providers";
+import { Button } from "@/components/ui/button";
 
 const plannerValueKeys: Record<string, string> = {
   Family: "family",
@@ -65,9 +66,11 @@ export default function ItineraryPage() {
       <div className="page">
         <div className="card empty-state">
           <h2>{t("pages.tourism.itinerary.notFound")}</h2>
-          <Link className="btn btn-primary" href="/tourism/plan">
-            {t("pages.tourism.itinerary.create")}
-          </Link>
+          <Button asChild>
+            <Link href="/tourism/plan">
+              {t("pages.tourism.itinerary.create")}
+            </Link>
+          </Button>
         </div>
       </div>
     );
@@ -150,30 +153,38 @@ export default function ItineraryPage() {
                     </p>
                   </div>
                   <div className="activity-actions">
-                    <button
+                    <Button
+                      variant="ghost"
+                      size="icon"
                       aria-label={t("common.actions.moveUp")}
                       onClick={() => act(di, ai, "up")}
                     >
                       <ArrowUp />
-                    </button>
-                    <button
+                    </Button>
+                    <Button
+                      variant="ghost"
+                      size="icon"
                       aria-label={t("common.actions.moveDown")}
                       onClick={() => act(di, ai, "down")}
                     >
                       <ArrowDown />
-                    </button>
-                    <button
+                    </Button>
+                    <Button
+                      variant="ghost"
+                      size="icon"
                       aria-label={t("common.actions.replace")}
                       onClick={() => act(di, ai, "replace")}
                     >
                       <RefreshCw />
-                    </button>
-                    <button
+                    </Button>
+                    <Button
+                      variant="ghost"
+                      size="icon"
                       aria-label={t("common.actions.remove")}
                       onClick={() => act(di, ai, "remove")}
                     >
                       <Trash2 />
-                    </button>
+                    </Button>
                   </div>
                 </div>
               ))}
@@ -228,13 +239,13 @@ export default function ItineraryPage() {
           <p className="microcopy">
             {t("pages.tourism.itinerary.notIncluded")}
           </p>
-          <button className="btn btn-primary w-full" onClick={confirm}>
+          <Button className="w-full" onClick={confirm}>
             {t(
               itinerary.confirmed
                 ? "common.status.confirmed"
                 : "pages.tourism.itinerary.confirm",
             )}
-          </button>
+          </Button>
           {paid && (
             <div className="payment-state success">
               <CheckCircle2 />

@@ -6,6 +6,7 @@ import { JourneyCard } from "@/components/journey-card";
 import { loadStorage, storageKeys } from "@/lib/storage";
 import type { SearchInput, Journey } from "@/lib/types";
 import { useApp } from "@/components/providers";
+import { Button } from "@/components/ui/button";
 interface Context {
   journey: Journey;
   input: SearchInput;
@@ -34,9 +35,9 @@ export default function JourneyPage() {
         <div className="card empty-state">
           <h2>{t("pages.journey.missing")}</h2>
           <p>{t("pages.journey.missingText")}</p>
-          <Link className="btn btn-primary" href="/">
-            {t("common.actions.startSearch")}
-          </Link>
+          <Button asChild>
+            <Link href="/">{t("common.actions.startSearch")}</Link>
+          </Button>
         </div>
       )}
     </div>
