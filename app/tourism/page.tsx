@@ -24,8 +24,7 @@ const categories = [
   "adventure",
 ];
 export default function TourismPage() {
-  const { language, t } = useApp();
-  const locale = language === "hi" ? "hi-IN" : "en-IN";
+  const { locale, t } = useApp();
   const [query, setQuery] = useState("");
   const [category, setCategory] = useState("All");
   const [season, setSeason] = useState("Any");

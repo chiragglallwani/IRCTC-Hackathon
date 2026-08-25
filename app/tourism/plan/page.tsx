@@ -16,7 +16,7 @@ import {
   SelectValue,
 } from "@/components/ui/select";
 function Planner() {
-  const { language, t } = useApp();
+  const { language, locale, t } = useApp();
   const router = useRouter();
   const params = useSearchParams();
   const [destinationId, setDestinationId] = useState(
@@ -133,9 +133,7 @@ function Planner() {
           </label>
           <label>
             {t("pages.tourism.planner.budget", {
-              amount: budget.toLocaleString(
-                language === "hi" ? "hi-IN" : "en-IN",
-              ),
+              amount: budget.toLocaleString(locale),
             })}
             <input
               type="range"

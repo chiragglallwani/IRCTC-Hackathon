@@ -38,7 +38,7 @@ import {
   SelectTrigger,
   SelectValue,
 } from "@/components/ui/select";
-import { SELECTLANGUAGELIST } from "@/lib/utils";
+import { languageOptions } from "@/lib/i18n";
 import { Button } from "@/components/ui/button";
 
 const IconMap: Record<string, React.ComponentType<LucideProps>> = {
@@ -125,7 +125,7 @@ export function Header() {
             </Link>
           ))}
         </nav>
-        <div className="ml-auto flex items-center gap-3 lg:ml-0 [&_button]:flex [&_button]:items-center [&_button]:gap-[7px] [&_button]:border-0 [&_button]:bg-transparent [&_button]:text-[#454957] [&_button_span]:hidden [&_svg]:w-[21px] lg:[&_button_span]:inline">
+        <div className="ms-auto flex items-center gap-3 lg:ms-0 [&_button]:flex [&_button]:items-center [&_button]:gap-[7px] [&_button]:border-0 [&_button]:bg-transparent [&_button]:text-[#454957] [&_button_span]:hidden [&_svg]:w-[21px] lg:[&_button_span]:inline">
           <Popover>
             <PopoverTrigger asChild>
               <button>
@@ -192,13 +192,13 @@ export function Header() {
           </Popover>
           <Select value={language} onValueChange={setLanguage}>
             <SelectTrigger
-              className="min-h-10 w-[100px] flex-shrink-0 rounded-lg border-[var(--line)] px-2 text-left [&>span]:!inline-block [&>span]:!truncate"
+              className="min-h-10 w-[120px] flex-shrink-0 rounded-lg border-[var(--line)] px-2 text-start [&>span]:!inline-block [&>span]:!truncate"
               aria-label={t("navigation.language")}
             >
               <SelectValue />
             </SelectTrigger>
             <SelectContent align="end">
-              {SELECTLANGUAGELIST.map((item) => (
+              {languageOptions.map((item) => (
                 <SelectItem key={item.value} value={item.value}>
                   {item.label}
                 </SelectItem>
@@ -288,7 +288,7 @@ export function AIAssistant() {
     <Popover>
       <PopoverTrigger asChild>
         <button
-          className="fixed bottom-[84px] right-4 z-[60] grid h-[66px] w-[66px] place-items-center rounded-full border-4 border-white bg-[var(--primary)] text-white shadow-[0_8px_28px_#0003] lg:bottom-7 lg:right-7"
+          className="fixed bottom-[84px] end-4 z-[60] grid h-[66px] w-[66px] place-items-center rounded-full border-4 border-white bg-[var(--primary)] text-white shadow-[0_8px_28px_#0003] lg:bottom-7 lg:end-7"
           aria-label={t("components.assistant.open")}
         >
           <Bot />
@@ -318,7 +318,7 @@ export function AIAssistant() {
             t("components.assistant.promptTicket"),
           ].map((x) => (
             <button
-              className="rounded-[7px] border border-[var(--line)] bg-white p-2 text-left"
+              className="rounded-[7px] border border-[var(--line)] bg-white p-2 text-start"
               key={x}
               onClick={() => ask(x)}
             >
@@ -328,14 +328,14 @@ export function AIAssistant() {
         </div>
         <div className="mt-[14px] flex">
           <input
-            className="min-h-11 rounded-l-lg rounded-r-none"
+            className="min-h-11 rounded-e-none rounded-s-lg"
             value={query}
             onChange={(e) => setQuery(e.target.value)}
             onKeyDown={(e) => e.key === "Enter" && ask()}
             placeholder={t("components.assistant.placeholder")}
           />
           <button
-            className="rounded-l-none rounded-r-lg border-0 bg-[var(--primary)] px-[14px] text-white"
+            className="rounded-e-lg rounded-s-none border-0 bg-[var(--primary)] px-[14px] text-white"
             onClick={() => ask()}
           >
             {t("common.actions.send")}
@@ -351,7 +351,7 @@ export function Footer() {
     <footer className="mb-[70px] grid items-center gap-[30px] border-t border-[var(--line)] px-6 py-8 text-[var(--muted)] lg:mb-0 lg:flex lg:px-[max(24px,calc((100vw_-_1280px)/2))]">
       <strong className="text-xl text-[var(--ink)]">{t("common.brand")}</strong>
       <span>{t("components.footer.description")}</span>
-      <div className="flex gap-6 lg:ml-auto">
+      <div className="flex gap-6 lg:ms-auto">
         <Link href="/">{t("common.actions.help")}</Link>
         <Link href="/tourism">{t("navigation.primary.tourism")}</Link>
         <Link href="/my-trips">{t("navigation.primary.trips")}</Link>

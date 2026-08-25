@@ -22,7 +22,7 @@ function AnimatedNumber({
   active: boolean;
   delay: number;
 }) {
-  const { language } = useApp();
+  const { locale } = useApp();
   const [displayValue, setDisplayValue] = useState(0);
 
   useEffect(() => {
@@ -56,7 +56,7 @@ function AnimatedNumber({
     return () => cancelAnimationFrame(frame);
   }, [active, delay, value]);
 
-  return displayValue.toLocaleString(language === "hi" ? "hi-IN" : "en-IN", {
+  return displayValue.toLocaleString(locale, {
     minimumFractionDigits: decimals,
     maximumFractionDigits: decimals,
   });

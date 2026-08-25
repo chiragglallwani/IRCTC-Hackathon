@@ -9,8 +9,12 @@ import {
 } from "react";
 import { loadStorage, saveStorage, storageKeys } from "@/lib/storage";
 import {
+  getIntlLocale,
+  getTextDirection,
+  isSupportedLanguage,
   translate,
   type Language,
+  type TextDirection,
   type TranslationVariables,
 } from "@/lib/i18n";
 
@@ -37,6 +41,8 @@ function normalizeFontSize(value: unknown) {
 interface AppContextValue {
   language: Language;
   setLanguage: (x: Language) => void;
+  locale: string;
+  direction: TextDirection;
   fontSize: number;
   setFontSize: (x: number) => void;
   highContrast: boolean;
@@ -62,7 +68,7 @@ export function Providers({ children }: { children: React.ReactNode }) {
       fontSize?: number | "normal" | "large" | "xl";
       highContrast?: boolean;
     }>(storageKeys.preferences, {});
-    setLanguageState(p.language ?? "en");
+    setLanguageState(isSupportedLanguage(p.language) ? p.language : "en");
     setFontSizeState(normalizeFontSize(p.fontSize));
     setHighContrastState(p.highContrast ?? false);
     setUser(loadStorage<User | null>(storageKeys.session, null));
@@ -86,6 +92,8 @@ export function Providers({ children }: { children: React.ReactNode }) {
   const value = useMemo<AppContextValue>(
     () => ({
       language,
+      locale: getIntlLocale(language),
+      direction: getTextDirection(language),
       setLanguage: (x) => {
         setLanguageState(x);
         persist({ language: x });
@@ -123,9 +131,19 @@ export function Providers({ children }: { children: React.ReactNode }) {
     }),
     [language, fontSize, highContrast, user, authOpen, persist],
   );
+  useEffect(() => {
+    document.documentElement.lang = language;
+    document.documentElement.dir = getTextDirection(language);
+  }, [language]);
   return (
     <AppContext.Provider value={value}>
-      <div style={{ fontSize: `${fontSize}px` }} data-contrast={highContrast}>
+      <div
+        lang={language}
+        dir={getTextDirection(language)}
+        style={{ fontSize: `${fontSize}px` }}
+        data-contrast={highContrast}
+        data-language={language}
+      >
         {children}
       </div>
     </AppContext.Provider>

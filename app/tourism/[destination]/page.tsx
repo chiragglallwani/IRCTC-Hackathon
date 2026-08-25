@@ -7,7 +7,7 @@ import { useApp } from "@/components/providers";
 import { Badge } from "@/components/ui/badge";
 import { Button } from "@/components/ui/button";
 export default function DestinationPage() {
-  const { language, t } = useApp();
+  const { locale, t } = useApp();
   const { id } = useParams<{ id: string }>();
   const details = destinationDetails(id);
   if (!details)
@@ -44,9 +44,7 @@ export default function DestinationPage() {
           <Badge variant="secondary">
             <IndianRupee />
             {t("pages.tourism.destination.from", {
-              amount: estimate.toLocaleString(
-                language === "hi" ? "hi-IN" : "en-IN",
-              ),
+              amount: estimate.toLocaleString(locale),
             })}
           </Badge>
         </div>

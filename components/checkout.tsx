@@ -1,5 +1,5 @@
 "use client";
-import { useEffect, useMemo, useState } from "react";
+import { useEffect, useMemo, useRef, useState } from "react";
 import { useRouter } from "next/navigation";
 import Link from "next/link";
 import { zodResolver } from "@hookform/resolvers/zod";
@@ -8,14 +8,24 @@ import { z } from "zod";
 import {
   Check,
   CircleCheck,
+  Clock3,
+  CreditCard,
+  LoaderCircle,
   LockKeyhole,
+  MapPin,
   Pencil,
   Plus,
+  QrCode,
   ShieldCheck,
+  Smartphone,
   Trash2,
 } from "lucide-react";
 import { quotas } from "@/lib/data";
-import { quotaEligibility } from "@/lib/search";
+import {
+  calculateFareBreakdown,
+  formatDuration,
+  selectEligibleQuota,
+} from "@/lib/search";
 import {
   loadStorage,
   makePnr,
@@ -37,6 +47,14 @@ import {
   SelectTrigger,
   SelectValue,
 } from "@/components/ui/select";
+import { CLASSSELECTIONLIST } from "@/lib/utils";
+import {
+  Accordion,
+  AccordionContent,
+  AccordionItem,
+  AccordionTrigger,
+} from "@/components/ui/accordion";
+import Image from "next/image";
 
 export interface CheckoutContext {
   journey: Journey;
@@ -44,6 +62,36 @@ export interface CheckoutContext {
   quota: string;
   passengers?: Passenger[];
 }
+
+function formatClockTime(value: string, locale: string) {
+  const [hours, minutes] = value.split(":").map(Number);
+  return new Intl.DateTimeFormat(locale, {
+    hour: "numeric",
+    minute: "2-digit",
+    hour12: true,
+  }).format(new Date(2000, 0, 1, hours, minutes));
+}
+
+function formatJourneyDate(value: string, locale: string) {
+  return new Intl.DateTimeFormat(locale, {
+    day: "numeric",
+    month: "short",
+    year: "numeric",
+  }).format(new Date(`${value}T00:00:00`));
+}
+
+function hasValidQuotaClaims(passenger: Passenger) {
+  return (
+    (!passenger.claimForeignTourist ||
+      Boolean(passenger.passportNumber?.trim())) &&
+    (!passenger.claimDefence || Boolean(passenger.defenceServiceId?.trim())) &&
+    (!passenger.claimDisability ||
+      Boolean(passenger.disabilityCertificate?.trim())) &&
+    (!passenger.claimRailwayEmployee ||
+      Boolean(passenger.railwayEmployeeId?.trim()))
+  );
+}
+
 function useCheckout() {
   const [context, setContext] = useState<CheckoutContext | null>(null);
   useEffect(
@@ -66,6 +114,7 @@ export function CheckoutStepper({ step }: { step: 1 | 2 | 3 }) {
     t("components.checkout.steps.passengers"),
     t("components.checkout.steps.payment"),
   ];
+  const routes = ["/checkout", "/checkout/passengers", "/checkout/payment"];
   return (
     <div className="stepper" aria-label={t("components.checkout.progress")}>
       {steps.map((x, i) => (
@@ -73,8 +122,19 @@ export function CheckoutStepper({ step }: { step: 1 | 2 | 3 }) {
           className={`step ${i + 1 === step ? "active" : i + 1 < step ? "done" : ""}`}
           key={x}
         >
-          <span>{i + 1 < step ? <Check /> : i + 1}</span>
-          <strong>{x}</strong>
+          {i + 1 < step ? (
+            <Link href={routes[i]} className="grid gap-2">
+              <span>
+                <Check />
+              </span>
+              <strong>{x}</strong>
+            </Link>
+          ) : (
+            <>
+              <span>{i + 1}</span>
+              <strong>{x}</strong>
+            </>
+          )}
         </div>
       ))}
     </div>
@@ -96,16 +156,19 @@ function Summary({
   context,
   action,
   label,
+  quotaOverride,
+  actionDisabled,
 }: {
   context: CheckoutContext;
   action?: () => void;
   label?: string;
+  quotaOverride?: string;
+  actionDisabled?: boolean;
 }) {
-  const { language, t } = useApp();
-  const numberLocale = language === "hi" ? "hi-IN" : "en-IN";
-  const serviceFee = Math.round(context.journey.totalFare * 0.035);
-  const gst = Math.round(context.journey.totalFare * 0.05);
-  const total = context.journey.totalFare + serviceFee + gst;
+  const { locale: numberLocale, t } = useApp();
+  const quotaId = quotaOverride ?? context.quota;
+  const { discountRate, discount, serviceFee, gst, total } =
+    calculateFareBreakdown(context.journey.totalFare, quotaId);
   return (
     <aside className="card summary-card">
       <h2>{t("components.checkout.summary")}</h2>
@@ -127,6 +190,16 @@ function Summary({
           <span>{t("components.checkout.ticketFare")}</span>
           <span>₹{context.journey.totalFare.toLocaleString(numberLocale)}</span>
         </div>
+        {discount > 0 && (
+          <div className="text-[#087a32]">
+            <span>
+              {t("components.checkout.quotaDiscount", {
+                percent: Math.round(discountRate * 100),
+              })}
+            </span>
+            <span>−₹{discount.toLocaleString(numberLocale)}</span>
+          </div>
+        )}
         <div>
           <span>{t("components.checkout.fee")}</span>
           <span>₹{serviceFee}</span>
@@ -141,11 +214,11 @@ function Summary({
         </div>
       </div>
       {action && (
-        <Button className="w-full" onClick={action}>
+        <Button className="w-full" disabled={actionDisabled} onClick={action}>
           {label}
         </Button>
       )}
-      <p className="microcopy">
+      <p className="mt-2 ms-1 flex items-center gap-2 text-xs">
         <LockKeyhole size={14} /> {t("components.checkout.secure")}
       </p>
     </aside>
@@ -154,7 +227,7 @@ function Summary({
 
 export function ConfirmJourney() {
   const router = useRouter();
-  const { t } = useApp();
+  const { locale, t } = useApp();
   const [context, update] = useCheckout();
   const [error, setError] = useState("");
   if (!context)
@@ -164,12 +237,15 @@ export function ConfirmJourney() {
         <EmptyCheckout />
       </div>
     );
-  const quota = quotas.find((q) => q.quotaId === context.quota);
+  const availabilityKey =
+    context.journey.availability === "AVAILABLE"
+      ? "available"
+      : context.journey.availability === "WAITLIST"
+        ? "waitlist"
+        : context.journey.availability.toLowerCase();
   const proceed = () => {
     if (context.journey.availability === "REGRET")
       return setError(t("pages.checkout.confirm.unavailable"));
-    if (!context.quota)
-      return setError(t("pages.checkout.confirm.selectQuota"));
     router.push("/checkout/passengers");
   };
   return (
@@ -182,29 +258,81 @@ export function ConfirmJourney() {
               <div>
                 <h2>{context.journey.legs[0]?.serviceName}</h2>
                 <p>
-                  {context.input.date} · {context.journey.legs[0]?.travelClass}
+                  {formatJourneyDate(context.input.date, locale)} ·{" "}
+                  {context.journey.legs[0]?.travelClass}
                 </p>
               </div>
-              <Badge variant="success">
-                <CircleCheck /> {context.journey.availability}
+              <Badge
+                variant={
+                  context.journey.availability === "AVAILABLE"
+                    ? "success"
+                    : context.journey.availability === "RAC"
+                      ? "warning"
+                      : "destructive"
+                }
+                className="justify-self-start self-start px-3 py-2 text-sm md:justify-self-end"
+              >
+                {context.journey.availability === "AVAILABLE" && (
+                  <CircleCheck />
+                )}
+                {t(`common.status.${availabilityKey}`)}
               </Badge>
             </div>
-            <div className="route-line">
-              <strong>
-                {context.journey.departure}
-                <small>{context.journey.origin.name}</small>
-              </strong>
-              <span className="line" />
-              <span>{Math.round(context.journey.durationMinutes / 60)}h</span>
-              <span className="line" />
-              <strong>
-                {context.journey.arrival}
-                <small>{context.journey.destination.name}</small>
-              </strong>
+            <div className="mt-6 grid gap-3 md:grid-cols-[minmax(0,1fr)_auto_minmax(0,1fr)] md:items-center">
+              <div className="rounded-xl border border-[var(--line)] bg-[#f8faff] p-4">
+                <span className="flex items-center gap-2 text-xs font-bold uppercase tracking-wide text-[var(--muted)]">
+                  <MapPin className="size-4" />
+                  {t("components.journeyRoute.departure")}
+                </span>
+                <div className="mt-2 flex flex-wrap items-center gap-2">
+                  <h3>{context.journey.origin.name}</h3>
+                  <Badge variant="outline">{context.journey.origin.code}</Badge>
+                </div>
+                <div className="mt-3 flex flex-wrap items-center gap-x-4 gap-y-1">
+                  <strong className="text-xl text-[var(--primary-dark)]">
+                    {formatClockTime(context.journey.departure, locale)}
+                  </strong>
+                  <span className="text-sm text-[var(--muted)]">
+                    {t("components.journeyRoute.platform", { platform: 1 })}
+                  </span>
+                </div>
+              </div>
+
+              <div className="flex items-center justify-center gap-2 px-1 text-center md:w-40">
+                <span className="h-px flex-1 bg-[#b7c3dd]" />
+                <Badge variant="secondary" className="whitespace-nowrap">
+                  <Clock3 />
+                  {formatDuration(context.journey.durationMinutes)}
+                </Badge>
+                <span className="h-px flex-1 bg-[#b7c3dd]" />
+              </div>
+
+              <div className="rounded-xl border border-[var(--line)] bg-[#f8faff] p-4 md:text-end">
+                <span className="flex items-center gap-2 text-xs font-bold uppercase tracking-wide text-[var(--muted)] md:justify-end">
+                  <MapPin className="size-4" />
+                  {t("components.journeyRoute.arrival")}
+                </span>
+                <div className="mt-2 flex flex-wrap items-center gap-2 md:justify-end">
+                  <h3>{context.journey.destination.name}</h3>
+                  <Badge variant="outline">
+                    {context.journey.destination.code}
+                  </Badge>
+                </div>
+                <div className="mt-3 flex flex-wrap items-center gap-x-4 gap-y-1 md:justify-end">
+                  <strong className="text-xl text-[var(--primary-dark)]">
+                    {formatClockTime(context.journey.arrival, locale)}
+                  </strong>
+                  <span className="text-sm text-[var(--muted)]">
+                    {t("components.journeyRoute.platform", {
+                      platform: 1 + context.journey.legs.length,
+                    })}
+                  </span>
+                </div>
+              </div>
             </div>
           </section>
           <section className="card checkout-section">
-            <h3>{t("pages.checkout.confirm.classQuota")}</h3>
+            <h3>{t("pages.checkout.confirm.preferences")}</h3>
             <div className="passenger-form">
               <label>
                 {t("pages.checkout.confirm.travelClass")}
@@ -221,60 +349,24 @@ export function ConfirmJourney() {
                     <SelectValue />
                   </SelectTrigger>
                   <SelectContent>
-                    <SelectItem value="ANY">
-                      {t("common.classes.best")}
-                    </SelectItem>
-                    {["1A", "2A", "3A", "CC", "SL"].map((x) => (
-                      <SelectItem key={x} value={x}>
-                        {x}
-                      </SelectItem>
-                    ))}
-                  </SelectContent>
-                </Select>
-              </label>
-              <label>
-                {t("common.fields.quota")}
-                <Select
-                  value={context.quota}
-                  onValueChange={(value) =>
-                    update({ ...context, quota: value })
-                  }
-                >
-                  <SelectTrigger>
-                    <SelectValue />
-                  </SelectTrigger>
-                  <SelectContent>
-                    {quotas.map((q) => (
-                      <SelectItem key={q.quotaId} value={q.quotaId}>
-                        {t(`common.quotas.${q.quotaId.toLowerCase()}.name`)}
+                    {CLASSSELECTIONLIST.map((x) => (
+                      <SelectItem key={x.value} value={x.value}>
+                        {t(x.label)}
                       </SelectItem>
                     ))}
                   </SelectContent>
                 </Select>
               </label>
             </div>
-            <div className="flex flex-wrap gap-2">
+            <div className="flex flex-wrap gap-2 mt-4">
               <Badge variant="outline">
                 {context.input.travelClass === "ANY"
-                  ? t("common.classes.best")
+                  ? t("common.classes.any")
                   : context.input.travelClass}
               </Badge>
-              {quota && (
-                <Badge variant="secondary">
-                  {t(`common.quotas.${quota.quotaId.toLowerCase()}.name`)} ·{" "}
-                  {quota.shortName}
-                </Badge>
-              )}
             </div>
-            <p className="muted">
-              <ShieldCheck size={18} />{" "}
-              {t("pages.checkout.confirm.eligibility", {
-                description: quota
-                  ? t(
-                      `common.quotas.${quota.quotaId.toLowerCase()}.description`,
-                    )
-                  : "",
-              })}
+            <p className="mt-3 text-sm text-[var(--muted)]">
+              {t("pages.checkout.confirm.autoQuotaNextStep")}
             </p>
           </section>
           <section className="card checkout-section">
@@ -300,20 +392,75 @@ export function ConfirmJourney() {
 const createPassengerSchema = (
   t: (key: string, variables?: TranslationVariables) => string,
 ) =>
-  z.object({
-    name: z.string().min(2, t("pages.checkout.passengers.nameError")),
-    age: z.coerce
-      .number()
-      .int()
-      .min(0, t("pages.checkout.passengers.ageNegative"))
-      .max(120, t("pages.checkout.passengers.ageInvalid")),
-    gender: z.enum(["female", "male", "other"]),
-    citizenship: z
-      .string()
-      .min(2, t("pages.checkout.passengers.citizenshipError")),
-    berth: z.string(),
-    saveForFuture: z.boolean().optional(),
-  });
+  z
+    .object({
+      name: z.string().min(2, t("pages.checkout.passengers.nameError")),
+      age: z.coerce
+        .number()
+        .int()
+        .min(0, t("pages.checkout.passengers.ageNegative"))
+        .max(120, t("pages.checkout.passengers.ageInvalid")),
+      gender: z.enum(["female", "male", "other"]),
+      citizenship: z
+        .string()
+        .min(2, t("pages.checkout.passengers.citizenshipError")),
+      berth: z.string(),
+      claimForeignTourist: z.boolean().optional(),
+      passportNumber: z.string().optional(),
+      claimDefence: z.boolean().optional(),
+      defenceServiceId: z.string().optional(),
+      claimDisability: z.boolean().optional(),
+      disabilityCertificate: z.string().optional(),
+      claimRailwayEmployee: z.boolean().optional(),
+      railwayEmployeeId: z.string().optional(),
+      saveForFuture: z.boolean().optional(),
+    })
+    .superRefine((values, refinement) => {
+      const requiredClaims = [
+        [
+          values.claimForeignTourist,
+          values.passportNumber,
+          "passportNumber",
+          "passportError",
+        ],
+        [
+          values.claimDefence,
+          values.defenceServiceId,
+          "defenceServiceId",
+          "defenceIdError",
+        ],
+        [
+          values.claimDisability,
+          values.disabilityCertificate,
+          "disabilityCertificate",
+          "disabilityCertificateError",
+        ],
+        [
+          values.claimRailwayEmployee,
+          values.railwayEmployeeId,
+          "railwayEmployeeId",
+          "employeeIdError",
+        ],
+      ] as const;
+
+      requiredClaims.forEach(([claimed, detail, path, messageKey]) => {
+        if (claimed && (!detail || detail.trim().length < 3)) {
+          refinement.addIssue({
+            code: z.ZodIssueCode.custom,
+            path: [path],
+            message: t(`pages.checkout.passengers.${messageKey}`),
+          });
+        }
+      });
+
+      if (values.claimForeignTourist && values.citizenship === "Indian") {
+        refinement.addIssue({
+          code: z.ZodIssueCode.custom,
+          path: ["passportNumber"],
+          message: t("pages.checkout.passengers.foreignCitizenshipError"),
+        });
+      }
+    });
 type PassengerValues = z.infer<ReturnType<typeof createPassengerSchema>>;
 const berthKeys: Record<string, string> = {
   "No preference": "none",
@@ -336,6 +483,7 @@ export function PassengerDetails() {
     control,
     handleSubmit,
     reset,
+    watch,
     formState: { errors },
   } = useForm<PassengerValues>({
     resolver: zodResolver(schema),
@@ -344,11 +492,32 @@ export function PassengerDetails() {
       berth: "No preference",
       gender: "female",
       saveForFuture: true,
+      claimForeignTourist: false,
+      claimDefence: false,
+      claimDisability: false,
+      claimRailwayEmployee: false,
     },
   });
+
+  const claimForeignTourist = watch("claimForeignTourist");
+  const claimDefence = watch("claimDefence");
+  const claimDisability = watch("claimDisability");
+  const claimRailwayEmployee = watch("claimRailwayEmployee");
   useEffect(() => {
-    setSaved(savedPassengers());
-  }, []);
+    const storedPassengers = savedPassengers();
+    const checkoutPassengers = context?.passengers ?? [];
+    const mergedPassengers = [
+      ...storedPassengers,
+      ...checkoutPassengers.filter(
+        (passenger) =>
+          !storedPassengers.some((stored) => stored.id === passenger.id),
+      ),
+    ];
+
+    setSaved(mergedPassengers);
+    if (checkoutPassengers.length)
+      setSelected(checkoutPassengers.map((passenger) => passenger.id));
+  }, [context?.passengers]);
   if (!context)
     return (
       <div className="page">
@@ -357,6 +526,11 @@ export function PassengerDetails() {
       </div>
     );
   const capacity = context.input.adults + context.input.children;
+  const selectedPeople = saved
+    .filter((passenger) => selected.includes(passenger.id))
+    .slice(0, capacity);
+  const autoQuotaId = selectEligibleQuota(selectedPeople, context.input.mode);
+  const autoQuota = quotas.find((quota) => quota.quotaId === autoQuotaId);
   const submit = (values: PassengerValues) => {
     const next: Passenger = {
       ...values,
@@ -375,6 +549,14 @@ export function PassengerDetails() {
       berth: "No preference",
       gender: "female",
       saveForFuture: true,
+      claimForeignTourist: false,
+      passportNumber: "",
+      claimDefence: false,
+      defenceServiceId: "",
+      claimDisability: false,
+      disabilityCertificate: "",
+      claimRailwayEmployee: false,
+      railwayEmployeeId: "",
       name: "",
       age: 18,
     });
@@ -390,16 +572,13 @@ export function PassengerDetails() {
     saveStorage(storageKeys.passengers, all);
   };
   const proceed = () => {
-    const people = saved
-      .filter((x) => selected.includes(x.id))
-      .slice(0, capacity);
+    const people = selectedPeople;
     if (people.length !== capacity)
       return setQuotaError(
         t("pages.checkout.passengers.selectExactly", { count: capacity }),
       );
-    if (!quotaEligibility(context.quota, people))
-      return setQuotaError(t("pages.checkout.passengers.quotaError"));
-    update({ ...context, passengers: people });
+    const quota = selectEligibleQuota(people, context.input.mode);
+    update({ ...context, quota, passengers: people });
     router.push("/checkout/payment");
   };
   return (
@@ -408,53 +587,94 @@ export function PassengerDetails() {
       <div className="checkout-grid">
         <div className="checkout-main">
           <section className="card checkout-section">
-            <h2>{t("pages.checkout.passengers.saved")}</h2>
-            {saved.length ? (
-              <div className="passenger-cards">
-                {saved.map((p) => (
-                  <div
-                    className={`passenger-card ${selected.includes(p.id) ? "selected" : ""}`}
-                    key={p.id}
-                  >
-                    <Checkbox
-                      checked={selected.includes(p.id)}
-                      onCheckedChange={() =>
-                        setSelected(
-                          selected.includes(p.id)
-                            ? selected.filter((x) => x !== p.id)
-                            : [...selected, p.id],
-                        )
-                      }
-                    />
-                    <div>
-                      <strong>{p.name}</strong>
-                      <p className="muted">
-                        {t("pages.checkout.passengers.passengerSummary", {
-                          age: p.age,
-                          gender: t(`common.gender.${p.gender}`),
-                          berth: t(
-                            `common.berths.${berthKeys[p.berth] ?? "none"}`,
-                          ),
-                        })}
-                      </p>
+            <Accordion type="single" collapsible>
+              <AccordionItem value="saved-passengers" className="border-0">
+                <AccordionTrigger className="py-0 hover:no-underline">
+                  <span className="flex items-center gap-2 text-2xl font-semibold">
+                    {t("pages.checkout.passengers.saved")}
+                    <Badge variant="outline">{saved.length}</Badge>
+                  </span>
+                </AccordionTrigger>
+                <AccordionContent className="pt-5">
+                  {saved.length ? (
+                    <div className="passenger-cards">
+                      {saved.map((p) => (
+                        <div
+                          className={`passenger-card ${selected.includes(p.id) ? "selected" : ""}`}
+                          key={p.id}
+                        >
+                          <Checkbox
+                            checked={selected.includes(p.id)}
+                            onCheckedChange={() =>
+                              setSelected(
+                                selected.includes(p.id)
+                                  ? selected.filter((x) => x !== p.id)
+                                  : [...selected, p.id],
+                              )
+                            }
+                          />
+                          <div className="min-w-0 flex-1">
+                            <strong>{p.name}</strong>
+                            <p className="muted">
+                              {t("pages.checkout.passengers.passengerSummary", {
+                                age: p.age,
+                                gender: t(`common.gender.${p.gender}`),
+                                berth: t(
+                                  `common.berths.${berthKeys[p.berth] ?? "none"}`,
+                                ),
+                              })}
+                            </p>
+                            <div className="mt-2 flex flex-wrap gap-1.5">
+                              <Badge variant="secondary">
+                                {t(
+                                  `common.quotas.${selectEligibleQuota(
+                                    [p],
+                                    context.input.mode,
+                                  ).toLowerCase()}.name`,
+                                )}
+                              </Badge>
+                            </div>
+                          </div>
+                          <Button
+                            variant="ghost"
+                            size="icon"
+                            onClick={() => edit(p)}
+                          >
+                            <Pencil />
+                          </Button>
+                          <Button
+                            variant="ghost"
+                            size="icon"
+                            onClick={() => remove(p.id)}
+                          >
+                            <Trash2 />
+                          </Button>
+                        </div>
+                      ))}
                     </div>
-                    <Button variant="ghost" size="icon" onClick={() => edit(p)}>
-                      <Pencil />
-                    </Button>
-                    <Button
-                      variant="ghost"
-                      size="icon"
-                      onClick={() => remove(p.id)}
-                    >
-                      <Trash2 />
-                    </Button>
-                  </div>
-                ))}
+                  ) : (
+                    <p className="muted">
+                      {t("pages.checkout.passengers.noneSaved")}
+                    </p>
+                  )}
+                </AccordionContent>
+              </AccordionItem>
+            </Accordion>
+            {selectedPeople.length > 0 && autoQuota && (
+              <div className="mt-5 rounded-xl border border-[var(--line)] bg-[#f8faff] p-4">
+                <span className="text-sm font-semibold text-[var(--muted)]">
+                  {t("pages.checkout.passengers.autoSelectedQuota")}
+                </span>
+                <div className="mt-2 flex flex-wrap items-center gap-2">
+                  <Badge variant="success">
+                    {t(`common.quotas.${autoQuota.quotaId.toLowerCase()}.name`)}{" "}
+                    · {autoQuota.shortName}
+                  </Badge>
+                  <span className="text-sm text-[var(--muted)]">
+                    {t("pages.checkout.passengers.autoQuotaNote")}
+                  </span>
+                </div>
               </div>
-            ) : (
-              <p className="muted">
-                {t("pages.checkout.passengers.noneSaved")}
-              </p>
             )}
           </section>
           <section className="card checkout-section">
@@ -561,6 +781,122 @@ export function PassengerDetails() {
                   )}
                 />
               </label>
+              <div className="full mt-2 grid gap-3 rounded-xl border border-[var(--line)] bg-[#f8faff] p-4">
+                <div>
+                  <h3>{t("pages.checkout.passengers.quotaClaims")}</h3>
+                  <p className="mt-1 text-sm text-[var(--muted)]">
+                    {t("pages.checkout.passengers.quotaClaimsNote")}
+                  </p>
+                </div>
+
+                <div className="rounded-lg border border-[var(--line)] bg-white p-3">
+                  <label className="check-row full m-0">
+                    <Controller
+                      control={control}
+                      name="claimForeignTourist"
+                      render={({ field }) => (
+                        <Checkbox
+                          checked={field.value}
+                          onCheckedChange={field.onChange}
+                        />
+                      )}
+                    />
+                    {t("pages.checkout.passengers.claimForeignTourist")}
+                  </label>
+                  {claimForeignTourist && (
+                    <label className="mt-3">
+                      {t("pages.checkout.passengers.passportNumber")}
+                      <input {...register("passportNumber")} />
+                      {errors.passportNumber && (
+                        <span className="form-error">
+                          {errors.passportNumber.message}
+                        </span>
+                      )}
+                    </label>
+                  )}
+                </div>
+
+                <div className="rounded-lg border border-[var(--line)] bg-white p-3">
+                  <label className="check-row full m-0">
+                    <Controller
+                      control={control}
+                      name="claimDefence"
+                      render={({ field }) => (
+                        <Checkbox
+                          checked={field.value}
+                          onCheckedChange={field.onChange}
+                        />
+                      )}
+                    />
+                    {t("pages.checkout.passengers.claimDefence")}
+                  </label>
+                  {claimDefence && (
+                    <label className="mt-3">
+                      {t("pages.checkout.passengers.defenceServiceId")}
+                      <input {...register("defenceServiceId")} />
+                      {errors.defenceServiceId && (
+                        <span className="form-error">
+                          {errors.defenceServiceId.message}
+                        </span>
+                      )}
+                    </label>
+                  )}
+                </div>
+
+                <div className="rounded-lg border border-[var(--line)] bg-white p-3">
+                  <label className="check-row full m-0">
+                    <Controller
+                      control={control}
+                      name="claimDisability"
+                      render={({ field }) => (
+                        <Checkbox
+                          checked={field.value}
+                          onCheckedChange={field.onChange}
+                        />
+                      )}
+                    />
+                    {t("pages.checkout.passengers.claimDisability")}
+                  </label>
+                  {claimDisability && (
+                    <label className="mt-3">
+                      {t("pages.checkout.passengers.disabilityCertificate")}
+                      <input {...register("disabilityCertificate")} />
+                      {errors.disabilityCertificate && (
+                        <span className="form-error">
+                          {errors.disabilityCertificate.message}
+                        </span>
+                      )}
+                    </label>
+                  )}
+                </div>
+
+                <div className="rounded-lg border border-[var(--line)] bg-white p-3">
+                  <label className="check-row full m-0">
+                    <Controller
+                      control={control}
+                      name="claimRailwayEmployee"
+                      render={({ field }) => (
+                        <Checkbox
+                          checked={field.value}
+                          onCheckedChange={field.onChange}
+                        />
+                      )}
+                    />
+                    {t("pages.checkout.passengers.claimRailwayEmployee")}
+                  </label>
+                  {claimRailwayEmployee && (
+                    <label className="mt-3">
+                      {t("pages.checkout.passengers.railwayEmployeeId")}
+                      <input {...register("railwayEmployeeId")} />
+                      {errors.railwayEmployeeId && (
+                        <span className="form-error">
+                          {errors.railwayEmployeeId.message}
+                        </span>
+                      )}
+                    </label>
+                  )}
+                </div>
+              </div>
               <label className="check-row full">
                 <Controller
                   control={control}
@@ -590,6 +926,7 @@ export function PassengerDetails() {
           context={context}
           action={proceed}
           label={t("pages.checkout.passengers.continue")}
+          quotaOverride={autoQuotaId}
         />
       </div>
     </div>
@@ -603,9 +940,9 @@ declare global {
 }
 export function Payment() {
   const router = useRouter();
-  const { language, t, user } = useApp();
+  const { locale: numberLocale, t, user } = useApp();
   const [context] = useCheckout();
-  const [method, setMethod] = useState("upi");
+  const [method, setMethod] = useState<"qr" | "upi" | "card">("qr");
   const [state, setState] = useState<
     | "idle"
     | "opening"
@@ -616,6 +953,25 @@ export function Payment() {
     | "pending"
   >("idle");
   const [message, setMessage] = useState("");
+  const [upiId, setUpiId] = useState("");
+  const [upiIdTouched, setUpiIdTouched] = useState(false);
+  const [qrPayment, setQrPayment] = useState<{
+    id: string;
+    imageUrl: string;
+    closeBy: number;
+    mock: boolean;
+    amount?: number;
+    signature?: string;
+  } | null>(null);
+  const [checkingQr, setCheckingQr] = useState(false);
+  const qrPollingRef = useRef<ReturnType<typeof setInterval> | null>(null);
+  const qrCompletionRef = useRef(false);
+  useEffect(
+    () => () => {
+      if (qrPollingRef.current) clearInterval(qrPollingRef.current);
+    },
+    [],
+  );
   if (!context)
     return (
       <div className="page">
@@ -623,9 +979,38 @@ export function Payment() {
         <EmptyCheckout />
       </div>
     );
-  const amount =
-    context.journey.totalFare + Math.round(context.journey.totalFare * 0.085);
+  const expectedPassengers = context.input.adults + context.input.children;
+  const passengerInformationValid = Boolean(
+    context.passengers?.length === expectedPassengers &&
+    context.passengers.every(hasValidQuotaClaims),
+  );
+  if (!passengerInformationValid)
+    return (
+      <div className="page">
+        <CheckoutStepper step={3} />
+        <div className="card empty-state">
+          <h2>{t("pages.checkout.payment.passengerInfoRequired")}</h2>
+          <p>{t("pages.checkout.payment.passengerInfoRequiredText")}</p>
+          <Button asChild>
+            <Link href="/checkout/passengers">
+              {t("pages.checkout.payment.returnToPassengers")}
+            </Link>
+          </Button>
+        </div>
+      </div>
+    );
+  const fareBreakdown = calculateFareBreakdown(
+    context.journey.totalFare,
+    context.quota,
+  );
+  const amount = fareBreakdown.total;
+  const normalizedUpiId = upiId.trim().toLowerCase();
+  const upiIdValid = /^[a-z0-9._-]{2,256}@[a-z][a-z0-9.-]{1,64}$/i.test(
+    normalizedUpiId,
+  );
   const finish = async () => {
+    if (qrPollingRef.current) clearInterval(qrPollingRef.current);
+    qrPollingRef.current = null;
     setState("processing");
     const booking: Booking = {
       bookingId: `booking-${Date.now()}`,
@@ -637,6 +1022,10 @@ export function Payment() {
       travelClass: context.input.travelClass,
       quota: context.quota,
       fare: amount,
+      fareBreakdown: {
+        baseFare: context.journey.totalFare,
+        ...fareBreakdown,
+      },
       paymentStatus: "paid",
       bookingStatus: "upcoming",
       createdAt: new Date().toISOString(),
@@ -646,6 +1035,12 @@ export function Payment() {
     setTimeout(() => router.push(`/booking/${booking.pnr}`), 700);
   };
   const pay = async () => {
+    if (method === "upi" && !upiIdValid) {
+      setUpiIdTouched(true);
+      setState("failure");
+      setMessage(t("pages.checkout.payment.upiIdError"));
+      return;
+    }
     setState("opening");
     setMessage("");
     try {
@@ -681,6 +1076,23 @@ export function Payment() {
           order_id: order.id,
           name: "RailEase",
           description: t("pages.checkout.payment.description"),
+          prefill:
+            method === "upi"
+              ? {
+                  email: user?.email,
+                  method: "upi",
+                  vpa: normalizedUpiId,
+                }
+              : { email: user?.email, method: "card" },
+          notes:
+            method === "upi" ? { test_upi_id: normalizedUpiId } : undefined,
+          config: {
+            display: {
+              sequence: [method],
+              preferences: { show_default_blocks: false },
+            },
+          },
+          theme: { color: "#0b57d0" },
           handler: async (response: Record<string, string>) => {
             const verified = await fetch("/api/razorpay/verify", {
               method: "POST",
@@ -717,33 +1129,443 @@ export function Payment() {
       );
     }
   };
+
+  const createQr = async () => {
+    qrCompletionRef.current = false;
+    setState("opening");
+    setMessage("");
+    setQrPayment(null);
+    try {
+      const response = await fetch("/api/razorpay/qr", {
+        method: "POST",
+        headers: { "Content-Type": "application/json" },
+        body: JSON.stringify({
+          amount,
+          currency: "INR",
+          receipt: `railease-${Date.now()}`,
+        }),
+      });
+      const result = (await response.json()) as {
+        id?: string;
+        imageUrl?: string;
+        closeBy?: number;
+        mock?: boolean;
+        amount?: number;
+        signature?: string;
+        error?: string;
+      };
+      if (
+        !response.ok ||
+        !result.id ||
+        !result.imageUrl ||
+        !result.closeBy ||
+        (!result.mock && (!result.amount || !result.signature))
+      )
+        throw new Error(
+          result.error ?? t("pages.checkout.payment.qrCreateError"),
+        );
+      const paymentSession = {
+        id: result.id,
+        imageUrl: result.imageUrl,
+        closeBy: result.closeBy,
+        mock: Boolean(result.mock),
+        amount: result.amount,
+        signature: result.signature,
+      };
+      setQrPayment(paymentSession);
+      setState("pending");
+      setMessage(
+        result.mock
+          ? t("pages.checkout.payment.qrMockMessage")
+          : t("pages.checkout.payment.qrWaiting"),
+      );
+      if (!paymentSession.mock) startQrPolling(paymentSession);
+    } catch (error) {
+      setState("failure");
+      setMessage(
+        error instanceof Error
+          ? error.message
+          : t("pages.checkout.payment.qrCreateError"),
+      );
+    }
+  };
+
+  const checkQrStatus = async (paymentSession = qrPayment, silent = false) => {
+    if (
+      !paymentSession ||
+      paymentSession.mock ||
+      !paymentSession.amount ||
+      !paymentSession.signature
+    )
+      return;
+    if (!silent) {
+      setCheckingQr(true);
+      setMessage("");
+    }
+    try {
+      const response = await fetch("/api/razorpay/qr/status", {
+        method: "POST",
+        headers: { "Content-Type": "application/json" },
+        body: JSON.stringify({
+          id: paymentSession.id,
+          amount: paymentSession.amount,
+          closeBy: paymentSession.closeBy,
+          signature: paymentSession.signature,
+        }),
+        cache: "no-store",
+      });
+      const result = (await response.json()) as {
+        paid?: boolean;
+        expired?: boolean;
+        error?: string;
+      };
+      if (result.expired) {
+        if (qrPollingRef.current) clearInterval(qrPollingRef.current);
+        qrPollingRef.current = null;
+        setState("failure");
+        setMessage(t("pages.checkout.payment.qrExpired"));
+        return;
+      }
+      if (!response.ok)
+        throw new Error(
+          result.error ?? t("pages.checkout.payment.qrStatusError"),
+        );
+      if (result.paid) {
+        if (qrCompletionRef.current) return;
+        qrCompletionRef.current = true;
+        if (qrPollingRef.current) clearInterval(qrPollingRef.current);
+        qrPollingRef.current = null;
+        await finish();
+        return;
+      }
+      if (!silent) {
+        setState("pending");
+        setMessage(t("pages.checkout.payment.qrNotReceived"));
+      }
+    } catch (error) {
+      if (!silent) {
+        setState("failure");
+        setMessage(
+          error instanceof Error
+            ? error.message
+            : t("pages.checkout.payment.qrStatusError"),
+        );
+      }
+    } finally {
+      if (!silent) setCheckingQr(false);
+    }
+  };
+
+  const startQrPolling = (paymentSession: NonNullable<typeof qrPayment>) => {
+    if (qrPollingRef.current) clearInterval(qrPollingRef.current);
+    qrPollingRef.current = setInterval(() => {
+      void checkQrStatus(paymentSession, true);
+    }, 3000);
+  };
+
+  const busy =
+    state === "opening" ||
+    state === "processing" ||
+    state === "success" ||
+    checkingQr;
+  const selectMethod = (nextMethod: "qr" | "upi" | "card") => {
+    if (qrPollingRef.current) clearInterval(qrPollingRef.current);
+    qrPollingRef.current = null;
+    qrCompletionRef.current = false;
+    setMethod(nextMethod);
+    setState("idle");
+    setMessage("");
+    setUpiIdTouched(false);
+    if (nextMethod !== "qr") setQrPayment(null);
+  };
+  const paymentMethods = [
+    {
+      id: "qr" as const,
+      title: t("pages.checkout.payment.qr"),
+      text: t("pages.checkout.payment.qrText"),
+      icon: QrCode,
+    },
+    {
+      id: "upi" as const,
+      title: t("pages.checkout.payment.upi"),
+      text: t("pages.checkout.payment.upiText"),
+      icon: Smartphone,
+    },
+    {
+      id: "card" as const,
+      title: t("pages.checkout.payment.card"),
+      text: t("pages.checkout.payment.cardText"),
+      icon: CreditCard,
+    },
+  ];
   return (
     <div className="page checkout-page">
       <CheckoutStepper step={3} />
       <div className="checkout-grid">
         <div className="checkout-main">
           <h1>{t("pages.checkout.payment.title")}</h1>
-          <div className="card checkout-section">
-            <p>
-              <LockKeyhole /> {t("pages.checkout.payment.secureText")}
-            </p>
+          <p className="mt-2 text-sm text-muted-foreground">
+            {t("pages.checkout.payment.subtitle")}
+          </p>
+          <div className="mt-5 flex items-start gap-3 rounded-2xl border border-blue-200 bg-blue-50 p-4 text-sm text-blue-950">
+            <span className="grid size-9 shrink-0 place-items-center rounded-full bg-white text-blue-700 shadow-sm">
+              <ShieldCheck size={19} />
+            </span>
+            <div>
+              <strong className="block">
+                {t("pages.checkout.payment.testMode")}
+              </strong>
+              <p className="mt-0.5 text-blue-900/75">
+                {t("pages.checkout.payment.secureText")}
+              </p>
+            </div>
           </div>
-          <div className="grid gap-3">
-            <button
-              className={`payment-option ${method === "upi" ? "selected" : ""}`}
-              onClick={() => setMethod("upi")}
-            >
-              <strong>{t("pages.checkout.payment.upi")}</strong>
-              <p>{t("pages.checkout.payment.upiText")}</p>
-            </button>
-            <button
-              className={`payment-option ${method === "card" ? "selected" : ""}`}
-              onClick={() => setMethod("card")}
-            >
-              <strong>{t("pages.checkout.payment.card")}</strong>
-              <p>{t("pages.checkout.payment.cardText")}</p>
-            </button>
+          <div className="mt-5 grid gap-3 md:grid-cols-3">
+            {paymentMethods.map((paymentMethod) => {
+              const Icon = paymentMethod.icon;
+              const selected = method === paymentMethod.id;
+              return (
+                <Button
+                  key={paymentMethod.id}
+                  type="button"
+                  variant="outline"
+                  aria-pressed={selected}
+                  className={`h-auto min-h-28 justify-start gap-3 rounded-2xl p-4 text-start whitespace-normal ${
+                    selected
+                      ? "border-2 border-blue-600 bg-blue-50 text-blue-950 hover:bg-blue-50"
+                      : "border-slate-200 bg-white hover:border-blue-300 hover:bg-slate-50"
+                  }`}
+                  onClick={() => selectMethod(paymentMethod.id)}
+                >
+                  <span
+                    className={`grid size-10 shrink-0 place-items-center rounded-xl ${
+                      selected
+                        ? "bg-blue-600 text-white"
+                        : "bg-slate-100 text-slate-700"
+                    }`}
+                  >
+                    <Icon size={21} />
+                  </span>
+                  <span className="min-w-0 flex-1">
+                    <span className="flex items-center gap-1.5 font-semibold">
+                      {paymentMethod.title}
+                      {selected && <CircleCheck size={17} />}
+                    </span>
+                    <span className="mt-1 block text-xs font-normal leading-5 text-slate-500">
+                      {paymentMethod.text}
+                    </span>
+                  </span>
+                </Button>
+              );
+            })}
           </div>
+
+          {method === "qr" ? (
+            <section className="mt-5 overflow-hidden rounded-2xl border border-slate-200 bg-white shadow-sm">
+              <div className="flex flex-col gap-4 border-b border-slate-100 p-5 sm:flex-row sm:items-center sm:justify-between">
+                <div>
+                  <div className="flex items-center gap-2">
+                    <h2 className="text-lg font-semibold">
+                      {t("pages.checkout.payment.qrTitle")}
+                    </h2>
+                    <Badge className="bg-amber-100 text-amber-800 hover:bg-amber-100">
+                      {t("pages.checkout.payment.testMode")}
+                    </Badge>
+                  </div>
+                  <p className="mt-1 text-sm text-slate-500">
+                    {t("pages.checkout.payment.qrInstructions")}
+                  </p>
+                </div>
+                <Badge
+                  variant="secondary"
+                  className="w-fit px-3 py-1 text-base"
+                >
+                  ₹{amount.toLocaleString(numberLocale)}
+                </Badge>
+              </div>
+
+              {qrPayment ? (
+                <div className="grid gap-6 p-5 sm:grid-cols-[220px_1fr] sm:items-center">
+                  <div className="mx-auto rounded-2xl border border-slate-200 bg-white p-3 shadow-sm sm:mx-0">
+                    <Image
+                      src={qrPayment.imageUrl}
+                      alt={t("pages.checkout.payment.qrAlt")}
+                      className="size-48 object-contain"
+                    />
+                  </div>
+                  <div className="text-center sm:text-start">
+                    <div className="mb-4 flex justify-center gap-2 sm:justify-start">
+                      <Badge variant="outline">
+                        {qrPayment.mock
+                          ? t("pages.checkout.payment.mockQr")
+                          : t("pages.checkout.payment.razorpayQr")}
+                      </Badge>
+                      <Badge variant="outline">
+                        {t("pages.checkout.payment.singleUse")}
+                      </Badge>
+                    </div>
+                    <p className="font-medium text-slate-900">
+                      {t("pages.checkout.payment.scanWithUpi")}
+                    </p>
+                    <p className="mt-1 text-sm text-slate-500">
+                      {t("pages.checkout.payment.expiresAt", {
+                        time: new Intl.DateTimeFormat(numberLocale, {
+                          hour: "numeric",
+                          minute: "2-digit",
+                          hour12: true,
+                        }).format(new Date(qrPayment.closeBy * 1000)),
+                      })}
+                    </p>
+                    {!qrPayment.mock && (
+                      <Button
+                        className="mt-4 w-full sm:w-auto"
+                        variant="secondary"
+                        disabled={checkingQr}
+                        onClick={() => checkQrStatus()}
+                      >
+                        {checkingQr && (
+                          <LoaderCircle className="animate-spin" size={16} />
+                        )}
+                        {checkingQr
+                          ? t("pages.checkout.payment.checkingQr")
+                          : t("pages.checkout.payment.checkQrStatus")}
+                      </Button>
+                    )}
+                  </div>
+                </div>
+              ) : (
+                <div className="flex flex-col items-center px-5 py-8 text-center">
+                  <span className="grid size-16 place-items-center rounded-2xl bg-slate-100 text-slate-700">
+                    <QrCode size={32} />
+                  </span>
+                  <p className="mt-4 max-w-md text-sm text-slate-500">
+                    {t("pages.checkout.payment.generateQrText")}
+                  </p>
+                  <Button className="mt-4" disabled={busy} onClick={createQr}>
+                    {state === "opening" && (
+                      <LoaderCircle className="animate-spin" size={16} />
+                    )}
+                    {state === "opening"
+                      ? t("pages.checkout.payment.generatingQr")
+                      : t("pages.checkout.payment.generateQr")}
+                  </Button>
+                </div>
+              )}
+            </section>
+          ) : method === "upi" ? (
+            <section className="mt-5 overflow-hidden rounded-2xl border border-slate-200 bg-white shadow-sm">
+              <div className="flex items-start gap-4 border-b border-slate-100 p-5">
+                <span className="grid size-11 shrink-0 place-items-center rounded-xl bg-blue-50 text-blue-700">
+                  <Smartphone size={22} />
+                </span>
+                <div>
+                  <div className="flex flex-wrap items-center gap-2">
+                    <h2 className="font-semibold">
+                      {t("pages.checkout.payment.upiCheckoutTitle")}
+                    </h2>
+                    <Badge className="bg-amber-100 text-amber-800 hover:bg-amber-100">
+                      {t("pages.checkout.payment.testOnly")}
+                    </Badge>
+                  </div>
+                  <p className="mt-1 text-sm leading-6 text-slate-500">
+                    {t("pages.checkout.payment.upiIdTestNote")}
+                  </p>
+                </div>
+              </div>
+              <div className="p-5">
+                <label
+                  className="mb-2 block text-sm font-medium text-slate-800"
+                  htmlFor="checkout-upi-id"
+                >
+                  {t("pages.checkout.payment.upiId")}
+                </label>
+                <div className="relative">
+                  <Smartphone
+                    className="pointer-events-none absolute start-3 top-1/2 -translate-y-1/2 text-slate-400"
+                    size={18}
+                  />
+                  <input
+                    id="checkout-upi-id"
+                    dir="ltr"
+                    type="text"
+                    inputMode="email"
+                    autoCapitalize="none"
+                    autoCorrect="off"
+                    spellCheck={false}
+                    value={upiId}
+                    aria-invalid={upiIdTouched && !upiIdValid}
+                    aria-describedby="checkout-upi-help checkout-upi-error"
+                    placeholder={t("pages.checkout.payment.upiIdPlaceholder")}
+                    className={`h-12 w-full rounded-xl border bg-white pe-4 ps-10 text-sm outline-none transition focus:ring-2 ${
+                      upiIdTouched && !upiIdValid
+                        ? "border-red-500 focus:border-red-500 focus:ring-red-100"
+                        : "border-slate-300 focus:border-blue-600 focus:ring-blue-100"
+                    }`}
+                    onBlur={() => setUpiIdTouched(true)}
+                    onChange={(event) => {
+                      setUpiId(event.target.value);
+                      setMessage("");
+                      if (state === "failure") setState("idle");
+                    }}
+                  />
+                </div>
+                {upiIdTouched && !upiIdValid ? (
+                  <p
+                    id="checkout-upi-error"
+                    className="mt-2 text-sm text-red-600"
+                  >
+                    {t("pages.checkout.payment.upiIdError")}
+                  </p>
+                ) : (
+                  <p
+                    id="checkout-upi-help"
+                    className="mt-2 text-xs text-slate-500"
+                  >
+                    {t("pages.checkout.payment.upiIdHelp")}
+                  </p>
+                )}
+                <div className="mt-4 flex flex-wrap gap-2">
+                  {[
+                    ["success@razorpay", "testSuccess"],
+                    ["failure@razorpay", "testFailure"],
+                  ].map(([value, label]) => (
+                    <Button
+                      key={value}
+                      type="button"
+                      size="sm"
+                      variant="outline"
+                      onClick={() => {
+                        setUpiId(value);
+                        setUpiIdTouched(true);
+                        setState("idle");
+                        setMessage("");
+                      }}
+                    >
+                      {t(`pages.checkout.payment.${label}`)}
+                    </Button>
+                  ))}
+                </div>
+                <div className="mt-5 rounded-xl border border-amber-200 bg-amber-50 p-3 text-xs leading-5 text-amber-900">
+                  {t("pages.checkout.payment.upiCollectNotice")}
+                </div>
+              </div>
+            </section>
+          ) : (
+            <section className="mt-5 flex items-start gap-4 rounded-2xl border border-slate-200 bg-white p-5 shadow-sm">
+              <span className="grid size-11 shrink-0 place-items-center rounded-xl bg-blue-50 text-blue-700">
+                <CreditCard size={22} />
+              </span>
+              <div>
+                <h2 className="font-semibold">
+                  {t("pages.checkout.payment.cardCheckoutTitle")}
+                </h2>
+                <p className="mt-1 text-sm leading-6 text-slate-500">
+                  {t("pages.checkout.payment.standardCheckoutNote")}
+                </p>
+              </div>
+            </section>
+          )}
+
           {state !== "idle" && (
             <div
               className={`payment-state ${state === "success" ? "success" : state === "failure" ? "error" : ""}`}
@@ -757,45 +1579,59 @@ export function Payment() {
                       ? t("pages.checkout.payment.verifying")
                       : t("pages.checkout.payment.confirmed"))}
               </p>
-              {state === "pending" && (
-                <div className="flex gap-2">
-                  <Button onClick={() => finish()}>
-                    {t("pages.checkout.payment.simulateSuccess")}
-                  </Button>
-                  <Button
-                    variant="secondary"
-                    onClick={() => {
-                      setState("failure");
-                      setMessage(t("pages.checkout.payment.failed"));
-                    }}
-                  >
-                    {t("pages.checkout.payment.simulateFailure")}
-                  </Button>
-                  <Button
-                    variant="ghost"
-                    onClick={() => {
-                      setState("cancelled");
-                      setMessage(t("pages.checkout.payment.testCancelled"));
-                    }}
-                  >
-                    {t("pages.checkout.payment.simulateCancel")}
-                  </Button>
-                </div>
-              )}
+              {state === "pending" &&
+                ((method === "qr" && qrPayment?.mock) ||
+                  (method !== "qr" &&
+                    message === t("pages.checkout.payment.noCredentials"))) && (
+                  <div className="flex flex-wrap gap-2">
+                    <Button onClick={() => finish()}>
+                      {t("pages.checkout.payment.simulateSuccess")}
+                    </Button>
+                    <Button
+                      variant="secondary"
+                      onClick={() => {
+                        setState("failure");
+                        setMessage(t("pages.checkout.payment.failed"));
+                      }}
+                    >
+                      {t("pages.checkout.payment.simulateFailure")}
+                    </Button>
+                    <Button
+                      variant="ghost"
+                      onClick={() => {
+                        setState("cancelled");
+                        setMessage(t("pages.checkout.payment.testCancelled"));
+                      }}
+                    >
+                      {t("pages.checkout.payment.simulateCancel")}
+                    </Button>
+                  </div>
+                )}
             </div>
           )}
         </div>
         <Summary
           context={context}
-          action={pay}
+          action={
+            method === "qr"
+              ? qrPayment && !qrPayment.mock
+                ? () => checkQrStatus()
+                : createQr
+              : pay
+          }
+          actionDisabled={busy || (method === "qr" && Boolean(qrPayment?.mock))}
           label={
-            state === "opening" || state === "processing"
+            busy
               ? t("pages.checkout.payment.processing")
-              : t("pages.checkout.payment.pay", {
-                  amount: amount.toLocaleString(
-                    language === "hi" ? "hi-IN" : "en-IN",
-                  ),
-                })
+              : method === "qr"
+                ? qrPayment
+                  ? t("pages.checkout.payment.checkQrStatus")
+                  : t("pages.checkout.payment.generateQrAmount", {
+                      amount: amount.toLocaleString(numberLocale),
+                    })
+                : t("pages.checkout.payment.pay", {
+                    amount: amount.toLocaleString(numberLocale),
+                  })
           }
         />
       </div>

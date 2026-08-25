@@ -5,6 +5,7 @@ import { CalendarDays } from "lucide-react";
 import { enIN, hi } from "react-day-picker/locale";
 
 import { cn } from "@/lib/utils";
+import { getIntlLocale, getTextDirection, type Language } from "@/lib/i18n";
 import { Calendar } from "@/components/ui/calendar";
 import {
   Popover,
@@ -27,7 +28,7 @@ function formatValue(date: Date) {
 interface DatePickerProps {
   value: string;
   onChange: (value: string) => void;
-  language?: "en" | "hi";
+  language?: Language;
   min?: string;
   max?: string;
   ariaLabel: string;
@@ -54,13 +55,13 @@ function DatePicker({
         <button
           type="button"
           className={cn(
-            "flex min-h-[52px] w-full items-center gap-3 rounded-[9px] border border-[#bfc5d4] bg-white px-[15px] text-left font-normal text-[var(--ink)]",
+            "flex min-h-[52px] w-full items-center gap-3 rounded-[9px] border border-[#bfc5d4] bg-white px-[15px] text-start font-normal text-[var(--ink)]",
             className,
           )}
           aria-label={ariaLabel}
         >
           <CalendarDays className="h-5 w-5 text-[#777d8d]" />
-          {selected?.toLocaleDateString(language === "hi" ? "hi-IN" : "en-IN", {
+          {selected?.toLocaleDateString(getIntlLocale(language), {
             day: "numeric",
             month: "short",
             year: "numeric",
@@ -73,6 +74,7 @@ function DatePicker({
           selected={selected}
           defaultMonth={selected}
           locale={language === "hi" ? hi : enIN}
+          dir={getTextDirection(language)}
           disabled={
             minimum && maximum
               ? [{ before: minimum }, { after: maximum }]

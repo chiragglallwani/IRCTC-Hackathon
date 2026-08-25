@@ -210,7 +210,7 @@ export function SearchCard({
             <div className="grid gap-[7px] font-semibold text-[#363a45]">
               {t("common.fields.passengers")}
               <PopoverTrigger asChild>
-                <button className="flex min-h-[52px] w-full items-center gap-2.5 rounded-[9px] border border-[#bfc5d4] bg-white px-[15px] text-left [&_svg]:w-[21px] [&_svg]:text-[#777d8d]">
+                <button className="flex min-h-[52px] w-full items-center gap-2.5 rounded-[9px] border border-[#bfc5d4] bg-white px-[15px] text-start [&_svg]:w-[21px] [&_svg]:text-[#777d8d]">
                   <Users />
                   {t(
                     travellers.adults === 1
@@ -224,6 +224,14 @@ export function SearchCard({
                           ? "components.searchCard.child"
                           : "components.searchCard.children",
                         { count: travellers.children },
+                      )}`
+                    : ""}
+                  {travellers.infants
+                    ? ` · ${t(
+                        travellers.infants === 1
+                          ? "components.searchCard.infant"
+                          : "components.searchCard.infants",
+                        { count: travellers.infants },
                       )}`
                     : ""}
                 </button>
@@ -352,7 +360,7 @@ function PlaceCombobox({
             type="button"
             aria-expanded={open}
             aria-label={label}
-            className="flex min-h-[52px] w-full items-center justify-between rounded-[9px] border border-[#bfc5d4] bg-white px-[15px] text-left font-normal"
+            className="flex min-h-[52px] w-full items-center justify-between rounded-[9px] border border-[#bfc5d4] bg-white px-[15px] text-start font-normal"
           >
             {selected ? (
               <span className="grid">
@@ -362,7 +370,7 @@ function PlaceCombobox({
             ) : (
               <span className="text-[var(--muted)]">{label}</span>
             )}
-            <span className="ml-3 flex shrink-0 items-center gap-2">
+            <span className="ms-3 flex shrink-0 items-center gap-2">
               {selected && <strong>{selected.code}</strong>}
               <ChevronsUpDown className="h-4 w-4 text-[var(--muted)]" />
             </span>
@@ -392,7 +400,7 @@ function PlaceCombobox({
                     }}
                   >
                     <Check
-                      className={`mr-2 h-4 w-4 shrink-0 ${
+                      className={`me-2 h-4 w-4 shrink-0 ${
                         selected?.stationId === station.stationId
                           ? "opacity-100"
                           : "opacity-0"
@@ -404,7 +412,7 @@ function PlaceCombobox({
                         {station.state}
                       </small>
                     </span>
-                    <strong className="ml-3">{station.code}</strong>
+                    <strong className="ms-3">{station.code}</strong>
                   </CommandItem>
                 ))}
               </CommandGroup>

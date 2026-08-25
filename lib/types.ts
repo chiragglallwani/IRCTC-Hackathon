@@ -1,5 +1,6 @@
 export type BookingMode = "tatkal" | "quick" | "explore" | "tourism";
-export type TransportMode = "train" | "metro" | "bus" | "walk";
+export type TransportMode =
+  "train" | "metro" | "bus" | "ship" | "plane" | "walk";
 export type AvailabilityStatus = "AVAILABLE" | "RAC" | "WAITLIST" | "REGRET";
 
 export interface City {
@@ -178,6 +179,14 @@ export interface Passenger {
   citizenship: string;
   berth: string;
   disabilityAssistance?: boolean;
+  claimForeignTourist?: boolean;
+  passportNumber?: string;
+  claimDefence?: boolean;
+  defenceServiceId?: string;
+  claimDisability?: boolean;
+  disabilityCertificate?: string;
+  claimRailwayEmployee?: boolean;
+  railwayEmployeeId?: string;
   saveForFuture?: boolean;
 }
 export interface Booking {
@@ -190,6 +199,15 @@ export interface Booking {
   travelClass: string;
   quota: string;
   fare: number;
+  fareBreakdown?: {
+    baseFare: number;
+    discountRate: number;
+    discount: number;
+    discountedFare: number;
+    serviceFee: number;
+    gst: number;
+    total: number;
+  };
   paymentStatus: "paid" | "pending" | "failed" | "refunded";
   bookingStatus: "upcoming" | "completed" | "cancelled";
   createdAt: string;
