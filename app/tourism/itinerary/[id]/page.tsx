@@ -28,7 +28,7 @@ const plannerValueKeys: Record<string, string> = {
   Bus: "bus",
 };
 export default function ItineraryPage() {
-  const { language, t } = useApp();
+  const { locale, t } = useApp();
   const { id } = useParams<{ id: string }>();
   const [itinerary, setItinerary] = useState<Itinerary | null>(null);
   const [paid, setPaid] = useState(false);
@@ -228,12 +228,7 @@ export default function ItineraryPage() {
             </div>
             <div className="fare-total">
               <span>{t("pages.tourism.itinerary.total")}</span>
-              <span>
-                ₹
-                {itinerary.costs.total.toLocaleString(
-                  language === "hi" ? "hi-IN" : "en-IN",
-                )}
-              </span>
+              <span>₹{itinerary.costs.total.toLocaleString(locale)}</span>
             </div>
           </div>
           <p className="microcopy">

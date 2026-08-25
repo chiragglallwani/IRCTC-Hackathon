@@ -4,6 +4,7 @@ import { useSearchParams } from "next/navigation";
 import Link from "next/link";
 import { SearchX, SlidersHorizontal } from "lucide-react";
 import { JourneyCard } from "@/components/journey-card";
+import { SearchCard } from "@/components/search-card";
 import { useApp } from "@/components/providers";
 import { searchJourneys } from "@/lib/search";
 import { stationById } from "@/lib/data";
@@ -12,21 +13,38 @@ import { Checkbox } from "@/components/ui/checkbox";
 import { Badge } from "@/components/ui/badge";
 import { Button } from "@/components/ui/button";
 import {
+  Dialog,
+  DialogContent,
+  DialogDescription,
+  DialogTitle,
+} from "@/components/ui/dialog";
+import {
   Select,
   SelectContent,
   SelectItem,
   SelectTrigger,
   SelectValue,
 } from "@/components/ui/select";
+import { cn } from "@/lib/utils";
 
 function dateOffset(date: string, offset: number) {
   const d = new Date(`${date}T00:00:00`);
   d.setDate(d.getDate() + offset);
-  return d.toISOString().slice(0, 10);
+  const year = d.getFullYear();
+  const month = String(d.getMonth() + 1).padStart(2, "0");
+  const day = String(d.getDate()).padStart(2, "0");
+  return `${year}-${month}-${day}`;
 }
+
+function todayDate() {
+  return dateOffset(
+    `${new Date().getFullYear()}-${String(new Date().getMonth() + 1).padStart(2, "0")}-${String(new Date().getDate()).padStart(2, "0")}`,
+    0,
+  );
+}
+
 function SearchResults() {
-  const { language, t } = useApp();
-  const locale = language === "hi" ? "hi-IN" : "en-IN";
+  const { locale, t } = useApp();
   const params = useSearchParams();
   const base: SearchInput = {
     origin: params.get("origin") ?? "",
@@ -44,6 +62,7 @@ function SearchResults() {
   const [transfers, setTransfers] = useState<number[]>([]);
   const [onlyAvailable, setOnlyAvailable] = useState(false);
   const [maxFare, setMaxFare] = useState(10000);
+  const [searchOpen, setSearchOpen] = useState(true);
   const input = { ...base, date };
   const raw = useMemo(
     () =>
@@ -88,15 +107,71 @@ function SearchResults() {
         ),
     [raw, modes, transfers, onlyAvailable, maxFare, sort],
   );
+  const dateOptions = useMemo(() => {
+    if (base.mode === "tatkal") return [];
+
+    return [-2, -1, 0, 1, 2, 3, 4]
+      .map((offset) => dateOffset(date, offset))
+      .filter((value) => value >= todayDate())
+      .map((value) => ({
+        value,
+        recommendedFare: searchJourneys({ ...base, date: value })[0]?.totalFare,
+      }));
+  }, [
+    base.origin,
+    base.destination,
+    base.adults,
+    base.children,
+    base.infants,
+    base.travelClass,
+    base.mode,
+    date,
+  ]);
   const toggle = <T,>(value: T, list: T[], setter: (x: T[]) => void) =>
     setter(
       list.includes(value) ? list.filter((x) => x !== value) : [...list, value],
     );
   const origin = stationById.get(base.origin);
   const destination = stationById.get(base.destination);
+  const hasCompleteSearch = Boolean(
+    origin &&
+    destination &&
+    origin.stationId !== destination.stationId &&
+    params.get("date"),
+  );
+
+  if (!hasCompleteSearch) {
+    return (
+      <div className="page">
+        <div className="card empty-state">
+          <SearchX />
+          <h1>{t("pages.search.formRequiredTitle")}</h1>
+          <p>{t("pages.search.formRequiredText")}</p>
+          <Button onClick={() => setSearchOpen(true)}>
+            {t("pages.search.openSearch")}
+          </Button>
+        </div>
+        <Dialog open={searchOpen} onOpenChange={setSearchOpen}>
+          <DialogContent
+            className="max-h-[92vh] w-[min(1240px,calc(100%_-_32px))] max-w-none overflow-y-auto p-4 lg:p-7"
+            closeLabel={t("common.actions.close")}
+          >
+            <div className="pe-12">
+              <DialogTitle>{t("pages.search.formRequiredTitle")}</DialogTitle>
+              <DialogDescription>
+                {t("pages.search.formRequiredText")}
+              </DialogDescription>
+            </div>
+            <SearchCard />
+          </DialogContent>
+        </Dialog>
+      </div>
+    );
+  }
+
   return (
     <div className="page">
-      <section className="card flex items-start justify-between gap-[15px] px-[30px] py-[26px] lg:items-center">
+      <section className="card flex flex-col md:flex-row items-start justify-between gap-[15px] px-[30px] py-[26px] lg:items-center">
         <div>
           <span className="eyebrow">{t("pages.search.eyebrow")}</span>
           <h2>
@@ -111,49 +186,75 @@ function SearchResults() {
             })}{" "}
             ·{" "}
             {t(
-              base.adults + base.children === 1
-                ? "pages.search.traveller"
-                : "pages.search.travellers",
-              { count: base.adults + base.children },
+              base.adults === 1
+                ? "components.searchCard.adult"
+                : "components.searchCard.adults",
+              { count: base.adults },
             )}
+            {base.children
+              ? ` · ${t(
+                  base.children === 1
+                    ? "components.searchCard.child"
+                    : "components.searchCard.children",
+                  { count: base.children },
+                )}`
+              : ""}
+            {base.infants
+              ? ` · ${t(
+                  base.infants === 1
+                    ? "components.searchCard.infant"
+                    : "components.searchCard.infants",
+                  { count: base.infants },
+                )}`
+              : ""}
           </p>
         </div>
-        <Button variant="secondary" asChild>
+        <Button variant="secondary" className="w-full md:w-24" asChild>
           <Link href="/">{t("pages.search.edit")}</Link>
         </Button>
       </section>
-      <div
-        className="-mx-4 my-7 flex gap-2 overflow-auto px-4 lg:mx-0 lg:px-0"
-        aria-label={t("pages.search.datesLabel")}
-      >
-        {[-2, -1, 0, 1, 2, 3, 4].map((offset) => {
-          const value = dateOffset(date, offset);
-          const d = new Date(`${value}T00:00:00`);
-          return (
-            <button
-              key={`${value}-${offset}`}
-              className={`date-chip ${offset === 0 ? "active" : ""}`}
-              onClick={() => setDate(value)}
-            >
-              <div>
-                {d.toLocaleDateString(locale, {
-                  weekday: "short",
-                  day: "numeric",
-                })}
-              </div>
-              <strong>
-                {t(
-                  offset === 0
-                    ? "common.status.selected"
-                    : "pages.search.checkFare",
-                )}
-              </strong>
-            </button>
-          );
-        })}
-      </div>
-      <div className="results-toolbar">
-        <div>
+      {base.mode !== "tatkal" && (
+        <div
+          className="-mx-4 my-7 overflow-x-auto [scrollbar-width:thin] lg:mx-auto lg:px-4"
+          aria-label={t("pages.search.datesLabel")}
+        >
+          <div className="flex w-max min-w-full snap-x snap-mandatory justify-center gap-3 px-4 lg:px-0">
+            {dateOptions.map(({ value, recommendedFare }) => {
+              const d = new Date(`${value}T00:00:00`);
+              return (
+                <button
+                  key={value}
+                  className={cn(
+                    "min-w-32 shrink-0 snap-center rounded-md border border-[var(--line)] bg-white p-4 text-center",
+                    value === date ? "date-active" : "",
+                  )}
+                  onClick={() => setDate(value)}
+                >
+                  <div>
+                    {d.toLocaleDateString(locale, {
+                      weekday: "short",
+                      day: "numeric",
+                    })}
+                  </div>
+                  {recommendedFare !== undefined ? (
+                    <strong className="mt-1 block">
+                      {t("pages.search.recommendedFare", {
+                        amount: recommendedFare.toLocaleString(locale),
+                      })}
+                    </strong>
+                  ) : (
+                    <strong className="mt-1 block">
+                      {t("pages.search.fareUnavailable")}
+                    </strong>
+                  )}
+                </button>
+              );
+            })}
+          </div>
+        </div>
+      )}
+      <div className="results-toolbar flex flex-col md:flex-row">
+        <div className="">
           <h3>{t("pages.search.found", { count: results.length })}</h3>
           <div className="flex flex-wrap items-center gap-2 [&_button]:border-0 [&_button]:bg-transparent [&_button]:p-0">
             {modes.map((x) => (
@@ -191,8 +292,8 @@ function SearchResults() {
             ) : null}
           </div>
         </div>
-        <label>
-          {t("pages.search.sort")}
+        <label className="flex gap-2 items-center">
+          <p className="w-20">{t("pages.search.sort")}</p>
           <Select value={sort} onValueChange={setSort}>
             <SelectTrigger className="min-w-44">
               <SelectValue />
@@ -213,7 +314,7 @@ function SearchResults() {
       </div>
       <div className="mt-[34px] grid grid-cols-1 gap-[34px] lg:grid-cols-[280px_minmax(0,1fr)]">
         <aside
-          className="rounded-xl border-0 bg-white p-[18px] lg:rounded-none lg:border-r lg:border-[var(--line)] lg:bg-transparent lg:p-0 lg:pr-6 [&_h3]:flex [&_h3]:items-center [&_h3]:gap-2 [&_section]:border-b [&_section]:border-[var(--line)] [&_section]:py-5"
+          className="rounded-xl border-0 bg-white p-[18px] lg:rounded-none lg:border-e lg:border-[var(--line)] lg:bg-transparent lg:p-0 lg:pe-6 [&_h3]:flex [&_h3]:items-center [&_h3]:gap-2 [&_section]:border-b [&_section]:border-[var(--line)] [&_section]:py-5"
           aria-label={t("pages.search.filtersLabel")}
         >
           <h3>

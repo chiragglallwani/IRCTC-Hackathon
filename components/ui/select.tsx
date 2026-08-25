@@ -17,7 +17,7 @@ const SelectTrigger = React.forwardRef<
   <SelectPrimitive.Trigger
     ref={ref}
     className={cn(
-      "flex min-h-[52px] w-full items-center justify-between gap-2 rounded-[9px] border border-[#bfc5d4] bg-white px-[15px] text-left text-[inherit] text-ink outline-none transition-colors placeholder:text-[#777d8d] focus-visible:ring-2 focus-visible:ring-[#ffbf47] focus-visible:ring-offset-2 disabled:cursor-not-allowed disabled:opacity-50 [&>span]:truncate",
+      "flex min-h-[52px] w-full items-center justify-between gap-2 rounded-[9px] border border-[#bfc5d4] bg-white px-[15px] text-start text-[inherit] text-ink outline-none transition-colors placeholder:text-[#777d8d] focus-visible:ring-2 focus-visible:ring-[#ffbf47] focus-visible:ring-offset-2 disabled:cursor-not-allowed disabled:opacity-50 [&>span]:truncate",
       className,
     )}
     {...props}
@@ -116,12 +116,12 @@ const SelectItem = React.forwardRef<
   <SelectPrimitive.Item
     ref={ref}
     className={cn(
-      "relative flex w-full cursor-default select-none items-center rounded-lg py-2.5 pl-8 pr-3 outline-none data-[disabled]:pointer-events-none data-[highlighted]:bg-brand-50 data-[highlighted]:text-brand-800 data-[state=checked]:bg-brand-50 data-[state=checked]:font-semibold data-[disabled]:opacity-50",
+      "relative flex w-full cursor-default select-none items-center rounded-lg py-2.5 pe-3 ps-8 outline-none data-[disabled]:pointer-events-none data-[highlighted]:bg-brand-50 data-[highlighted]:text-brand-800 data-[state=checked]:bg-brand-50 data-[state=checked]:font-semibold data-[disabled]:opacity-50",
       className,
     )}
     {...props}
   >
-    <span className="absolute left-2 flex h-4 w-4 items-center justify-center text-brand-700">
+    <span className="absolute start-2 flex h-4 w-4 items-center justify-center text-brand-700">
       <SelectPrimitive.ItemIndicator>
         <Check className="h-4 w-4" />
       </SelectPrimitive.ItemIndicator>

@@ -24,6 +24,7 @@ import {
   DialogTitle,
 } from "@/components/ui/dialog";
 import { Button } from "@/components/ui/button";
+import { JourneyRoute } from "@/components/journey-route";
 
 export function JourneyCard({
   journey,
@@ -33,8 +34,7 @@ export function JourneyCard({
   input: SearchInput;
 }) {
   const router = useRouter();
-  const { language, user, setAuthOpen, t } = useApp();
-  const locale = language === "hi" ? "hi-IN" : "en-IN";
+  const { locale, user, setAuthOpen, t } = useApp();
   const [expanded, setExpanded] = useState(false);
   const [whyOpen, setWhyOpen] = useState(false);
   const [quotaOpen, setQuotaOpen] = useState(false);
@@ -65,7 +65,7 @@ export function JourneyCard({
   return (
     <article className="card journey-card">
       <div className="journey-label">
-        <span>
+        <span className="flex items-center gap-2">
           <Sparkles size={18} />{" "}
           {journey.label
             ? t(`common.status.${journey.label.toLowerCase()}`)
@@ -187,37 +187,12 @@ export function JourneyCard({
       {expanded && (
         <div className="journey-expanded">
           <h3>{t("components.journeyCard.timeline")}</h3>
-          <div className="timeline">
-            {journey.legs.map((leg, i) => (
-              <div className="timeline-leg" key={leg.id}>
-                <div className="timeline-dot">{i + 1}</div>
-                <div>
-                  <strong>
-                    {leg.from.name} → {leg.to.name}
-                  </strong>
-                  <p>
-                    {leg.departure}–{leg.arrival} · {leg.serviceName} (
-                    {leg.serviceNumber}) ·{" "}
-                    {t("components.journeyCard.platform", { number: 1 + i })}
-                  </p>
-                  <p className="muted">
-                    {formatDuration(leg.durationMinutes)} · ₹
-                    {leg.fare.toLocaleString(locale)} · {leg.travelClass} ·{" "}
-                    {leg.availability?.status
-                      ? t(
-                          `common.status.${leg.availability.status.toLowerCase()}`,
-                        )
-                      : t("components.journeyCard.checkBooking")}
-                  </p>
-                </div>
-              </div>
-            ))}
-          </div>
+          <JourneyRoute journey={journey} />
         </div>
       )}
       <Dialog open={quotaOpen} onOpenChange={setQuotaOpen}>
         <DialogContent
-          className="bottom-0 left-auto right-0 top-0 h-screen w-[min(520px,100%)] translate-x-0 translate-y-0 content-start overflow-auto rounded-none p-[30px] shadow-[-15px_0_45px_#0002]"
+          className="max-h-[85vh] w-[min(720px,calc(100%_-_32px))] max-w-none content-start overflow-y-auto"
           closeLabel={t("common.actions.close")}
           aria-label={t("components.journeyCard.quotaLabel")}
         >

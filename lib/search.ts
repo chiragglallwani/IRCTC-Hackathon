@@ -10,6 +10,7 @@ import type {
   Connection,
   Journey,
   JourneyLeg,
+  Passenger,
   SearchInput,
   TransportMode,
 } from "./types";
@@ -186,13 +187,16 @@ export function searchJourneys(input: SearchInput): Journey[] {
       );
       const modes = [...new Set(legs.map((x) => x.mode))] as TransportMode[];
       const score = Math.round(
-        Math.max(
-          1,
-          100 -
-            elapsed / 80 -
-            totalFare / 650 -
-            Math.max(0, legs.length - 1) * 7 +
-            availabilityRank(status) * 4,
+        Math.min(
+          100,
+          Math.max(
+            1,
+            100 -
+              elapsed / 80 -
+              totalFare / 650 -
+              Math.max(0, legs.length - 1) * 7 +
+              availabilityRank(status) * 4,
+          ),
         ),
       );
       return {
@@ -272,4 +276,71 @@ export function quotaEligibility(
   if (quotaId === "FT")
     return passengers.every((p) => p.citizenship !== "Indian");
   return true;
+}
+
+export function passengerEligibleQuotaIds(
+  passenger: Passenger,
+  mode: SearchInput["mode"],
+) {
+  const eligible = ["GN"];
+
+  if (mode === "tatkal") eligible.push("TQ", "PT");
+  if (passenger.gender === "female") eligible.push("LD");
+  if (passenger.gender === "female" ? passenger.age >= 58 : passenger.age >= 60)
+    eligible.push("SS");
+  if (
+    passenger.citizenship !== "Indian" &&
+    passenger.claimForeignTourist &&
+    passenger.passportNumber
+  )
+    eligible.push("FT");
+  if (passenger.claimDefence && passenger.defenceServiceId) eligible.push("DF");
+  if (passenger.claimDisability && passenger.disabilityCertificate)
+    eligible.push("HP");
+  if (passenger.claimRailwayEmployee && passenger.railwayEmployeeId)
+    eligible.push("RE");
+
+  return eligible;
+}
+
+export function selectEligibleQuota(
+  passengers: Passenger[],
+  mode: SearchInput["mode"],
+) {
+  if (!passengers.length) return "GN";
+  if (mode === "tatkal") return "TQ";
+
+  const preferredQuotas = ["HP", "SS", "RE", "DF", "FT", "LD"];
+  return (
+    preferredQuotas.find((quotaId) =>
+      passengers.every((passenger) =>
+        passengerEligibleQuotaIds(passenger, mode).includes(quotaId),
+      ),
+    ) ?? "GN"
+  );
+}
+
+const quotaDiscountRates: Record<string, number> = {
+  HP: 0.5,
+  SS: 0.4,
+  RE: 0.15,
+  DF: 0.1,
+  FT: 0.05,
+};
+
+export function calculateFareBreakdown(baseFare: number, quotaId: string) {
+  const discountRate = quotaDiscountRates[quotaId] ?? 0;
+  const discount = Math.round(baseFare * discountRate);
+  const discountedFare = baseFare - discount;
+  const serviceFee = Math.round(discountedFare * 0.035);
+  const gst = Math.round(discountedFare * 0.05);
+
+  return {
+    discountRate,
+    discount,
+    discountedFare,
+    serviceFee,
+    gst,
+    total: discountedFare + serviceFee + gst,
+  };
 }
