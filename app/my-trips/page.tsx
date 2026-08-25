@@ -12,6 +12,9 @@ import {
 import { saveStorage, savedBookings, storageKeys } from "@/lib/storage";
 import type { Booking } from "@/lib/types";
 import { useApp } from "@/components/providers";
+import { Tabs, TabsList, TabsTrigger } from "@/components/ui/tabs";
+import { Badge } from "@/components/ui/badge";
+import { Button } from "@/components/ui/button";
 
 type Tab = "upcoming" | "completed" | "cancelled";
 export default function MyTripsPage() {
@@ -40,37 +43,37 @@ export default function MyTripsPage() {
     <div className="page">
       <h1>{t("pages.myTrips.title")}</h1>
       <p className="lede">{t("pages.myTrips.subtitle")}</p>
-      <div className="trip-tabs" role="tablist">
-        {(["upcoming", "completed", "cancelled"] as const).map((x) => (
-          <button
-            role="tab"
-            aria-selected={tab === x}
-            className={tab === x ? "active" : ""}
-            key={x}
-            onClick={() => setTab(x)}
-          >
-            {t(`pages.myTrips.tabs.${x}`)}{" "}
-            <span className="badge badge-blue">
-              {bookings.filter((b) => b.bookingStatus === x).length}
-            </span>
-          </button>
-        ))}
-      </div>
-      <div className="trip-list">
+      <Tabs value={tab} onValueChange={(value) => setTab(value as Tab)}>
+        <TabsList className="my-[30px] flex gap-7 border-b border-[var(--line)]">
+          {(["upcoming", "completed", "cancelled"] as const).map((x) => (
+            <TabsTrigger
+              className="border-0 border-b-[3px] border-transparent bg-transparent px-1 py-[14px] text-[1.1rem] font-bold data-[state=active]:border-[var(--primary)] data-[state=active]:text-[var(--primary-dark)]"
+              key={x}
+              value={x}
+            >
+              {t(`pages.myTrips.tabs.${x}`)}{" "}
+              <Badge variant="secondary">
+                {bookings.filter((b) => b.bookingStatus === x).length}
+              </Badge>
+            </TabsTrigger>
+          ))}
+        </TabsList>
+      </Tabs>
+      <div className="grid gap-[18px]">
         {shown.length ? (
           shown.map((b) => (
             <article className="card trip-card" key={b.bookingId}>
               <div className="journey-top">
                 <div>
-                  <span
-                    className={`badge ${tab === "cancelled" ? "badge-danger" : "badge-success"}`}
+                  <Badge
+                    variant={tab === "cancelled" ? "destructive" : "success"}
                   >
                     {t(
                       tab === "cancelled"
                         ? "common.status.cancelled"
                         : "common.status.confirmed",
                     )}
-                  </span>{" "}
+                  </Badge>{" "}
                   <span>PNR: {b.pnr}</span>
                   <h2>{b.journey.legs[0]?.serviceName}</h2>
                 </div>
@@ -105,44 +108,40 @@ export default function MyTripsPage() {
                 </div>
               )}
               <div className="journey-actions">
-                <Link className="btn btn-primary" href={`/booking/${b.pnr}`}>
-                  <Ticket />
-                  {t("pages.myTrips.viewTicket")}
-                </Link>
+                <Button asChild>
+                  <Link href={`/booking/${b.pnr}`}>
+                    <Ticket />
+                    {t("pages.myTrips.viewTicket")}
+                  </Link>
+                </Button>
                 {tab === "upcoming" && (
                   <>
-                    <button className="btn btn-secondary">
+                    <Button variant="secondary">
                       <MapPin />
                       {t("pages.myTrips.track")}
-                    </button>
-                    <button
-                      className="btn btn-ghost"
-                      onClick={() => cancel(b.bookingId)}
-                    >
+                    </Button>
+                    <Button variant="ghost" onClick={() => cancel(b.bookingId)}>
                       <XCircle />
                       {t("pages.myTrips.cancel")}
-                    </button>
+                    </Button>
                   </>
                 )}
                 {tab === "completed" && (
                   <>
-                    <button className="btn btn-secondary">
+                    <Button variant="secondary">
                       <RotateCcw />
                       {t("pages.myTrips.bookAgain")}
-                    </button>
-                    <button
-                      className="btn btn-ghost"
-                      onClick={() => window.print()}
-                    >
+                    </Button>
+                    <Button variant="ghost" onClick={() => window.print()}>
                       <Download />
                       {t("pages.myTrips.download")}
-                    </button>
+                    </Button>
                   </>
                 )}
-                <button className="btn btn-ghost">
+                <Button variant="ghost">
                   <CircleHelp />
                   {t("pages.myTrips.help")}
-                </button>
+                </Button>
               </div>
             </article>
           ))
@@ -161,9 +160,9 @@ export default function MyTripsPage() {
                     tab: t(`pages.myTrips.tabs.${tab}`).toLowerCase(),
                   })}
             </p>
-            <Link className="btn btn-primary" href="/">
-              {t("common.actions.planJourney")}
-            </Link>
+            <Button asChild>
+              <Link href="/">{t("common.actions.planJourney")}</Link>
+            </Button>
           </div>
         )}
       </div>

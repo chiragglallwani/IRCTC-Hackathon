@@ -9,13 +9,21 @@ import {
   Info,
   Sparkles,
   TrainFront,
-  X,
 } from "lucide-react";
 import { quotas } from "@/lib/data";
 import { formatDuration } from "@/lib/search";
 import { saveStorage, storageKeys } from "@/lib/storage";
 import type { Journey, SearchInput } from "@/lib/types";
 import { useApp } from "./providers";
+import { Badge, type BadgeVariant } from "@/components/ui/badge";
+import {
+  Dialog,
+  DialogContent,
+  DialogDescription,
+  DialogHeader,
+  DialogTitle,
+} from "@/components/ui/dialog";
+import { Button } from "@/components/ui/button";
 
 export function JourneyCard({
   journey,
@@ -45,12 +53,12 @@ export function JourneyCard({
   useEffect(() => {
     if (user && pendingAuth) router.push("/checkout");
   }, [user, pendingAuth, router]);
-  const statusClass =
+  const statusVariant: BadgeVariant =
     journey.availability === "AVAILABLE"
-      ? "badge-success"
+      ? "success"
       : journey.availability === "RAC"
-        ? "badge-warning"
-        : "badge-danger";
+        ? "warning"
+        : "destructive";
   const availabilityLabel = t(
     `common.status.${journey.availability === "AVAILABLE" ? "available" : journey.availability === "WAITLIST" ? "waitlist" : journey.availability.toLowerCase()}`,
   );
@@ -64,9 +72,9 @@ export function JourneyCard({
             : t("components.journeyCard.option")}
           {}· {t("components.journeyCard.score", { score: journey.score })}
         </span>
-        <button className="btn-ghost" onClick={() => setWhyOpen(!whyOpen)}>
+        <Button variant="ghost" size="sm" onClick={() => setWhyOpen(!whyOpen)}>
           {t("components.journeyCard.why")} <Info size={16} />
-        </button>
+        </Button>
       </div>
       <div className="journey-body">
         <div className="journey-top">
@@ -94,10 +102,10 @@ export function JourneyCard({
           </div>
           <div className="fare">
             <strong>₹{journey.totalFare.toLocaleString(locale)}</strong>
-            <span className={`badge ${statusClass}`}>
+            <Badge variant={statusVariant}>
               {journey.availability === "AVAILABLE" && <CircleCheck />}
               {availabilityLabel}
-            </span>
+            </Badge>
           </div>
         </div>
         <div className="leg-strip">
@@ -117,25 +125,35 @@ export function JourneyCard({
                 {formatDuration(leg.durationMinutes)}
               </div>
               {index < journey.legs.length - 1 && (
-                <span className="badge badge-blue">
+                <Badge variant="secondary">
                   {t("components.journeyCard.transferTime", { minutes: 45 })}
-                </span>
+                </Badge>
               )}
             </div>
           ))}
         </div>
         <div className="quota-row">
-          <button className="quota-button" onClick={() => setQuotaOpen(true)}>
-            {t("components.journeyCard.generalQuota", {
-              status: availabilityLabel,
-            })}
+          <button
+            className="border-0 bg-transparent p-0"
+            onClick={() => setQuotaOpen(true)}
+          >
+            <Badge variant="success">
+              {t("components.journeyCard.generalQuota", {
+                status: availabilityLabel,
+              })}
+            </Badge>
           </button>
-          <button className="quota-button" onClick={() => setQuotaOpen(true)}>
-            {t("components.journeyCard.seniorQuota")}
+          <button
+            className="border-0 bg-transparent p-0"
+            onClick={() => setQuotaOpen(true)}
+          >
+            <Badge variant="outline">
+              {t("components.journeyCard.seniorQuota")}
+            </Badge>
           </button>
-          <button className="btn btn-ghost" onClick={() => setQuotaOpen(true)}>
+          <Button variant="ghost" onClick={() => setQuotaOpen(true)}>
             {t("components.journeyCard.allQuotas")}
-          </button>
+          </Button>
         </div>
         {whyOpen && (
           <div className="why-box">
@@ -151,8 +169,8 @@ export function JourneyCard({
           </div>
         )}
         <div className="journey-actions">
-          <button
-            className="btn btn-secondary"
+          <Button
+            variant="secondary"
             aria-expanded={expanded}
             onClick={() => setExpanded(!expanded)}
           >
@@ -160,10 +178,10 @@ export function JourneyCard({
               ? t("components.journeyCard.hideDetails")
               : t("components.journeyCard.details")}
             {expanded ? <ChevronUp /> : <ChevronDown />}
-          </button>
-          <button className="btn btn-primary" onClick={proceed}>
+          </Button>
+          <Button onClick={proceed}>
             {t("common.actions.continueBooking")}
-          </button>
+          </Button>
         </div>
       </div>
       {expanded && (
@@ -197,49 +215,47 @@ export function JourneyCard({
           </div>
         </div>
       )}
-      {quotaOpen && (
-        <div
-          className="quota-overlay"
-          role="dialog"
-          aria-modal="true"
+      <Dialog open={quotaOpen} onOpenChange={setQuotaOpen}>
+        <DialogContent
+          className="bottom-0 left-auto right-0 top-0 h-screen w-[min(520px,100%)] translate-x-0 translate-y-0 content-start overflow-auto rounded-none p-[30px] shadow-[-15px_0_45px_#0002]"
+          closeLabel={t("common.actions.close")}
           aria-label={t("components.journeyCard.quotaLabel")}
         >
-          <div className="quota-drawer">
-            <button className="icon-btn" onClick={() => setQuotaOpen(false)}>
-              <X />
-            </button>
-            <h2>{t("components.journeyCard.quotaTitle")}</h2>
-            <p className="muted">
+          <DialogHeader>
+            <DialogTitle>{t("components.journeyCard.quotaTitle")}</DialogTitle>
+            <DialogDescription>
               {t("components.journeyCard.quotaDescription")}
-            </p>
-            {quotas.map((q, i) => (
-              <div className="quota-detail" key={q.quotaId}>
-                <div>
+            </DialogDescription>
+          </DialogHeader>
+          {quotas.map((q, i) => (
+            <div className="quota-detail" key={q.quotaId}>
+              <div>
+                <div className="flex flex-wrap items-center gap-2">
                   <strong>
-                    {t(`common.quotas.${q.quotaId.toLowerCase()}.name`)} (
-                    {q.shortName})
+                    {t(`common.quotas.${q.quotaId.toLowerCase()}.name`)}
                   </strong>
-                  <p>
-                    {t(`common.quotas.${q.quotaId.toLowerCase()}.description`)}
-                  </p>
-                  {q.eligibility.requiresVerification && (
-                    <small>{t("components.journeyCard.verification")}</small>
-                  )}
+                  <Badge variant="outline">{q.shortName}</Badge>
                 </div>
-                <span
-                  className={`badge ${i % 4 === 3 ? "badge-warning" : "badge-success"}`}
-                >
-                  {i % 4 === 3
-                    ? t("components.journeyCard.rac")
-                    : t("components.journeyCard.availableSeats", {
-                        count: 8 + i,
-                      })}
-                </span>
+                <p>
+                  {t(`common.quotas.${q.quotaId.toLowerCase()}.description`)}
+                </p>
+                {q.eligibility.requiresVerification && (
+                  <Badge variant="secondary">
+                    {t("components.journeyCard.verification")}
+                  </Badge>
+                )}
               </div>
-            ))}
-          </div>
-        </div>
-      )}
+              <Badge variant={i % 4 === 3 ? "warning" : "success"}>
+                {i % 4 === 3
+                  ? t("components.journeyCard.rac")
+                  : t("components.journeyCard.availableSeats", {
+                      count: 8 + i,
+                    })}
+              </Badge>
+            </div>
+          ))}
+        </DialogContent>
+      </Dialog>
     </article>
   );
 }

@@ -6,6 +6,15 @@ import { cityById, hotels, tourism } from "@/lib/data";
 import { saveStorage, savedItineraries, storageKeys } from "@/lib/storage";
 import type { Itinerary, ItineraryDay } from "@/lib/types";
 import { useApp } from "@/components/providers";
+import { DatePicker } from "@/components/ui/date-picker";
+import { Button } from "@/components/ui/button";
+import {
+  Select,
+  SelectContent,
+  SelectItem,
+  SelectTrigger,
+  SelectValue,
+} from "@/components/ui/select";
 function Planner() {
   const { language, t } = useApp();
   const router = useRouter();
@@ -90,32 +99,36 @@ function Planner() {
         <div className="passenger-form">
           <label className="full">
             {t("pages.tourism.planner.destination")}
-            <select
-              value={destinationId}
-              onChange={(e) => setDestinationId(e.target.value)}
-            >
-              {tourism.map((x) => (
-                <option key={x.destinationId} value={x.destinationId}>
-                  {cityById.get(x.cityId)?.name} — {x.title}
-                </option>
-              ))}
-            </select>
+            <Select value={destinationId} onValueChange={setDestinationId}>
+              <SelectTrigger>
+                <SelectValue />
+              </SelectTrigger>
+              <SelectContent>
+                {tourism.map((x) => (
+                  <SelectItem key={x.destinationId} value={x.destinationId}>
+                    {cityById.get(x.cityId)?.name} — {x.title}
+                  </SelectItem>
+                ))}
+              </SelectContent>
+            </Select>
           </label>
           <label>
             {t("pages.tourism.planner.start")}
-            <input
-              type="date"
+            <DatePicker
               value={startDate}
-              onChange={(e) => setStartDate(e.target.value)}
+              onChange={setStartDate}
+              language={language}
+              ariaLabel={t("pages.tourism.planner.start")}
             />
           </label>
           <label>
             {t("pages.tourism.planner.end")}
-            <input
-              type="date"
+            <DatePicker
               min={startDate}
               value={endDate}
-              onChange={(e) => setEndDate(e.target.value)}
+              onChange={setEndDate}
+              language={language}
+              ariaLabel={t("pages.tourism.planner.end")}
             />
           </label>
           <label>
@@ -135,70 +148,90 @@ function Planner() {
           </label>
           <label>
             {t("pages.tourism.planner.style")}
-            <select value={style} onChange={(e) => setStyle(e.target.value)}>
-              <option value="Family">
-                {t("pages.tourism.planner.family")}
-              </option>
-              <option value="Couple">
-                {t("pages.tourism.planner.couple")}
-              </option>
-              <option value="Solo">{t("pages.tourism.planner.solo")}</option>
-              <option value="Senior-friendly">
-                {t("pages.tourism.planner.senior")}
-              </option>
-            </select>
+            <Select value={style} onValueChange={setStyle}>
+              <SelectTrigger>
+                <SelectValue />
+              </SelectTrigger>
+              <SelectContent>
+                <SelectItem value="Family">
+                  {t("pages.tourism.planner.family")}
+                </SelectItem>
+                <SelectItem value="Couple">
+                  {t("pages.tourism.planner.couple")}
+                </SelectItem>
+                <SelectItem value="Solo">
+                  {t("pages.tourism.planner.solo")}
+                </SelectItem>
+                <SelectItem value="Senior-friendly">
+                  {t("pages.tourism.planner.senior")}
+                </SelectItem>
+              </SelectContent>
+            </Select>
           </label>
           <label>
             {t("pages.tourism.planner.pace")}
-            <select value={pace} onChange={(e) => setPace(e.target.value)}>
-              <option value="Relaxed">
-                {t("pages.tourism.planner.relaxed")}
-              </option>
-              <option value="Balanced">
-                {t("pages.tourism.planner.balanced")}
-              </option>
-              <option value="Packed">
-                {t("pages.tourism.planner.packed")}
-              </option>
-            </select>
+            <Select value={pace} onValueChange={setPace}>
+              <SelectTrigger>
+                <SelectValue />
+              </SelectTrigger>
+              <SelectContent>
+                <SelectItem value="Relaxed">
+                  {t("pages.tourism.planner.relaxed")}
+                </SelectItem>
+                <SelectItem value="Balanced">
+                  {t("pages.tourism.planner.balanced")}
+                </SelectItem>
+                <SelectItem value="Packed">
+                  {t("pages.tourism.planner.packed")}
+                </SelectItem>
+              </SelectContent>
+            </Select>
           </label>
           <label>
             {t("pages.tourism.planner.mode")}
-            <select
-              value={travelMode}
-              onChange={(e) => setTravelMode(e.target.value)}
-            >
-              <option value="Train">{t("pages.tourism.planner.train")}</option>
-              <option value="Train + local transport">
-                {t("pages.tourism.planner.trainLocal")}
-              </option>
-              <option value="Bus">{t("pages.tourism.planner.bus")}</option>
-            </select>
+            <Select value={travelMode} onValueChange={setTravelMode}>
+              <SelectTrigger>
+                <SelectValue />
+              </SelectTrigger>
+              <SelectContent>
+                <SelectItem value="Train">
+                  {t("pages.tourism.planner.train")}
+                </SelectItem>
+                <SelectItem value="Train + local transport">
+                  {t("pages.tourism.planner.trainLocal")}
+                </SelectItem>
+                <SelectItem value="Bus">
+                  {t("pages.tourism.planner.bus")}
+                </SelectItem>
+              </SelectContent>
+            </Select>
           </label>
           <label>
             {t("pages.tourism.planner.stay")}
-            <select
-              value={accommodation}
-              onChange={(e) => setAccommodation(e.target.value)}
-            >
-              <option value="Budget">
-                {t("pages.tourism.planner.budgetStay")}
-              </option>
-              <option value="3-star">
-                {t("pages.tourism.planner.threeStar")}
-              </option>
-              <option value="4-star">
-                {t("pages.tourism.planner.fourStar")}
-              </option>
-              <option value="Luxury">
-                {t("pages.tourism.planner.luxury")}
-              </option>
-            </select>
+            <Select value={accommodation} onValueChange={setAccommodation}>
+              <SelectTrigger>
+                <SelectValue />
+              </SelectTrigger>
+              <SelectContent>
+                <SelectItem value="Budget">
+                  {t("pages.tourism.planner.budgetStay")}
+                </SelectItem>
+                <SelectItem value="3-star">
+                  {t("pages.tourism.planner.threeStar")}
+                </SelectItem>
+                <SelectItem value="4-star">
+                  {t("pages.tourism.planner.fourStar")}
+                </SelectItem>
+                <SelectItem value="Luxury">
+                  {t("pages.tourism.planner.luxury")}
+                </SelectItem>
+              </SelectContent>
+            </Select>
           </label>
-          <button className="btn btn-primary full" onClick={generate}>
+          <Button className="full" onClick={generate}>
             <WandSparkles />
             {t("pages.tourism.planner.generate")}
-          </button>
+          </Button>
         </div>
       </section>
     </div>

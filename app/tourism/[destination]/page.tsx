@@ -4,6 +4,8 @@ import { useParams } from "next/navigation";
 import { CalendarDays, IndianRupee, MapPinned, TrainFront } from "lucide-react";
 import { destinationDetails } from "@/lib/data";
 import { useApp } from "@/components/providers";
+import { Badge } from "@/components/ui/badge";
+import { Button } from "@/components/ui/button";
 export default function DestinationPage() {
   const { language, t } = useApp();
   const { id } = useParams<{ id: string }>();
@@ -13,9 +15,11 @@ export default function DestinationPage() {
       <div className="page">
         <div className="card empty-state">
           <h2>{t("pages.tourism.destination.notFound")}</h2>
-          <Link href="/tourism" className="btn btn-primary">
-            {t("pages.tourism.destination.explore")}
-          </Link>
+          <Button asChild>
+            <Link href="/tourism">
+              {t("pages.tourism.destination.explore")}
+            </Link>
+          </Button>
         </div>
       </div>
     );
@@ -34,17 +38,17 @@ export default function DestinationPage() {
           <p>
             {destination.title} · {city?.state}
           </p>
-          <span className="badge badge-blue">
+          <Badge variant="secondary">
             <CalendarDays /> {t("pages.tourism.destination.days")}
-          </span>{" "}
-          <span className="badge badge-blue">
+          </Badge>{" "}
+          <Badge variant="secondary">
             <IndianRupee />
             {t("pages.tourism.destination.from", {
               amount: estimate.toLocaleString(
                 language === "hi" ? "hi-IN" : "en-IN",
               ),
             })}
-          </span>
+          </Badge>
         </div>
       </section>
       <div className="destination-layout">
@@ -58,11 +62,11 @@ export default function DestinationPage() {
             </p>
             <div className="theme-chips mt-4">
               {destination.themes.map((x) => (
-                <span key={x}>
+                <Badge variant="secondary" key={x}>
                   {t(
                     `pages.tourism.discovery.categories.${x.replace("_", "")}`,
                   )}
-                </span>
+                </Badge>
               ))}
             </div>
           </section>
@@ -120,12 +124,11 @@ export default function DestinationPage() {
                 code: station?.code ?? "",
               })}
             </p>
-            <Link
-              className="btn btn-primary w-full"
-              href={`/?destination=${station?.stationId}`}
-            >
-              {t("pages.tourism.destination.searchTrains")}
-            </Link>
+            <Button className="w-full" asChild>
+              <Link href={`/?destination=${station?.stationId}`}>
+                {t("pages.tourism.destination.searchTrains")}
+              </Link>
+            </Button>
           </section>
           <section className="card checkout-section">
             <h3>{t("pages.tourism.destination.stay")}</h3>
@@ -144,13 +147,14 @@ export default function DestinationPage() {
               </div>
             ))}
           </section>
-          <Link
-            className="btn btn-primary"
-            href={`/tourism/plan?destination=${destination.destinationId}`}
-          >
-            <MapPinned />
-            {t("pages.tourism.destination.customize")}
-          </Link>
+          <Button asChild>
+            <Link
+              href={`/tourism/plan?destination=${destination.destinationId}`}
+            >
+              <MapPinned />
+              {t("pages.tourism.destination.customize")}
+            </Link>
+          </Button>
         </aside>
       </div>
     </div>

@@ -3,7 +3,7 @@ import { useEffect, useMemo, useState } from "react";
 import { useRouter } from "next/navigation";
 import Link from "next/link";
 import { zodResolver } from "@hookform/resolvers/zod";
-import { useForm } from "react-hook-form";
+import { Controller, useForm } from "react-hook-form";
 import { z } from "zod";
 import {
   Check,
@@ -27,6 +27,16 @@ import {
 import type { Booking, Journey, Passenger, SearchInput } from "@/lib/types";
 import type { TranslationVariables } from "@/lib/i18n";
 import { useApp } from "./providers";
+import { Checkbox } from "@/components/ui/checkbox";
+import { Badge } from "@/components/ui/badge";
+import { Button } from "@/components/ui/button";
+import {
+  Select,
+  SelectContent,
+  SelectItem,
+  SelectTrigger,
+  SelectValue,
+} from "@/components/ui/select";
 
 export interface CheckoutContext {
   journey: Journey;
@@ -76,9 +86,9 @@ function EmptyCheckout() {
     <div className="card empty-state">
       <h2>{t("components.checkout.emptyTitle")}</h2>
       <p>{t("components.checkout.emptyText")}</p>
-      <Link className="btn btn-primary" href="/">
-        {t("common.actions.startSearch")}
-      </Link>
+      <Button asChild>
+        <Link href="/">{t("common.actions.startSearch")}</Link>
+      </Button>
     </div>
   );
 }
@@ -131,9 +141,9 @@ function Summary({
         </div>
       </div>
       {action && (
-        <button className="btn btn-primary w-full" onClick={action}>
+        <Button className="w-full" onClick={action}>
           {label}
-        </button>
+        </Button>
       )}
       <p className="microcopy">
         <LockKeyhole size={14} /> {t("components.checkout.secure")}
@@ -175,9 +185,9 @@ export function ConfirmJourney() {
                   {context.input.date} · {context.journey.legs[0]?.travelClass}
                 </p>
               </div>
-              <span className="badge badge-success">
+              <Badge variant="success">
                 <CircleCheck /> {context.journey.availability}
-              </span>
+              </Badge>
             </div>
             <div className="route-line">
               <strong>
@@ -198,36 +208,63 @@ export function ConfirmJourney() {
             <div className="passenger-form">
               <label>
                 {t("pages.checkout.confirm.travelClass")}
-                <select
+                <Select
                   value={context.input.travelClass}
-                  onChange={(e) =>
+                  onValueChange={(value) =>
                     update({
                       ...context,
-                      input: { ...context.input, travelClass: e.target.value },
+                      input: { ...context.input, travelClass: value },
                     })
                   }
                 >
-                  <option value="ANY">{t("common.classes.best")}</option>
-                  {["1A", "2A", "3A", "CC", "SL"].map((x) => (
-                    <option key={x}>{x}</option>
-                  ))}
-                </select>
+                  <SelectTrigger>
+                    <SelectValue />
+                  </SelectTrigger>
+                  <SelectContent>
+                    <SelectItem value="ANY">
+                      {t("common.classes.best")}
+                    </SelectItem>
+                    {["1A", "2A", "3A", "CC", "SL"].map((x) => (
+                      <SelectItem key={x} value={x}>
+                        {x}
+                      </SelectItem>
+                    ))}
+                  </SelectContent>
+                </Select>
               </label>
               <label>
                 {t("common.fields.quota")}
-                <select
+                <Select
                   value={context.quota}
-                  onChange={(e) =>
-                    update({ ...context, quota: e.target.value })
+                  onValueChange={(value) =>
+                    update({ ...context, quota: value })
                   }
                 >
-                  {quotas.map((q) => (
-                    <option key={q.quotaId} value={q.quotaId}>
-                      {t(`common.quotas.${q.quotaId.toLowerCase()}.name`)}
-                    </option>
-                  ))}
-                </select>
+                  <SelectTrigger>
+                    <SelectValue />
+                  </SelectTrigger>
+                  <SelectContent>
+                    {quotas.map((q) => (
+                      <SelectItem key={q.quotaId} value={q.quotaId}>
+                        {t(`common.quotas.${q.quotaId.toLowerCase()}.name`)}
+                      </SelectItem>
+                    ))}
+                  </SelectContent>
+                </Select>
               </label>
+            </div>
+            <div className="flex flex-wrap gap-2">
+              <Badge variant="outline">
+                {context.input.travelClass === "ANY"
+                  ? t("common.classes.best")
+                  : context.input.travelClass}
+              </Badge>
+              {quota && (
+                <Badge variant="secondary">
+                  {t(`common.quotas.${quota.quotaId.toLowerCase()}.name`)} ·{" "}
+                  {quota.shortName}
+                </Badge>
+              )}
             </div>
             <p className="muted">
               <ShieldCheck size={18} />{" "}
@@ -296,6 +333,7 @@ export function PassengerDetails() {
   const [quotaError, setQuotaError] = useState("");
   const {
     register,
+    control,
     handleSubmit,
     reset,
     formState: { errors },
@@ -378,10 +416,9 @@ export function PassengerDetails() {
                     className={`passenger-card ${selected.includes(p.id) ? "selected" : ""}`}
                     key={p.id}
                   >
-                    <input
-                      type="checkbox"
+                    <Checkbox
                       checked={selected.includes(p.id)}
-                      onChange={() =>
+                      onCheckedChange={() =>
                         setSelected(
                           selected.includes(p.id)
                             ? selected.filter((x) => x !== p.id)
@@ -401,12 +438,16 @@ export function PassengerDetails() {
                         })}
                       </p>
                     </div>
-                    <button className="icon-btn" onClick={() => edit(p)}>
+                    <Button variant="ghost" size="icon" onClick={() => edit(p)}>
                       <Pencil />
-                    </button>
-                    <button className="icon-btn" onClick={() => remove(p.id)}>
+                    </Button>
+                    <Button
+                      variant="ghost"
+                      size="icon"
+                      onClick={() => remove(p.id)}
+                    >
                       <Trash2 />
-                    </button>
+                    </Button>
                   </div>
                 ))}
               </div>
@@ -444,49 +485,103 @@ export function PassengerDetails() {
               </label>
               <label>
                 {t("common.fields.gender")}
-                <select {...register("gender")}>
-                  <option value="female">{t("common.gender.female")}</option>
-                  <option value="male">{t("common.gender.male")}</option>
-                  <option value="other">{t("common.gender.other")}</option>
-                </select>
+                <Controller
+                  control={control}
+                  name="gender"
+                  render={({ field }) => (
+                    <Select value={field.value} onValueChange={field.onChange}>
+                      <SelectTrigger>
+                        <SelectValue />
+                      </SelectTrigger>
+                      <SelectContent>
+                        <SelectItem value="female">
+                          {t("common.gender.female")}
+                        </SelectItem>
+                        <SelectItem value="male">
+                          {t("common.gender.male")}
+                        </SelectItem>
+                        <SelectItem value="other">
+                          {t("common.gender.other")}
+                        </SelectItem>
+                      </SelectContent>
+                    </Select>
+                  )}
+                />
               </label>
               <label>
                 {t("common.fields.citizenship")}
-                <select {...register("citizenship")}>
-                  <option value="Indian">
-                    {t("pages.checkout.passengers.indian")}
-                  </option>
-                  <option value="Foreign national">
-                    {t("pages.checkout.passengers.foreign")}
-                  </option>
-                </select>
+                <Controller
+                  control={control}
+                  name="citizenship"
+                  render={({ field }) => (
+                    <Select value={field.value} onValueChange={field.onChange}>
+                      <SelectTrigger>
+                        <SelectValue />
+                      </SelectTrigger>
+                      <SelectContent>
+                        <SelectItem value="Indian">
+                          {t("pages.checkout.passengers.indian")}
+                        </SelectItem>
+                        <SelectItem value="Foreign national">
+                          {t("pages.checkout.passengers.foreign")}
+                        </SelectItem>
+                      </SelectContent>
+                    </Select>
+                  )}
+                />
               </label>
               <label>
                 {t("common.fields.berth")}
-                <select {...register("berth")}>
-                  <option value="No preference">
-                    {t("common.berths.none")}
-                  </option>
-                  <option value="Lower">{t("common.berths.lower")}</option>
-                  <option value="Middle">{t("common.berths.middle")}</option>
-                  <option value="Upper">{t("common.berths.upper")}</option>
-                  <option value="Side lower">
-                    {t("common.berths.sideLower")}
-                  </option>
-                </select>
+                <Controller
+                  control={control}
+                  name="berth"
+                  render={({ field }) => (
+                    <Select value={field.value} onValueChange={field.onChange}>
+                      <SelectTrigger>
+                        <SelectValue />
+                      </SelectTrigger>
+                      <SelectContent>
+                        <SelectItem value="No preference">
+                          {t("common.berths.none")}
+                        </SelectItem>
+                        <SelectItem value="Lower">
+                          {t("common.berths.lower")}
+                        </SelectItem>
+                        <SelectItem value="Middle">
+                          {t("common.berths.middle")}
+                        </SelectItem>
+                        <SelectItem value="Upper">
+                          {t("common.berths.upper")}
+                        </SelectItem>
+                        <SelectItem value="Side lower">
+                          {t("common.berths.sideLower")}
+                        </SelectItem>
+                      </SelectContent>
+                    </Select>
+                  )}
+                />
               </label>
               <label className="check-row full">
-                <input type="checkbox" {...register("saveForFuture")} />
+                <Controller
+                  control={control}
+                  name="saveForFuture"
+                  render={({ field }) => (
+                    <Checkbox
+                      checked={field.value}
+                      onCheckedChange={field.onChange}
+                    />
+                  )}
+                />
                 {t("pages.checkout.passengers.saveFuture")}
               </label>
-              <button className="btn btn-secondary full" type="submit">
+              <Button className="full" variant="secondary" type="submit">
                 <Plus />
                 {t(
                   editing
                     ? "pages.checkout.passengers.saveChanges"
                     : "pages.checkout.passengers.addPassenger",
                 )}
-              </button>
+              </Button>
             </form>
             {quotaError && <p className="form-error">{quotaError}</p>}
           </section>
@@ -633,7 +728,7 @@ export function Payment() {
               <LockKeyhole /> {t("pages.checkout.payment.secureText")}
             </p>
           </div>
-          <div className="payment-options">
+          <div className="grid gap-3">
             <button
               className={`payment-option ${method === "upi" ? "selected" : ""}`}
               onClick={() => setMethod("upi")}
@@ -664,27 +759,27 @@ export function Payment() {
               </p>
               {state === "pending" && (
                 <div className="flex gap-2">
-                  <button className="btn btn-primary" onClick={() => finish()}>
+                  <Button onClick={() => finish()}>
                     {t("pages.checkout.payment.simulateSuccess")}
-                  </button>
-                  <button
-                    className="btn btn-secondary"
+                  </Button>
+                  <Button
+                    variant="secondary"
                     onClick={() => {
                       setState("failure");
                       setMessage(t("pages.checkout.payment.failed"));
                     }}
                   >
                     {t("pages.checkout.payment.simulateFailure")}
-                  </button>
-                  <button
-                    className="btn btn-ghost"
+                  </Button>
+                  <Button
+                    variant="ghost"
                     onClick={() => {
                       setState("cancelled");
                       setMessage(t("pages.checkout.payment.testCancelled"));
                     }}
                   >
                     {t("pages.checkout.payment.simulateCancel")}
-                  </button>
+                  </Button>
                 </div>
               )}
             </div>

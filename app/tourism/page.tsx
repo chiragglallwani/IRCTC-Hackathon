@@ -4,6 +4,15 @@ import { useMemo, useState } from "react";
 import { Compass, Search } from "lucide-react";
 import { cityById, tourism } from "@/lib/data";
 import { useApp } from "@/components/providers";
+import { Badge } from "@/components/ui/badge";
+import { Button } from "@/components/ui/button";
+import {
+  Select,
+  SelectContent,
+  SelectItem,
+  SelectTrigger,
+  SelectValue,
+} from "@/components/ui/select";
 
 const categories = [
   "All",
@@ -52,9 +61,11 @@ export default function TourismPage() {
           </span>
           <h1>{t("pages.tourism.discovery.title")}</h1>
           <p>{t("pages.tourism.discovery.subtitle")}</p>
-          <Link className="btn btn-primary" href="/tourism/plan">
-            {t("pages.tourism.discovery.build")}
-          </Link>
+          <Button asChild>
+            <Link href="/tourism/plan">
+              {t("pages.tourism.discovery.build")}
+            </Link>
+          </Button>
         </div>
       </section>
       <section className="card checkout-section mt-6">
@@ -72,27 +83,32 @@ export default function TourismPage() {
           </label>
           <label>
             {t("pages.tourism.discovery.bestMonth")}
-            <select value={season} onChange={(e) => setSeason(e.target.value)}>
-              <option value="Any">{t("common.months.any")}</option>
-              {[
-                "Jan",
-                "Feb",
-                "Mar",
-                "Apr",
-                "May",
-                "Jun",
-                "Jul",
-                "Aug",
-                "Sep",
-                "Oct",
-                "Nov",
-                "Dec",
-              ].map((x) => (
-                <option key={x} value={x}>
-                  {t(`common.months.${x}`)}
-                </option>
-              ))}
-            </select>
+            <Select value={season} onValueChange={setSeason}>
+              <SelectTrigger>
+                <SelectValue />
+              </SelectTrigger>
+              <SelectContent>
+                <SelectItem value="Any">{t("common.months.any")}</SelectItem>
+                {[
+                  "Jan",
+                  "Feb",
+                  "Mar",
+                  "Apr",
+                  "May",
+                  "Jun",
+                  "Jul",
+                  "Aug",
+                  "Sep",
+                  "Oct",
+                  "Nov",
+                  "Dec",
+                ].map((x) => (
+                  <SelectItem key={x} value={x}>
+                    {t(`common.months.${x}`)}
+                  </SelectItem>
+                ))}
+              </SelectContent>
+            </Select>
           </label>
           <label>
             {t("pages.tourism.discovery.maxBudget", {
@@ -112,12 +128,14 @@ export default function TourismPage() {
           {categories.map((x) => (
             <button
               key={x}
-              className={`btn ${category === x ? "btn-primary" : "btn-secondary"}`}
+              className="border-0 bg-transparent p-0"
               onClick={() => setCategory(x)}
             >
-              {t(
-                `pages.tourism.discovery.categories.${x === "All" ? "all" : x.replace("_", "")}`,
-              )}
+              <Badge variant={category === x ? "default" : "outline"}>
+                {t(
+                  `pages.tourism.discovery.categories.${x === "All" ? "all" : x.replace("_", "")}`,
+                )}
+              </Badge>
             </button>
           ))}
         </div>
@@ -128,7 +146,7 @@ export default function TourismPage() {
         </h2>
         <span className="muted">{t("pages.tourism.discovery.instant")}</span>
       </div>
-      <section className="tourism-grid">
+      <section className="mt-7 grid grid-cols-1 gap-[22px] lg:grid-cols-3">
         {results.map((d, i) => {
           const city = cityById.get(d.cityId);
           return (
@@ -153,19 +171,18 @@ export default function TourismPage() {
                 </p>
                 <div className="theme-chips">
                   {d.themes.map((x) => (
-                    <span key={x}>
+                    <Badge variant="secondary" key={x}>
                       {t(
                         `pages.tourism.discovery.categories.${x.replace("_", "")}`,
                       )}
-                    </span>
+                    </Badge>
                   ))}
                 </div>
-                <Link
-                  className="btn btn-primary w-full mt-4"
-                  href={`/tourism/${d.destinationId}`}
-                >
-                  {t("pages.tourism.discovery.explore")}
-                </Link>
+                <Button className="mt-4 w-full" asChild>
+                  <Link href={`/tourism/${d.destinationId}`}>
+                    {t("pages.tourism.discovery.explore")}
+                  </Link>
+                </Button>
               </div>
             </article>
           );
@@ -175,8 +192,7 @@ export default function TourismPage() {
         <div className="card empty-state">
           <Compass />
           <h2>{t("pages.tourism.discovery.empty")}</h2>
-          <button
-            className="btn btn-primary"
+          <Button
             onClick={() => {
               setQuery("");
               setCategory("All");
@@ -185,7 +201,7 @@ export default function TourismPage() {
             }}
           >
             {t("common.actions.clearFilters")}
-          </button>
+          </Button>
         </div>
       )}
     </div>

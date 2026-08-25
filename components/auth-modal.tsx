@@ -1,8 +1,15 @@
 "use client";
-import * as Dialog from "@radix-ui/react-dialog";
 import { useState } from "react";
-import { ArrowRight, ShieldCheck, X } from "lucide-react";
+import { ArrowRight, ShieldCheck } from "lucide-react";
+import {
+  Dialog,
+  DialogContent,
+  DialogDescription,
+  DialogTitle,
+} from "@/components/ui/dialog";
+import { Tabs, TabsList, TabsTrigger } from "@/components/ui/tabs";
 import { useApp } from "./providers";
+import { Button } from "@/components/ui/button";
 
 export function AuthModal() {
   const { authOpen, setAuthOpen, signIn, t } = useApp();
@@ -18,78 +25,74 @@ export function AuthModal() {
     signIn(email, name);
   };
   return (
-    <Dialog.Root open={authOpen} onOpenChange={setAuthOpen}>
-      <Dialog.Portal>
-        <Dialog.Overlay className="dialog-overlay" />
-        <Dialog.Content
-          className="dialog-card"
-          aria-describedby="auth-description"
+    <Dialog open={authOpen} onOpenChange={setAuthOpen}>
+      <DialogContent
+        closeLabel={t("common.actions.close")}
+        aria-describedby="auth-description"
+        className="[&_p]:m-0"
+      >
+        <div className="flex gap-2 font-bold text-[var(--primary-dark)] [&_svg]:w-5">
+          <ShieldCheck /> {t("components.auth.secure")}
+        </div>
+        <DialogTitle>
+          {tab === "signin"
+            ? t("components.auth.welcome")
+            : t("components.auth.createTitle")}
+        </DialogTitle>
+        <DialogDescription id="auth-description">
+          {t("components.auth.description")}
+        </DialogDescription>
+        <Tabs
+          value={tab}
+          onValueChange={(value) => setTab(value as "signin" | "signup")}
         >
-          <button
-            className="icon-btn absolute right-4 top-4"
-            onClick={() => setAuthOpen(false)}
-            aria-label={t("common.actions.close")}
-          >
-            <X />
-          </button>
-          <div className="brand-mark">
-            <ShieldCheck /> {t("components.auth.secure")}
-          </div>
-          <Dialog.Title>
-            {tab === "signin"
-              ? t("components.auth.welcome")
-              : t("components.auth.createTitle")}
-          </Dialog.Title>
-          <Dialog.Description id="auth-description">
-            {t("components.auth.description")}
-          </Dialog.Description>
-          <div className="segmented">
-            <button
-              className={tab === "signin" ? "active" : ""}
-              onClick={() => setTab("signin")}
+          <TabsList className="flex w-full rounded-[9px] bg-[#f0f2f5] p-1">
+            <TabsTrigger
+              className="min-h-10 flex-1 rounded-[7px] border-0 bg-transparent px-3 data-[state=active]:bg-white data-[state=active]:font-bold data-[state=active]:text-[var(--primary-dark)] data-[state=active]:shadow-[0_1px_4px_#0001]"
+              value="signin"
             >
               {t("components.auth.signInTab")}
-            </button>
-            <button
-              className={tab === "signup" ? "active" : ""}
-              onClick={() => setTab("signup")}
+            </TabsTrigger>
+            <TabsTrigger
+              className="min-h-10 flex-1 rounded-[7px] border-0 bg-transparent px-3 data-[state=active]:bg-white data-[state=active]:font-bold data-[state=active]:text-[var(--primary-dark)] data-[state=active]:shadow-[0_1px_4px_#0001]"
+              value="signup"
             >
               {t("components.auth.signUpTab")}
-            </button>
-          </div>
-          {tab === "signup" && (
-            <label>
-              {t("common.fields.name")}
-              <input
-                value={name}
-                onChange={(e) => setName(e.target.value)}
-                placeholder={t("components.auth.namePlaceholder")}
-              />
-            </label>
-          )}
+            </TabsTrigger>
+          </TabsList>
+        </Tabs>
+        {tab === "signup" && (
           <label>
-            {t("common.fields.email")}
+            {t("common.fields.name")}
             <input
-              value={email}
-              onChange={(e) => setEmail(e.target.value)}
-              type="email"
-              placeholder={t("components.auth.emailPlaceholder")}
+              value={name}
+              onChange={(e) => setName(e.target.value)}
+              placeholder={t("components.auth.namePlaceholder")}
             />
           </label>
-          {error && (
-            <p className="form-error" role="alert">
-              {error}
-            </p>
-          )}
-          <button className="btn btn-primary w-full" onClick={submit}>
-            {tab === "signin"
-              ? t("components.auth.signInTab")
-              : t("components.auth.createProfile")}
-            <ArrowRight />
-          </button>
-          <p className="microcopy">{t("components.auth.prototype")}</p>
-        </Dialog.Content>
-      </Dialog.Portal>
-    </Dialog.Root>
+        )}
+        <label>
+          {t("common.fields.email")}
+          <input
+            value={email}
+            onChange={(e) => setEmail(e.target.value)}
+            type="email"
+            placeholder={t("components.auth.emailPlaceholder")}
+          />
+        </label>
+        {error && (
+          <p className="form-error" role="alert">
+            {error}
+          </p>
+        )}
+        <Button className="w-full" onClick={submit}>
+          {tab === "signin"
+            ? t("components.auth.signInTab")
+            : t("components.auth.createProfile")}
+          <ArrowRight />
+        </Button>
+        <p className="microcopy">{t("components.auth.prototype")}</p>
+      </DialogContent>
+    </Dialog>
   );
 }

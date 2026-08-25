@@ -19,11 +19,26 @@ interface User {
   name: string;
   email: string;
 }
+
+export const MIN_FONT_SIZE = 14;
+export const MAX_FONT_SIZE = 22;
+export const FONT_SIZE_STEP = 2;
+const DEFAULT_FONT_SIZE = 16;
+
+function normalizeFontSize(value: unknown) {
+  if (value === "large") return 18;
+  if (value === "xl") return 20;
+  if (value === "normal") return DEFAULT_FONT_SIZE;
+  if (typeof value !== "number" || !Number.isFinite(value))
+    return DEFAULT_FONT_SIZE;
+  return Math.min(MAX_FONT_SIZE, Math.max(MIN_FONT_SIZE, value));
+}
+
 interface AppContextValue {
   language: Language;
   setLanguage: (x: Language) => void;
-  fontSize: "normal" | "large" | "xl";
-  setFontSize: (x: "normal" | "large" | "xl") => void;
+  fontSize: number;
+  setFontSize: (x: number) => void;
   highContrast: boolean;
   setHighContrast: (x: boolean) => void;
   user: User | null;
@@ -37,20 +52,18 @@ const AppContext = createContext<AppContextValue | null>(null);
 
 export function Providers({ children }: { children: React.ReactNode }) {
   const [language, setLanguageState] = useState<Language>("en");
-  const [fontSize, setFontSizeState] = useState<"normal" | "large" | "xl">(
-    "normal",
-  );
+  const [fontSize, setFontSizeState] = useState(DEFAULT_FONT_SIZE);
   const [highContrast, setHighContrastState] = useState(false);
   const [user, setUser] = useState<User | null>(null);
   const [authOpen, setAuthOpen] = useState(false);
   useEffect(() => {
     const p = loadStorage<{
       language?: Language;
-      fontSize?: "normal" | "large" | "xl";
+      fontSize?: number | "normal" | "large" | "xl";
       highContrast?: boolean;
     }>(storageKeys.preferences, {});
     setLanguageState(p.language ?? "en");
-    setFontSizeState(p.fontSize ?? "normal");
+    setFontSizeState(normalizeFontSize(p.fontSize));
     setHighContrastState(p.highContrast ?? false);
     setUser(loadStorage<User | null>(storageKeys.session, null));
   }, []);
@@ -58,7 +71,7 @@ export function Providers({ children }: { children: React.ReactNode }) {
     (
       next: Partial<{
         language: Language;
-        fontSize: "normal" | "large" | "xl";
+        fontSize: number;
         highContrast: boolean;
       }>,
     ) =>
@@ -79,8 +92,9 @@ export function Providers({ children }: { children: React.ReactNode }) {
       },
       fontSize,
       setFontSize: (x) => {
-        setFontSizeState(x);
-        persist({ fontSize: x });
+        const next = normalizeFontSize(x);
+        setFontSizeState(next);
+        persist({ fontSize: next });
       },
       highContrast,
       setHighContrast: (x) => {
@@ -111,7 +125,7 @@ export function Providers({ children }: { children: React.ReactNode }) {
   );
   return (
     <AppContext.Provider value={value}>
-      <div data-font={fontSize} data-contrast={highContrast}>
+      <div style={{ fontSize: `${fontSize}px` }} data-contrast={highContrast}>
         {children}
       </div>
     </AppContext.Provider>
