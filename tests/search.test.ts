@@ -1,5 +1,11 @@
 import { describe, expect, it } from "vitest";
-import { quotaEligibility, searchJourneys } from "@/lib/search";
+import {
+  DISPLAY_QUOTA_IDS,
+  quotaEligibility,
+  selectBestAvailableQuota,
+  selectEligibleQuota,
+  searchJourneys,
+} from "@/lib/search";
 
 describe("data-driven journey search", () => {
   const input = {
@@ -17,12 +23,27 @@ describe("data-driven journey search", () => {
     expect(results.length).toBeGreaterThan(0);
     expect(results[0].legs.length).toBeGreaterThan(0);
     expect(results[0].whyRecommended.length).toBe(4);
+    expect(results[0].classAvailability.length).toBeGreaterThan(0);
+    expect(
+      results[0].classAvailability.every(
+        (travelClass) => travelClass.quotas.length === DISPLAY_QUOTA_IDS.length,
+      ),
+    ).toBe(true);
     expect(results.some((x) => x.label === "Recommended")).toBe(true);
   });
   it("changes fare when passenger count changes", () => {
     const one = searchJourneys(input)[0];
     const two = searchJourneys({ ...input, adults: 2 })[0];
     expect(two.totalFare).toBe(one.totalFare * 2);
+    expect(two.classAvailability[0].fare).toBe(
+      one.classAvailability[0].fare * 2,
+    );
+  });
+  it("excludes unsupported quotas from seat comparison", () => {
+    expect(DISPLAY_QUOTA_IDS).not.toContain("TQ");
+    expect(DISPLAY_QUOTA_IDS).not.toContain("PT");
+    expect(DISPLAY_QUOTA_IDS).not.toContain("YU");
+    expect(DISPLAY_QUOTA_IDS).not.toContain("PH");
   });
 });
 describe("quota eligibility", () => {
@@ -42,5 +63,93 @@ describe("quota eligibility", () => {
         { age: 30, gender: "male", citizenship: "Indian" },
       ]),
     ).toBe(false);
+  });
+  it("does not auto-select removed Tatkal quotas", () => {
+    const quota = selectEligibleQuota(
+      [
+        {
+          id: "passenger-1",
+          name: "Test Passenger",
+          age: 30,
+          gender: "male",
+          citizenship: "Indian",
+          berth: "No preference",
+        },
+      ],
+      "tatkal",
+    );
+    expect(["TQ", "PT", "YU", "PH"]).not.toContain(quota);
+  });
+  it("falls back from an unavailable concession quota to confirmed general seats", () => {
+    const passenger = {
+      id: "passenger-disabled",
+      name: "Test Passenger",
+      age: 35,
+      gender: "female" as const,
+      citizenship: "Indian",
+      berth: "No preference",
+      claimDisability: true,
+      disabilityCertificate: "CERT-1",
+    };
+    const result = selectBestAvailableQuota(
+      [passenger],
+      "explore",
+      [
+        {
+          quotaId: "HP",
+          status: "REGRET",
+          number: 0,
+          confirmationLikelihood: 0,
+        },
+        {
+          quotaId: "GN",
+          status: "AVAILABLE",
+          number: 9,
+          confirmationLikelihood: 0.96,
+        },
+      ],
+      1,
+    );
+    expect(result).toEqual({
+      quotaId: "GN",
+      preferredQuotaId: "HP",
+      usedFallback: true,
+    });
+  });
+
+  it("keeps an eligible concession quota when it can confirm the group", () => {
+    const result = selectBestAvailableQuota(
+      [
+        {
+          id: "passenger-senior",
+          name: "Senior Passenger",
+          age: 65,
+          gender: "male",
+          citizenship: "Indian",
+          berth: "Lower",
+        },
+      ],
+      "explore",
+      [
+        {
+          quotaId: "SS",
+          status: "AVAILABLE",
+          number: 2,
+          confirmationLikelihood: 0.96,
+        },
+        {
+          quotaId: "GN",
+          status: "AVAILABLE",
+          number: 20,
+          confirmationLikelihood: 0.96,
+        },
+      ],
+      1,
+    );
+    expect(result).toEqual({
+      quotaId: "SS",
+      preferredQuotaId: "SS",
+      usedFallback: false,
+    });
   });
 });

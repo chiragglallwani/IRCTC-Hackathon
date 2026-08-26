@@ -151,6 +151,19 @@ export interface JourneyLeg {
   availability: Availability | null;
   facilities: string[];
 }
+export interface QuotaSeatAvailability {
+  quotaId: string;
+  status: AvailabilityStatus;
+  number: number;
+  confirmationLikelihood: number;
+}
+export interface ClassSeatAvailability {
+  travelClass: string;
+  fare: number;
+  status: AvailabilityStatus;
+  number: number;
+  quotas: QuotaSeatAvailability[];
+}
 export interface Journey {
   id: string;
   origin: Station;
@@ -163,6 +176,7 @@ export interface Journey {
   legs: JourneyLeg[];
   modes: TransportMode[];
   availability: AvailabilityStatus;
+  classAvailability: ClassSeatAvailability[];
   score: number;
   label: "Recommended" | "Fastest" | "Cheapest" | null;
   whyRecommended: {

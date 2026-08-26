@@ -53,7 +53,10 @@
       "secondAc": "AC 2 टियर (2A)",
       "thirdAc": "AC 3 टियर (3A)",
       "chairCar": "चेयर कार (CC)",
-      "sleeper": "स्लीपर (SL)"
+      "sleeper": "स्लीपर (SL)",
+      "economyThirdAc": "AC 3 इकोनोमी (3E)",
+      "executiveChair": "एक्जिक्युटिभ चेयर कार (EC)",
+      "secondSitting": "दोस्रो सिटिङ (2S)"
     },
     "gender": {
       "female": "महिला",
@@ -271,7 +274,20 @@
         "status": "पारदर्शी स्थितिसहित {{status}} सिट",
         "faster": "सबैभन्दा सस्तो विकल्पभन्दा {{hours}} घण्टा छिटो",
         "lowest": "सबैभन्दा कम उपलब्ध भाडा"
-      }
+      },
+      "seatsByClass": "श्रेणीअनुसार सिट उपलब्धता",
+      "selectClassHint": "योग्य कोटाहरूमा उपलब्धता तुलना गर्न यात्रा श्रेणी छान्नुहोस्।",
+      "passengers": "{{count}} यात्रु",
+      "seatsAvailable": "{{count}} सिट उपलब्ध",
+      "racPosition": "RAC {{count}}",
+      "waitlistPosition": "WL {{count}}",
+      "notAvailable": "उपलब्ध छैन",
+      "fareFrom": "भाडा सुरु",
+      "selectedClassFare": "छानिएको श्रेणीको भाडा",
+      "quotaAvailabilityFor": "कोटाअनुसार {{class}} उपलब्धता",
+      "quotaAvailabilityNote": "यात्रुको विवरण थपेपछि कोटा योग्यता स्वतः प्रमाणित गरिन्छ।",
+      "classSelected": "{{class}} छानियो",
+      "chooseClassForQuotas": "कोटाअनुसार सिट उपलब्धता हेर्न माथि एउटा श्रेणी छान्नुहोस्।"
     },
     "journeyRoute": {
       "departure": "बाट",
@@ -401,7 +417,17 @@
         "infoFailure": "असफल वा रद्द भुक्तानीले कहिल्यै पुष्टि भएको बुकिङ बनाउँदैन।",
         "unavailable": "यो यात्रा अब बुक गर्न मिल्दैन। परिणाममा फर्केर अर्को विकल्प चयन गर्नुहोस्।",
         "selectQuota": "जारी राख्नुअघि कोटा चयन गर्नुहोस्।",
-        "continue": "यात्री विवरणमा जानुहोस्"
+        "continue": "यात्री विवरणमा जानुहोस्",
+        "changeClass": "यात्रा श्रेणी परिवर्तन गर्नुहोस्",
+        "classAvailabilityNote": "खोजीको क्रममा छानिएका {{passengers}} यात्रुका लागि उपलब्धता जाँचिन्छ।",
+        "passengersSelected": "{{count}} सिट आवश्यक",
+        "seatsAvailable": "{{count}} सिट उपलब्ध",
+        "racPosition": "RAC {{count}}",
+        "waitlistPosition": "WL {{count}}",
+        "enoughSeats": "छानिएका यात्रुका लागि {{seats}} पुष्टि भएका सिट उपलब्ध छन्।",
+        "notEnoughSeats": "{{passengers}} यात्रुका लागि {{seats}} पुष्टि भएका सिट मात्र बाँकी छन्। अर्को श्रेणी छान्नुहोस्।",
+        "queueStatusNote": "RAC र प्रतीक्षा सूचीको बुकिङ जारी राख्न सकिन्छ, तर पुष्टि हुने ग्यारेन्टी छैन।",
+        "insufficientSeats": "{{passengers}} यात्रुका लागि {{available}} पुष्टि भएका सिट मात्र बाँकी छन्।"
       },
       "passengers": {
         "saved": "सुरक्षित गरिएका यात्रीहरू",
@@ -424,6 +450,7 @@
         "quotaError": "एक वा बढी यात्रीले यो कोटाको योग्यता आवश्यकता पूरा गर्दैनन्। कोटा वा यात्री चयन बदल्नुहोस्।",
         "autoSelectedQuota": "स्वतः चयन गरिएको कोटा",
         "autoQuotaNote": "सबै चयन गरिएका यात्रीहरूको योग्यताअनुसार।",
+        "quotaFallback": "तपाईंको {{preferred}} कोटामा पर्याप्त सिट उपलब्ध छैनन्, त्यसैले यो बुकिङ {{selected}} कोटाअन्तर्गत गरिनेछ।",
         "quotaClaims": "कोटा सुविधा",
         "quotaClaimsNote": "तपाईंले लिन चाहेका सुविधा मात्र चयन गर्नुहोस्। चयन गरेपछि प्रमाणीकरण विवरण अनिवार्य हुन्छ।",
         "claimForeignTourist": "विदेशी पर्यटक कोटा दाबी गर्नुहोस्",

@@ -53,7 +53,10 @@
       "secondAc": "AC 2 स्तर (2A)",
       "thirdAc": "AC 3 स्तर (3A)",
       "chairCar": "आसनयानम् (CC)",
-      "sleeper": "शयनयानम् (SL)"
+      "sleeper": "शयनयानम् (SL)",
+      "economyThirdAc": "वातानुकूलित-३ मितव्ययी (3E)",
+      "executiveChair": "कार्यकारी आसन्दयानम् (EC)",
+      "secondSitting": "द्वितीय आसनम् (2S)"
     },
     "gender": {
       "female": "स्त्री",
@@ -271,7 +274,20 @@
         "status": "स्पष्टस्थित्या सह {{status}} आसनानि",
         "faster": "न्यूनतममूल्यविकल्पात् {{hours}} होराः शीघ्रतरम्",
         "lowest": "न्यूनतममुपलब्धं भाडम्"
-      }
+      },
+      "seatsByClass": "वर्गानुसारम् आसनोपलब्धता",
+      "selectClassHint": "योग्येषु आरक्षणांशेषु उपलब्धतां तुलयितुं यात्रावर्गं चिनुत।",
+      "passengers": "{{count}} यात्रिणः",
+      "seatsAvailable": "{{count}} आसनानि उपलब्धानि",
+      "racPosition": "RAC {{count}}",
+      "waitlistPosition": "WL {{count}}",
+      "notAvailable": "न उपलब्धम्",
+      "fareFrom": "आरम्भिकं शुल्कम्",
+      "selectedClassFare": "चितवर्गस्य शुल्कम्",
+      "quotaAvailabilityFor": "आरक्षणांशानुसारं {{class}} उपलब्धता",
+      "quotaAvailabilityNote": "यात्रिविवरणं योजिते सति आरक्षणांशयोग्यता स्वयमेव परीक्ष्यते।",
+      "classSelected": "{{class}} चितः",
+      "chooseClassForQuotas": "आरक्षणांशानुसारम् आसनोपलब्धतां द्रष्टुम् उपरि वर्गं चिनुत।"
     },
     "journeyRoute": {
       "departure": "आरभ्य",
@@ -401,7 +417,17 @@
         "infoFailure": "विफला वा निरस्ता भुक्तिः निश्चितम् आरक्षणं न निर्माति।",
         "unavailable": "एषा यात्रा इदानीं न आरक्षितुं शक्यते। फलानि प्रति प्रत्यागत्य विकल्पं चयनयतु।",
         "selectQuota": "अनुवर्तनात् पूर्वं कोटां चयनयतु।",
-        "continue": "यात्रिकविवरणं प्रति अनुवर्तयतु"
+        "continue": "यात्रिकविवरणं प्रति अनुवर्तयतु",
+        "changeClass": "यात्रावर्गं परिवर्तयत",
+        "classAvailabilityNote": "अन्वेषणकाले चितानां {{passengers}} यात्रिणाम् उपलब्धता परीक्ष्यते।",
+        "passengersSelected": "{{count}} आसनानि आवश्यकानि",
+        "seatsAvailable": "{{count}} आसनानि उपलब्धानि",
+        "racPosition": "RAC {{count}}",
+        "waitlistPosition": "WL {{count}}",
+        "enoughSeats": "चितानां यात्रिणां कृते {{seats}} निश्चितानि आसनानि उपलब्धानि।",
+        "notEnoughSeats": "{{passengers}} यात्रिणां कृते केवलं {{seats}} निश्चितानि आसनानि अवशिष्टानि। अन्यं वर्गं चिनुत।",
+        "queueStatusNote": "RAC तथा प्रतीक्षासूची-आरक्षणं निरन्तरं कर्तुं शक्यते, किन्तु निश्चितता न प्रत्याभूता।",
+        "insufficientSeats": "{{passengers}} यात्रिणां कृते केवलं {{available}} निश्चितानि आसनानि अवशिष्टानि।"
       },
       "passengers": {
         "saved": "संगृहीतयात्रिकाः",
@@ -424,6 +450,7 @@
         "quotaError": "एकः वा अधिकाः यात्रिकाः अस्य कोटायाः योग्यताआवश्यकताः न पूरयन्ति। कोटां वा यात्रिकचयनं परिवर्तयतु।",
         "autoSelectedQuota": "स्वयंचयनितः कोटा",
         "autoQuotaNote": "सर्वेषां चयनितयात्रिकाणां योग्यतानुसारम्।",
+        "quotaFallback": "भवतः {{preferred}} आरक्षणांशे पर्याप्तानि आसनानि न सन्ति, अतः इदं आरक्षणं {{selected}} आरक्षणांशस्य अन्तर्गतं भविष्यति।",
         "quotaClaims": "कोटालाभाः",
         "quotaClaimsNote": "येषां लाभानां दावा कर्तुम् इच्छति तानेव चयनयतु। चयनानन्तरं सत्यापनविवरणानि अनिवार्याणि।",
         "claimForeignTourist": "विदेशीपर्यटक-कोटां दावयतु",

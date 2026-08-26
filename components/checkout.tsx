@@ -24,6 +24,7 @@ import { quotas } from "@/lib/data";
 import {
   calculateFareBreakdown,
   formatDuration,
+  selectBestAvailableQuota,
   selectEligibleQuota,
 } from "@/lib/search";
 import {
@@ -34,7 +35,15 @@ import {
   savedPassengers,
   storageKeys,
 } from "@/lib/storage";
-import type { Booking, Journey, Passenger, SearchInput } from "@/lib/types";
+import type {
+  AvailabilityStatus,
+  Booking,
+  ClassSeatAvailability,
+  Journey,
+  Passenger,
+  QuotaSeatAvailability,
+  SearchInput,
+} from "@/lib/types";
 import type { TranslationVariables } from "@/lib/i18n";
 import { useApp } from "./providers";
 import { Checkbox } from "@/components/ui/checkbox";
@@ -47,7 +56,6 @@ import {
   SelectTrigger,
   SelectValue,
 } from "@/components/ui/select";
-import { CLASSSELECTIONLIST } from "@/lib/utils";
 import {
   Accordion,
   AccordionContent,
@@ -55,6 +63,43 @@ import {
   AccordionTrigger,
 } from "@/components/ui/accordion";
 import Image from "next/image";
+import { getClassTranslationKey } from "@/lib/utils";
+import { useToast } from "@/components/ui/toast";
+
+function availabilityKey(status: AvailabilityStatus) {
+  return status === "AVAILABLE"
+    ? "available"
+    : status === "WAITLIST"
+      ? "waitlist"
+      : status.toLowerCase();
+}
+
+function availabilityVariant(status: AvailabilityStatus) {
+  return status === "AVAILABLE"
+    ? ("success" as const)
+    : status === "RAC"
+      ? ("warning" as const)
+      : ("destructive" as const);
+}
+
+function seatAvailabilityText(
+  t: (key: string, variables?: TranslationVariables) => string,
+  availability: Pick<QuotaSeatAvailability, "status" | "number">,
+) {
+  if (availability.status === "AVAILABLE")
+    return t("pages.checkout.confirm.seatsAvailable", {
+      count: availability.number,
+    });
+  if (availability.status === "RAC")
+    return t("pages.checkout.confirm.racPosition", {
+      count: availability.number,
+    });
+  if (availability.status === "WAITLIST")
+    return t("pages.checkout.confirm.waitlistPosition", {
+      count: availability.number,
+    });
+  return t("components.journeyCard.notAvailable");
+}
 
 export interface CheckoutContext {
   journey: Journey;
@@ -123,17 +168,17 @@ export function CheckoutStepper({ step }: { step: 1 | 2 | 3 }) {
           key={x}
         >
           {i + 1 < step ? (
-            <Link href={routes[i]} className="grid gap-2">
+            <Link href={routes[i]} className="step-content">
               <span>
                 <Check />
               </span>
               <strong>{x}</strong>
             </Link>
           ) : (
-            <>
+            <div className="step-content">
               <span>{i + 1}</span>
               <strong>{x}</strong>
-            </>
+            </div>
           )}
         </div>
       ))}
@@ -237,15 +282,57 @@ export function ConfirmJourney() {
         <EmptyCheckout />
       </div>
     );
-  const availabilityKey =
-    context.journey.availability === "AVAILABLE"
-      ? "available"
-      : context.journey.availability === "WAITLIST"
-        ? "waitlist"
-        : context.journey.availability.toLowerCase();
+  const classAvailability: ClassSeatAvailability[] = context.journey
+    .classAvailability ?? [
+    {
+      travelClass:
+        context.input.travelClass === "ANY"
+          ? (context.journey.legs[0]?.travelClass ?? "SL")
+          : context.input.travelClass,
+      fare: context.journey.totalFare,
+      status: context.journey.availability,
+      number: context.journey.legs[0]?.availability?.number ?? 0,
+      quotas: [],
+    },
+  ];
+  const selectedAvailability =
+    classAvailability.find(
+      (item) => item.travelClass === context.input.travelClass,
+    ) ?? classAvailability[0];
+  const passengerCount = Math.max(
+    1,
+    context.input.adults + context.input.children,
+  );
+  const hasEnoughConfirmedSeats =
+    selectedAvailability.status !== "AVAILABLE" ||
+    selectedAvailability.number >= passengerCount;
+  const updateClass = (travelClass: string) => {
+    const availability = classAvailability.find(
+      (item) => item.travelClass === travelClass,
+    );
+    if (!availability) return;
+    setError("");
+    update({
+      ...context,
+      input: { ...context.input, travelClass },
+      journey: {
+        ...context.journey,
+        totalFare: availability.fare,
+        availability: availability.status,
+        legs: context.journey.legs.map((leg) => ({ ...leg, travelClass })),
+      },
+    });
+  };
   const proceed = () => {
-    if (context.journey.availability === "REGRET")
+    if (selectedAvailability.status === "REGRET")
       return setError(t("pages.checkout.confirm.unavailable"));
+    if (!hasEnoughConfirmedSeats)
+      return setError(
+        t("pages.checkout.confirm.insufficientSeats", {
+          available: selectedAvailability.number,
+          passengers: passengerCount,
+        }),
+      );
     router.push("/checkout/passengers");
   };
   return (
@@ -259,23 +346,29 @@ export function ConfirmJourney() {
                 <h2>{context.journey.legs[0]?.serviceName}</h2>
                 <p>
                   {formatJourneyDate(context.input.date, locale)} ·{" "}
-                  {context.journey.legs[0]?.travelClass}
+                  {selectedAvailability.travelClass}
                 </p>
               </div>
               <Badge
-                variant={
-                  context.journey.availability === "AVAILABLE"
-                    ? "success"
-                    : context.journey.availability === "RAC"
-                      ? "warning"
-                      : "destructive"
-                }
+                variant={availabilityVariant(selectedAvailability.status)}
                 className="justify-self-start self-start px-3 py-2 text-sm md:justify-self-end"
               >
-                {context.journey.availability === "AVAILABLE" && (
-                  <CircleCheck />
-                )}
-                {t(`common.status.${availabilityKey}`)}
+                {selectedAvailability.status === "AVAILABLE" && <CircleCheck />}
+                {selectedAvailability.status === "AVAILABLE"
+                  ? t("pages.checkout.confirm.seatsAvailable", {
+                      count: selectedAvailability.number,
+                    })
+                  : selectedAvailability.status === "RAC"
+                    ? t("pages.checkout.confirm.racPosition", {
+                        count: selectedAvailability.number,
+                      })
+                    : selectedAvailability.status === "WAITLIST"
+                      ? t("pages.checkout.confirm.waitlistPosition", {
+                          count: selectedAvailability.number,
+                        })
+                      : t(
+                          `common.status.${availabilityKey(selectedAvailability.status)}`,
+                        )}
               </Badge>
             </div>
             <div className="mt-6 grid gap-3 md:grid-cols-[minmax(0,1fr)_auto_minmax(0,1fr)] md:items-center">
@@ -332,39 +425,79 @@ export function ConfirmJourney() {
             </div>
           </section>
           <section className="card checkout-section">
-            <h3>{t("pages.checkout.confirm.preferences")}</h3>
-            <div className="passenger-form">
+            <div className="flex flex-wrap items-start justify-between gap-3">
+              <div>
+                <h3>{t("pages.checkout.confirm.travelClass")}</h3>
+                <p className="mt-1 text-sm text-[var(--muted)]">
+                  {t("pages.checkout.confirm.classAvailabilityNote", {
+                    passengers: passengerCount,
+                  })}
+                </p>
+              </div>
+              <Badge variant="secondary">
+                {t("pages.checkout.confirm.passengersSelected", {
+                  count: passengerCount,
+                })}
+              </Badge>
+            </div>
+            <div className="mt-3 grid gap-3 md:grid-cols-[minmax(210px,0.7fr)_minmax(0,1.3fr)] md:items-end">
               <label>
-                {t("pages.checkout.confirm.travelClass")}
+                {t("pages.checkout.confirm.changeClass")}
                 <Select
-                  value={context.input.travelClass}
-                  onValueChange={(value) =>
-                    update({
-                      ...context,
-                      input: { ...context.input, travelClass: value },
-                    })
-                  }
+                  value={selectedAvailability.travelClass}
+                  onValueChange={updateClass}
                 >
                   <SelectTrigger>
                     <SelectValue />
                   </SelectTrigger>
                   <SelectContent>
-                    {CLASSSELECTIONLIST.map((x) => (
-                      <SelectItem key={x.value} value={x.value}>
-                        {t(x.label)}
+                    {classAvailability.map((item) => (
+                      <SelectItem
+                        key={item.travelClass}
+                        value={item.travelClass}
+                      >
+                        {t(getClassTranslationKey(item.travelClass))} · ₹
+                        {item.fare.toLocaleString(locale)}
                       </SelectItem>
                     ))}
                   </SelectContent>
                 </Select>
               </label>
             </div>
-            <div className="flex flex-wrap gap-2 mt-4">
-              <Badge variant="outline">
-                {context.input.travelClass === "ANY"
-                  ? t("common.classes.any")
-                  : context.input.travelClass}
-              </Badge>
-            </div>
+            {selectedAvailability.quotas.length > 0 && (
+              <div className="mt-3 rounded-lg border border-[#cdd8ee] bg-[#f8faff] p-3">
+                <div className="flex flex-wrap items-center justify-between gap-2">
+                  <strong className="text-sm">
+                    {t("components.journeyCard.quotaAvailabilityFor", {
+                      class: selectedAvailability.travelClass,
+                    })}
+                  </strong>
+                  <span className="text-xs text-[var(--muted)]">
+                    {t("components.journeyCard.quotaAvailabilityNote")}
+                  </span>
+                </div>
+                <div className="mt-2 grid grid-cols-2 gap-1.5 xl:grid-cols-4">
+                  {selectedAvailability.quotas.map((quotaAvailability) => (
+                    <div
+                      className="flex min-w-0 items-center justify-between gap-2 rounded-md border border-[var(--line)] bg-white px-2.5 py-2"
+                      key={quotaAvailability.quotaId}
+                    >
+                      <span className="truncate text-xs font-semibold">
+                        {t(
+                          `common.quotas.${quotaAvailability.quotaId.toLowerCase()}.name`,
+                        )}
+                      </span>
+                      <Badge
+                        className="px-2 py-0.5 text-[11px]"
+                        variant={availabilityVariant(quotaAvailability.status)}
+                      >
+                        {seatAvailabilityText(t, quotaAvailability)}
+                      </Badge>
+                    </div>
+                  ))}
+                </div>
+              </div>
+            )}
             <p className="mt-3 text-sm text-[var(--muted)]">
               {t("pages.checkout.confirm.autoQuotaNextStep")}
             </p>
@@ -382,6 +515,9 @@ export function ConfirmJourney() {
         <Summary
           context={context}
           action={proceed}
+          actionDisabled={
+            selectedAvailability.status === "REGRET" || !hasEnoughConfirmedSeats
+          }
           label={t("pages.checkout.confirm.continue")}
         />
       </div>
@@ -472,12 +608,12 @@ const berthKeys: Record<string, string> = {
 export function PassengerDetails() {
   const router = useRouter();
   const { t } = useApp();
+  const { toast } = useToast();
   const schema = useMemo(() => createPassengerSchema(t), [t]);
   const [context, update] = useCheckout();
   const [saved, setSaved] = useState<Passenger[]>([]);
   const [selected, setSelected] = useState<string[]>([]);
   const [editing, setEditing] = useState<string | null>(null);
-  const [quotaError, setQuotaError] = useState("");
   const {
     register,
     control,
@@ -526,11 +662,51 @@ export function PassengerDetails() {
       </div>
     );
   const capacity = context.input.adults + context.input.children;
-  const selectedPeople = saved
-    .filter((passenger) => selected.includes(passenger.id))
-    .slice(0, capacity);
-  const autoQuotaId = selectEligibleQuota(selectedPeople, context.input.mode);
+  const selectedPeople = saved.filter((passenger) =>
+    selected.includes(passenger.id),
+  );
+  const selectedClassAvailability = context.journey.classAvailability?.find(
+    (item) => item.travelClass === context.input.travelClass,
+  );
+  const bestQuota = selectBestAvailableQuota(
+    selectedPeople,
+    context.input.mode,
+    selectedClassAvailability?.quotas ?? [],
+    selectedPeople.length,
+  );
+  const autoQuotaId = bestQuota.quotaId;
   const autoQuota = quotas.find((quota) => quota.quotaId === autoQuotaId);
+  const preferredQuota = quotas.find(
+    (quota) => quota.quotaId === bestQuota.preferredQuotaId,
+  );
+  const autoQuotaAvailability = selectedClassAvailability?.quotas.find(
+    (item) => item.quotaId === autoQuotaId,
+  );
+  const selectedPassengersConfirmed = Boolean(
+    selectedPeople.length > 0 &&
+    autoQuotaAvailability?.status === "AVAILABLE" &&
+    autoQuotaAvailability.number >= selectedPeople.length,
+  );
+  const passengerCountError = () =>
+    toast({
+      title: t("common.status.failure"),
+      description: t("pages.checkout.passengers.selectExactly", {
+        count: capacity,
+      }),
+      variant: "destructive",
+      dismissLabel: t("common.actions.close"),
+    });
+  const togglePassenger = (id: string) => {
+    if (selected.includes(id)) {
+      setSelected(selected.filter((passengerId) => passengerId !== id));
+      return;
+    }
+    if (selected.length >= capacity) {
+      passengerCountError();
+      return;
+    }
+    setSelected([...selected, id]);
+  };
   const submit = (values: PassengerValues) => {
     const next: Passenger = {
       ...values,
@@ -542,7 +718,10 @@ export function PassengerDetails() {
       : [...saved, next];
     setSaved(all);
     if (next.saveForFuture) saveStorage(storageKeys.passengers, all);
-    if (!selected.includes(next.id)) setSelected([...selected, next.id]);
+    if (!selected.includes(next.id)) {
+      if (selected.length >= capacity) passengerCountError();
+      else setSelected([...selected, next.id]);
+    }
     setEditing(null);
     reset({
       citizenship: "Indian",
@@ -573,11 +752,16 @@ export function PassengerDetails() {
   };
   const proceed = () => {
     const people = selectedPeople;
-    if (people.length !== capacity)
-      return setQuotaError(
-        t("pages.checkout.passengers.selectExactly", { count: capacity }),
-      );
-    const quota = selectEligibleQuota(people, context.input.mode);
+    if (people.length !== capacity) {
+      passengerCountError();
+      return;
+    }
+    const quota = selectBestAvailableQuota(
+      people,
+      context.input.mode,
+      selectedClassAvailability?.quotas ?? [],
+      people.length,
+    ).quotaId;
     update({ ...context, quota, passengers: people });
     router.push("/checkout/payment");
   };
@@ -605,13 +789,7 @@ export function PassengerDetails() {
                         >
                           <Checkbox
                             checked={selected.includes(p.id)}
-                            onCheckedChange={() =>
-                              setSelected(
-                                selected.includes(p.id)
-                                  ? selected.filter((x) => x !== p.id)
-                                  : [...selected, p.id],
-                              )
-                            }
+                            onCheckedChange={() => togglePassenger(p.id)}
                           />
                           <div className="min-w-0 flex-1">
                             <strong>{p.name}</strong>
@@ -661,19 +839,77 @@ export function PassengerDetails() {
               </AccordionItem>
             </Accordion>
             {selectedPeople.length > 0 && autoQuota && (
-              <div className="mt-5 rounded-xl border border-[var(--line)] bg-[#f8faff] p-4">
-                <span className="text-sm font-semibold text-[var(--muted)]">
-                  {t("pages.checkout.passengers.autoSelectedQuota")}
-                </span>
-                <div className="mt-2 flex flex-wrap items-center gap-2">
-                  <Badge variant="success">
-                    {t(`common.quotas.${autoQuota.quotaId.toLowerCase()}.name`)}{" "}
-                    · {autoQuota.shortName}
-                  </Badge>
-                  <span className="text-sm text-[var(--muted)]">
-                    {t("pages.checkout.passengers.autoQuotaNote")}
-                  </span>
+              <div
+                className={`mt-4 rounded-lg border p-3 ${
+                  selectedPassengersConfirmed
+                    ? "border-emerald-200 bg-emerald-50"
+                    : autoQuotaAvailability?.status === "RAC"
+                      ? "border-amber-200 bg-amber-50"
+                      : "border-red-200 bg-red-50"
+                }`}
+              >
+                <div className="flex flex-wrap items-center justify-between gap-2">
+                  <div>
+                    <span className="text-xs font-semibold text-[var(--muted)]">
+                      {t("pages.checkout.passengers.autoSelectedQuota")}
+                    </span>
+                    <div className="mt-1 flex flex-wrap items-center gap-2">
+                      <Badge variant="secondary">
+                        {t(
+                          `common.quotas.${autoQuota.quotaId.toLowerCase()}.name`,
+                        )}{" "}
+                        · {autoQuota.shortName}
+                      </Badge>
+                      <span className="text-xs text-[var(--muted)]">
+                        {selectedPeople.length}/{capacity}
+                      </span>
+                    </div>
+                  </div>
+                  {autoQuotaAvailability && (
+                    <Badge
+                      variant={availabilityVariant(
+                        autoQuotaAvailability.status,
+                      )}
+                    >
+                      {seatAvailabilityText(t, autoQuotaAvailability)}
+                    </Badge>
+                  )}
                 </div>
+                <p className="mt-2 text-sm">
+                  {bestQuota.usedFallback && preferredQuota
+                    ? t("pages.checkout.passengers.quotaFallback", {
+                        preferred: t(
+                          `common.quotas.${preferredQuota.quotaId.toLowerCase()}.name`,
+                        ),
+                        selected: t(
+                          `common.quotas.${autoQuota.quotaId.toLowerCase()}.name`,
+                        ),
+                      })
+                    : !autoQuotaAvailability
+                      ? t("pages.checkout.passengers.autoQuotaNote")
+                      : selectedPassengersConfirmed
+                        ? t("pages.checkout.confirm.enoughSeats", {
+                            seats: autoQuotaAvailability.number,
+                          })
+                        : autoQuotaAvailability.status === "AVAILABLE"
+                          ? t("pages.checkout.confirm.notEnoughSeats", {
+                              seats: autoQuotaAvailability.number,
+                              passengers: selectedPeople.length,
+                            })
+                          : t("pages.checkout.confirm.queueStatusNote")}
+                </p>
+                {bestQuota.usedFallback &&
+                  autoQuotaAvailability &&
+                  !selectedPassengersConfirmed && (
+                    <p className="mt-1 text-sm text-[var(--muted)]">
+                      {autoQuotaAvailability.status === "AVAILABLE"
+                        ? t("pages.checkout.confirm.notEnoughSeats", {
+                            seats: autoQuotaAvailability.number,
+                            passengers: selectedPeople.length,
+                          })
+                        : t("pages.checkout.confirm.queueStatusNote")}
+                    </p>
+                  )}
               </div>
             )}
           </section>
@@ -919,7 +1155,6 @@ export function PassengerDetails() {
                 )}
               </Button>
             </form>
-            {quotaError && <p className="form-error">{quotaError}</p>}
           </section>
         </div>
         <Summary
@@ -941,6 +1176,7 @@ declare global {
 export function Payment() {
   const router = useRouter();
   const { locale: numberLocale, t, user } = useApp();
+  const { toast } = useToast();
   const [context] = useCheckout();
   const [method, setMethod] = useState<"qr" | "upi" | "card">("qr");
   const [state, setState] = useState<
@@ -966,6 +1202,32 @@ export function Payment() {
   const [checkingQr, setCheckingQr] = useState(false);
   const qrPollingRef = useRef<ReturnType<typeof setInterval> | null>(null);
   const qrCompletionRef = useRef(false);
+  const lastPaymentToast = useRef("");
+  useEffect(() => {
+    if (
+      state !== "success" &&
+      state !== "failure" &&
+      state !== "cancelled" &&
+      state !== "pending"
+    )
+      return;
+    if (state !== "success" && !message) return;
+    const description = message || t("pages.checkout.payment.confirmed");
+    const toastKey = `${state}:${description}`;
+    if (lastPaymentToast.current === toastKey) return;
+    lastPaymentToast.current = toastKey;
+    toast({
+      title: t(`common.status.${state}`),
+      description,
+      variant:
+        state === "success"
+          ? "success"
+          : state === "pending"
+            ? "warning"
+            : "destructive",
+      dismissLabel: t("common.actions.close"),
+    });
+  }, [message, state, t, toast]);
   useEffect(
     () => () => {
       if (qrPollingRef.current) clearInterval(qrPollingRef.current);
@@ -1566,49 +1828,36 @@ export function Payment() {
             </section>
           )}
 
-          {state !== "idle" && (
-            <div
-              className={`payment-state ${state === "success" ? "success" : state === "failure" ? "error" : ""}`}
-            >
-              <strong>{t(`common.status.${state}`)}</strong>
-              <p>
-                {message ||
-                  (state === "opening"
-                    ? t("pages.checkout.payment.opening")
-                    : state === "processing"
-                      ? t("pages.checkout.payment.verifying")
-                      : t("pages.checkout.payment.confirmed"))}
-              </p>
-              {state === "pending" &&
-                ((method === "qr" && qrPayment?.mock) ||
-                  (method !== "qr" &&
-                    message === t("pages.checkout.payment.noCredentials"))) && (
-                  <div className="flex flex-wrap gap-2">
-                    <Button onClick={() => finish()}>
-                      {t("pages.checkout.payment.simulateSuccess")}
-                    </Button>
-                    <Button
-                      variant="secondary"
-                      onClick={() => {
-                        setState("failure");
-                        setMessage(t("pages.checkout.payment.failed"));
-                      }}
-                    >
-                      {t("pages.checkout.payment.simulateFailure")}
-                    </Button>
-                    <Button
-                      variant="ghost"
-                      onClick={() => {
-                        setState("cancelled");
-                        setMessage(t("pages.checkout.payment.testCancelled"));
-                      }}
-                    >
-                      {t("pages.checkout.payment.simulateCancel")}
-                    </Button>
-                  </div>
-                )}
-            </div>
-          )}
+          {state === "pending" &&
+            ((method === "qr" && qrPayment?.mock) ||
+              (method !== "qr" &&
+                message === t("pages.checkout.payment.noCredentials"))) && (
+              <div className="mt-4 flex flex-wrap gap-2 rounded-xl border border-dashed border-slate-300 bg-white p-3">
+                <Button size="sm" onClick={() => finish()}>
+                  {t("pages.checkout.payment.simulateSuccess")}
+                </Button>
+                <Button
+                  size="sm"
+                  variant="secondary"
+                  onClick={() => {
+                    setState("failure");
+                    setMessage(t("pages.checkout.payment.failed"));
+                  }}
+                >
+                  {t("pages.checkout.payment.simulateFailure")}
+                </Button>
+                <Button
+                  size="sm"
+                  variant="ghost"
+                  onClick={() => {
+                    setState("cancelled");
+                    setMessage(t("pages.checkout.payment.testCancelled"));
+                  }}
+                >
+                  {t("pages.checkout.payment.simulateCancel")}
+                </Button>
+              </div>
+            )}
         </div>
         <Summary
           context={context}

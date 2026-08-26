@@ -53,7 +53,10 @@
       "secondAc": "AC 2 ટિયર (2A)",
       "thirdAc": "AC 3 ટિયર (3A)",
       "chairCar": "ચેર કાર (CC)",
-      "sleeper": "સ્લીપર (SL)"
+      "sleeper": "સ્લીપર (SL)",
+      "economyThirdAc": "AC 3 ઇકોનોમી (3E)",
+      "executiveChair": "એક્ઝિક્યુટિવ ચેર કાર (EC)",
+      "secondSitting": "સેકન્ડ સિટિંગ (2S)"
     },
     "gender": {
       "female": "મહિલા",
@@ -271,7 +274,20 @@
         "status": "પારદર્શક સ્થિતિ સાથે {{status}} બેઠકો",
         "faster": "સૌથી સસ્તા વિકલ્પ કરતાં {{hours}} કલાક ઝડપી",
         "lowest": "સૌથી ઓછું ઉપલબ્ધ ભાડું"
-      }
+      },
+      "seatsByClass": "વર્ગ પ્રમાણે બેઠકોની ઉપલબ્ધતા",
+      "selectClassHint": "પાત્ર ક્વોટામાં ઉપલબ્ધતાની સરખામણી કરવા મુસાફરી વર્ગ પસંદ કરો.",
+      "passengers": "{{count}} મુસાફરો",
+      "seatsAvailable": "{{count}} બેઠકો ઉપલબ્ધ",
+      "racPosition": "RAC {{count}}",
+      "waitlistPosition": "WL {{count}}",
+      "notAvailable": "ઉપલબ્ધ નથી",
+      "fareFrom": "ભાડું શરૂ",
+      "selectedClassFare": "પસંદ કરેલા વર્ગનું ભાડું",
+      "quotaAvailabilityFor": "ક્વોટા પ્રમાણે {{class}} ઉપલબ્ધતા",
+      "quotaAvailabilityNote": "મુસાફરોની વિગતો ઉમેર્યા પછી ક્વોટાની પાત્રતા આપમેળે ચકાસવામાં આવે છે.",
+      "classSelected": "{{class}} પસંદ કર્યો",
+      "chooseClassForQuotas": "ક્વોટા પ્રમાણે બેઠકોની ઉપલબ્ધતા જોવા ઉપર વર્ગ પસંદ કરો."
     },
     "journeyRoute": {
       "departure": "થી",
@@ -401,7 +417,17 @@
         "infoFailure": "નિષ્ફળ અથવા રદ ચુકવણી ક્યારેય પુષ્ટિ બુકિંગ બનાવતી નથી.",
         "unavailable": "આ મુસાફરી હવે બુક કરી શકાતી નથી. પરિણામો પર પાછા જાઓ અને વિકલ્પ પસંદ કરો.",
         "selectQuota": "આગળ વધતા પહેલાં ક્વોટા પસંદ કરો.",
-        "continue": "મુસાફરની વિગતો પર આગળ વધો"
+        "continue": "મુસાફરની વિગતો પર આગળ વધો",
+        "changeClass": "મુસાફરી વર્ગ બદલો",
+        "classAvailabilityNote": "શોધ દરમિયાન પસંદ કરેલા {{passengers}} મુસાફરો માટે ઉપલબ્ધતા ચકાસવામાં આવે છે.",
+        "passengersSelected": "{{count}} બેઠકો જરૂરી",
+        "seatsAvailable": "{{count}} બેઠકો ઉપલબ્ધ",
+        "racPosition": "RAC {{count}}",
+        "waitlistPosition": "WL {{count}}",
+        "enoughSeats": "પસંદ કરેલા મુસાફરો માટે {{seats}} કન્ફર્મ બેઠકો ઉપલબ્ધ છે.",
+        "notEnoughSeats": "{{passengers}} મુસાફરો માટે માત્ર {{seats}} કન્ફર્મ બેઠકો બાકી છે. બીજો વર્ગ પસંદ કરો.",
+        "queueStatusNote": "RAC અને વેઇટલિસ્ટ બુકિંગ ચાલુ રાખી શકાય છે, પરંતુ કન્ફર્મેશનની ખાતરી નથી.",
+        "insufficientSeats": "{{passengers}} મુસાફરો માટે માત્ર {{available}} કન્ફર્મ બેઠકો બાકી છે."
       },
       "passengers": {
         "saved": "સાચવેલા મુસાફરો",
@@ -424,6 +450,7 @@
         "quotaError": "એક અથવા વધુ મુસાફરો આ ક્વોટાની પાત્રતા પૂરી કરતા નથી. ક્વોટા અથવા મુસાફર પસંદગી બદલો.",
         "autoSelectedQuota": "આપમેળે પસંદ થયેલો ક્વોટા",
         "autoQuotaNote": "બધા પસંદ કરેલા મુસાફરોની પાત્રતા આધારે.",
+        "quotaFallback": "તમારા {{preferred}} ક્વોટામાં પૂરતી બેઠકો ઉપલબ્ધ નથી, તેથી આ બુકિંગ {{selected}} ક્વોટા હેઠળ કરવામાં આવશે.",
         "quotaClaims": "ક્વોટા લાભો",
         "quotaClaimsNote": "ફક્ત તમે માંગતા લાભો પસંદ કરો. પસંદ કર્યા પછી ચકાસણી વિગતો ફરજિયાત બને છે.",
         "claimForeignTourist": "વિદેશી પ્રવાસી ક્વોટાનો દાવો કરો",

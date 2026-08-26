@@ -53,7 +53,10 @@
       "secondAc": "AC 2 Tier (2A)",
       "thirdAc": "AC 3 Tier (3A)",
       "chairCar": "Chair Car (CC)",
-      "sleeper": "Sleeper (SL)"
+      "sleeper": "Sleeper (SL)",
+      "economyThirdAc": "এচি ৩ ইক’নমি (3E)",
+      "executiveChair": "এক্সিকিউটিভ চেয়াৰ কাৰ (EC)",
+      "secondSitting": "দ্বিতীয় ছিটিং (2S)"
     },
     "gender": {
       "female": "মহিলা",
@@ -271,7 +274,20 @@
         "status": "{{status}} seats with transparent status",
         "faster": "{{hours}} hours faster than the cheapest option",
         "lowest": "Lowest available fare"
-      }
+      },
+      "seatsByClass": "শ্ৰেণী অনুসৰি আসনৰ উপলভ্যতা",
+      "selectClassHint": "যোগ্য কোটাসমূহৰ উপলভ্যতা তুলনা কৰিবলৈ এটা যাত্ৰা শ্ৰেণী বাছক।",
+      "passengers": "{{count}} জন যাত্ৰী",
+      "seatsAvailable": "{{count}}খন আসন উপলভ্য",
+      "racPosition": "RAC {{count}}",
+      "waitlistPosition": "WL {{count}}",
+      "notAvailable": "উপলভ্য নহয়",
+      "fareFrom": "ভাড়া আৰম্ভ",
+      "selectedClassFare": "বাছনি কৰা শ্ৰেণীৰ ভাড়া",
+      "quotaAvailabilityFor": "কোটা অনুসৰি {{class}} উপলভ্যতা",
+      "quotaAvailabilityNote": "যাত্ৰীৰ বিৱৰণ যোগ কৰাৰ পিছত কোটাৰ যোগ্যতা স্বয়ংক্ৰিয়ভাৱে পৰীক্ষা কৰা হয়।",
+      "classSelected": "{{class}} বাছনি কৰা হৈছে",
+      "chooseClassForQuotas": "কোটা অনুসৰি আসনৰ উপলভ্যতা চাবলৈ ওপৰত এটা শ্ৰেণী বাছক।"
     },
     "journeyRoute": {
       "departure": "পৰা",
@@ -401,7 +417,17 @@
         "infoFailure": "Failed or cancelled payments never create a confirmed booking.",
         "unavailable": "This journey is no longer bookable. Return to results and choose an alternative.",
         "selectQuota": "Select a quota before continuing.",
-        "continue": "যাত্ৰীৰ বিৱৰণলৈ আগবাঢ়ক"
+        "continue": "যাত্ৰীৰ বিৱৰণলৈ আগবাঢ়ক",
+        "changeClass": "যাত্ৰা শ্ৰেণী সলনি কৰক",
+        "classAvailabilityNote": "সন্ধানৰ সময়ত বাছনি কৰা {{passengers}} জন যাত্ৰীৰ বাবে উপলভ্যতা পৰীক্ষা কৰা হয়।",
+        "passengersSelected": "{{count}}খন আসন প্ৰয়োজন",
+        "seatsAvailable": "{{count}}খন আসন উপলভ্য",
+        "racPosition": "RAC {{count}}",
+        "waitlistPosition": "WL {{count}}",
+        "enoughSeats": "বাছনি কৰা যাত্ৰীসকলৰ বাবে {{seats}}খন নিশ্চিত আসন উপলভ্য।",
+        "notEnoughSeats": "{{passengers}} জন যাত্ৰীৰ বাবে মাত্ৰ {{seats}}খন নিশ্চিত আসন বাকী আছে। আন এটা শ্ৰেণী বাছক।",
+        "queueStatusNote": "RAC আৰু অপেক্ষমাণ তালিকাৰ বুকিং আগবঢ়াব পাৰি, কিন্তু নিশ্চিতকৰণৰ নিশ্চয়তা নাই।",
+        "insufficientSeats": "{{passengers}} জন যাত্ৰীৰ বাবে মাত্ৰ {{available}}খন নিশ্চিত আসন বাকী আছে।"
       },
       "passengers": {
         "saved": "সংৰক্ষিত যাত্ৰী",
@@ -424,6 +450,7 @@
         "quotaError": "One or more passengers do not meet the eligibility requirements for this quota. Change the quota or passenger selection.",
         "autoSelectedQuota": "Automatically selected quota",
         "autoQuotaNote": "Based on all selected passengers' eligibility.",
+        "quotaFallback": "আপোনাৰ {{preferred}} কোটাত পৰ্যাপ্ত আসন নাই, সেয়েহে এই বুকিংটো {{selected}} কোটাৰ অধীনত কৰা হ’ব।",
         "quotaClaims": "কোটাৰ সুবিধাসমূহ",
         "quotaClaimsNote": "Select only the benefits you want to claim. Verification details become mandatory when selected.",
         "claimForeignTourist": "Claim Foreign Tourist quota",

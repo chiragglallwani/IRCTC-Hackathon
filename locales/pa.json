@@ -53,7 +53,10 @@
       "secondAc": "AC 2 ਟੀਅਰ (2A)",
       "thirdAc": "AC 3 ਟੀਅਰ (3A)",
       "chairCar": "ਚੇਅਰ ਕਾਰ (CC)",
-      "sleeper": "ਸਲੀਪਰ (SL)"
+      "sleeper": "ਸਲੀਪਰ (SL)",
+      "economyThirdAc": "AC 3 ਇਕਾਨਮੀ (3E)",
+      "executiveChair": "ਐਗਜ਼ਿਕਿਊਟਿਵ ਚੇਅਰ ਕਾਰ (EC)",
+      "secondSitting": "ਸੈਕਿੰਡ ਸਿਟਿੰਗ (2S)"
     },
     "gender": {
       "female": "ਮਹਿਲਾ",
@@ -271,7 +274,20 @@
         "status": "ਸਪਸ਼ਟ ਸਥਿਤੀ ਨਾਲ {{status}} ਸੀਟਾਂ",
         "faster": "ਸਭ ਤੋਂ ਸਸਤੇ ਵਿਕਲਪ ਨਾਲੋਂ {{hours}} ਘੰਟੇ ਤੇਜ਼",
         "lowest": "ਸਭ ਤੋਂ ਘੱਟ ਉਪਲਬਧ ਕਿਰਾਇਆ"
-      }
+      },
+      "seatsByClass": "ਸ਼੍ਰੇਣੀ ਅਨੁਸਾਰ ਸੀਟ ਉਪਲਬਧਤਾ",
+      "selectClassHint": "ਯੋਗ ਕੋਟਿਆਂ ਵਿੱਚ ਉਪਲਬਧਤਾ ਦੀ ਤੁਲਨਾ ਕਰਨ ਲਈ ਯਾਤਰਾ ਸ਼੍ਰੇਣੀ ਚੁਣੋ।",
+      "passengers": "{{count}} ਯਾਤਰੀ",
+      "seatsAvailable": "{{count}} ਸੀਟਾਂ ਉਪਲਬਧ",
+      "racPosition": "RAC {{count}}",
+      "waitlistPosition": "WL {{count}}",
+      "notAvailable": "ਉਪਲਬਧ ਨਹੀਂ",
+      "fareFrom": "ਕਿਰਾਇਆ ਸ਼ੁਰੂ",
+      "selectedClassFare": "ਚੁਣੀ ਸ਼੍ਰੇਣੀ ਦਾ ਕਿਰਾਇਆ",
+      "quotaAvailabilityFor": "ਕੋਟੇ ਅਨੁਸਾਰ {{class}} ਉਪਲਬਧਤਾ",
+      "quotaAvailabilityNote": "ਯਾਤਰੀ ਵੇਰਵੇ ਜੋੜਨ ਤੋਂ ਬਾਅਦ ਕੋਟਾ ਯੋਗਤਾ ਆਪਣੇ ਆਪ ਜਾਂਚੀ ਜਾਂਦੀ ਹੈ।",
+      "classSelected": "{{class}} ਚੁਣੀ ਗਈ",
+      "chooseClassForQuotas": "ਕੋਟੇ ਅਨੁਸਾਰ ਸੀਟ ਉਪਲਬਧਤਾ ਦੇਖਣ ਲਈ ਉੱਪਰ ਇੱਕ ਸ਼੍ਰੇਣੀ ਚੁਣੋ।"
     },
     "journeyRoute": {
       "departure": "ਤੋਂ",
@@ -401,7 +417,17 @@
         "infoFailure": "ਅਸਫਲ ਜਾਂ ਰੱਦ ਭੁਗਤਾਨ ਕਦੇ ਵੀ ਪੁਸ਼ਟੀਤ ਬੁਕਿੰਗ ਨਹੀਂ ਬਣਾਉਂਦੇ।",
         "unavailable": "ਇਹ ਯਾਤਰਾ ਹੁਣ ਬੁੱਕ ਨਹੀਂ ਕੀਤੀ ਜਾ ਸਕਦੀ। ਨਤੀਜਿਆਂ 'ਤੇ ਵਾਪਸ ਜਾਓ ਅਤੇ ਕੋਈ ਵਿਕਲਪ ਚੁਣੋ।",
         "selectQuota": "ਜਾਰੀ ਰੱਖਣ ਤੋਂ ਪਹਿਲਾਂ ਕੋਟਾ ਚੁਣੋ।",
-        "continue": "ਯਾਤਰੀ ਵੇਰਵਿਆਂ ਵੱਲ ਜਾਰੀ ਰੱਖੋ"
+        "continue": "ਯਾਤਰੀ ਵੇਰਵਿਆਂ ਵੱਲ ਜਾਰੀ ਰੱਖੋ",
+        "changeClass": "ਯਾਤਰਾ ਸ਼੍ਰੇਣੀ ਬਦਲੋ",
+        "classAvailabilityNote": "ਖੋਜ ਦੌਰਾਨ ਚੁਣੇ {{passengers}} ਯਾਤਰੀਆਂ ਲਈ ਉਪਲਬਧਤਾ ਜਾਂਚੀ ਜਾਂਦੀ ਹੈ।",
+        "passengersSelected": "{{count}} ਸੀਟਾਂ ਲੋੜੀਂਦੀਆਂ",
+        "seatsAvailable": "{{count}} ਸੀਟਾਂ ਉਪਲਬਧ",
+        "racPosition": "RAC {{count}}",
+        "waitlistPosition": "WL {{count}}",
+        "enoughSeats": "ਚੁਣੇ ਯਾਤਰੀਆਂ ਲਈ {{seats}} ਪੁਸ਼ਟੀ ਕੀਤੀਆਂ ਸੀਟਾਂ ਉਪਲਬਧ ਹਨ।",
+        "notEnoughSeats": "{{passengers}} ਯਾਤਰੀਆਂ ਲਈ ਸਿਰਫ਼ {{seats}} ਪੁਸ਼ਟੀ ਕੀਤੀਆਂ ਸੀਟਾਂ ਬਾਕੀ ਹਨ। ਕੋਈ ਹੋਰ ਸ਼੍ਰੇਣੀ ਚੁਣੋ।",
+        "queueStatusNote": "RAC ਅਤੇ ਉਡੀਕ ਸੂਚੀ ਦੀ ਬੁਕਿੰਗ ਜਾਰੀ ਰੱਖੀ ਜਾ ਸਕਦੀ ਹੈ, ਪਰ ਪੁਸ਼ਟੀ ਦੀ ਗਾਰੰਟੀ ਨਹੀਂ ਹੈ।",
+        "insufficientSeats": "{{passengers}} ਯਾਤਰੀਆਂ ਲਈ ਸਿਰਫ਼ {{available}} ਪੁਸ਼ਟੀ ਕੀਤੀਆਂ ਸੀਟਾਂ ਬਾਕੀ ਹਨ।"
       },
       "passengers": {
         "saved": "ਸੰਭਾਲੇ ਯਾਤਰੀ",
@@ -424,6 +450,7 @@
         "quotaError": "ਇੱਕ ਜਾਂ ਵੱਧ ਯਾਤਰੀ ਇਸ ਕੋਟੇ ਦੀਆਂ ਯੋਗਤਾ ਸ਼ਰਤਾਂ ਪੂਰੀਆਂ ਨਹੀਂ ਕਰਦੇ। ਕੋਟਾ ਜਾਂ ਯਾਤਰੀ ਚੋਣ ਬਦਲੋ।",
         "autoSelectedQuota": "ਆਪਣੇ ਆਪ ਚੁਣਿਆ ਕੋਟਾ",
         "autoQuotaNote": "ਸਾਰੇ ਚੁਣੇ ਯਾਤਰੀਆਂ ਦੀ ਯੋਗਤਾ ਦੇ ਅਧਾਰ 'ਤੇ।",
+        "quotaFallback": "ਤੁਹਾਡੇ {{preferred}} ਕੋਟੇ ਵਿੱਚ ਕਾਫ਼ੀ ਸੀਟਾਂ ਉਪਲਬਧ ਨਹੀਂ ਹਨ, ਇਸ ਲਈ ਇਹ ਬੁਕਿੰਗ {{selected}} ਕੋਟੇ ਅਧੀਨ ਕੀਤੀ ਜਾਵੇਗੀ।",
         "quotaClaims": "ਕੋਟਾ ਲਾਭ",
         "quotaClaimsNote": "ਸਿਰਫ਼ ਉਹ ਲਾਭ ਚੁਣੋ ਜੋ ਤੁਸੀਂ ਲੈਣਾ ਚਾਹੁੰਦੇ ਹੋ। ਚੁਣਨ 'ਤੇ ਜਾਂਚ ਵੇਰਵੇ ਲਾਜ਼ਮੀ ਹੋ ਜਾਂਦੇ ਹਨ।",
         "claimForeignTourist": "ਵਿਦੇਸ਼ੀ ਸੈਲਾਨੀ ਕੋਟਾ ਲਵੋ",

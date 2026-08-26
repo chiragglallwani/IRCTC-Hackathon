@@ -53,7 +53,10 @@
       "secondAc": "AC 2 ٹئیر (2A)",
       "thirdAc": "AC 3 ٹئیر (3A)",
       "chairCar": "چیئر کار (CC)",
-      "sleeper": "سلیپر (SL)"
+      "sleeper": "سلیپر (SL)",
+      "economyThirdAc": "اے سی 3 اکانومی (3E)",
+      "executiveChair": "ایگزیکٹو چیئر کار (EC)",
+      "secondSitting": "سیکنڈ سیٹنگ (2S)"
     },
     "gender": {
       "female": "خاتون",
@@ -271,7 +274,20 @@
         "status": "واضح حالت سۭتۍ {{status}} نشستیں",
         "faster": "سب پَتہٕ سستے اختیار پَتہٕ {{hours}} گھنٹے تیز",
         "lowest": "سب پَتہٕ کم دَستیاب کِرایہِ"
-      }
+      },
+      "seatsByClass": "درجے کے لحاظ سے نشستوں کی دستیابی",
+      "selectClassHint": "اہل کوٹوں میں دستیابی کا موازنہ کرنے کے لیے سفری درجہ منتخب کریں۔",
+      "passengers": "{{count}} مسافر",
+      "seatsAvailable": "{{count}} نشستیں دستیاب",
+      "racPosition": "RAC {{count}}",
+      "waitlistPosition": "WL {{count}}",
+      "notAvailable": "دستیاب نہیں",
+      "fareFrom": "کرایہ شروع",
+      "selectedClassFare": "منتخب درجے کا کرایہ",
+      "quotaAvailabilityFor": "کوٹے کے لحاظ سے {{class}} کی دستیابی",
+      "quotaAvailabilityNote": "مسافروں کی تفصیلات شامل کرنے کے بعد کوٹے کی اہلیت خودکار طور پر جانچی جاتی ہے۔",
+      "classSelected": "{{class}} منتخب",
+      "chooseClassForQuotas": "کوٹے کے لحاظ سے نشستوں کی دستیابی دیکھنے کے لیے اوپر ایک درجہ منتخب کریں۔"
     },
     "journeyRoute": {
       "departure": "پَتہٕ",
@@ -401,7 +417,17 @@
         "infoFailure": "ناکام یا رَد ادایگیاں کبھی تصدیق شدہ بکنگ نچھِ بناتیں۔",
         "unavailable": "یہِ سفر اب بک نچھِ ہو سکتا۔ نتائج پر واپس گژھِو تہٕ متبادل ژارِو۔",
         "selectQuota": "جاری رکھنے پَتہٕ پہلے کوٹہ ژارِو۔",
-        "continue": "مسافر کی تفصیل پر گژھِو"
+        "continue": "مسافر کی تفصیل پر گژھِو",
+        "changeClass": "سفری درجہ تبدیل کریں",
+        "classAvailabilityNote": "تلاش کے دوران منتخب کیے گئے {{passengers}} مسافروں کے لیے دستیابی جانچی جاتی ہے۔",
+        "passengersSelected": "{{count}} نشستیں درکار",
+        "seatsAvailable": "{{count}} نشستیں دستیاب",
+        "racPosition": "RAC {{count}}",
+        "waitlistPosition": "WL {{count}}",
+        "enoughSeats": "منتخب مسافروں کے لیے {{seats}} تصدیق شدہ نشستیں دستیاب ہیں۔",
+        "notEnoughSeats": "{{passengers}} مسافروں کے لیے صرف {{seats}} تصدیق شدہ نشستیں باقی ہیں۔ دوسرا درجہ منتخب کریں۔",
+        "queueStatusNote": "RAC اور انتظار کی فہرست کی بکنگ جاری رکھی جا سکتی ہے، لیکن تصدیق کی ضمانت نہیں ہے۔",
+        "insufficientSeats": "{{passengers}} مسافروں کے لیے صرف {{available}} تصدیق شدہ نشستیں باقی ہیں۔"
       },
       "passengers": {
         "saved": "مَحفوظ مسافر",
@@ -424,6 +450,7 @@
         "quotaError": "ایک یا زیادہ مسافر اَمہِ کوٹہ کی اہلیت پوری نچھِ کرتے۔ کوٹہ یا مسافر انتخاب بدلاوِو۔",
         "autoSelectedQuota": "خودکار منتخب کوٹہ",
         "autoQuotaNote": "سارے منتخب مسافروں کی اہلیت کی بنیاد پر۔",
+        "quotaFallback": "آپ کے {{preferred}} کوٹے میں کافی نشستیں دستیاب نہیں ہیں، اس لیے یہ بکنگ {{selected}} کوٹے کے تحت کی جائے گی۔",
         "quotaClaims": "کوٹہ فوائد",
         "quotaClaimsNote": "صرف وہ فوائد ژارِو جو تُہۍ لینا چاہتے چھِ۔ انتخاب پر تصدیقی تفصیل لازمی ہو جاتی چھِ۔",
         "claimForeignTourist": "غیر ملکی سیاح کوٹہ کا دعویٰ کٔرِو",

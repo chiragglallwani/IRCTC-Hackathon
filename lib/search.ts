@@ -7,13 +7,37 @@ import {
 } from "./data";
 import type {
   AvailabilityStatus,
+  ClassSeatAvailability,
   Connection,
   Journey,
   JourneyLeg,
   Passenger,
+  QuotaSeatAvailability,
   SearchInput,
   TransportMode,
 } from "./types";
+
+export const DISPLAY_QUOTA_IDS = [
+  "GN",
+  "LD",
+  "SS",
+  "DF",
+  "FT",
+  "HP",
+  "DP",
+  "RE",
+] as const;
+
+const classFareFactors: Record<string, number> = {
+  "1A": 2.7,
+  "2A": 2.05,
+  "3A": 1.55,
+  "3E": 1.35,
+  EC: 1.8,
+  CC: 1.25,
+  SL: 0.72,
+  "2S": 0.48,
+};
 
 const adjacency = new Map<string, Connection[]>();
 for (const edge of connections)
@@ -32,6 +56,166 @@ function datasetDate(date: string) {
 }
 function availabilityRank(status: AvailabilityStatus) {
   return { AVAILABLE: 4, RAC: 3, WAITLIST: 2, REGRET: 1 }[status];
+}
+
+function stableNumber(value: string) {
+  let hash = 2166136261;
+  for (let index = 0; index < value.length; index += 1) {
+    hash ^= value.charCodeAt(index);
+    hash = Math.imul(hash, 16777619);
+  }
+  return Math.abs(hash >>> 0);
+}
+
+function normalizeAvailabilityStatus(value: string): AvailabilityStatus {
+  if (value === "WL" || value === "WAITLIST") return "WAITLIST";
+  if (value === "RAC") return "RAC";
+  if (value === "REGRET") return "REGRET";
+  return "AVAILABLE";
+}
+
+function generatedQuotaAvailability(
+  journeyKey: string,
+  travelClass: string,
+  quotaId: string,
+  seed?: { status: string; number: number; confirmationLikelihood: number },
+): QuotaSeatAvailability {
+  if (seed) {
+    return {
+      quotaId,
+      status: normalizeAvailabilityStatus(seed.status),
+      number: seed.number,
+      confirmationLikelihood: seed.confirmationLikelihood,
+    };
+  }
+
+  const value = stableNumber(`${journeyKey}:${travelClass}:${quotaId}`);
+  const bucket = value % 100;
+  if (bucket < 56) {
+    return {
+      quotaId,
+      status: "AVAILABLE",
+      number: 4 + (value % 45),
+      confirmationLikelihood: 0.96,
+    };
+  }
+  if (bucket < 74) {
+    return {
+      quotaId,
+      status: "RAC",
+      number: 1 + (value % 18),
+      confirmationLikelihood: 0.68,
+    };
+  }
+  if (bucket < 94) {
+    return {
+      quotaId,
+      status: "WAITLIST",
+      number: 1 + (value % 42),
+      confirmationLikelihood: 0.42,
+    };
+  }
+  return {
+    quotaId,
+    status: "REGRET",
+    number: 0,
+    confirmationLikelihood: 0.08,
+  };
+}
+
+function summarizeClassAvailability(
+  travelClass: string,
+  fare: number,
+  quotasForClass: QuotaSeatAvailability[],
+): ClassSeatAvailability {
+  const general = quotasForClass.find((item) => item.quotaId === "GN");
+  const representative = general ?? quotasForClass[0];
+  return {
+    travelClass,
+    fare,
+    status: representative?.status ?? "REGRET",
+    number: representative?.number ?? 0,
+    quotas: quotasForClass,
+  };
+}
+
+function journeyClassAvailability(
+  legs: JourneyLeg[],
+  input: SearchInput,
+): ClassSeatAvailability[] {
+  const passengerCount = Math.max(1, input.adults + input.children);
+  const serviceClasses = legs.map(
+    (leg) => trainById.get(leg.serviceId)?.classes ?? [leg.travelClass],
+  );
+  const commonClasses = serviceClasses[0].filter((travelClass) =>
+    serviceClasses.every((classes) => classes.includes(travelClass)),
+  );
+  const classes = commonClasses.length
+    ? commonClasses
+    : [...new Set(serviceClasses.flat())];
+  const journeyKey = legs.map((leg) => leg.id).join(":");
+  const date = datasetDate(input.date);
+  const distanceFare = legs.reduce(
+    (total, leg) => total + Math.max(80, leg.fare),
+    0,
+  );
+
+  return classes.map((travelClass) => {
+    const factor = classFareFactors[travelClass] ?? 1;
+    const baseFactor = classFareFactors[legs[0]?.travelClass] ?? 1;
+    const exactFares = legs.map((leg) =>
+      fares.find(
+        (fare) =>
+          fare.trainId === leg.serviceId &&
+          fare.fromStation === leg.from.stationId &&
+          fare.toStation === leg.to.stationId &&
+          fare.travelDate === date &&
+          fare.class === travelClass &&
+          fare.quota === "GN",
+      ),
+    );
+    const perPassengerFare = exactFares.every(Boolean)
+      ? exactFares.reduce((total, fare) => total + (fare?.totalFare ?? 0), 0)
+      : Math.max(80, Math.round((distanceFare / baseFactor) * factor));
+    const quotaAvailability = DISPLAY_QUOTA_IDS.map((quotaId) => {
+      const seeded = legs
+        .map((leg) =>
+          availability.find(
+            (item) =>
+              item.trainId === leg.serviceId &&
+              item.fromStation === leg.from.stationId &&
+              item.toStation === leg.to.stationId &&
+              item.travelDate === date &&
+              item.class === travelClass &&
+              item.quota === quotaId,
+          ),
+        )
+        .filter((item): item is NonNullable<typeof item> => Boolean(item));
+      const generated = generatedQuotaAvailability(
+        journeyKey,
+        travelClass,
+        quotaId,
+        seeded[0],
+      );
+      if (seeded.length <= 1) return generated;
+      return seeded.reduce<QuotaSeatAvailability>((worst, item) => {
+        const status = normalizeAvailabilityStatus(item.status);
+        return availabilityRank(status) < availabilityRank(worst.status)
+          ? {
+              quotaId,
+              status,
+              number: item.number,
+              confirmationLikelihood: item.confirmationLikelihood,
+            }
+          : worst;
+      }, generated);
+    });
+    return summarizeClassAvailability(
+      travelClass,
+      perPassengerFare * passengerCount,
+      quotaAvailability,
+    );
+  });
 }
 
 function fareAndAvailability(edge: Connection, input: SearchInput) {
@@ -75,7 +259,9 @@ function fareAndAvailability(edge: Connection, input: SearchInput) {
     );
   return {
     fare: fare?.totalFare ?? Math.max(80, Math.round(edge.distanceKm * 1.6)),
-    seats: seats ?? null,
+    seats: seats
+      ? { ...seats, status: normalizeAvailabilityStatus(seats.status) }
+      : null,
     travelClass: fare?.class ?? travelClass,
   };
 }
@@ -175,16 +361,15 @@ export function searchJourneys(input: SearchInput): Journey[] {
         elapsed += edge.durationMinutes + (index < path.length - 1 ? 45 : 0);
       });
       if (!legs.length) return null;
+      const classAvailability = journeyClassAvailability(legs, input);
+      const selectedClass =
+        classAvailability.find(
+          (item) => item.travelClass === input.travelClass,
+        ) ?? classAvailability[0];
       const totalFare =
+        selectedClass?.fare ??
         legs.reduce((sum, x) => sum + x.fare, 0) * Math.max(1, passengers);
-      const status = legs.reduce<AvailabilityStatus>(
-        (worst, x) =>
-          x.availability &&
-          availabilityRank(x.availability.status) < availabilityRank(worst)
-            ? x.availability.status
-            : worst,
-        "AVAILABLE",
-      );
+      const status = selectedClass?.status ?? "REGRET";
       const modes = [...new Set(legs.map((x) => x.mode))] as TransportMode[];
       const score = Math.round(
         Math.min(
@@ -211,6 +396,7 @@ export function searchJourneys(input: SearchInput): Journey[] {
         legs,
         modes,
         availability: status,
+        classAvailability,
         score,
         label: null,
         whyRecommended: [],
@@ -280,11 +466,10 @@ export function quotaEligibility(
 
 export function passengerEligibleQuotaIds(
   passenger: Passenger,
-  mode: SearchInput["mode"],
+  _mode: SearchInput["mode"],
 ) {
   const eligible = ["GN"];
 
-  if (mode === "tatkal") eligible.push("TQ", "PT");
   if (passenger.gender === "female") eligible.push("LD");
   if (passenger.gender === "female" ? passenger.age >= 58 : passenger.age >= 60)
     eligible.push("SS");
@@ -308,7 +493,6 @@ export function selectEligibleQuota(
   mode: SearchInput["mode"],
 ) {
   if (!passengers.length) return "GN";
-  if (mode === "tatkal") return "TQ";
 
   const preferredQuotas = ["HP", "SS", "RE", "DF", "FT", "LD"];
   return (
@@ -318,6 +502,54 @@ export function selectEligibleQuota(
       ),
     ) ?? "GN"
   );
+}
+
+export function selectBestAvailableQuota(
+  passengers: Passenger[],
+  mode: SearchInput["mode"],
+  quotaAvailability: QuotaSeatAvailability[],
+  requiredSeats: number,
+) {
+  const preferredQuotaId = selectEligibleQuota(passengers, mode);
+  const eligibleQuotaIds = new Set<string>(
+    DISPLAY_QUOTA_IDS.filter((quotaId) =>
+      passengers.every((passenger) =>
+        passengerEligibleQuotaIds(passenger, mode).includes(quotaId),
+      ),
+    ),
+  );
+  const priority = ["HP", "SS", "RE", "DF", "FT", "LD", "DP", "GN"];
+  const outcomeRank = (item: QuotaSeatAvailability) => {
+    if (item.status === "AVAILABLE" && item.number >= requiredSeats) return 4;
+    if (item.status === "RAC") return 3;
+    if (item.status === "WAITLIST") return 2;
+    if (item.status === "AVAILABLE") return 1;
+    return 0;
+  };
+  const preferredAvailability = quotaAvailability.find(
+    (item) => item.quotaId === preferredQuotaId,
+  );
+
+  if (preferredAvailability && outcomeRank(preferredAvailability) === 4)
+    return {
+      quotaId: preferredQuotaId,
+      preferredQuotaId,
+      usedFallback: false,
+    };
+
+  const best = quotaAvailability
+    .filter((item) => eligibleQuotaIds.has(item.quotaId))
+    .sort(
+      (a, b) =>
+        outcomeRank(b) - outcomeRank(a) ||
+        priority.indexOf(a.quotaId) - priority.indexOf(b.quotaId),
+    )[0];
+  const quotaId = best?.quotaId ?? preferredQuotaId;
+  return {
+    quotaId,
+    preferredQuotaId,
+    usedFallback: quotaId !== preferredQuotaId,
+  };
 }
 
 const quotaDiscountRates: Record<string, number> = {
