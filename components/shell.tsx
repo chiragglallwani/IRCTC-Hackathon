@@ -125,7 +125,7 @@ export function Header() {
             </Link>
           ))}
         </nav>
-        <div className="ms-auto flex items-center gap-3 lg:ms-0 [&_button]:flex [&_button]:items-center [&_button]:gap-[7px] [&_button]:border-0 [&_button]:bg-transparent [&_button]:text-[#454957] [&_button_span]:hidden [&_svg]:w-[21px] lg:[&_button_span]:inline">
+        <div className="ml-auto flex items-center gap-3 lg:ms-0 [&_button]:flex [&_button]:items-center [&_button]:gap-[7px] [&_button]:border-0 [&_button]:bg-transparent [&_button]:text-[#454957] [&_button_span]:hidden [&_svg]:w-[21px] lg:[&_button_span]:inline">
           <Popover>
             <PopoverTrigger asChild>
               <button>
@@ -192,7 +192,7 @@ export function Header() {
           </Popover>
           <Select value={language} onValueChange={setLanguage}>
             <SelectTrigger
-              className="min-h-10 w-[120px] flex-shrink-0 rounded-lg border-[var(--line)] px-2 text-start [&>span]:!inline-block [&>span]:!truncate"
+              className="min-h-10 w-[100px] flex-shrink-0 rounded-lg border-[var(--line)] px-2 text-start [&>span]:!inline-block [&>span]:!truncate"
               aria-label={t("navigation.language")}
             >
               <SelectValue />
@@ -351,7 +351,7 @@ export function Footer() {
     <footer className="mb-[70px] grid items-center gap-[30px] border-t border-[var(--line)] px-6 py-8 text-[var(--muted)] lg:mb-0 lg:flex lg:px-[max(24px,calc((100vw_-_1280px)/2))]">
       <strong className="text-xl text-[var(--ink)]">{t("common.brand")}</strong>
       <span>{t("components.footer.description")}</span>
-      <div className="flex gap-6 lg:ms-auto">
+      <div className="flex gap-6 lg:ml-auto">
         <Link href="/">{t("common.actions.help")}</Link>
         <Link href="/tourism">{t("navigation.primary.tourism")}</Link>
         <Link href="/my-trips">{t("navigation.primary.trips")}</Link>
