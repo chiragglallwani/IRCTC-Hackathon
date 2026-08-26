@@ -53,7 +53,10 @@
       "secondAc": "AC 2 टियर (2A)",
       "thirdAc": "AC 3 टियर (3A)",
       "chairCar": "चेयर कार (CC)",
-      "sleeper": "स्लीपर (SL)"
+      "sleeper": "स्लीपर (SL)",
+      "economyThirdAc": "AC 3 इकोनॉमी (3E)",
+      "executiveChair": "एग्जीक्यूटिव चेयर कार (EC)",
+      "secondSitting": "द्वितीय सीटिंग (2S)"
     },
     "gender": {
       "female": "महिला",
@@ -271,7 +274,20 @@
         "status": "पारदर्शी स्थिति के साथ {{status}} सीटें",
         "faster": "सबसँ सस्ते विकल्प सँ {{hours}} घंटे तेज़",
         "lowest": "सबसँ कम उपलब्ध किराया"
-      }
+      },
+      "seatsByClass": "श्रेणी के अनुसार सीट उपलब्धता",
+      "selectClassHint": "पात्र कोटों में उपलब्धता की तुलना करने के लिए यात्रा श्रेणी चुनें।",
+      "passengers": "{{count}} यात्री",
+      "seatsAvailable": "{{count}} सीटें उपलब्ध",
+      "racPosition": "RAC {{count}}",
+      "waitlistPosition": "WL {{count}}",
+      "notAvailable": "उपलब्ध नहीं",
+      "fareFrom": "किराया शुरू",
+      "selectedClassFare": "चुनी गई श्रेणी का किराया",
+      "quotaAvailabilityFor": "कोटा के अनुसार {{class}} उपलब्धता",
+      "quotaAvailabilityNote": "यात्री विवरण जोड़ने के बाद कोटा पात्रता स्वतः सत्यापित की जाती है।",
+      "classSelected": "{{class}} चुनी गई",
+      "chooseClassForQuotas": "कोटा के अनुसार सीट उपलब्धता देखने के लिए ऊपर कोई श्रेणी चुनें।"
     },
     "journeyRoute": {
       "departure": "सँ",
@@ -401,7 +417,17 @@
         "infoFailure": "विफल या रद्द भुगतान कभी पुष्ट बुकिंग नहीं बनाते।",
         "unavailable": "ई जात्रा अब बुक नहीं की जा सकती। परिणामों पर घुरू आ कोई विकल्प चुनू।",
         "selectQuota": "जारी रखने सँ पहले कोटा चुनू।",
-        "continue": "जात्रिक विवरण पर जारी राखू"
+        "continue": "जात्रिक विवरण पर जारी राखू",
+        "changeClass": "यात्रा श्रेणी बदलें",
+        "classAvailabilityNote": "खोज के दौरान चुने गए {{passengers}} यात्रियों के लिए उपलब्धता जाँची जाती है।",
+        "passengersSelected": "{{count}} सीटें आवश्यक",
+        "seatsAvailable": "{{count}} सीटें उपलब्ध",
+        "racPosition": "RAC {{count}}",
+        "waitlistPosition": "WL {{count}}",
+        "enoughSeats": "चयनित यात्रियों के लिए {{seats}} पुष्ट सीटें उपलब्ध हैं।",
+        "notEnoughSeats": "{{passengers}} यात्रियों के लिए केवल {{seats}} पुष्ट सीटें बची हैं। दूसरी श्रेणी चुनें।",
+        "queueStatusNote": "RAC और प्रतीक्षा सूची की बुकिंग जारी रखी जा सकती है, लेकिन पुष्टि की गारंटी नहीं है।",
+        "insufficientSeats": "{{passengers}} यात्रियों के लिए केवल {{available}} पुष्ट सीटें बची हैं।"
       },
       "passengers": {
         "saved": "सहेजे गए जात्रिक",
@@ -424,6 +450,7 @@
         "quotaError": "एक या अधिक जात्रिक एहि कोटा की पात्रता आवश्यकताओं को पूरा नहीं करते। कोटा या जात्रिक चयन बदलें।",
         "autoSelectedQuota": "स्वतः चयनित कोटा",
         "autoQuotaNote": "सभ चयनित जात्रिकसभ की पात्रता क आधार पर।",
+        "quotaFallback": "आपके {{preferred}} कोटे में पर्याप्त सीटें उपलब्ध नहीं हैं, इसलिए यह बुकिंग {{selected}} कोटे के अंतर्गत की जाएगी।",
         "quotaClaims": "कोटा लाभ",
         "quotaClaimsNote": "केवल वे लाभ चुनू जिन्हें अहाँ लेना चाहते अछि। चयन करने पर सत्यापन विवरण अनिवार्य हो जाते अछि।",
         "claimForeignTourist": "विदेशी पर्यटक कोटा का दावा करू",

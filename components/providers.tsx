@@ -17,6 +17,7 @@ import {
   type TextDirection,
   type TranslationVariables,
 } from "@/lib/i18n";
+import { ToastProvider } from "@/components/ui/toast";
 
 interface User {
   id: string;
@@ -137,15 +138,17 @@ export function Providers({ children }: { children: React.ReactNode }) {
   }, [language]);
   return (
     <AppContext.Provider value={value}>
-      <div
-        lang={language}
-        dir={getTextDirection(language)}
-        style={{ fontSize: `${fontSize}px` }}
-        data-contrast={highContrast}
-        data-language={language}
-      >
-        {children}
-      </div>
+      <ToastProvider>
+        <div
+          lang={language}
+          dir={getTextDirection(language)}
+          style={{ fontSize: `${fontSize}px` }}
+          data-contrast={highContrast}
+          data-language={language}
+        >
+          {children}
+        </div>
+      </ToastProvider>
     </AppContext.Provider>
   );
 }

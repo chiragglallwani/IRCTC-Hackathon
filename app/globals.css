@@ -336,14 +336,15 @@ input::placeholder {
   margin-bottom: 36px;
 }
 .step {
-  display: grid;
-  gap: 10px;
-  align-items: center;
-  justify-content: center;
   border-top: 4px solid #dce0e5;
   padding-top: 14px;
   font-size: 0.76rem;
   text-align: center;
+}
+.step-content {
+  display: grid;
+  justify-items: center;
+  gap: 8px;
 }
 .step.active,
 .step.done {
@@ -379,7 +380,7 @@ input::placeholder {
   gap: 24px;
 }
 .checkout-section {
-  padding: 28px;
+  padding: 22px;
 }
 .summary-card {
   padding: 26px;
@@ -576,8 +577,13 @@ input::placeholder {
   .passenger-form .full {
     grid-column: 1/-1;
   }
-  .step {
+  .step-content {
     display: flex;
+    align-items: center;
+    justify-content: center;
+    gap: 10px;
+  }
+  .step {
     font-size: inherit;
     text-align: left;
   }
