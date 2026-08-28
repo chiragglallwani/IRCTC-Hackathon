@@ -15,7 +15,7 @@ import type { Booking } from "@/lib/types";
 import { useApp } from "@/components/providers";
 import { Badge } from "@/components/ui/badge";
 import { Button } from "@/components/ui/button";
-import { calculateFareBreakdown, formatDuration } from "@/lib/search";
+import { calculateFareBreakdown, formatDuration } from "@/lib/journey-utils";
 
 function formatClockTime(value: string, locale: string) {
   const [hours, minutes] = value.split(":").map(Number);

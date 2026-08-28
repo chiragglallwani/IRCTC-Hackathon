@@ -149,6 +149,7 @@ export interface JourneyLeg {
   fare: number;
   travelClass: string;
   availability: Availability | null;
+  ticketOptions: ClassSeatAvailability[];
   facilities: string[];
 }
 export interface QuotaSeatAvailability {
@@ -202,6 +203,7 @@ export interface Passenger {
   claimRailwayEmployee?: boolean;
   railwayEmployeeId?: string;
   saveForFuture?: boolean;
+  mealRequested?: boolean;
 }
 export interface Booking {
   bookingId: string;
@@ -215,6 +217,9 @@ export interface Booking {
   fare: number;
   fareBreakdown?: {
     baseFare: number;
+    passengerCount?: number;
+    mealCount?: number;
+    mealCost?: number;
     discountRate: number;
     discount: number;
     discountedFare: number;

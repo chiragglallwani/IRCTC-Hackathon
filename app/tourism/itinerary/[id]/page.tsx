@@ -9,7 +9,7 @@ import {
   RefreshCw,
   Trash2,
 } from "lucide-react";
-import { cityById } from "@/lib/data";
+import { cityById } from "@/lib/tourism-data";
 import { saveStorage, savedItineraries, storageKeys } from "@/lib/storage";
 import type { Itinerary } from "@/lib/types";
 import { useApp } from "@/components/providers";

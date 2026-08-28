@@ -2,7 +2,7 @@
 import Link from "next/link";
 import { useMemo, useState } from "react";
 import { Compass, Search } from "lucide-react";
-import { cityById, tourism } from "@/lib/data";
+import { cityById, tourism } from "@/lib/tourism-data";
 import { useApp } from "@/components/providers";
 import { Badge } from "@/components/ui/badge";
 import { Button } from "@/components/ui/button";

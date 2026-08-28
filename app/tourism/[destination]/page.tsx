@@ -2,7 +2,7 @@
 import Link from "next/link";
 import { useParams } from "next/navigation";
 import { CalendarDays, IndianRupee, MapPinned, TrainFront } from "lucide-react";
-import { destinationDetails } from "@/lib/data";
+import { destinationDetails } from "@/lib/tourism-data";
 import { useApp } from "@/components/providers";
 import { Badge } from "@/components/ui/badge";
 import { Button } from "@/components/ui/button";

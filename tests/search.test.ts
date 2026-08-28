@@ -1,6 +1,8 @@
 import { describe, expect, it } from "vitest";
 import {
   DISPLAY_QUOTA_IDS,
+  calculateFareBreakdown,
+  MEAL_PRICE,
   quotaEligibility,
   selectBestAvailableQuota,
   selectEligibleQuota,
@@ -22,6 +24,16 @@ describe("data-driven journey search", () => {
     const results = searchJourneys(input);
     expect(results.length).toBeGreaterThan(0);
     expect(results[0].legs.length).toBeGreaterThan(0);
+    expect(results[0].legs.every((leg) => leg.ticketOptions.length > 0)).toBe(
+      true,
+    );
+    expect(
+      results[0].legs.every((leg) =>
+        leg.ticketOptions.every(
+          (ticket) => ticket.quotas.length === DISPLAY_QUOTA_IDS.length,
+        ),
+      ),
+    ).toBe(true);
     expect(results[0].whyRecommended.length).toBe(4);
     expect(results[0].classAvailability.length).toBeGreaterThan(0);
     expect(
@@ -31,6 +43,12 @@ describe("data-driven journey search", () => {
     ).toBe(true);
     expect(results.some((x) => x.label === "Recommended")).toBe(true);
   });
+  it("adds selected passenger meals to the payable total", () => {
+    const withoutMeals = calculateFareBreakdown(1000, "GN");
+    const withMeals = calculateFareBreakdown(1000, "GN", MEAL_PRICE * 2);
+    expect(withMeals.mealCost).toBe(300);
+    expect(withMeals.total).toBe(withoutMeals.total + 300);
+  });
   it("changes fare when passenger count changes", () => {
     const one = searchJourneys(input)[0];
     const two = searchJourneys({ ...input, adults: 2 })[0];
@@ -38,6 +56,11 @@ describe("data-driven journey search", () => {
     expect(two.classAvailability[0].fare).toBe(
       one.classAvailability[0].fare * 2,
     );
+  });
+  it("reuses an identical computed search result", () => {
+    const first = searchJourneys(input);
+    const second = searchJourneys({ ...input });
+    expect(second).toBe(first);
   });
   it("excludes unsupported quotas from seat comparison", () => {
     expect(DISPLAY_QUOTA_IDS).not.toContain("TQ");

@@ -7,11 +7,12 @@ import {
 } from "./data";
 import type {
   AvailabilityStatus,
+  Availability,
   ClassSeatAvailability,
   Connection,
+  Fare,
   Journey,
   JourneyLeg,
-  Passenger,
   QuotaSeatAvailability,
   SearchInput,
   TransportMode,
@@ -40,11 +41,81 @@ const classFareFactors: Record<string, number> = {
 };
 
 const adjacency = new Map<string, Connection[]>();
-for (const edge of connections)
-  adjacency.set(edge.fromStation, [
-    ...(adjacency.get(edge.fromStation) ?? []),
-    edge,
-  ]);
+for (const edge of connections) {
+  const outgoing = adjacency.get(edge.fromStation);
+  if (outgoing) outgoing.push(edge);
+  else adjacency.set(edge.fromStation, [edge]);
+}
+
+const fareByClass = new Map<string, Fare>();
+const fareByClassQuota = new Map<string, Fare>();
+const firstFareByRoute = new Map<string, Fare>();
+const availabilityByClassQuota = new Map<string, Availability>();
+const firstAvailabilityByRoute = new Map<string, Availability>();
+
+function routeDateKey(
+  trainId: string,
+  fromStation: string,
+  toStation: string,
+  travelDate: string,
+) {
+  return `${trainId}|${fromStation}|${toStation}|${travelDate}`;
+}
+
+for (const fare of fares) {
+  const routeKey = routeDateKey(
+    fare.trainId,
+    fare.fromStation,
+    fare.toStation,
+    fare.travelDate,
+  );
+  if (!firstFareByRoute.has(routeKey)) firstFareByRoute.set(routeKey, fare);
+  const classKey = `${routeKey}|${fare.class}`;
+  if (!fareByClass.has(classKey)) fareByClass.set(classKey, fare);
+  fareByClassQuota.set(`${classKey}|${fare.quota}`, fare);
+}
+
+for (const item of availability) {
+  const routeKey = routeDateKey(
+    item.trainId,
+    item.fromStation,
+    item.toStation,
+    item.travelDate,
+  );
+  if (!firstAvailabilityByRoute.has(routeKey))
+    firstAvailabilityByRoute.set(routeKey, item);
+  availabilityByClassQuota.set(`${routeKey}|${item.class}|${item.quota}`, item);
+}
+
+function fareFor(
+  trainId: string,
+  fromStation: string,
+  toStation: string,
+  travelDate: string,
+  travelClass?: string,
+  quota?: string,
+) {
+  const routeKey = routeDateKey(trainId, fromStation, toStation, travelDate);
+  if (!travelClass) return firstFareByRoute.get(routeKey);
+  const classKey = `${routeKey}|${travelClass}`;
+  return quota
+    ? fareByClassQuota.get(`${classKey}|${quota}`)
+    : fareByClass.get(classKey);
+}
+
+function availabilityFor(
+  trainId: string,
+  fromStation: string,
+  toStation: string,
+  travelDate: string,
+  travelClass?: string,
+  quota?: string,
+) {
+  const routeKey = routeDateKey(trainId, fromStation, toStation, travelDate);
+  return travelClass && quota
+    ? availabilityByClassQuota.get(`${routeKey}|${travelClass}|${quota}`)
+    : firstAvailabilityByRoute.get(routeKey);
+}
 
 function time(minutes: number) {
   const normalized = ((minutes % 1440) + 1440) % 1440;
@@ -156,7 +227,8 @@ function journeyClassAvailability(
   const journeyKey = legs.map((leg) => leg.id).join(":");
   const date = datasetDate(input.date);
   const distanceFare = legs.reduce(
-    (total, leg) => total + Math.max(80, leg.fare),
+    (total, leg) =>
+      total + Math.max(80, leg.fare / Math.max(1, passengerCount)),
     0,
   );
 
@@ -164,14 +236,13 @@ function journeyClassAvailability(
     const factor = classFareFactors[travelClass] ?? 1;
     const baseFactor = classFareFactors[legs[0]?.travelClass] ?? 1;
     const exactFares = legs.map((leg) =>
-      fares.find(
-        (fare) =>
-          fare.trainId === leg.serviceId &&
-          fare.fromStation === leg.from.stationId &&
-          fare.toStation === leg.to.stationId &&
-          fare.travelDate === date &&
-          fare.class === travelClass &&
-          fare.quota === "GN",
+      fareFor(
+        leg.serviceId,
+        leg.from.stationId,
+        leg.to.stationId,
+        date,
+        travelClass,
+        "GN",
       ),
     );
     const perPassengerFare = exactFares.every(Boolean)
@@ -180,14 +251,13 @@ function journeyClassAvailability(
     const quotaAvailability = DISPLAY_QUOTA_IDS.map((quotaId) => {
       const seeded = legs
         .map((leg) =>
-          availability.find(
-            (item) =>
-              item.trainId === leg.serviceId &&
-              item.fromStation === leg.from.stationId &&
-              item.toStation === leg.to.stationId &&
-              item.travelDate === date &&
-              item.class === travelClass &&
-              item.quota === quotaId,
+          availabilityFor(
+            leg.serviceId,
+            leg.from.stationId,
+            leg.to.stationId,
+            date,
+            travelClass,
+            quotaId,
           ),
         )
         .filter((item): item is NonNullable<typeof item> => Boolean(item));
@@ -225,38 +295,23 @@ function fareAndAvailability(edge: Connection, input: SearchInput) {
       : input.travelClass;
   const date = datasetDate(input.date);
   const fare =
-    fares.find(
-      (x) =>
-        x.trainId === edge.serviceId &&
-        x.fromStation === edge.fromStation &&
-        x.toStation === edge.toStation &&
-        x.travelDate === date &&
-        x.class === travelClass,
-    ) ??
-    fares.find(
-      (x) =>
-        x.trainId === edge.serviceId &&
-        x.fromStation === edge.fromStation &&
-        x.toStation === edge.toStation &&
-        x.travelDate === date,
-    );
+    fareFor(
+      edge.serviceId,
+      edge.fromStation,
+      edge.toStation,
+      date,
+      travelClass,
+    ) ?? fareFor(edge.serviceId, edge.fromStation, edge.toStation, date);
   const seats =
-    availability.find(
-      (x) =>
-        x.trainId === edge.serviceId &&
-        x.fromStation === edge.fromStation &&
-        x.toStation === edge.toStation &&
-        x.travelDate === date &&
-        x.class === (fare?.class ?? travelClass) &&
-        x.quota === (input.mode === "tatkal" ? "TQ" : "GN"),
+    availabilityFor(
+      edge.serviceId,
+      edge.fromStation,
+      edge.toStation,
+      date,
+      fare?.class ?? travelClass,
+      input.mode === "tatkal" ? "TQ" : "GN",
     ) ??
-    availability.find(
-      (x) =>
-        x.trainId === edge.serviceId &&
-        x.fromStation === edge.fromStation &&
-        x.toStation === edge.toStation &&
-        x.travelDate === date,
-    );
+    availabilityFor(edge.serviceId, edge.fromStation, edge.toStation, date);
   return {
     fare: fare?.totalFare ?? Math.max(80, Math.round(edge.distanceKm * 1.6)),
     seats: seats
@@ -264,6 +319,58 @@ function fareAndAvailability(edge: Connection, input: SearchInput) {
       : null,
     travelClass: fare?.class ?? travelClass,
   };
+}
+
+function legTicketOptions(
+  edge: Connection,
+  input: SearchInput,
+  fallbackFare: number,
+): ClassSeatAvailability[] {
+  const passengerCount = Math.max(1, input.adults + input.children);
+  const classes = trainById.get(edge.serviceId)?.classes ?? [input.travelClass];
+  const date = datasetDate(input.date);
+  const baseClass = classes[0] ?? "SL";
+
+  return classes.map((travelClass) => {
+    const exactFare = fareFor(
+      edge.serviceId,
+      edge.fromStation,
+      edge.toStation,
+      date,
+      travelClass,
+      "GN",
+    );
+    const perPassengerFare =
+      exactFare?.totalFare ??
+      Math.max(
+        80,
+        Math.round(
+          (fallbackFare / (classFareFactors[baseClass] ?? 1)) *
+            (classFareFactors[travelClass] ?? 1),
+        ),
+      );
+    const quotasForClass = DISPLAY_QUOTA_IDS.map((quotaId) => {
+      const seeded = availabilityFor(
+        edge.serviceId,
+        edge.fromStation,
+        edge.toStation,
+        date,
+        travelClass,
+        quotaId,
+      );
+      return generatedQuotaAvailability(
+        edge.connectionId,
+        travelClass,
+        quotaId,
+        seeded,
+      );
+    });
+    return summarizeClassAvailability(
+      travelClass,
+      perPassengerFare * passengerCount,
+      quotasForClass,
+    );
+  });
 }
 
 function toLeg(
@@ -281,6 +388,10 @@ function toLeg(
     360 +
     ((Number(edge.serviceId.replace(/\D/g, "")) || index * 37) % 720) +
     elapsed;
+  const ticketOptions = legTicketOptions(edge, input, details.fare);
+  const preferredTicket =
+    ticketOptions.find((item) => item.travelClass === details.travelClass) ??
+    ticketOptions[0];
   return {
     id: edge.connectionId,
     mode: edge.mode === "train" ? "train" : "metro",
@@ -292,26 +403,39 @@ function toLeg(
     departure: time(departureMinutes),
     arrival: time(departureMinutes + edge.durationMinutes),
     durationMinutes: edge.durationMinutes,
-    fare: details.fare,
-    travelClass: details.travelClass,
+    fare: preferredTicket?.fare ?? details.fare,
+    travelClass: preferredTicket?.travelClass ?? details.travelClass,
     availability: details.seats,
+    ticketOptions,
     facilities: service?.features ?? ["wheelchair"],
   };
 }
+
+const pathCache = new Map<string, Connection[][]>();
 
 function paths(
   origin: string,
   destination: string,
   maxEdges: number,
 ): Connection[][] {
+  const cacheKey = `${origin}|${destination}|${maxEdges}`;
+  const cached = pathCache.get(cacheKey);
+  if (cached) return cached;
   const results: Connection[][] = [];
   const queue: { at: string; path: Connection[]; seen: Set<string> }[] = [
     { at: origin, path: [], seen: new Set([origin]) },
   ];
-  while (queue.length && results.length < 40) {
-    const current = queue.shift()!;
+  let cursor = 0;
+  while (cursor < queue.length && results.length < 40) {
+    const current = queue[cursor++];
     if (current.path.length >= maxEdges) continue;
-    for (const edge of (adjacency.get(current.at) ?? []).slice(0, 80)) {
+    const outgoing = adjacency.get(current.at) ?? [];
+    for (
+      let edgeIndex = 0;
+      edgeIndex < Math.min(80, outgoing.length);
+      edgeIndex++
+    ) {
+      const edge = outgoing[edgeIndex];
       if (current.seen.has(edge.toStation)) continue;
       const next = [...current.path, edge];
       if (edge.toStation === destination) results.push(next);
@@ -324,10 +448,26 @@ function paths(
       if (queue.length > 2500) queue.length = 2500;
     }
   }
+  if (pathCache.size >= 100) pathCache.delete(pathCache.keys().next().value!);
+  pathCache.set(cacheKey, results);
   return results;
 }
 
+const journeyCache = new Map<string, Journey[]>();
+
 export function searchJourneys(input: SearchInput): Journey[] {
+  const cacheKey = [
+    input.origin,
+    input.destination,
+    input.date,
+    input.adults,
+    input.children,
+    input.infants,
+    input.travelClass,
+    input.mode,
+  ].join("|");
+  const cached = journeyCache.get(cacheKey);
+  if (cached) return cached;
   const originStation = stationById.get(input.origin);
   const destinationStation = stationById.get(input.destination);
   if (
@@ -444,135 +584,19 @@ export function searchJourneys(input: SearchInput): Journey[] {
   recommended.label = "Recommended";
   fastest.label ||= "Fastest";
   cheapest.label ||= "Cheapest";
-  return journeys.sort((a, b) => b.score - a.score).slice(0, 16);
+  const result = journeys.sort((a, b) => b.score - a.score).slice(0, 16);
+  if (journeyCache.size >= 80)
+    journeyCache.delete(journeyCache.keys().next().value!);
+  journeyCache.set(cacheKey, result);
+  return result;
 }
 
-export function formatDuration(minutes: number) {
-  return `${Math.floor(minutes / 60)}h ${minutes % 60}m`;
-}
-export function quotaEligibility(
-  quotaId: string,
-  passengers: { age: number; gender: string; citizenship: string }[],
-) {
-  if (quotaId === "SS")
-    return passengers.every((p) =>
-      p.gender === "female" ? p.age >= 58 : p.age >= 60,
-    );
-  if (quotaId === "LD") return passengers.every((p) => p.gender === "female");
-  if (quotaId === "FT")
-    return passengers.every((p) => p.citizenship !== "Indian");
-  return true;
-}
-
-export function passengerEligibleQuotaIds(
-  passenger: Passenger,
-  _mode: SearchInput["mode"],
-) {
-  const eligible = ["GN"];
-
-  if (passenger.gender === "female") eligible.push("LD");
-  if (passenger.gender === "female" ? passenger.age >= 58 : passenger.age >= 60)
-    eligible.push("SS");
-  if (
-    passenger.citizenship !== "Indian" &&
-    passenger.claimForeignTourist &&
-    passenger.passportNumber
-  )
-    eligible.push("FT");
-  if (passenger.claimDefence && passenger.defenceServiceId) eligible.push("DF");
-  if (passenger.claimDisability && passenger.disabilityCertificate)
-    eligible.push("HP");
-  if (passenger.claimRailwayEmployee && passenger.railwayEmployeeId)
-    eligible.push("RE");
-
-  return eligible;
-}
-
-export function selectEligibleQuota(
-  passengers: Passenger[],
-  mode: SearchInput["mode"],
-) {
-  if (!passengers.length) return "GN";
-
-  const preferredQuotas = ["HP", "SS", "RE", "DF", "FT", "LD"];
-  return (
-    preferredQuotas.find((quotaId) =>
-      passengers.every((passenger) =>
-        passengerEligibleQuotaIds(passenger, mode).includes(quotaId),
-      ),
-    ) ?? "GN"
-  );
-}
-
-export function selectBestAvailableQuota(
-  passengers: Passenger[],
-  mode: SearchInput["mode"],
-  quotaAvailability: QuotaSeatAvailability[],
-  requiredSeats: number,
-) {
-  const preferredQuotaId = selectEligibleQuota(passengers, mode);
-  const eligibleQuotaIds = new Set<string>(
-    DISPLAY_QUOTA_IDS.filter((quotaId) =>
-      passengers.every((passenger) =>
-        passengerEligibleQuotaIds(passenger, mode).includes(quotaId),
-      ),
-    ),
-  );
-  const priority = ["HP", "SS", "RE", "DF", "FT", "LD", "DP", "GN"];
-  const outcomeRank = (item: QuotaSeatAvailability) => {
-    if (item.status === "AVAILABLE" && item.number >= requiredSeats) return 4;
-    if (item.status === "RAC") return 3;
-    if (item.status === "WAITLIST") return 2;
-    if (item.status === "AVAILABLE") return 1;
-    return 0;
-  };
-  const preferredAvailability = quotaAvailability.find(
-    (item) => item.quotaId === preferredQuotaId,
-  );
-
-  if (preferredAvailability && outcomeRank(preferredAvailability) === 4)
-    return {
-      quotaId: preferredQuotaId,
-      preferredQuotaId,
-      usedFallback: false,
-    };
-
-  const best = quotaAvailability
-    .filter((item) => eligibleQuotaIds.has(item.quotaId))
-    .sort(
-      (a, b) =>
-        outcomeRank(b) - outcomeRank(a) ||
-        priority.indexOf(a.quotaId) - priority.indexOf(b.quotaId),
-    )[0];
-  const quotaId = best?.quotaId ?? preferredQuotaId;
-  return {
-    quotaId,
-    preferredQuotaId,
-    usedFallback: quotaId !== preferredQuotaId,
-  };
-}
-
-const quotaDiscountRates: Record<string, number> = {
-  HP: 0.5,
-  SS: 0.4,
-  RE: 0.15,
-  DF: 0.1,
-  FT: 0.05,
-};
-
-export function calculateFareBreakdown(baseFare: number, quotaId: string) {
-  const discountRate = quotaDiscountRates[quotaId] ?? 0;
-  const discount = Math.round(baseFare * discountRate);
-  const discountedFare = baseFare - discount;
-  const serviceFee = Math.round(discountedFare * 0.035);
-  const gst = Math.round(discountedFare * 0.05);
-
-  return {
-    discountRate,
-    discount,
-    discountedFare,
-    serviceFee,
-    gst,
-    total: discountedFare + serviceFee + gst,
-  };
-}
+export {
+  calculateFareBreakdown,
+  formatDuration,
+  MEAL_PRICE,
+  passengerEligibleQuotaIds,
+  quotaEligibility,
+  selectBestAvailableQuota,
+  selectEligibleQuota,
+} from "./journey-utils";

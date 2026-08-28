@@ -2,7 +2,7 @@
 import { Suspense, useState } from "react";
 import { useRouter, useSearchParams } from "next/navigation";
 import { WandSparkles } from "lucide-react";
-import { cityById, hotels, tourism } from "@/lib/data";
+import { cityById, hotels, tourism } from "@/lib/tourism-data";
 import { saveStorage, savedItineraries, storageKeys } from "@/lib/storage";
 import type { Itinerary, ItineraryDay } from "@/lib/types";
 import { useApp } from "@/components/providers";
