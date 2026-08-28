@@ -41,7 +41,7 @@ import { CLASSSELECTIONLIST, cn } from "@/lib/utils";
 import { useResponsive } from "@/hooks/use-responsive";
 import { Button } from "@/components/ui/button";
 
-const modes: BookingMode[] = ["tatkal", "quick", "explore", "tourism"];
+const modes: BookingMode[] = ["tatkal", "quick", "explore"];
 
 function formatLocalDate(date: Date) {
   const year = date.getFullYear();
@@ -99,7 +99,6 @@ export function SearchCard({
       ),
     }));
   const submit = () => {
-    if (mode === "tourism") return router.push("/tourism");
     if (mode === "tatkal" && date !== tomorrowDate())
       return setError(t("components.searchCard.tatkalDateOnly"));
     if (mode !== "tatkal" && date < todayDate())

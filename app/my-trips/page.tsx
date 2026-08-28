@@ -333,12 +333,14 @@ export default function MyTripsPage() {
                         {t("pages.myTrips.bookAgain")}
                       </Button>
                       <Button
+                        asChild
                         variant="ghost"
                         className="w-full sm:w-auto"
-                        onClick={() => window.print()}
                       >
-                        <Download />
-                        {t("pages.myTrips.download")}
+                        <Link href={`/booking/${booking.pnr}?print=1`}>
+                          <Download />
+                          {t("pages.myTrips.download")}
+                        </Link>
                       </Button>
                     </>
                   )}

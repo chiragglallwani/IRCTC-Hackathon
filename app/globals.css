@@ -637,3 +637,97 @@ input::placeholder {
 .leg-mini svg {
   width: 18px;
 }
+.ticket-print-header,
+.ticket-print-note {
+  display: none;
+}
+@media print {
+  @page {
+    size: A4 portrait;
+    margin: 12mm;
+  }
+  html,
+  body {
+    background: #fff !important;
+  }
+  body * {
+    visibility: hidden;
+  }
+  .printable-ticket,
+  .printable-ticket * {
+    visibility: visible;
+  }
+  .printable-ticket {
+    position: absolute;
+    inset: 0;
+    width: 100%;
+    color: #111;
+    font-size: 10pt;
+    line-height: 1.35;
+    print-color-adjust: exact;
+    -webkit-print-color-adjust: exact;
+  }
+  .ticket-print-header {
+    display: flex;
+    align-items: center;
+    justify-content: space-between;
+    gap: 20px;
+    margin-bottom: 12px;
+    border-bottom: 2px solid #003d9b;
+    padding-bottom: 10px;
+  }
+  .ticket-print-header div {
+    display: grid;
+    gap: 3px;
+    text-align: end;
+  }
+  .ticket-print-header strong {
+    color: #003d9b;
+    font-size: 15pt;
+  }
+  .ticket-print-header span {
+    font-weight: 700;
+  }
+  .printable-ticket .card {
+    border-color: #b7becb;
+    border-radius: 8px;
+    box-shadow: none;
+  }
+  .printable-ticket .checkout-section {
+    margin-top: 10px;
+    padding: 14px;
+  }
+  .printable-ticket h1 {
+    font-size: 20pt;
+  }
+  .printable-ticket h2 {
+    font-size: 15pt;
+  }
+  .printable-ticket h3 {
+    font-size: 11.5pt;
+  }
+  .printable-ticket .ticket-leg-list,
+  .printable-ticket .passenger-cards {
+    grid-template-columns: repeat(2, minmax(0, 1fr));
+  }
+  .printable-ticket .passenger-card {
+    padding: 10px;
+  }
+  .print-hide {
+    display: none !important;
+  }
+  .ticket-print-note {
+    display: block;
+    margin: 14px 0 0;
+    border-top: 1px solid #d7dbe5;
+    padding-top: 8px;
+    color: #5d6270;
+    font-size: 8pt;
+    text-align: center;
+  }
+  .break-inside-avoid,
+  .printable-ticket > section:first-of-type {
+    break-inside: avoid;
+    page-break-inside: avoid;
+  }
+}
