@@ -28,28 +28,40 @@ const DialogContent = React.forwardRef<
   React.ElementRef<typeof DialogPrimitive.Content>,
   React.ComponentPropsWithoutRef<typeof DialogPrimitive.Content> & {
     closeLabel?: string;
+    showClose?: boolean;
   }
->(({ className, children, closeLabel = "Close", ...props }, ref) => (
-  <DialogPortal>
-    <DialogOverlay />
-    <DialogPrimitive.Content
-      ref={ref}
-      className={cn(
-        "fixed left-1/2 top-1/2 z-[81] grid w-[min(500px,calc(100%_-_32px))] -translate-x-1/2 -translate-y-1/2 gap-[18px] rounded-2xl bg-white p-6 shadow-[0_24px_80px_#0004] outline-none min-[901px]:p-8",
-        className,
-      )}
-      {...props}
-    >
-      {children}
-      <DialogPrimitive.Close asChild>
-        <Button variant="ghost" size="icon" className="absolute end-4 top-4">
-          <X />
-          <span className="sr-only">{closeLabel}</span>
-        </Button>
-      </DialogPrimitive.Close>
-    </DialogPrimitive.Content>
-  </DialogPortal>
-));
+>(
+  (
+    { className, children, closeLabel = "Close", showClose = true, ...props },
+    ref,
+  ) => (
+    <DialogPortal>
+      <DialogOverlay />
+      <DialogPrimitive.Content
+        ref={ref}
+        className={cn(
+          "fixed left-1/2 top-1/2 z-[81] grid w-[min(500px,calc(100%_-_32px))] -translate-x-1/2 -translate-y-1/2 gap-[18px] rounded-2xl bg-white p-6 shadow-[0_24px_80px_#0004] outline-none min-[901px]:p-8",
+          className,
+        )}
+        {...props}
+      >
+        {children}
+        {showClose && (
+          <DialogPrimitive.Close asChild>
+            <Button
+              variant="ghost"
+              size="icon"
+              className="absolute end-4 top-4"
+            >
+              <X />
+              <span className="sr-only">{closeLabel}</span>
+            </Button>
+          </DialogPrimitive.Close>
+        )}
+      </DialogPrimitive.Content>
+    </DialogPortal>
+  ),
+);
 DialogContent.displayName = DialogPrimitive.Content.displayName;
 
 const DialogHeader = ({

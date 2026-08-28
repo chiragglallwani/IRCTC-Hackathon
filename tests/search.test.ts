@@ -24,13 +24,17 @@ describe("data-driven journey search", () => {
     const results = searchJourneys(input);
     expect(results.length).toBeGreaterThan(0);
     expect(results[0].legs.length).toBeGreaterThan(0);
-    expect(results[0].legs.every((leg) => leg.ticketOptions.length > 0)).toBe(
-      true,
-    );
     expect(
-      results[0].legs.every((leg) =>
-        leg.ticketOptions.every(
-          (ticket) => ticket.quotas.length === DISPLAY_QUOTA_IDS.length,
+      results.every((journey) =>
+        journey.legs.every((leg) => leg.ticketOptions.length > 0),
+      ),
+    ).toBe(true);
+    expect(
+      results.every((journey) =>
+        journey.legs.every((leg) =>
+          leg.ticketOptions.every(
+            (ticket) => ticket.quotas.length === DISPLAY_QUOTA_IDS.length,
+          ),
         ),
       ),
     ).toBe(true);

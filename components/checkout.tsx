@@ -399,6 +399,12 @@ export function ConfirmJourney() {
   const activeLegIndex = context.journey.legs.findIndex(
     (leg) => leg.id === activeLeg?.id,
   );
+  const activeLegTicket = activeLeg?.ticketOptions.find(
+    (ticket) => ticket.travelClass === activeLeg.travelClass,
+  );
+  const displayedQuotaAvailability = isMultiLeg
+    ? activeLegTicket
+    : selectedAvailability;
   const passengerCount = Math.max(
     1,
     context.input.adults + context.input.children,
@@ -653,8 +659,8 @@ export function ConfirmJourney() {
                   ))}
                 </div>
                 {activeLeg && (
-                  <div className="mt-3 grid gap-4 rounded-xl border border-[#cdd8ee] bg-[#f8faff] p-4 md:grid-cols-[1fr_240px] md:items-end">
-                    <div>
+                  <div className="mt-3 grid min-w-0 gap-4 overflow-hidden rounded-xl border border-[#cdd8ee] bg-[#f8faff] p-4 md:grid-cols-[minmax(0,1fr)_minmax(0,280px)] md:items-end">
+                    <div className="min-w-0">
                       <strong>
                         {t("components.journeyCard.ticketsForLeg", {
                           leg: activeLegIndex + 1,
@@ -664,22 +670,16 @@ export function ConfirmJourney() {
                         {activeLeg.from.code} → {activeLeg.to.code} ·{" "}
                         {activeLeg.serviceName} · {activeLeg.serviceNumber}
                       </span>
-                      {(() => {
-                        const selectedTicket = activeLeg.ticketOptions.find(
-                          (ticket) =>
-                            ticket.travelClass === activeLeg.travelClass,
-                        );
-                        return selectedTicket ? (
-                          <Badge
-                            className="mt-2"
-                            variant={availabilityVariant(selectedTicket.status)}
-                          >
-                            {seatAvailabilityText(t, selectedTicket)}
-                          </Badge>
-                        ) : null;
-                      })()}
+                      {activeLegTicket && (
+                        <Badge
+                          className="mt-2"
+                          variant={availabilityVariant(activeLegTicket.status)}
+                        >
+                          {seatAvailabilityText(t, activeLegTicket)}
+                        </Badge>
+                      )}
                     </div>
-                    <label>
+                    <label className="min-w-0">
                       {t("pages.checkout.confirm.ticketForLeg")}
                       <Select
                         value={activeLeg.travelClass}
@@ -687,10 +687,13 @@ export function ConfirmJourney() {
                           updateLegTicket(activeLeg.id, value)
                         }
                       >
-                        <SelectTrigger>
-                          <SelectValue />
+                        <SelectTrigger className="min-w-0 max-w-full">
+                          <SelectValue>
+                            {activeLeg.travelClass} · ₹
+                            {activeLeg.fare.toLocaleString(locale)}
+                          </SelectValue>
                         </SelectTrigger>
-                        <SelectContent>
+                        <SelectContent className="max-w-[calc(100vw_-_2rem)]">
                           {activeLeg.ticketOptions.map((ticket) => (
                             <SelectItem
                               key={ticket.travelClass}
@@ -734,40 +737,45 @@ export function ConfirmJourney() {
                 </label>
               </div>
             )}
-            {!isMultiLeg && selectedAvailability.quotas.length > 0 && (
-              <div className="mt-3 rounded-lg border border-[#cdd8ee] bg-[#f8faff] p-3">
-                <div className="flex flex-wrap items-center justify-between gap-2">
-                  <strong className="text-sm">
-                    {t("components.journeyCard.quotaAvailabilityFor", {
-                      class: selectedAvailability.travelClass,
-                    })}
-                  </strong>
-                  <span className="text-xs text-[var(--muted)]">
-                    {t("components.journeyCard.quotaAvailabilityNote")}
-                  </span>
+            {displayedQuotaAvailability &&
+              displayedQuotaAvailability.quotas.length > 0 && (
+                <div className="mt-3 rounded-lg border border-[#cdd8ee] bg-[#f8faff] p-3">
+                  <div className="flex flex-wrap items-center justify-between gap-2">
+                    <strong className="text-sm">
+                      {t("components.journeyCard.quotaAvailabilityFor", {
+                        class: displayedQuotaAvailability.travelClass,
+                      })}
+                    </strong>
+                    <span className="text-xs text-[var(--muted)]">
+                      {t("components.journeyCard.quotaAvailabilityNote")}
+                    </span>
+                  </div>
+                  <div className="mt-2 grid grid-cols-2 gap-1.5 xl:grid-cols-4">
+                    {displayedQuotaAvailability.quotas.map(
+                      (quotaAvailability) => (
+                        <div
+                          className="flex min-w-0 items-center justify-between gap-2 rounded-md border border-[var(--line)] bg-white px-2.5 py-2"
+                          key={quotaAvailability.quotaId}
+                        >
+                          <span className="truncate text-xs font-semibold">
+                            {t(
+                              `common.quotas.${quotaAvailability.quotaId.toLowerCase()}.name`,
+                            )}
+                          </span>
+                          <Badge
+                            className="px-2 py-0.5 text-[11px]"
+                            variant={availabilityVariant(
+                              quotaAvailability.status,
+                            )}
+                          >
+                            {seatAvailabilityText(t, quotaAvailability)}
+                          </Badge>
+                        </div>
+                      ),
+                    )}
+                  </div>
                 </div>
-                <div className="mt-2 grid grid-cols-2 gap-1.5 xl:grid-cols-4">
-                  {selectedAvailability.quotas.map((quotaAvailability) => (
-                    <div
-                      className="flex min-w-0 items-center justify-between gap-2 rounded-md border border-[var(--line)] bg-white px-2.5 py-2"
-                      key={quotaAvailability.quotaId}
-                    >
-                      <span className="truncate text-xs font-semibold">
-                        {t(
-                          `common.quotas.${quotaAvailability.quotaId.toLowerCase()}.name`,
-                        )}
-                      </span>
-                      <Badge
-                        className="px-2 py-0.5 text-[11px]"
-                        variant={availabilityVariant(quotaAvailability.status)}
-                      >
-                        {seatAvailabilityText(t, quotaAvailability)}
-                      </Badge>
-                    </div>
-                  ))}
-                </div>
-              </div>
-            )}
+              )}
             <p className="mt-3 text-sm text-[var(--muted)]">
               {t("pages.checkout.confirm.autoQuotaNextStep")}
             </p>

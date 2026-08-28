@@ -2,7 +2,6 @@
 import { memo, useEffect, useState } from "react";
 import { useRouter } from "next/navigation";
 import {
-  Armchair,
   BusFront,
   Check,
   ChevronDown,
@@ -10,7 +9,6 @@ import {
   Info,
   Sparkles,
   TrainFront,
-  Users,
 } from "lucide-react";
 import { quotas } from "@/lib/quotas";
 import { formatDuration } from "@/lib/journey-utils";
@@ -26,7 +24,7 @@ import { useApp } from "./providers";
 import { Badge, type BadgeVariant } from "@/components/ui/badge";
 import { Button } from "@/components/ui/button";
 import { JourneyRoute } from "@/components/journey-route";
-import { cn, getClassTranslationKey } from "@/lib/utils";
+import { cn } from "@/lib/utils";
 
 function statusVariant(status: AvailabilityStatus): BadgeVariant {
   return status === "AVAILABLE"
@@ -47,28 +45,11 @@ export const JourneyCard = memo(function JourneyCard({
   const { locale, user, setAuthOpen, t } = useApp();
   const [expanded, setExpanded] = useState(false);
   const [whyOpen, setWhyOpen] = useState(false);
-  const [activeLegId, setActiveLegId] = useState(journey.legs[0]?.id ?? "");
-  const [selectedClass, setSelectedClass] = useState<string | null>(() =>
-    input.travelClass !== "ANY" &&
-    journey.classAvailability.some(
-      (item) => item.travelClass === input.travelClass,
-    )
-      ? input.travelClass
-      : null,
-  );
+  const [activeLegId, setActiveLegId] = useState("");
+  const [selectedClass, setSelectedClass] = useState<string | null>(null);
   const [selectedLegClasses, setSelectedLegClasses] = useState<
     Record<string, string>
-  >(() =>
-    Object.fromEntries(
-      journey.legs.map((leg) => [
-        leg.id,
-        leg.ticketOptions.find((item) => item.travelClass === input.travelClass)
-          ?.travelClass ??
-          leg.ticketOptions[0]?.travelClass ??
-          leg.travelClass,
-      ]),
-    ),
-  );
+  >({});
   const [pendingAuth, setPendingAuth] = useState(false);
   const selectedAvailability = journey.classAvailability.find(
     (item) => item.travelClass === selectedClass,
@@ -78,25 +59,53 @@ export const JourneyCard = memo(function JourneyCard({
       (item) => item.travelClass === selectedLegClasses[leg.id],
     ),
   );
-  const activeLeg =
-    journey.legs.find((leg) => leg.id === activeLegId) ?? journey.legs[0];
+  const activeLeg = journey.legs.find((leg) => leg.id === activeLegId);
   const activeLegIndex = journey.legs.findIndex(
     (leg) => leg.id === activeLeg?.id,
   );
+  const activeLegTicket = activeLeg?.ticketOptions.find(
+    (ticket) => ticket.travelClass === selectedLegClasses[activeLeg.id],
+  );
+  const displayedQuotaAvailability =
+    journey.legs.length > 1 ? activeLegTicket : selectedAvailability;
   const displayedFare =
     journey.legs.length > 1
-      ? selectedLegOptions.reduce((sum, item) => sum + (item?.fare ?? 0), 0)
+      ? selectedLegOptions.reduce(
+          (sum, item, index) =>
+            sum +
+            (item?.fare ??
+              Math.min(
+                ...journey.legs[index].ticketOptions.map(
+                  (ticket) => ticket.fare,
+                ),
+              )),
+          0,
+        )
       : (selectedAvailability?.fare ??
         Math.min(...journey.classAvailability.map((item) => item.fare)));
   const proceed = () => {
-    if (journey.legs.length === 1 && !selectedAvailability) return;
-    if (
-      journey.legs.length > 1 &&
-      selectedLegOptions.some((item) => !item || item.status === "REGRET")
-    )
-      return;
+    const checkoutAvailability =
+      selectedAvailability ??
+      journey.classAvailability.find((item) => item.status !== "REGRET") ??
+      journey.classAvailability[0];
+    const checkoutLegTickets = journey.legs.map((leg, index) => {
+      const selectedTicket = selectedLegOptions[index];
+      if (selectedTicket) return selectedTicket;
+      if (journey.legs.length === 1 && checkoutAvailability) {
+        const matchingTicket = leg.ticketOptions.find(
+          (ticket) => ticket.travelClass === checkoutAvailability.travelClass,
+        );
+        if (matchingTicket) return matchingTicket;
+      }
+      return (
+        [...leg.ticketOptions]
+          .filter((ticket) => ticket.status !== "REGRET")
+          .sort((a, b) => a.fare - b.fare)[0] ??
+        [...leg.ticketOptions].sort((a, b) => a.fare - b.fare)[0]
+      );
+    });
     const selectedLegs = journey.legs.map((leg, index) => {
-      const ticket = selectedLegOptions[index];
+      const ticket = checkoutLegTickets[index];
       return ticket
         ? {
             ...leg,
@@ -123,16 +132,24 @@ export const JourneyCard = memo(function JourneyCard({
     const effectiveClass =
       journey.legs.length > 1
         ? selectedLegs.map((leg) => leg.travelClass).join(" + ")
-        : selectedAvailability!.travelClass;
+        : (checkoutAvailability?.travelClass ?? selectedLegs[0].travelClass);
+    const checkoutFare =
+      journey.legs.length > 1
+        ? checkoutLegTickets.reduce(
+            (sum, ticket, index) =>
+              sum + (ticket?.fare ?? journey.legs[index].fare),
+            0,
+          )
+        : (checkoutAvailability?.fare ?? selectedLegs[0].fare);
     const selectedJourney: Journey = {
       ...journey,
-      totalFare: displayedFare,
+      totalFare: checkoutFare,
       availability:
-        selectedLegOptions.find((item) => item?.status === "REGRET")?.status ??
-        selectedLegOptions.find((item) => item?.status === "WAITLIST")
+        checkoutLegTickets.find((item) => item?.status === "REGRET")?.status ??
+        checkoutLegTickets.find((item) => item?.status === "WAITLIST")
           ?.status ??
-        selectedLegOptions.find((item) => item?.status === "RAC")?.status ??
-        selectedAvailability?.status ??
+        checkoutLegTickets.find((item) => item?.status === "RAC")?.status ??
+        checkoutAvailability?.status ??
         "AVAILABLE",
       legs: selectedLegs,
     };
@@ -150,29 +167,11 @@ export const JourneyCard = memo(function JourneyCard({
     if (user && pendingAuth) router.push("/checkout");
   }, [user, pendingAuth, router]);
   useEffect(() => {
-    setSelectedClass(
-      input.travelClass !== "ANY" &&
-        journey.classAvailability.some(
-          (item) => item.travelClass === input.travelClass,
-        )
-        ? input.travelClass
-        : null,
-    );
+    setSelectedClass(null);
   }, [input.date, input.travelClass, journey.classAvailability]);
   useEffect(() => {
-    setSelectedLegClasses(
-      Object.fromEntries(
-        journey.legs.map((leg) => [
-          leg.id,
-          leg.ticketOptions.find(
-            (item) => item.travelClass === input.travelClass,
-          )?.travelClass ??
-            leg.ticketOptions[0]?.travelClass ??
-            leg.travelClass,
-        ]),
-      ),
-    );
-    setActiveLegId(journey.legs[0]?.id ?? "");
+    setSelectedLegClasses({});
+    setActiveLegId("");
   }, [input.date, input.travelClass, journey.legs]);
 
   const renderAvailability = (
@@ -271,7 +270,7 @@ export const JourneyCard = memo(function JourneyCard({
             </button>
           ))}
         </div>
-        {journey.legs.length > 1 && activeLeg && (
+        {activeLeg && (
           <section className="mt-4 rounded-xl border border-[#cdd8ee] bg-[#f8faff] p-4">
             <div className="flex flex-wrap items-center justify-between gap-2">
               <div>
@@ -289,27 +288,44 @@ export const JourneyCard = memo(function JourneyCard({
                 {t("components.journeyCard.selectLegHint")}
               </span>
             </div>
-            <div className="mt-3 grid grid-cols-2 gap-2 md:grid-cols-3 2xl:grid-cols-4">
+            <div
+              className="mt-3 grid grid-cols-2 gap-2 md:grid-cols-3 2xl:grid-cols-4"
+              role="radiogroup"
+              aria-label={t("components.journeyCard.ticketsForLeg", {
+                leg: activeLegIndex + 1,
+              })}
+            >
               {activeLeg.ticketOptions.map((ticket) => {
                 const selected =
-                  selectedLegClasses[activeLeg.id] === ticket.travelClass;
+                  journey.legs.length === 1
+                    ? selectedClass === ticket.travelClass
+                    : selectedLegClasses[activeLeg.id] === ticket.travelClass;
                 return (
                   <button
                     type="button"
+                    role="radio"
+                    aria-checked={selected}
                     key={ticket.travelClass}
                     className={cn(
-                      "rounded-lg border bg-white p-3 text-start text-sm transition",
+                      "relative rounded-lg border bg-white p-3 text-start text-sm transition focus-visible:outline-none focus-visible:ring-2 focus-visible:ring-[var(--primary)]",
                       selected
                         ? "border-2 border-[var(--primary)] bg-[#eef3ff]"
                         : "border-[var(--line)] hover:border-[var(--primary)]",
                     )}
-                    onClick={() =>
+                    onClick={() => {
                       setSelectedLegClasses((current) => ({
                         ...current,
                         [activeLeg.id]: ticket.travelClass,
-                      }))
-                    }
+                      }));
+                      if (journey.legs.length === 1)
+                        setSelectedClass(ticket.travelClass);
+                    }}
                   >
+                    {selected && (
+                      <span className="absolute end-2 top-2 grid size-4 place-items-center rounded-full bg-[var(--primary)] text-white">
+                        <Check className="size-3.5" />
+                      </span>
+                    )}
                     <strong>{ticket.travelClass}</strong>
                     <span className="block">
                       ₹{ticket.fare.toLocaleString(locale)}
@@ -324,76 +340,13 @@ export const JourneyCard = memo(function JourneyCard({
                 );
               })}
             </div>
-          </section>
-        )}
-        {journey.legs.length === 1 && (
-          <section className="mt-4 border-t border-[var(--line)] pt-4">
-            <div className="flex flex-wrap items-end justify-between gap-2">
-              <div>
-                <h3>{t("components.journeyCard.seatsByClass")}</h3>
-                <p className="mt-1 text-sm text-[var(--muted)]">
-                  {t("components.journeyCard.selectClassHint")}
-                </p>
-              </div>
-              <span className="flex items-center gap-2 text-sm text-[var(--muted)]">
-                <Users className="size-4" />
-                {t("components.journeyCard.passengers", {
-                  count: Math.max(1, input.adults + input.children),
-                })}
-              </span>
-            </div>
-            <div
-              className="mt-3 grid grid-cols-2 gap-2 md:grid-cols-3 2xl:grid-cols-4"
-              role="radiogroup"
-              aria-label={t("components.journeyCard.seatsByClass")}
-            >
-              {journey.classAvailability.map((item) => {
-                const selected = item.travelClass === selectedClass;
-                return (
-                  <button
-                    type="button"
-                    role="radio"
-                    aria-checked={selected}
-                    className={cn(
-                      "relative min-w-0 rounded-lg border bg-white px-3 py-2.5 text-start transition hover:border-[var(--primary)] hover:bg-[#f8faff] focus-visible:outline-none focus-visible:ring-2 focus-visible:ring-[var(--primary)]",
-                      selected
-                        ? "border-2 border-[var(--primary)] bg-[#f4f7ff]"
-                        : "border-[var(--line)]",
-                    )}
-                    key={item.travelClass}
-                    onClick={() => setSelectedClass(item.travelClass)}
-                  >
-                    {selected && (
-                      <span className="absolute end-2 top-2 grid size-4 place-items-center rounded-full bg-[var(--primary)] text-white">
-                        <Check className="size-3.5" />
-                      </span>
-                    )}
-                    <div className="pe-5">
-                      <strong className="block truncate text-sm">
-                        {t(getClassTranslationKey(item.travelClass))}
-                      </strong>
-                      <span className="mt-0.5 block text-xs text-[var(--muted)]">
-                        ₹{item.fare.toLocaleString(locale)}
-                      </span>
-                    </div>
-                    <Badge
-                      className="mt-2 max-w-full px-2 py-0.5 text-[11px]"
-                      variant={statusVariant(item.status)}
-                    >
-                      {item.status === "AVAILABLE" && <Armchair />}
-                      {renderAvailability(item)}
-                    </Badge>
-                  </button>
-                );
-              })}
-            </div>
-            {selectedAvailability ? (
-              <div className="mt-3 rounded-lg border border-[#cdd8ee] bg-[#f8faff] p-3">
+            {displayedQuotaAvailability && (
+              <div className="mt-3 rounded-lg border border-[#cdd8ee] bg-white p-3">
                 <div className="flex flex-wrap items-center justify-between gap-2">
                   <div>
                     <h3>
                       {t("components.journeyCard.quotaAvailabilityFor", {
-                        class: selectedAvailability.travelClass,
+                        class: displayedQuotaAvailability.travelClass,
                       })}
                     </h3>
                     <p className="mt-1 text-sm text-[var(--muted)]">
@@ -402,44 +355,42 @@ export const JourneyCard = memo(function JourneyCard({
                   </div>
                   <Badge variant="secondary">
                     {t("components.journeyCard.classSelected", {
-                      class: selectedAvailability.travelClass,
+                      class: displayedQuotaAvailability.travelClass,
                     })}
                   </Badge>
                 </div>
                 <div className="mt-3 grid grid-cols-2 gap-1.5 xl:grid-cols-4">
-                  {selectedAvailability.quotas.map((quotaAvailability) => {
-                    const quota = quotas.find(
-                      (item) => item.quotaId === quotaAvailability.quotaId,
-                    );
-                    return (
-                      <div
-                        className="flex min-w-0 items-center justify-between gap-2 rounded-md border border-[var(--line)] bg-white px-2.5 py-2"
-                        key={quotaAvailability.quotaId}
-                      >
-                        <div className="min-w-0">
-                          <strong className="block truncate text-sm">
-                            {t(
-                              `common.quotas.${quotaAvailability.quotaId.toLowerCase()}.name`,
-                            )}
-                          </strong>
-                          <span className="text-[11px] text-[var(--muted)]">
-                            {quota?.shortName ?? quotaAvailability.quotaId}
-                          </span>
-                        </div>
-                        <Badge
-                          className="px-2 py-0.5 text-[11px]"
-                          variant={statusVariant(quotaAvailability.status)}
+                  {displayedQuotaAvailability.quotas.map(
+                    (quotaAvailability) => {
+                      const quota = quotas.find(
+                        (item) => item.quotaId === quotaAvailability.quotaId,
+                      );
+                      return (
+                        <div
+                          className="flex min-w-0 items-center justify-between gap-2 rounded-md border border-[var(--line)] bg-white px-2.5 py-2"
+                          key={quotaAvailability.quotaId}
                         >
-                          {renderAvailability(quotaAvailability)}
-                        </Badge>
-                      </div>
-                    );
-                  })}
+                          <div className="min-w-0">
+                            <strong className="block truncate text-sm">
+                              {t(
+                                `common.quotas.${quotaAvailability.quotaId.toLowerCase()}.name`,
+                              )}
+                            </strong>
+                            <span className="text-[11px] text-[var(--muted)]">
+                              {quota?.shortName ?? quotaAvailability.quotaId}
+                            </span>
+                          </div>
+                          <Badge
+                            className="px-2 py-0.5 text-[11px]"
+                            variant={statusVariant(quotaAvailability.status)}
+                          >
+                            {renderAvailability(quotaAvailability)}
+                          </Badge>
+                        </div>
+                      );
+                    },
+                  )}
                 </div>
-              </div>
-            ) : (
-              <div className="mt-4 rounded-xl border border-dashed border-[#bfc5d4] bg-[#fbfcfe] p-4 text-sm text-[var(--muted)]">
-                {t("components.journeyCard.chooseClassForQuotas")}
               </div>
             )}
           </section>
@@ -457,7 +408,7 @@ export const JourneyCard = memo(function JourneyCard({
             </ul>
           </div>
         )}
-        <div className="journey-actions">
+        <div className="journey-actions mt-4">
           <Button
             variant="secondary"
             aria-expanded={expanded}
@@ -468,17 +419,7 @@ export const JourneyCard = memo(function JourneyCard({
               : t("components.journeyCard.details")}
             {expanded ? <ChevronUp /> : <ChevronDown />}
           </Button>
-          <Button
-            disabled={
-              journey.legs.length > 1
-                ? selectedLegOptions.some(
-                    (item) => !item || item.status === "REGRET",
-                  )
-                : !selectedAvailability ||
-                  selectedAvailability.status === "REGRET"
-            }
-            onClick={proceed}
-          >
+          <Button onClick={proceed}>
             {t("common.actions.continueBooking")}
           </Button>
         </div>
