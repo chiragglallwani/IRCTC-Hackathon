@@ -3,7 +3,7 @@ import { useEffect, useMemo, useRef, useState } from "react";
 import { useRouter } from "next/navigation";
 import Link from "next/link";
 import { zodResolver } from "@hookform/resolvers/zod";
-import { Controller, useForm } from "react-hook-form";
+import { Controller, useForm, useWatch } from "react-hook-form";
 import { z } from "zod";
 import {
   Check,
@@ -26,6 +26,7 @@ import {
   calculateFareBreakdown,
   formatDuration,
   MEAL_PRICE,
+  reservationStatusForPassenger,
   selectBestAvailableQuota,
   selectEligibleQuota,
 } from "@/lib/journey-utils";
@@ -899,7 +900,6 @@ export function PassengerDetails() {
     control,
     handleSubmit,
     reset,
-    watch,
     formState: { errors },
   } = useForm<PassengerValues>({
     resolver: zodResolver(schema),
@@ -916,10 +916,16 @@ export function PassengerDetails() {
     },
   });
 
-  const claimForeignTourist = watch("claimForeignTourist");
-  const claimDefence = watch("claimDefence");
-  const claimDisability = watch("claimDisability");
-  const claimRailwayEmployee = watch("claimRailwayEmployee");
+  const claimForeignTourist = useWatch({
+    control,
+    name: "claimForeignTourist",
+  });
+  const claimDefence = useWatch({ control, name: "claimDefence" });
+  const claimDisability = useWatch({ control, name: "claimDisability" });
+  const claimRailwayEmployee = useWatch({
+    control,
+    name: "claimRailwayEmployee",
+  });
   useEffect(() => {
     const storedPassengers = savedPassengers();
     const checkoutPassengers = context?.passengers ?? [];
@@ -1600,7 +1606,14 @@ export function Payment() {
       userId: user?.id ?? "prototype-user",
       journey: context.journey,
       date: context.input.date,
-      passengers: context.passengers ?? [],
+      passengers: (context.passengers ?? []).map((passenger, index) => ({
+        ...passenger,
+        reservationStatus: reservationStatusForPassenger(
+          context.journey,
+          context.quota,
+          index,
+        ),
+      })),
       travelClass: context.input.travelClass,
       quota: context.quota,
       fare: amount,

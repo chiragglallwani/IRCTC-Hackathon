@@ -7,6 +7,11 @@ export const metadata: Metadata = {
   title: "RailEase — Journey planning made clear",
   description:
     "Citizen-first multimodal railway and tourism planning prototype",
+  icons: {
+    icon: "/images/logo.png",
+    shortcut: "/images/logo.png",
+    apple: "/images/logo.png",
+  },
 };
 export default function RootLayout({
   children,

@@ -204,6 +204,10 @@ export interface Passenger {
   railwayEmployeeId?: string;
   saveForFuture?: boolean;
   mealRequested?: boolean;
+  reservationStatus?: {
+    status: "CONFIRMED" | "RAC" | "WAITLIST";
+    position?: number;
+  };
 }
 export interface Booking {
   bookingId: string;

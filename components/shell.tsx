@@ -1,12 +1,12 @@
 "use client";
 import Link from "next/link";
+import Image from "next/image";
 import { usePathname } from "next/navigation";
 import {
   Accessibility,
   Bot,
   Minus,
   Plus,
-  TrainFront,
   UserCircle,
   X,
   HomeIcon,
@@ -84,6 +84,16 @@ function navIcons({ key }: { key: string }) {
   return <IconComponent size={20} />;
 }
 
+function navLinkIsActive(pathname: string, route: string) {
+  if (route === "/") return pathname === route;
+  if (route === "/tourism/bookings") return pathname.startsWith(route);
+  if (route === "/tourism")
+    return (
+      pathname.startsWith(route) && !pathname.startsWith("/tourism/bookings")
+    );
+  return pathname === route || pathname.startsWith(`${route}/`);
+}
+
 export function Header() {
   const pathname = usePathname();
   const {
@@ -102,27 +112,26 @@ export function Header() {
   return (
     <>
       <header className="sticky top-0 z-50 flex h-[72px] items-center gap-[42px] border-b border-[var(--line)] bg-white px-[18px] lg:h-[88px] lg:px-[max(24px,calc((100vw_-_1280px)/2))] [&>button_span]:hidden">
-        <Link
-          href="/"
-          className="flex items-center gap-2.5 whitespace-nowrap text-[25px] font-extrabold tracking-[-0.03em] text-[var(--primary-dark)] lg:text-[30px] [&_svg]:h-[30px] [&_svg]:w-[30px]"
-        >
-          <TrainFront />
-          <span>{t("common.brand")}</span>
+        <Link href="/" className="flex shrink-0 items-center">
+          <Image
+            src="/images/logo.png"
+            alt={t("common.brand")}
+            width={150}
+            height={70}
+            priority
+            className="h-[58px] w-[104px] object-contain sm:w-[122px] lg:h-[72px] lg:w-[150px]"
+          />
         </Link>
         <nav
           className="mx-auto hidden h-full items-stretch gap-[34px] lg:flex"
           aria-label={t("navigation.primary.label")}
         >
-          {links.map((item, i) => (
+          {links.map((item) => (
             <Link
               key={item.key}
               href={item.route}
               className={`flex items-center whitespace-nowrap border-b-[3px] font-semibold text-[#454957] hover:border-[var(--primary)] hover:text-[var(--primary-dark)] ${
-                (pathname === item.route ||
-                  (item.route === "/tourism" &&
-                    pathname.startsWith("/tourism/") &&
-                    pathname !== "/tourism/bookings")) &&
-                (item.route !== "/" || i === 0)
+                navLinkIsActive(pathname, item.route)
                   ? "border-[var(--primary)] text-[var(--primary-dark)]"
                   : "border-transparent"
               }`}
@@ -376,29 +385,21 @@ export function MobileNav() {
   const pathname = usePathname();
   return (
     <nav
-      className="fixed inset-x-0 bottom-0 z-[55] flex h-[70px] border-t border-[var(--line)] bg-white lg:hidden [&_a]:flex [&_a]:flex-1 [&_a]:flex-col [&_a]:items-center [&_a]:justify-center [&_a]:text-[0.72rem] [&_svg]:w-[22px]"
+      className="fixed inset-x-0 bottom-0 z-[55] grid h-[calc(72px_+_env(safe-area-inset-bottom))] grid-cols-5 border-t border-[var(--line)] bg-white pb-[env(safe-area-inset-bottom)] shadow-[0_-6px_24px_#00000012] lg:hidden [&_a]:flex [&_a]:min-w-0 [&_a]:flex-col [&_a]:items-center [&_a]:justify-center [&_a]:gap-1 [&_a]:border-t-2 [&_a]:px-1 [&_a]:text-center [&_a]:text-[0.64rem] [&_a]:leading-tight [&_svg]:h-5 [&_svg]:w-5 [&_svg]:shrink-0 min-[390px]:[&_a]:text-[0.7rem]"
       aria-label={t("navigation.mobile.label")}
     >
-      {links.map((item, i) => (
+      {links.map((item) => (
         <Link
           key={item.key}
           href={item.route}
-          className={`flex items-center border-b-[3px] font-semibold text-[#454957] hover:border-[var(--primary)] hover:text-[var(--primary-dark)] ${
-            (pathname === item.route ||
-              (item.route === "/tourism" &&
-                pathname.startsWith("/tourism/") &&
-                pathname !== "/tourism/bookings")) &&
-            (item.route !== "/" || i === 0)
-              ? " text-[var(--primary-dark)]"
+          className={`font-semibold text-[#454957] hover:border-[var(--primary)] hover:text-[var(--primary-dark)] ${
+            navLinkIsActive(pathname, item.route)
+              ? "border-[var(--primary)] bg-[#f4f7ff] text-[var(--primary-dark)]"
               : "border-transparent"
           }`}
         >
-          <div className="flex gap-x-2 items-center">
-            {navIcons({
-              key: item.key,
-            })}
-            {t(item.value)}
-          </div>
+          {navIcons({ key: item.key })}
+          <span className="line-clamp-2 max-w-full">{t(item.value)}</span>
         </Link>
       ))}
     </nav>

@@ -1,4 +1,10 @@
-import type { Passenger, QuotaSeatAvailability, SearchInput } from "./types";
+import type {
+  Journey,
+  JourneyLeg,
+  Passenger,
+  QuotaSeatAvailability,
+  SearchInput,
+} from "./types";
 
 const DISPLAY_QUOTA_IDS = ["GN", "LD", "SS", "DF", "FT", "HP", "DP", "RE"];
 
@@ -110,6 +116,42 @@ const quotaDiscountRates: Record<string, number> = {
 };
 
 export const MEAL_PRICE = 150;
+
+export function selectedLegAvailability(leg: JourneyLeg, quotaId: string) {
+  const ticket = leg.ticketOptions?.find(
+    (item) => item.travelClass === leg.travelClass,
+  );
+  return (
+    ticket?.quotas.find((item) => item.quotaId === quotaId) ??
+    ticket ??
+    leg.availability ??
+    undefined
+  );
+}
+
+export function reservationStatusForPassenger(
+  journey: Journey,
+  quotaId: string,
+  passengerIndex: number,
+) {
+  const rank = { AVAILABLE: 4, RAC: 3, WAITLIST: 2, REGRET: 1 } as const;
+  const limitingAvailability = journey.legs
+    .map((leg) => selectedLegAvailability(leg, quotaId))
+    .filter((item): item is NonNullable<typeof item> => Boolean(item))
+    .sort((a, b) => rank[a.status] - rank[b.status])[0];
+
+  if (!limitingAvailability || limitingAvailability.status === "AVAILABLE")
+    return { status: "CONFIRMED" as const };
+  if (limitingAvailability.status === "RAC")
+    return {
+      status: "RAC" as const,
+      position: limitingAvailability.number + passengerIndex,
+    };
+  return {
+    status: "WAITLIST" as const,
+    position: Math.max(1, limitingAvailability.number + passengerIndex),
+  };
+}
 
 export function calculateFareBreakdown(
   baseFare: number,
