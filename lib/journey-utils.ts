@@ -1,0 +1,133 @@
+import type { Passenger, QuotaSeatAvailability, SearchInput } from "./types";
+
+const DISPLAY_QUOTA_IDS = ["GN", "LD", "SS", "DF", "FT", "HP", "DP", "RE"];
+
+export function formatDuration(minutes: number) {
+  return `${Math.floor(minutes / 60)}h ${minutes % 60}m`;
+}
+
+export function quotaEligibility(
+  quotaId: string,
+  passengers: { age: number; gender: string; citizenship: string }[],
+) {
+  if (quotaId === "SS")
+    return passengers.every((passenger) =>
+      passenger.gender === "female" ? passenger.age >= 58 : passenger.age >= 60,
+    );
+  if (quotaId === "LD")
+    return passengers.every((passenger) => passenger.gender === "female");
+  if (quotaId === "FT")
+    return passengers.every((passenger) => passenger.citizenship !== "Indian");
+  return true;
+}
+
+export function passengerEligibleQuotaIds(
+  passenger: Passenger,
+  mode: SearchInput["mode"],
+) {
+  void mode;
+  const eligible = ["GN"];
+  if (passenger.gender === "female") eligible.push("LD");
+  if (passenger.gender === "female" ? passenger.age >= 58 : passenger.age >= 60)
+    eligible.push("SS");
+  if (
+    passenger.citizenship !== "Indian" &&
+    passenger.claimForeignTourist &&
+    passenger.passportNumber
+  )
+    eligible.push("FT");
+  if (passenger.claimDefence && passenger.defenceServiceId) eligible.push("DF");
+  if (passenger.claimDisability && passenger.disabilityCertificate)
+    eligible.push("HP");
+  if (passenger.claimRailwayEmployee && passenger.railwayEmployeeId)
+    eligible.push("RE");
+  return eligible;
+}
+
+export function selectEligibleQuota(
+  passengers: Passenger[],
+  mode: SearchInput["mode"],
+) {
+  if (!passengers.length) return "GN";
+  const preferredQuotas = ["HP", "SS", "RE", "DF", "FT", "LD"];
+  return (
+    preferredQuotas.find((quotaId) =>
+      passengers.every((passenger) =>
+        passengerEligibleQuotaIds(passenger, mode).includes(quotaId),
+      ),
+    ) ?? "GN"
+  );
+}
+
+export function selectBestAvailableQuota(
+  passengers: Passenger[],
+  mode: SearchInput["mode"],
+  quotaAvailability: QuotaSeatAvailability[],
+  requiredSeats: number,
+) {
+  const preferredQuotaId = selectEligibleQuota(passengers, mode);
+  const eligibleQuotaIds = new Set(
+    DISPLAY_QUOTA_IDS.filter((quotaId) =>
+      passengers.every((passenger) =>
+        passengerEligibleQuotaIds(passenger, mode).includes(quotaId),
+      ),
+    ),
+  );
+  const priority = ["HP", "SS", "RE", "DF", "FT", "LD", "DP", "GN"];
+  const outcomeRank = (item: QuotaSeatAvailability) => {
+    if (item.status === "AVAILABLE" && item.number >= requiredSeats) return 4;
+    if (item.status === "RAC") return 3;
+    if (item.status === "WAITLIST") return 2;
+    if (item.status === "AVAILABLE") return 1;
+    return 0;
+  };
+  const preferredAvailability = quotaAvailability.find(
+    (item) => item.quotaId === preferredQuotaId,
+  );
+  if (preferredAvailability && outcomeRank(preferredAvailability) === 4)
+    return { quotaId: preferredQuotaId, preferredQuotaId, usedFallback: false };
+  const best = quotaAvailability
+    .filter((item) => eligibleQuotaIds.has(item.quotaId))
+    .sort(
+      (a, b) =>
+        outcomeRank(b) - outcomeRank(a) ||
+        priority.indexOf(a.quotaId) - priority.indexOf(b.quotaId),
+    )[0];
+  const quotaId = best?.quotaId ?? preferredQuotaId;
+  return {
+    quotaId,
+    preferredQuotaId,
+    usedFallback: quotaId !== preferredQuotaId,
+  };
+}
+
+const quotaDiscountRates: Record<string, number> = {
+  HP: 0.5,
+  SS: 0.4,
+  RE: 0.15,
+  DF: 0.1,
+  FT: 0.05,
+};
+
+export const MEAL_PRICE = 150;
+
+export function calculateFareBreakdown(
+  baseFare: number,
+  quotaId: string,
+  mealCost = 0,
+) {
+  const discountRate = quotaDiscountRates[quotaId] ?? 0;
+  const discount = Math.round(baseFare * discountRate);
+  const discountedFare = baseFare - discount;
+  const serviceFee = Math.round(discountedFare * 0.035);
+  const gst = Math.round(discountedFare * 0.05);
+  return {
+    discountRate,
+    discount,
+    discountedFare,
+    serviceFee,
+    gst,
+    mealCost,
+    total: discountedFare + mealCost + serviceFee + gst,
+  };
+}

@@ -25,6 +25,21 @@ interface User {
   email: string;
 }
 
+interface StoredAccount extends User {
+  passwordHash: string;
+}
+
+type AuthResult =
+  "success" | "invalid_credentials" | "account_not_found" | "email_exists";
+
+async function hashPassword(password: string) {
+  const bytes = new TextEncoder().encode(password);
+  const digest = await crypto.subtle.digest("SHA-256", bytes);
+  return Array.from(new Uint8Array(digest), (byte) =>
+    byte.toString(16).padStart(2, "0"),
+  ).join("");
+}
+
 export const MIN_FONT_SIZE = 14;
 export const MAX_FONT_SIZE = 22;
 export const FONT_SIZE_STEP = 2;
@@ -49,7 +64,12 @@ interface AppContextValue {
   highContrast: boolean;
   setHighContrast: (x: boolean) => void;
   user: User | null;
-  signIn: (email: string, name?: string) => void;
+  signIn: (email: string, password: string) => Promise<AuthResult>;
+  signUp: (
+    email: string,
+    name: string,
+    password: string,
+  ) => Promise<AuthResult>;
   signOut: () => void;
   authOpen: boolean;
   setAuthOpen: (x: boolean) => void;
@@ -111,16 +131,46 @@ export function Providers({ children }: { children: React.ReactNode }) {
         persist({ highContrast: x });
       },
       user,
-      signIn: (email, name) => {
-        const next = {
-          id: `user-${email}`,
-          name: name || email.split("@")[0],
-          email,
+      signIn: async (email, password) => {
+        const normalizedEmail = email.trim().toLowerCase();
+        const accounts = loadStorage<StoredAccount[]>(storageKeys.accounts, []);
+        const account = accounts.find((item) => item.email === normalizedEmail);
+        if (!account) return "account_not_found";
+        if (account.passwordHash !== (await hashPassword(password)))
+          return "invalid_credentials";
+        const next: User = {
+          id: account.id,
+          name: account.name,
+          email: account.email,
         };
         saveStorage(storageKeys.user, next);
         saveStorage(storageKeys.session, next);
         setUser(next);
         setAuthOpen(false);
+        return "success";
+      },
+      signUp: async (email, name, password) => {
+        const normalizedEmail = email.trim().toLowerCase();
+        const accounts = loadStorage<StoredAccount[]>(storageKeys.accounts, []);
+        if (accounts.some((item) => item.email === normalizedEmail))
+          return "email_exists";
+        const account: StoredAccount = {
+          id: `user-${normalizedEmail}`,
+          name: name.trim(),
+          email: normalizedEmail,
+          passwordHash: await hashPassword(password),
+        };
+        saveStorage(storageKeys.accounts, [account, ...accounts]);
+        const next: User = {
+          id: account.id,
+          name: account.name,
+          email: account.email,
+        };
+        saveStorage(storageKeys.user, next);
+        saveStorage(storageKeys.session, next);
+        setUser(next);
+        setAuthOpen(false);
+        return "success";
       },
       signOut: () => {
         localStorage.removeItem(storageKeys.session);

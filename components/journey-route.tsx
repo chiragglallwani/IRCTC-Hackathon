@@ -11,7 +11,7 @@ import {
 
 import { useApp } from "@/components/providers";
 import { Badge } from "@/components/ui/badge";
-import { formatDuration } from "@/lib/search";
+import { formatDuration } from "@/lib/journey-utils";
 import type { Journey, JourneyLeg, TransportMode } from "@/lib/types";
 
 const modeIcons: Record<TransportMode, LucideIcon> = {

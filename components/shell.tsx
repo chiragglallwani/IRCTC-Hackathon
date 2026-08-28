@@ -13,6 +13,7 @@ import {
   Search,
   PlaneIcon,
   PlaneTakeoff,
+  BriefcaseBusiness,
   LucideProps,
   LogOut,
 } from "lucide-react";
@@ -46,6 +47,7 @@ const IconMap: Record<string, React.ComponentType<LucideProps>> = {
   search: Search,
   tourism: PlaneIcon,
   trips: PlaneTakeoff,
+  packages: BriefcaseBusiness,
 };
 
 const links = [
@@ -63,6 +65,11 @@ const links = [
     route: "/tourism",
     key: "tourism",
     value: "navigation.primary.tourism",
+  },
+  {
+    route: "/tourism/bookings",
+    key: "packages",
+    value: "navigation.primary.packages",
   },
   {
     route: "/my-trips",
@@ -111,7 +118,11 @@ export function Header() {
               key={item.key}
               href={item.route}
               className={`flex items-center whitespace-nowrap border-b-[3px] font-semibold text-[#454957] hover:border-[var(--primary)] hover:text-[var(--primary-dark)] ${
-                pathname === item.route && (item.route !== "/" || i === 0)
+                (pathname === item.route ||
+                  (item.route === "/tourism" &&
+                    pathname.startsWith("/tourism/") &&
+                    pathname !== "/tourism/bookings")) &&
+                (item.route !== "/" || i === 0)
                   ? "border-[var(--primary)] text-[var(--primary-dark)]"
                   : "border-transparent"
               }`}
@@ -354,6 +365,7 @@ export function Footer() {
       <div className="flex gap-6 lg:ml-auto">
         <Link href="/">{t("common.actions.help")}</Link>
         <Link href="/tourism">{t("navigation.primary.tourism")}</Link>
+        <Link href="/tourism/bookings">{t("navigation.primary.packages")}</Link>
         <Link href="/my-trips">{t("navigation.primary.trips")}</Link>
       </div>
     </footer>
@@ -372,7 +384,11 @@ export function MobileNav() {
           key={item.key}
           href={item.route}
           className={`flex items-center border-b-[3px] font-semibold text-[#454957] hover:border-[var(--primary)] hover:text-[var(--primary-dark)] ${
-            pathname === item.route && (item.route !== "/" || i === 0)
+            (pathname === item.route ||
+              (item.route === "/tourism" &&
+                pathname.startsWith("/tourism/") &&
+                pathname !== "/tourism/bookings")) &&
+            (item.route !== "/" || i === 0)
               ? " text-[var(--primary-dark)]"
               : "border-transparent"
           }`}

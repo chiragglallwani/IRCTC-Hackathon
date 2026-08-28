@@ -50,7 +50,10 @@ export const supportedLanguages = [
 
 export type Language = (typeof supportedLanguages)[number];
 export type TextDirection = "ltr" | "rtl";
-export type LocaleMessages = typeof en;
+type MessageTree = { [key: string]: string | MessageTree };
+export type LocaleMessages = MessageTree & {
+  common: MessageTree & { brand: string };
+};
 
 export const languageMetadata: Record<
   Language,

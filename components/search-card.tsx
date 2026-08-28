@@ -11,7 +11,7 @@ import {
   Search,
   Users,
 } from "lucide-react";
-import { findPlaces } from "@/lib/data";
+import { findPlaces } from "@/lib/places";
 import type { BookingMode, Station } from "@/lib/types";
 import {
   Select,

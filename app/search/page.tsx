@@ -1,14 +1,13 @@
 "use client";
-import { Suspense, useMemo, useState } from "react";
+import { Suspense, useEffect, useMemo, useState } from "react";
 import { useSearchParams } from "next/navigation";
 import Link from "next/link";
 import { SearchX, SlidersHorizontal } from "lucide-react";
 import { JourneyCard } from "@/components/journey-card";
 import { SearchCard } from "@/components/search-card";
 import { useApp } from "@/components/providers";
-import { searchJourneys } from "@/lib/search";
-import { stationById } from "@/lib/data";
-import type { SearchInput } from "@/lib/types";
+import { stationById } from "@/lib/places";
+import type { Journey, SearchInput } from "@/lib/types";
 import { Checkbox } from "@/components/ui/checkbox";
 import { Badge } from "@/components/ui/badge";
 import { Button } from "@/components/ui/button";
@@ -46,16 +45,19 @@ function todayDate() {
 function SearchResults() {
   const { locale, t } = useApp();
   const params = useSearchParams();
-  const base: SearchInput = {
-    origin: params.get("origin") ?? "",
-    destination: params.get("destination") ?? "",
-    date: params.get("date") ?? "2026-08-24",
-    adults: Number(params.get("adults") ?? 1),
-    children: Number(params.get("children") ?? 0),
-    infants: Number(params.get("infants") ?? 0),
-    travelClass: params.get("class") ?? "ANY",
-    mode: (params.get("mode") as SearchInput["mode"]) ?? "explore",
-  };
+  const base = useMemo<SearchInput>(
+    () => ({
+      origin: params.get("origin") ?? "",
+      destination: params.get("destination") ?? "",
+      date: params.get("date") ?? "2026-08-24",
+      adults: Number(params.get("adults") ?? 1),
+      children: Number(params.get("children") ?? 0),
+      infants: Number(params.get("infants") ?? 0),
+      travelClass: params.get("class") ?? "ANY",
+      mode: (params.get("mode") as SearchInput["mode"]) ?? "explore",
+    }),
+    [params],
+  );
   const [date, setDate] = useState(base.date);
   const [sort, setSort] = useState("recommended");
   const [modes, setModes] = useState<string[]>([]);
@@ -63,30 +65,53 @@ function SearchResults() {
   const [onlyAvailable, setOnlyAvailable] = useState(false);
   const [maxFare, setMaxFare] = useState(10000);
   const [searchOpen, setSearchOpen] = useState(true);
-  const input = { ...base, date };
-  const raw = useMemo(
-    () =>
-      searchJourneys({
-        origin: base.origin,
-        destination: base.destination,
-        date,
-        adults: base.adults,
-        children: base.children,
-        infants: base.infants,
-        travelClass: base.travelClass,
-        mode: base.mode,
-      }),
-    [
-      base.origin,
-      base.destination,
-      date,
-      base.adults,
-      base.children,
-      base.infants,
-      base.travelClass,
-      base.mode,
-    ],
-  );
+  const [raw, setRaw] = useState<Journey[]>([]);
+  const [dateOptions, setDateOptions] = useState<
+    { value: string; recommendedFare?: number }[]
+  >([]);
+  const [loading, setLoading] = useState(false);
+  const input = useMemo(() => ({ ...base, date }), [base, date]);
+  useEffect(() => {
+    if (!input.origin || !input.destination || !input.date) return;
+    const controller = new AbortController();
+    const previewDates =
+      input.mode === "tatkal"
+        ? []
+        : [-2, -1, 0, 1, 2, 3, 4]
+            .map((offset) => dateOffset(date, offset))
+            .filter((value) => value >= todayDate());
+    setLoading(true);
+    fetch("/api/search", {
+      method: "POST",
+      headers: { "Content-Type": "application/json" },
+      body: JSON.stringify({ input, previewDates }),
+      signal: controller.signal,
+    })
+      .then(async (response) => {
+        if (!response.ok) throw new Error("Search failed");
+        return response.json() as Promise<{
+          journeys: Journey[];
+          previews: Record<string, number | undefined>;
+        }>;
+      })
+      .then(({ journeys, previews }) => {
+        setRaw(journeys);
+        setDateOptions(
+          previewDates.map((value) => ({
+            value,
+            recommendedFare: previews[value],
+          })),
+        );
+      })
+      .catch((error: unknown) => {
+        if (!(error instanceof DOMException && error.name === "AbortError"))
+          setRaw([]);
+      })
+      .finally(() => {
+        if (!controller.signal.aborted) setLoading(false);
+      });
+    return () => controller.abort();
+  }, [input, date]);
   const results = useMemo(
     () =>
       raw
@@ -107,26 +132,6 @@ function SearchResults() {
         ),
     [raw, modes, transfers, onlyAvailable, maxFare, sort],
   );
-  const dateOptions = useMemo(() => {
-    if (base.mode === "tatkal") return [];
-
-    return [-2, -1, 0, 1, 2, 3, 4]
-      .map((offset) => dateOffset(date, offset))
-      .filter((value) => value >= todayDate())
-      .map((value) => ({
-        value,
-        recommendedFare: searchJourneys({ ...base, date: value })[0]?.totalFare,
-      }));
-  }, [
-    base.origin,
-    base.destination,
-    base.adults,
-    base.children,
-    base.infants,
-    base.travelClass,
-    base.mode,
-    date,
-  ]);
   const toggle = <T,>(value: T, list: T[], setter: (x: T[]) => void) =>
     setter(
       list.includes(value) ? list.filter((x) => x !== value) : [...list, value],
@@ -392,7 +397,9 @@ function SearchResults() {
           </section>
         </aside>
         <div className="grid gap-5">
-          {results.length ? (
+          {loading ? (
+            <div className="card empty-state">{t("pages.search.loading")}</div>
+          ) : results.length ? (
             results.map((x) => (
               <JourneyCard key={x.id} journey={x} input={input} />
             ))

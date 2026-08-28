@@ -3,6 +3,7 @@ import type { Booking, Itinerary, Passenger } from "./types";
 
 export const storageKeys = {
   user: "railease_user",
+  accounts: "railease_accounts",
   session: "railease_session",
   passengers: "railease_passengers",
   bookings: "railease_bookings",

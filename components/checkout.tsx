@@ -19,14 +19,16 @@ import {
   ShieldCheck,
   Smartphone,
   Trash2,
+  UtensilsCrossed,
 } from "lucide-react";
-import { quotas } from "@/lib/data";
+import { quotas } from "@/lib/quotas";
 import {
   calculateFareBreakdown,
   formatDuration,
+  MEAL_PRICE,
   selectBestAvailableQuota,
   selectEligibleQuota,
-} from "@/lib/search";
+} from "@/lib/journey-utils";
 import {
   loadStorage,
   makePnr,
@@ -63,7 +65,7 @@ import {
   AccordionTrigger,
 } from "@/components/ui/accordion";
 import Image from "next/image";
-import { getClassTranslationKey } from "@/lib/utils";
+import { cn, getClassTranslationKey } from "@/lib/utils";
 import { useToast } from "@/components/ui/toast";
 
 function availabilityKey(status: AvailabilityStatus) {
@@ -80,6 +82,51 @@ function availabilityVariant(status: AvailabilityStatus) {
     : status === "RAC"
       ? ("warning" as const)
       : ("destructive" as const);
+}
+
+function combineLegTicketAvailability(
+  journey: Journey,
+): ClassSeatAvailability | undefined {
+  const tickets = journey.legs
+    .map((leg) =>
+      leg.ticketOptions?.find(
+        (ticket) => ticket.travelClass === leg.travelClass,
+      ),
+    )
+    .filter((ticket): ticket is ClassSeatAvailability => Boolean(ticket));
+  if (tickets.length !== journey.legs.length || !tickets.length) return;
+  const rank: Record<AvailabilityStatus, number> = {
+    AVAILABLE: 4,
+    RAC: 3,
+    WAITLIST: 2,
+    REGRET: 1,
+  };
+  const worst = <T extends { status: AvailabilityStatus }>(items: T[]) =>
+    [...items].sort((a, b) => rank[a.status] - rank[b.status])[0];
+  const quotaIds = tickets[0].quotas.map((quota) => quota.quotaId);
+  const combinedQuotas = quotaIds
+    .map((quotaId) => {
+      const perLeg = tickets
+        .map((ticket) =>
+          ticket.quotas.find((quota) => quota.quotaId === quotaId),
+        )
+        .filter((quota): quota is QuotaSeatAvailability => Boolean(quota));
+      if (perLeg.length !== tickets.length) return null;
+      const limiting = worst(perLeg);
+      return {
+        ...limiting,
+        number: Math.min(...perLeg.map((quota) => quota.number)),
+      };
+    })
+    .filter((quota): quota is QuotaSeatAvailability => Boolean(quota));
+  const limitingTicket = worst(tickets);
+  return {
+    travelClass: journey.legs.map((leg) => leg.travelClass).join(" + "),
+    fare: journey.totalFare,
+    status: limitingTicket.status,
+    number: Math.min(...tickets.map((ticket) => ticket.number)),
+    quotas: combinedQuotas,
+  };
 }
 
 function seatAvailabilityText(
@@ -212,8 +259,18 @@ function Summary({
 }) {
   const { locale: numberLocale, t } = useApp();
   const quotaId = quotaOverride ?? context.quota;
+  const ticketedPassengerCount = Math.max(
+    1,
+    context.input.adults + context.input.children,
+  );
+  const passengerCount =
+    context.input.adults + context.input.children + context.input.infants;
+  const mealCount =
+    context.passengers?.filter((passenger) => passenger.mealRequested).length ??
+    0;
+  const mealCost = mealCount * MEAL_PRICE;
   const { discountRate, discount, serviceFee, gst, total } =
-    calculateFareBreakdown(context.journey.totalFare, quotaId);
+    calculateFareBreakdown(context.journey.totalFare, quotaId, mealCost);
   return (
     <aside className="card summary-card">
       <h2>{t("components.checkout.summary")}</h2>
@@ -224,15 +281,30 @@ function Summary({
         <span className="line" />
         <strong>{context.journey.destination.code}</strong>
       </div>
-      <p>
-        {context.journey.legs[0]?.serviceName} ·{" "}
-        {context.input.travelClass === "ANY"
-          ? context.journey.legs[0]?.travelClass
-          : context.input.travelClass}
-      </p>
+      <div className="grid gap-2 text-sm">
+        {context.journey.legs.map((leg, index) => (
+          <div
+            className="rounded-lg border border-[var(--line)] bg-[#f8faff] p-2.5"
+            key={leg.id}
+          >
+            <strong>{t("components.checkout.leg", { leg: index + 1 })}</strong>
+            <span className="ms-1">
+              {leg.from.code} → {leg.to.code}
+            </span>
+            <span className="mt-1 block text-xs text-[var(--muted)]">
+              {leg.serviceName} · {leg.travelClass} · ₹
+              {leg.fare.toLocaleString(numberLocale)}
+            </span>
+          </div>
+        ))}
+      </div>
       <div className="fare-lines">
         <div>
-          <span>{t("components.checkout.ticketFare")}</span>
+          <span>
+            {t("components.checkout.ticketFareForPassengers", {
+              count: ticketedPassengerCount,
+            })}
+          </span>
           <span>₹{context.journey.totalFare.toLocaleString(numberLocale)}</span>
         </div>
         {discount > 0 && (
@@ -245,6 +317,26 @@ function Summary({
             <span>−₹{discount.toLocaleString(numberLocale)}</span>
           </div>
         )}
+        <div>
+          <span>{t("components.checkout.passengerCount")}</span>
+          <span>{passengerCount}</span>
+        </div>
+        <p className="text-xs text-[var(--muted)]">
+          {t("components.checkout.passengerMix", {
+            adults: context.input.adults,
+            children: context.input.children,
+            infants: context.input.infants,
+          })}
+        </p>
+        <div>
+          <span>
+            {t("components.checkout.meals", {
+              count: mealCount,
+              price: MEAL_PRICE,
+            })}
+          </span>
+          <span>₹{mealCost.toLocaleString(numberLocale)}</span>
+        </div>
         <div>
           <span>{t("components.checkout.fee")}</span>
           <span>₹{serviceFee}</span>
@@ -275,6 +367,7 @@ export function ConfirmJourney() {
   const { locale, t } = useApp();
   const [context, update] = useCheckout();
   const [error, setError] = useState("");
+  const [activeLegId, setActiveLegId] = useState("");
   if (!context)
     return (
       <div className="page">
@@ -299,19 +392,60 @@ export function ConfirmJourney() {
     classAvailability.find(
       (item) => item.travelClass === context.input.travelClass,
     ) ?? classAvailability[0];
+  const isMultiLeg = context.journey.legs.length > 1;
+  const activeLeg =
+    context.journey.legs.find((leg) => leg.id === activeLegId) ??
+    context.journey.legs[0];
+  const activeLegIndex = context.journey.legs.findIndex(
+    (leg) => leg.id === activeLeg?.id,
+  );
+  const activeLegTicket = activeLeg?.ticketOptions.find(
+    (ticket) => ticket.travelClass === activeLeg.travelClass,
+  );
+  const displayedQuotaAvailability = isMultiLeg
+    ? activeLegTicket
+    : selectedAvailability;
   const passengerCount = Math.max(
     1,
     context.input.adults + context.input.children,
   );
-  const hasEnoughConfirmedSeats =
-    selectedAvailability.status !== "AVAILABLE" ||
-    selectedAvailability.number >= passengerCount;
+  const selectedLegTickets = context.journey.legs.map((leg) =>
+    leg.ticketOptions?.find((ticket) => ticket.travelClass === leg.travelClass),
+  );
+  const hasEnoughConfirmedSeats = isMultiLeg
+    ? selectedLegTickets.every(
+        (ticket) =>
+          ticket &&
+          ticket.status !== "REGRET" &&
+          (ticket.status !== "AVAILABLE" || ticket.number >= passengerCount),
+      )
+    : selectedAvailability.status !== "AVAILABLE" ||
+      selectedAvailability.number >= passengerCount;
   const updateClass = (travelClass: string) => {
     const availability = classAvailability.find(
       (item) => item.travelClass === travelClass,
     );
     if (!availability) return;
     setError("");
+    const legs = context.journey.legs.map((leg) => {
+      const ticket = leg.ticketOptions?.find(
+        (item) => item.travelClass === travelClass,
+      );
+      return {
+        ...leg,
+        fare: ticket?.fare ?? leg.fare,
+        travelClass,
+        availability:
+          ticket && leg.availability
+            ? {
+                ...leg.availability,
+                class: travelClass,
+                status: ticket.status,
+                number: ticket.number,
+              }
+            : leg.availability,
+      };
+    });
     update({
       ...context,
       input: { ...context.input, travelClass },
@@ -319,12 +453,52 @@ export function ConfirmJourney() {
         ...context.journey,
         totalFare: availability.fare,
         availability: availability.status,
-        legs: context.journey.legs.map((leg) => ({ ...leg, travelClass })),
+        legs,
       },
     });
   };
+  const updateLegTicket = (legId: string, travelClass: string) => {
+    const legs = context.journey.legs.map((leg) => {
+      if (leg.id !== legId) return leg;
+      const ticket = leg.ticketOptions.find(
+        (item) => item.travelClass === travelClass,
+      );
+      return ticket
+        ? {
+            ...leg,
+            fare: ticket.fare,
+            travelClass,
+            availability: leg.availability
+              ? {
+                  ...leg.availability,
+                  class: travelClass,
+                  status: ticket.status,
+                  number: ticket.number,
+                }
+              : null,
+          }
+        : leg;
+    });
+    update({
+      ...context,
+      input: {
+        ...context.input,
+        travelClass: legs.map((leg) => leg.travelClass).join(" + "),
+      },
+      journey: {
+        ...context.journey,
+        legs,
+        totalFare: legs.reduce((sum, leg) => sum + leg.fare, 0),
+      },
+    });
+    setError("");
+  };
   const proceed = () => {
-    if (selectedAvailability.status === "REGRET")
+    if (
+      (isMultiLeg &&
+        selectedLegTickets.some((ticket) => ticket?.status === "REGRET")) ||
+      (!isMultiLeg && selectedAvailability.status === "REGRET")
+    )
       return setError(t("pages.checkout.confirm.unavailable"));
     if (!hasEnoughConfirmedSeats)
       return setError(
@@ -343,33 +517,47 @@ export function ConfirmJourney() {
           <section className="card checkout-section">
             <div className="journey-top">
               <div>
-                <h2>{context.journey.legs[0]?.serviceName}</h2>
+                <h2>
+                  {isMultiLeg
+                    ? t("pages.checkout.confirm.connectedJourney", {
+                        count: context.journey.legs.length,
+                      })
+                    : context.journey.legs[0]?.serviceName}
+                </h2>
                 <p>
                   {formatJourneyDate(context.input.date, locale)} ·{" "}
-                  {selectedAvailability.travelClass}
+                  {isMultiLeg
+                    ? context.journey.legs
+                        .map((leg) => leg.travelClass)
+                        .join(" + ")
+                    : selectedAvailability.travelClass}
                 </p>
               </div>
-              <Badge
-                variant={availabilityVariant(selectedAvailability.status)}
-                className="justify-self-start self-start px-3 py-2 text-sm md:justify-self-end"
-              >
-                {selectedAvailability.status === "AVAILABLE" && <CircleCheck />}
-                {selectedAvailability.status === "AVAILABLE"
-                  ? t("pages.checkout.confirm.seatsAvailable", {
-                      count: selectedAvailability.number,
-                    })
-                  : selectedAvailability.status === "RAC"
-                    ? t("pages.checkout.confirm.racPosition", {
+              {!isMultiLeg && (
+                <Badge
+                  variant={availabilityVariant(selectedAvailability.status)}
+                  className="justify-self-start self-start px-3 py-2 text-sm md:justify-self-end"
+                >
+                  {selectedAvailability.status === "AVAILABLE" && (
+                    <CircleCheck />
+                  )}
+                  {selectedAvailability.status === "AVAILABLE"
+                    ? t("pages.checkout.confirm.seatsAvailable", {
                         count: selectedAvailability.number,
                       })
-                    : selectedAvailability.status === "WAITLIST"
-                      ? t("pages.checkout.confirm.waitlistPosition", {
+                    : selectedAvailability.status === "RAC"
+                      ? t("pages.checkout.confirm.racPosition", {
                           count: selectedAvailability.number,
                         })
-                      : t(
-                          `common.status.${availabilityKey(selectedAvailability.status)}`,
-                        )}
-              </Badge>
+                      : selectedAvailability.status === "WAITLIST"
+                        ? t("pages.checkout.confirm.waitlistPosition", {
+                            count: selectedAvailability.number,
+                          })
+                        : t(
+                            `common.status.${availabilityKey(selectedAvailability.status)}`,
+                          )}
+                </Badge>
+              )}
             </div>
             <div className="mt-6 grid gap-3 md:grid-cols-[minmax(0,1fr)_auto_minmax(0,1fr)] md:items-center">
               <div className="rounded-xl border border-[var(--line)] bg-[#f8faff] p-4">
@@ -427,7 +615,11 @@ export function ConfirmJourney() {
           <section className="card checkout-section">
             <div className="flex flex-wrap items-start justify-between gap-3">
               <div>
-                <h3>{t("pages.checkout.confirm.travelClass")}</h3>
+                <h3>
+                  {isMultiLeg
+                    ? t("pages.checkout.confirm.ticketsByLeg")
+                    : t("pages.checkout.confirm.travelClass")}
+                </h3>
                 <p className="mt-1 text-sm text-[var(--muted)]">
                   {t("pages.checkout.confirm.classAvailabilityNote", {
                     passengers: passengerCount,
@@ -440,64 +632,150 @@ export function ConfirmJourney() {
                 })}
               </Badge>
             </div>
-            <div className="mt-3 grid gap-3 md:grid-cols-[minmax(210px,0.7fr)_minmax(0,1.3fr)] md:items-end">
-              <label>
-                {t("pages.checkout.confirm.changeClass")}
-                <Select
-                  value={selectedAvailability.travelClass}
-                  onValueChange={updateClass}
-                >
-                  <SelectTrigger>
-                    <SelectValue />
-                  </SelectTrigger>
-                  <SelectContent>
-                    {classAvailability.map((item) => (
-                      <SelectItem
-                        key={item.travelClass}
-                        value={item.travelClass}
-                      >
-                        {t(getClassTranslationKey(item.travelClass))} · ₹
-                        {item.fare.toLocaleString(locale)}
-                      </SelectItem>
-                    ))}
-                  </SelectContent>
-                </Select>
-              </label>
-            </div>
-            {selectedAvailability.quotas.length > 0 && (
-              <div className="mt-3 rounded-lg border border-[#cdd8ee] bg-[#f8faff] p-3">
-                <div className="flex flex-wrap items-center justify-between gap-2">
-                  <strong className="text-sm">
-                    {t("components.journeyCard.quotaAvailabilityFor", {
-                      class: selectedAvailability.travelClass,
-                    })}
-                  </strong>
-                  <span className="text-xs text-[var(--muted)]">
-                    {t("components.journeyCard.quotaAvailabilityNote")}
-                  </span>
-                </div>
-                <div className="mt-2 grid grid-cols-2 gap-1.5 xl:grid-cols-4">
-                  {selectedAvailability.quotas.map((quotaAvailability) => (
-                    <div
-                      className="flex min-w-0 items-center justify-between gap-2 rounded-md border border-[var(--line)] bg-white px-2.5 py-2"
-                      key={quotaAvailability.quotaId}
+            {isMultiLeg ? (
+              <div className="mt-4">
+                <div className="flex gap-2 overflow-x-auto pb-2">
+                  {context.journey.legs.map((leg, index) => (
+                    <button
+                      type="button"
+                      aria-pressed={leg.id === activeLeg?.id}
+                      className={cn(
+                        "min-w-52 rounded-xl border bg-white p-3 text-start transition",
+                        leg.id === activeLeg?.id
+                          ? "border-2 border-[var(--primary)] bg-[#eef3ff]"
+                          : "border-[var(--line)] hover:border-[var(--primary)]",
+                      )}
+                      key={leg.id}
+                      onClick={() => setActiveLegId(leg.id)}
                     >
-                      <span className="truncate text-xs font-semibold">
-                        {t(
-                          `common.quotas.${quotaAvailability.quotaId.toLowerCase()}.name`,
-                        )}
+                      <strong>
+                        {t("components.checkout.leg", { leg: index + 1 })}:{" "}
+                        {leg.from.code} → {leg.to.code}
+                      </strong>
+                      <span className="mt-1 block text-xs text-[var(--muted)]">
+                        {leg.serviceName} · {leg.travelClass}
                       </span>
-                      <Badge
-                        className="px-2 py-0.5 text-[11px]"
-                        variant={availabilityVariant(quotaAvailability.status)}
-                      >
-                        {seatAvailabilityText(t, quotaAvailability)}
-                      </Badge>
-                    </div>
+                    </button>
                   ))}
                 </div>
+                {activeLeg && (
+                  <div className="mt-3 grid min-w-0 gap-4 overflow-hidden rounded-xl border border-[#cdd8ee] bg-[#f8faff] p-4 md:grid-cols-[minmax(0,1fr)_minmax(0,280px)] md:items-end">
+                    <div className="min-w-0">
+                      <strong>
+                        {t("components.journeyCard.ticketsForLeg", {
+                          leg: activeLegIndex + 1,
+                        })}
+                      </strong>
+                      <span className="mt-1 block text-sm text-[var(--muted)]">
+                        {activeLeg.from.code} → {activeLeg.to.code} ·{" "}
+                        {activeLeg.serviceName} · {activeLeg.serviceNumber}
+                      </span>
+                      {activeLegTicket && (
+                        <Badge
+                          className="mt-2"
+                          variant={availabilityVariant(activeLegTicket.status)}
+                        >
+                          {seatAvailabilityText(t, activeLegTicket)}
+                        </Badge>
+                      )}
+                    </div>
+                    <label className="min-w-0">
+                      {t("pages.checkout.confirm.ticketForLeg")}
+                      <Select
+                        value={activeLeg.travelClass}
+                        onValueChange={(value) =>
+                          updateLegTicket(activeLeg.id, value)
+                        }
+                      >
+                        <SelectTrigger className="min-w-0 max-w-full">
+                          <SelectValue>
+                            {activeLeg.travelClass} · ₹
+                            {activeLeg.fare.toLocaleString(locale)}
+                          </SelectValue>
+                        </SelectTrigger>
+                        <SelectContent className="max-w-[calc(100vw_-_2rem)]">
+                          {activeLeg.ticketOptions.map((ticket) => (
+                            <SelectItem
+                              key={ticket.travelClass}
+                              value={ticket.travelClass}
+                              disabled={ticket.status === "REGRET"}
+                            >
+                              {ticket.travelClass} · ₹
+                              {ticket.fare.toLocaleString(locale)} ·{" "}
+                              {seatAvailabilityText(t, ticket)}
+                            </SelectItem>
+                          ))}
+                        </SelectContent>
+                      </Select>
+                    </label>
+                  </div>
+                )}
+              </div>
+            ) : (
+              <div className="mt-3 grid gap-3 md:grid-cols-[minmax(210px,0.7fr)_minmax(0,1.3fr)] md:items-end">
+                <label>
+                  {t("pages.checkout.confirm.changeClass")}
+                  <Select
+                    value={selectedAvailability.travelClass}
+                    onValueChange={updateClass}
+                  >
+                    <SelectTrigger>
+                      <SelectValue />
+                    </SelectTrigger>
+                    <SelectContent>
+                      {classAvailability.map((item) => (
+                        <SelectItem
+                          key={item.travelClass}
+                          value={item.travelClass}
+                        >
+                          {t(getClassTranslationKey(item.travelClass))} · ₹
+                          {item.fare.toLocaleString(locale)}
+                        </SelectItem>
+                      ))}
+                    </SelectContent>
+                  </Select>
+                </label>
               </div>
             )}
+            {displayedQuotaAvailability &&
+              displayedQuotaAvailability.quotas.length > 0 && (
+                <div className="mt-3 rounded-lg border border-[#cdd8ee] bg-[#f8faff] p-3">
+                  <div className="flex flex-wrap items-center justify-between gap-2">
+                    <strong className="text-sm">
+                      {t("components.journeyCard.quotaAvailabilityFor", {
+                        class: displayedQuotaAvailability.travelClass,
+                      })}
+                    </strong>
+                    <span className="text-xs text-[var(--muted)]">
+                      {t("components.journeyCard.quotaAvailabilityNote")}
+                    </span>
+                  </div>
+                  <div className="mt-2 grid grid-cols-2 gap-1.5 xl:grid-cols-4">
+                    {displayedQuotaAvailability.quotas.map(
+                      (quotaAvailability) => (
+                        <div
+                          className="flex min-w-0 items-center justify-between gap-2 rounded-md border border-[var(--line)] bg-white px-2.5 py-2"
+                          key={quotaAvailability.quotaId}
+                        >
+                          <span className="truncate text-xs font-semibold">
+                            {t(
+                              `common.quotas.${quotaAvailability.quotaId.toLowerCase()}.name`,
+                            )}
+                          </span>
+                          <Badge
+                            className="px-2 py-0.5 text-[11px]"
+                            variant={availabilityVariant(
+                              quotaAvailability.status,
+                            )}
+                          >
+                            {seatAvailabilityText(t, quotaAvailability)}
+                          </Badge>
+                        </div>
+                      ),
+                    )}
+                  </div>
+                </div>
+              )}
             <p className="mt-3 text-sm text-[var(--muted)]">
               {t("pages.checkout.confirm.autoQuotaNextStep")}
             </p>
@@ -516,7 +794,8 @@ export function ConfirmJourney() {
           context={context}
           action={proceed}
           actionDisabled={
-            selectedAvailability.status === "REGRET" || !hasEnoughConfirmedSeats
+            (!isMultiLeg && selectedAvailability.status === "REGRET") ||
+            !hasEnoughConfirmedSeats
           }
           label={t("pages.checkout.confirm.continue")}
         />
@@ -550,6 +829,7 @@ const createPassengerSchema = (
       claimRailwayEmployee: z.boolean().optional(),
       railwayEmployeeId: z.string().optional(),
       saveForFuture: z.boolean().optional(),
+      mealRequested: z.boolean().optional(),
     })
     .superRefine((values, refinement) => {
       const requiredClaims = [
@@ -632,6 +912,7 @@ export function PassengerDetails() {
       claimDefence: false,
       claimDisability: false,
       claimRailwayEmployee: false,
+      mealRequested: false,
     },
   });
 
@@ -665,9 +946,10 @@ export function PassengerDetails() {
   const selectedPeople = saved.filter((passenger) =>
     selected.includes(passenger.id),
   );
-  const selectedClassAvailability = context.journey.classAvailability?.find(
-    (item) => item.travelClass === context.input.travelClass,
-  );
+  const selectedClassAvailability =
+    context.journey.classAvailability?.find(
+      (item) => item.travelClass === context.input.travelClass,
+    ) ?? combineLegTicketAvailability(context.journey);
   const bestQuota = selectBestAvailableQuota(
     selectedPeople,
     context.input.mode,
@@ -707,6 +989,15 @@ export function PassengerDetails() {
     }
     setSelected([...selected, id]);
   };
+  const toggleMeal = (id: string, checked: boolean) => {
+    setSaved((current) =>
+      current.map((passenger) =>
+        passenger.id === id
+          ? { ...passenger, mealRequested: checked }
+          : passenger,
+      ),
+    );
+  };
   const submit = (values: PassengerValues) => {
     const next: Passenger = {
       ...values,
@@ -736,6 +1027,7 @@ export function PassengerDetails() {
       disabilityCertificate: "",
       claimRailwayEmployee: false,
       railwayEmployeeId: "",
+      mealRequested: false,
       name: "",
       age: 18,
     });
@@ -812,6 +1104,22 @@ export function PassengerDetails() {
                                 )}
                               </Badge>
                             </div>
+                            {selected.includes(p.id) && (
+                              <label className="mt-3 flex cursor-pointer items-center gap-2 rounded-lg border border-[var(--line)] bg-white p-2 text-sm">
+                                <Checkbox
+                                  checked={Boolean(p.mealRequested)}
+                                  onCheckedChange={(checked) =>
+                                    toggleMeal(p.id, checked === true)
+                                  }
+                                />
+                                <UtensilsCrossed className="size-4 text-[var(--primary)]" />
+                                <span>
+                                  {t("pages.checkout.passengers.addMeal", {
+                                    price: MEAL_PRICE,
+                                  })}
+                                </span>
+                              </label>
+                            )}
                           </div>
                           <Button
                             variant="ghost"
@@ -865,15 +1173,6 @@ export function PassengerDetails() {
                       </span>
                     </div>
                   </div>
-                  {autoQuotaAvailability && (
-                    <Badge
-                      variant={availabilityVariant(
-                        autoQuotaAvailability.status,
-                      )}
-                    >
-                      {seatAvailabilityText(t, autoQuotaAvailability)}
-                    </Badge>
-                  )}
                 </div>
                 <p className="mt-2 text-sm">
                   {bestQuota.usedFallback && preferredQuota
@@ -1136,6 +1435,22 @@ export function PassengerDetails() {
               <label className="check-row full">
                 <Controller
                   control={control}
+                  name="mealRequested"
+                  render={({ field }) => (
+                    <Checkbox
+                      checked={field.value}
+                      onCheckedChange={field.onChange}
+                    />
+                  )}
+                />
+                <UtensilsCrossed className="size-4" />
+                {t("pages.checkout.passengers.addMeal", {
+                  price: MEAL_PRICE,
+                })}
+              </label>
+              <label className="check-row full">
+                <Controller
+                  control={control}
                   name="saveForFuture"
                   render={({ field }) => (
                     <Checkbox
@@ -1158,7 +1473,7 @@ export function PassengerDetails() {
           </section>
         </div>
         <Summary
-          context={context}
+          context={{ ...context, passengers: selectedPeople }}
           action={proceed}
           label={t("pages.checkout.passengers.continue")}
           quotaOverride={autoQuotaId}
@@ -1261,9 +1576,14 @@ export function Payment() {
         </div>
       </div>
     );
+  const mealCount =
+    context.passengers?.filter((passenger) => passenger.mealRequested).length ??
+    0;
+  const mealCost = mealCount * MEAL_PRICE;
   const fareBreakdown = calculateFareBreakdown(
     context.journey.totalFare,
     context.quota,
+    mealCost,
   );
   const amount = fareBreakdown.total;
   const normalizedUpiId = upiId.trim().toLowerCase();
@@ -1286,6 +1606,8 @@ export function Payment() {
       fare: amount,
       fareBreakdown: {
         baseFare: context.journey.totalFare,
+        passengerCount: context.passengers?.length ?? 0,
+        mealCount,
         ...fareBreakdown,
       },
       paymentStatus: "paid",

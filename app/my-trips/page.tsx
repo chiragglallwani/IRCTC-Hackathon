@@ -19,7 +19,7 @@ import {
 } from "lucide-react";
 import { saveStorage, savedBookings, storageKeys } from "@/lib/storage";
 import type { Booking } from "@/lib/types";
-import { calculateFareBreakdown, formatDuration } from "@/lib/search";
+import { calculateFareBreakdown, formatDuration } from "@/lib/journey-utils";
 import { useApp } from "@/components/providers";
 import { Tabs, TabsList, TabsTrigger } from "@/components/ui/tabs";
 import { Badge, type BadgeVariant } from "@/components/ui/badge";

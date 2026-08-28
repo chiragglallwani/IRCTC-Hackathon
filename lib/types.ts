@@ -149,6 +149,7 @@ export interface JourneyLeg {
   fare: number;
   travelClass: string;
   availability: Availability | null;
+  ticketOptions: ClassSeatAvailability[];
   facilities: string[];
 }
 export interface QuotaSeatAvailability {
@@ -202,6 +203,7 @@ export interface Passenger {
   claimRailwayEmployee?: boolean;
   railwayEmployeeId?: string;
   saveForFuture?: boolean;
+  mealRequested?: boolean;
 }
 export interface Booking {
   bookingId: string;
@@ -215,6 +217,9 @@ export interface Booking {
   fare: number;
   fareBreakdown?: {
     baseFare: number;
+    passengerCount?: number;
+    mealCount?: number;
+    mealCost?: number;
     discountRate: number;
     discount: number;
     discountedFare: number;
@@ -246,6 +251,11 @@ export interface Itinerary {
   endDate: string;
   style: string;
   pace: string;
+  travelers?: number;
+  rooms?: number;
+  travelMode?: string;
+  accommodationType?: string;
+  mealPlan?: string;
   hotel?: Hotel;
   days: ItineraryDay[];
   costs: {
@@ -257,4 +267,13 @@ export interface Itinerary {
     total: number;
   };
   confirmed: boolean;
+  bookingReference?: string;
+  bookedAt?: string;
+  bookingStatus?: "confirmed" | "cancelled";
+  paymentMethod?: "upi" | "card" | "pay_later";
+  contact?: {
+    name: string;
+    email: string;
+    phone: string;
+  };
 }
