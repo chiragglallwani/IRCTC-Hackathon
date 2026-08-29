@@ -23,20 +23,6 @@ import {
   selectedLegAvailability,
 } from "@/lib/journey-utils";
 
-function availabilityLabel(
-  status: string,
-  number: number,
-  t: (key: string, variables?: Record<string, string | number>) => string,
-) {
-  if (status === "AVAILABLE")
-    return t("pages.checkout.confirm.seatsAvailable", { count: number });
-  if (status === "RAC")
-    return t("pages.checkout.confirm.racPosition", { count: number });
-  if (status === "WAITLIST")
-    return t("pages.checkout.confirm.waitlistPosition", { count: number });
-  return t("components.journeyCard.notAvailable");
-}
-
 function formatClockTime(value: string, locale: string) {
   const [hours, minutes] = value.split(":").map(Number);
   return new Intl.DateTimeFormat(locale, {
@@ -128,7 +114,10 @@ export default function BookingPage() {
                 <TrainFront className="size-4" />
                 {t("pages.booking.journeyDetails")}
               </span>
-              <h2 className="mt-2">{booking.journey.legs[0]?.serviceName}</h2>
+              <h2 className="mt-2 break-words">
+                {booking.journey.origin.name} →{" "}
+                {booking.journey.destination.name}
+              </h2>
               <p className="mt-1 text-sm text-[var(--muted)]">
                 {formatJourneyDate(booking.date, locale)}
               </p>
@@ -206,6 +195,10 @@ export default function BookingPage() {
                   leg,
                   booking.quota,
                 );
+                const isConfirmed =
+                  (availability?.status ?? booking.journey.availability) ===
+                  "AVAILABLE";
+                const waitlistNumber = availability?.number ?? 0;
                 return (
                   <article
                     className="break-inside-avoid rounded-xl border border-[var(--line)] bg-[#fbfcfe] p-4"
@@ -221,23 +214,18 @@ export default function BookingPage() {
                           {leg.serviceName} · {leg.serviceNumber}
                         </p>
                       </div>
-                      {availability && (
-                        <Badge
-                          variant={
-                            availability.status === "AVAILABLE"
-                              ? "success"
-                              : availability.status === "RAC"
-                                ? "warning"
-                                : "destructive"
-                          }
-                        >
-                          {availabilityLabel(
-                            availability.status,
-                            availability.number,
-                            t,
-                          )}
-                        </Badge>
-                      )}
+                      <Badge variant={isConfirmed ? "success" : "destructive"}>
+                        {isConfirmed ? (
+                          <>
+                            <CheckCircle2 />
+                            {t("common.status.confirmed")}
+                          </>
+                        ) : (
+                          t("pages.checkout.confirm.waitlistPosition", {
+                            count: waitlistNumber,
+                          })
+                        )}
+                      </Badge>
                     </div>
                     <div className="mt-3 grid grid-cols-2 gap-3 text-sm sm:grid-cols-4">
                       <span>
