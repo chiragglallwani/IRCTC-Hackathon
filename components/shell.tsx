@@ -111,7 +111,7 @@ export function Header() {
 
   return (
     <>
-      <header className="sticky top-0 z-50 flex h-[72px] items-center gap-[42px] border-b border-[var(--line)] bg-white px-[18px] lg:h-[88px] lg:px-[max(24px,calc((100vw_-_1280px)/2))] [&>button_span]:hidden">
+      <header className="sticky top-0 z-50 flex h-16 items-center gap-2 border-b border-[var(--line)] bg-white px-3 sm:h-[72px] sm:gap-4 sm:px-[18px] lg:h-[88px] lg:gap-[42px] lg:px-[max(24px,calc((100vw_-_1280px)/2))] [&>button_span]:hidden">
         <Link href="/" className="flex shrink-0 items-center">
           <Image
             src="/images/logo.png"
@@ -119,7 +119,7 @@ export function Header() {
             width={150}
             height={70}
             priority
-            className="h-[58px] w-[104px] object-contain sm:w-[122px] lg:h-[72px] lg:w-[150px]"
+            className="h-[50px] w-[88px] object-contain sm:h-[58px] sm:w-[122px] lg:h-[72px] lg:w-[150px]"
           />
         </Link>
         <nav
@@ -145,7 +145,7 @@ export function Header() {
             </Link>
           ))}
         </nav>
-        <div className="ml-auto flex items-center gap-3 lg:ms-0 [&_button]:flex [&_button]:items-center [&_button]:gap-[7px] [&_button]:border-0 [&_button]:bg-transparent [&_button]:text-[#454957] [&_button_span]:hidden [&_svg]:w-[21px] lg:[&_button_span]:inline">
+        <div className="ml-auto flex min-w-0 items-center gap-1 sm:gap-3 lg:ms-0 [&>button]:min-h-11 [&>button]:min-w-11 [&_button]:flex [&_button]:items-center [&_button]:justify-center [&_button]:gap-[7px] [&_button]:border-0 [&_button]:bg-transparent [&_button]:text-[#454957] [&_button_span]:hidden [&_svg]:w-[21px] lg:[&_button_span]:inline">
           <Popover>
             <PopoverTrigger asChild>
               <button>
@@ -212,7 +212,7 @@ export function Header() {
           </Popover>
           <Select value={language} onValueChange={setLanguage}>
             <SelectTrigger
-              className="min-h-10 w-[100px] flex-shrink-0 rounded-lg border-[var(--line)] px-2 text-start [&>span]:!inline-block [&>span]:!truncate"
+              className="min-h-10 w-[82px] flex-shrink-0 rounded-lg border-[var(--line)] px-2 text-start sm:w-[100px] [&>span]:!inline-block [&>span]:!truncate"
               aria-label={t("navigation.language")}
             >
               <SelectValue />
@@ -308,7 +308,7 @@ export function AIAssistant() {
     <Popover>
       <PopoverTrigger asChild>
         <button
-          className="fixed bottom-[84px] end-4 z-[60] grid h-[66px] w-[66px] place-items-center rounded-full border-4 border-white bg-[var(--primary)] text-white shadow-[0_8px_28px_#0003] lg:bottom-7 lg:end-7"
+          className="fixed bottom-[calc(88px_+_env(safe-area-inset-bottom))] end-3 z-[60] grid h-14 w-14 place-items-center rounded-full border-[3px] border-white bg-[var(--primary)] text-white shadow-[0_8px_28px_#0003] sm:end-4 sm:h-[62px] sm:w-[62px] lg:bottom-7 lg:end-7 lg:h-[66px] lg:w-[66px] lg:border-4"
           aria-label={t("components.assistant.open")}
         >
           <Bot />
@@ -368,7 +368,7 @@ export function AIAssistant() {
 export function Footer() {
   const { t } = useApp();
   return (
-    <footer className="mb-[70px] grid items-center gap-[30px] border-t border-[var(--line)] px-6 py-8 text-[var(--muted)] lg:mb-0 lg:flex lg:px-[max(24px,calc((100vw_-_1280px)/2))]">
+    <footer className="mb-[calc(76px_+_env(safe-area-inset-bottom))] grid items-center gap-[30px] border-t border-[var(--line)] px-6 py-8 text-[var(--muted)] lg:mb-0 lg:flex lg:px-[max(24px,calc((100vw_-_1280px)/2))]">
       <strong className="text-xl text-[var(--ink)]">{t("common.brand")}</strong>
       <span>{t("components.footer.description")}</span>
       <div className="flex gap-6 lg:ml-auto">
@@ -384,24 +384,25 @@ export function MobileNav() {
   const { t } = useApp();
   const pathname = usePathname();
   return (
-    <nav
-      className="fixed inset-x-0 bottom-0 z-[55] grid h-[calc(72px_+_env(safe-area-inset-bottom))] grid-cols-5 border-t border-[var(--line)] bg-white pb-[env(safe-area-inset-bottom)] shadow-[0_-6px_24px_#00000012] lg:hidden [&_a]:flex [&_a]:min-w-0 [&_a]:flex-col [&_a]:items-center [&_a]:justify-center [&_a]:gap-1 [&_a]:border-t-2 [&_a]:px-1 [&_a]:text-center [&_a]:text-[0.64rem] [&_a]:leading-tight [&_svg]:h-5 [&_svg]:w-5 [&_svg]:shrink-0 min-[390px]:[&_a]:text-[0.7rem]"
-      aria-label={t("navigation.mobile.label")}
-    >
-      {links.map((item) => (
-        <Link
-          key={item.key}
-          href={item.route}
-          className={`font-semibold text-[#454957] hover:border-[var(--primary)] hover:text-[var(--primary-dark)] ${
-            navLinkIsActive(pathname, item.route)
-              ? "border-[var(--primary)] bg-[#f4f7ff] text-[var(--primary-dark)]"
-              : "border-transparent"
-          }`}
-        >
-          {navIcons({ key: item.key })}
-          <span className="line-clamp-2 max-w-full">{t(item.value)}</span>
-        </Link>
-      ))}
+    <nav className="mobile-nav" aria-label={t("navigation.mobile.label")}>
+      <div className="mobile-nav-list">
+        {links.map((item) => {
+          const active = navLinkIsActive(pathname, item.route);
+          return (
+            <Link
+              key={item.key}
+              href={item.route}
+              className={`mobile-nav-link ${active ? "active" : ""}`}
+              aria-current={active ? "page" : undefined}
+            >
+              <span className="mobile-nav-icon">
+                {navIcons({ key: item.key })}
+              </span>
+              <span className="mobile-nav-label">{t(item.value)}</span>
+            </Link>
+          );
+        })}
+      </div>
     </nav>
   );
 }

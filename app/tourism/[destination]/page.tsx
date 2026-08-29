@@ -1,6 +1,7 @@
 "use client";
 
 import Link from "next/link";
+import Image from "next/image";
 import { useParams } from "next/navigation";
 import {
   ArrowLeft,
@@ -72,7 +73,7 @@ export default function DestinationPage() {
         <div
           className="absolute inset-0 bg-cover bg-center"
           style={{
-            backgroundImage: `url('${destinationImage(destination.destinationId)}')`,
+            backgroundImage: `url('${destination.heroImage ?? destinationImage(destination.destinationId)}')`,
           }}
         />
         <div className="absolute inset-0 bg-gradient-to-t from-[#041f31]/95 via-[#041f31]/35 to-black/10" />
@@ -96,7 +97,7 @@ export default function DestinationPage() {
               </span>
               <h1 className="mt-2 text-white">{city?.name}</h1>
               <p className="mt-3 max-w-2xl text-lg text-white/80">
-                {destination.title}
+                {destination.summary ?? destination.title}
               </p>
             </div>
             <div className="flex flex-wrap gap-3">
@@ -123,9 +124,10 @@ export default function DestinationPage() {
               })}
             </h2>
             <p className="mt-4 max-w-3xl text-lg leading-8 text-slate-600">
-              {t("pages.tourism.destination.overviewText", {
-                city: city?.name ?? "",
-              })}
+              {destination.summary ??
+                t("pages.tourism.destination.overviewText", {
+                  city: city?.name ?? "",
+                })}
             </p>
             <div className="mt-6 grid gap-3 sm:grid-cols-3">
               <div className="rounded-2xl border border-slate-200 bg-white p-5">
@@ -170,19 +172,29 @@ export default function DestinationPage() {
                 {destination.attractions.length} experiences
               </Badge>
             </div>
-            <div className="mt-6 grid gap-0">
+            <div className="mt-6 grid gap-5">
               {destination.attractions.map((attraction, index) => (
-                <div
-                  className="relative grid grid-cols-[44px_1fr] gap-4 pb-7 last:pb-0"
+                <article
+                  className="group overflow-hidden rounded-2xl border border-slate-200 bg-white shadow-sm sm:grid sm:grid-cols-[220px_1fr]"
                   key={attraction.attractionId}
                 >
-                  {index < destination.attractions.length - 1 && (
-                    <span className="absolute bottom-0 left-[21px] top-10 w-px bg-slate-200" />
-                  )}
-                  <span className="relative z-10 grid size-11 place-items-center rounded-full bg-[#e5f7f4] font-bold text-[#075b55]">
-                    {index + 1}
-                  </span>
-                  <div className="rounded-xl bg-slate-50 p-4">
+                  <div className="relative min-h-48 overflow-hidden bg-slate-100 sm:min-h-full">
+                    <Image
+                      src={
+                        attraction.imageUrl ??
+                        destination.heroImage ??
+                        destinationImage(destination.destinationId)
+                      }
+                      alt={attraction.name}
+                      fill
+                      sizes="(max-width: 640px) 100vw, 220px"
+                      className="object-cover transition duration-500 group-hover:scale-105"
+                    />
+                    <span className="absolute left-3 top-3 grid size-9 place-items-center rounded-full bg-white font-bold text-[#075b55] shadow">
+                      {index + 1}
+                    </span>
+                  </div>
+                  <div className="p-5">
                     <div className="flex flex-col gap-2 sm:flex-row sm:items-start sm:justify-between">
                       <div>
                         <span className="text-xs font-semibold uppercase tracking-wider text-[#0b6b63]">
@@ -198,11 +210,28 @@ export default function DestinationPage() {
                     </div>
                     <p className="mt-2 flex items-center gap-2 text-sm text-slate-500">
                       <Clock3 className="size-4" />{" "}
-                      {Math.round(attraction.durationMinutes / 60)} hours ·{" "}
-                      {attraction.category}
+                      {Math.floor(attraction.durationMinutes / 60)}h{" "}
+                      {attraction.durationMinutes % 60
+                        ? `${attraction.durationMinutes % 60}m`
+                        : ""}{" "}
+                      · {attraction.bestTime ?? attraction.category}
                     </p>
+                    {attraction.description && (
+                      <p className="mt-3 text-sm leading-6 text-slate-600">
+                        {attraction.description}
+                      </p>
+                    )}
+                    {attraction.highlights && (
+                      <div className="mt-4 flex flex-wrap gap-2">
+                        {attraction.highlights.map((highlight) => (
+                          <Badge variant="outline" key={highlight}>
+                            {highlight}
+                          </Badge>
+                        ))}
+                      </div>
+                    )}
                   </div>
-                </div>
+                </article>
               ))}
             </div>
           </section>

@@ -1,10 +1,19 @@
 import hotelsJson from "@/irctc-hackathon-mock/data/large/hotels.json";
+import tourismPlacesJson from "@/irctc-hackathon-mock/data/large/tourism-places.json";
 import tourismJson from "@/irctc-hackathon-mock/data/large/tourism.json";
 import { cityById, stationById } from "./places";
 import type { Hotel, TourismDestination } from "./types";
 
 export { cityById } from "./places";
-export const tourism = tourismJson.records as TourismDestination[];
+const tourismEnhancements = new Map(
+  tourismPlacesJson.records.map((item) => [item.destinationId, item]),
+);
+export const tourism = (tourismJson.records as TourismDestination[]).map(
+  (destination) => ({
+    ...destination,
+    ...tourismEnhancements.get(destination.destinationId),
+  }),
+);
 export const hotels = hotelsJson.records as Hotel[];
 
 export function destinationDetails(id: string) {

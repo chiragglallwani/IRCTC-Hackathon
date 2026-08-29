@@ -1,6 +1,7 @@
 "use client";
 
 import Link from "next/link";
+import Image from "next/image";
 import { useParams } from "next/navigation";
 import { useEffect, useState } from "react";
 import {
@@ -49,6 +50,19 @@ const plannerValueKeys: Record<string, string> = {
   "Train + local transport": "trainLocal",
   Bus: "bus",
 };
+
+function destinationImage(destinationId: string) {
+  const number = Number(destinationId.match(/\d+/)?.[0] ?? 1);
+  return `/images/destination-${((number - 1) % 4) + 1}.webp`;
+}
+
+function visitDuration(minutes: number) {
+  const hours = Math.floor(minutes / 60);
+  const remainder = minutes % 60;
+  return [hours ? `${hours}h` : "", remainder ? `${remainder}m` : ""]
+    .filter(Boolean)
+    .join(" ");
+}
 
 export default function ItineraryPage() {
   const { locale, t, user } = useApp();
@@ -130,6 +144,10 @@ export default function ItineraryPage() {
   const rooms = itinerary.rooms ?? 1;
   const booked = itinerary.confirmed;
   const cancelled = itinerary.bookingStatus === "cancelled";
+  const heroImage =
+    itinerary.destination.heroImage ??
+    itinerary.days[0]?.activities[0]?.imageUrl ??
+    destinationImage(itinerary.destination.destinationId);
 
   const act = (
     dayIndex: number,
@@ -200,62 +218,78 @@ export default function ItineraryPage() {
         <ArrowLeft className="size-4" /> {t("pages.tourism.itinerary.back")}
       </Link>
 
-      <section className="mt-5 overflow-hidden rounded-[28px] bg-[#073f3a] p-6 text-white sm:p-9">
-        <div className="flex flex-col gap-6 lg:flex-row lg:items-end lg:justify-between">
-          <div>
-            <Badge className="mb-4 border-white/15 bg-white/10 text-white">
-              <Sparkles />{" "}
-              {booked
-                ? t(
-                    cancelled
-                      ? "pages.tourism.itinerary.cancelledPackage"
-                      : "pages.tourism.itinerary.bookedPackage",
-                  )
-                : t("pages.tourism.itinerary.eyebrow")}
-            </Badge>
-            <h1 className="text-white">
-              {city?.name} · {itinerary.days.length} days
-            </h1>
-            <p className="mt-3 max-w-2xl text-white/70">
-              {itinerary.startDate} → {itinerary.endDate} ·{" "}
-              {t(
-                `pages.tourism.planner.${plannerValueKeys[itinerary.style] ?? "family"}`,
-              )}{" "}
-              ·{" "}
-              {t(
-                `pages.tourism.planner.${plannerValueKeys[itinerary.pace] ?? "balanced"}`,
+      <section className="relative mt-5 min-h-[440px] overflow-hidden rounded-[28px] bg-[#073f3a] text-white shadow-[0_24px_70px_rgba(7,63,58,.22)]">
+        <Image
+          src={heroImage}
+          alt={city?.name ?? itinerary.destination.title}
+          fill
+          priority
+          sizes="(max-width: 1280px) 100vw, 1280px"
+          className="object-cover"
+        />
+        <div className="absolute inset-0 bg-gradient-to-t from-[#052f2c] via-[#052f2c]/65 to-black/15" />
+        <div className="relative flex min-h-[440px] flex-col justify-end p-6 sm:p-9 lg:p-11">
+          <div className="flex flex-col gap-6 lg:flex-row lg:items-end lg:justify-between">
+            <div>
+              <Badge className="mb-4 border-white/15 bg-white/10 text-white">
+                <Sparkles />{" "}
+                {booked
+                  ? t(
+                      cancelled
+                        ? "pages.tourism.itinerary.cancelledPackage"
+                        : "pages.tourism.itinerary.bookedPackage",
+                    )
+                  : t("pages.tourism.itinerary.eyebrow")}
+              </Badge>
+              <h1 className="text-white">
+                {city?.name} · {itinerary.days.length} days
+              </h1>
+              {itinerary.destination.summary && (
+                <p className="mt-3 max-w-2xl text-lg leading-7 text-white/85">
+                  {itinerary.destination.summary}
+                </p>
               )}
-            </p>
-          </div>
-          {booked ? (
-            <div className="rounded-2xl bg-white/10 p-4 backdrop-blur">
-              <span className="text-xs uppercase tracking-wider text-white/60">
-                {t("pages.tourism.itinerary.bookingReference")}
-              </span>
-              <strong className="mt-1 block text-xl">
-                {itinerary.bookingReference}
-              </strong>
+              <p className="mt-3 max-w-2xl text-sm text-white/75">
+                {itinerary.startDate} → {itinerary.endDate} ·{" "}
+                {t(
+                  `pages.tourism.planner.${plannerValueKeys[itinerary.style] ?? "family"}`,
+                )}{" "}
+                ·{" "}
+                {t(
+                  `pages.tourism.planner.${plannerValueKeys[itinerary.pace] ?? "balanced"}`,
+                )}
+              </p>
             </div>
-          ) : (
-            <Badge className="bg-[#ffcb66] px-4 py-2 text-[#17202a]">
-              {t("pages.tourism.itinerary.draft")}
-            </Badge>
-          )}
-        </div>
-        <div className="mt-7 grid grid-cols-2 gap-3 border-t border-white/15 pt-6 text-sm sm:grid-cols-4">
-          <div className="flex items-center gap-2">
-            <Users className="size-4 text-[#9ee6dd]" /> {travelers} travelers
+            {booked ? (
+              <div className="rounded-2xl bg-white/10 p-4 backdrop-blur">
+                <span className="text-xs uppercase tracking-wider text-white/60">
+                  {t("pages.tourism.itinerary.bookingReference")}
+                </span>
+                <strong className="mt-1 block text-xl">
+                  {itinerary.bookingReference}
+                </strong>
+              </div>
+            ) : (
+              <Badge className="bg-[#ffcb66] px-4 py-2 text-[#17202a]">
+                {t("pages.tourism.itinerary.draft")}
+              </Badge>
+            )}
           </div>
-          <div className="flex items-center gap-2">
-            <BedDouble className="size-4 text-[#9ee6dd]" /> {rooms} rooms
-          </div>
-          <div className="flex items-center gap-2">
-            <TrainFront className="size-4 text-[#9ee6dd]" />{" "}
-            {itinerary.travelMode ?? "Train"}
-          </div>
-          <div className="flex items-center gap-2">
-            <Utensils className="size-4 text-[#9ee6dd]" />{" "}
-            {itinerary.mealPlan ?? "Breakfast"}
+          <div className="mt-7 grid grid-cols-2 gap-3 border-t border-white/20 pt-6 text-sm sm:grid-cols-4">
+            <div className="flex items-center gap-2">
+              <Users className="size-4 text-[#9ee6dd]" /> {travelers} travelers
+            </div>
+            <div className="flex items-center gap-2">
+              <BedDouble className="size-4 text-[#9ee6dd]" /> {rooms} rooms
+            </div>
+            <div className="flex items-center gap-2">
+              <TrainFront className="size-4 text-[#9ee6dd]" />{" "}
+              {itinerary.travelMode ?? "Train"}
+            </div>
+            <div className="flex items-center gap-2">
+              <Utensils className="size-4 text-[#9ee6dd]" />{" "}
+              {itinerary.mealPlan ?? "Breakfast"}
+            </div>
           </div>
         </div>
       </section>
@@ -298,95 +332,188 @@ export default function ItineraryPage() {
               </span>
             )}
           </div>
-          {itinerary.days.map((day, dayIndex) => (
-            <section
-              className="overflow-hidden rounded-2xl border border-slate-200 bg-white"
-              key={day.day}
-            >
-              <div className="flex items-center gap-4 border-b border-slate-100 bg-slate-50 px-5 py-4">
-                <span className="grid size-10 place-items-center rounded-full bg-[#0b6b63] font-bold text-white">
-                  {day.day}
-                </span>
-                <div>
-                  <span className="text-xs font-semibold uppercase tracking-wider text-[#0b6b63]">
-                    {t("pages.tourism.itinerary.dayLabel", { day: day.day })}
-                  </span>
-                  <h2 className="text-xl">{day.title}</h2>
-                </div>
-              </div>
-              <div className="p-5">
-                {day.activities.length ? (
-                  day.activities.map((activity, activityIndex) => (
-                    <div
-                      className="grid gap-3 border-b border-slate-100 py-5 first:pt-0 last:border-0 last:pb-0 sm:grid-cols-[76px_1fr_auto] sm:items-start"
-                      key={`${activity.attractionId}-${activityIndex}`}
-                    >
-                      <strong className="flex items-center gap-2 text-[#075b55]">
-                        <Clock3 className="size-4" /> {activity.time}
-                      </strong>
-                      <div>
-                        <h3>{activity.name}</h3>
-                        <p className="mt-1 text-sm text-slate-500">
-                          {Math.round(activity.durationMinutes / 60)}h · ₹
-                          {activity.fromPrice.toLocaleString(locale)} per person
-                          · {activity.travelMinutes} min by{" "}
-                          {activity.transportation}
-                        </p>
-                      </div>
-                      {!booked && (
-                        <div className="flex gap-1">
-                          <Button
-                            variant="ghost"
-                            size="icon"
-                            aria-label={t("common.actions.moveUp")}
-                            disabled={activityIndex === 0}
-                            onClick={() => act(dayIndex, activityIndex, "up")}
-                          >
-                            <ArrowUp />
-                          </Button>
-                          <Button
-                            variant="ghost"
-                            size="icon"
-                            aria-label={t("common.actions.moveDown")}
-                            disabled={
-                              activityIndex === day.activities.length - 1
-                            }
-                            onClick={() => act(dayIndex, activityIndex, "down")}
-                          >
-                            <ArrowDown />
-                          </Button>
-                          <Button
-                            variant="ghost"
-                            size="icon"
-                            aria-label={t("common.actions.replace")}
-                            onClick={() =>
-                              act(dayIndex, activityIndex, "replace")
-                            }
-                          >
-                            <RefreshCw />
-                          </Button>
-                          <Button
-                            variant="ghost"
-                            size="icon"
-                            aria-label={t("common.actions.remove")}
-                            onClick={() =>
-                              act(dayIndex, activityIndex, "remove")
-                            }
-                          >
-                            <Trash2 />
-                          </Button>
-                        </div>
-                      )}
+          {itinerary.days.map((day, dayIndex) => {
+            const totalMinutes = day.activities.reduce(
+              (total, activity) =>
+                total + activity.durationMinutes + activity.travelMinutes,
+              0,
+            );
+            return (
+              <section
+                className="overflow-hidden rounded-[22px] border border-slate-200 bg-white shadow-[0_12px_36px_rgba(15,23,42,.06)]"
+                key={day.day}
+              >
+                <div className="flex flex-col gap-4 border-b border-slate-100 bg-[linear-gradient(135deg,#f3faf8,#f7f9ff)] px-5 py-5 sm:flex-row sm:items-center sm:justify-between">
+                  <div className="flex items-center gap-4">
+                    <span className="grid size-11 shrink-0 place-items-center rounded-full bg-[#0b6b63] font-bold text-white shadow-sm">
+                      {day.day}
+                    </span>
+                    <div>
+                      <span className="text-xs font-semibold uppercase tracking-wider text-[#0b6b63]">
+                        {t("pages.tourism.itinerary.dayLabel", {
+                          day: day.day,
+                        })}
+                      </span>
+                      <h2 className="text-xl">{day.title}</h2>
                     </div>
-                  ))
-                ) : (
-                  <p className="py-5 text-center text-slate-500">
-                    {t("pages.tourism.itinerary.freeDay")}
-                  </p>
-                )}
-              </div>
-            </section>
-          ))}
+                  </div>
+                  {day.activities.length > 0 && (
+                    <div className="flex gap-2 text-xs font-semibold text-slate-600">
+                      <span className="rounded-full border border-slate-200 bg-white px-3 py-1.5">
+                        {day.activities.length} experiences
+                      </span>
+                      <span className="rounded-full border border-slate-200 bg-white px-3 py-1.5">
+                        {visitDuration(totalMinutes)} planned
+                      </span>
+                    </div>
+                  )}
+                </div>
+                <div className="grid gap-5 p-4 sm:p-5">
+                  {day.activities.length ? (
+                    day.activities.map((activity, activityIndex) => (
+                      <article
+                        className="group overflow-hidden rounded-2xl border border-slate-200 bg-white lg:grid lg:grid-cols-[260px_1fr]"
+                        key={`${activity.attractionId}-${activityIndex}`}
+                      >
+                        <div className="relative min-h-52 overflow-hidden bg-slate-100 lg:min-h-full">
+                          <Image
+                            src={
+                              activity.imageUrl ??
+                              itinerary.destination.heroImage ??
+                              destinationImage(
+                                itinerary.destination.destinationId,
+                              )
+                            }
+                            alt={activity.name}
+                            fill
+                            sizes="(max-width: 1024px) 100vw, 260px"
+                            className="object-cover transition duration-500 group-hover:scale-105"
+                          />
+                          <div className="absolute inset-0 bg-gradient-to-t from-black/55 via-transparent to-transparent" />
+                          <strong className="absolute bottom-4 left-4 flex items-center gap-2 rounded-full bg-white/95 px-3 py-1.5 text-sm text-[#075b55] shadow">
+                            <Clock3 className="size-4" /> {activity.time}
+                          </strong>
+                        </div>
+                        <div className="p-5 sm:p-6">
+                          <div className="flex items-start justify-between gap-4">
+                            <div>
+                              <span className="text-xs font-bold uppercase tracking-wider text-[#0b6b63]">
+                                {activity.category}
+                              </span>
+                              <h3 className="mt-1 text-xl">{activity.name}</h3>
+                            </div>
+                            {!booked && (
+                              <div className="flex shrink-0 gap-1">
+                                <Button
+                                  variant="ghost"
+                                  size="icon"
+                                  aria-label={t("common.actions.moveUp")}
+                                  disabled={activityIndex === 0}
+                                  onClick={() =>
+                                    act(dayIndex, activityIndex, "up")
+                                  }
+                                >
+                                  <ArrowUp />
+                                </Button>
+                                <Button
+                                  variant="ghost"
+                                  size="icon"
+                                  aria-label={t("common.actions.moveDown")}
+                                  disabled={
+                                    activityIndex === day.activities.length - 1
+                                  }
+                                  onClick={() =>
+                                    act(dayIndex, activityIndex, "down")
+                                  }
+                                >
+                                  <ArrowDown />
+                                </Button>
+                                <Button
+                                  variant="ghost"
+                                  size="icon"
+                                  aria-label={t("common.actions.replace")}
+                                  onClick={() =>
+                                    act(dayIndex, activityIndex, "replace")
+                                  }
+                                >
+                                  <RefreshCw />
+                                </Button>
+                                <Button
+                                  variant="ghost"
+                                  size="icon"
+                                  aria-label={t("common.actions.remove")}
+                                  onClick={() =>
+                                    act(dayIndex, activityIndex, "remove")
+                                  }
+                                >
+                                  <Trash2 />
+                                </Button>
+                              </div>
+                            )}
+                          </div>
+                          <p className="mt-3 text-sm leading-6 text-slate-600">
+                            {activity.description ??
+                              `A curated ${activity.category} experience selected for your time in ${city?.name}.`}
+                          </p>
+                          <div className="mt-4 grid gap-2 text-sm sm:grid-cols-3">
+                            <div className="rounded-xl bg-slate-50 p-3">
+                              <span className="block text-xs text-slate-500">
+                                Visit time
+                              </span>
+                              <strong>
+                                {visitDuration(activity.durationMinutes)}
+                              </strong>
+                            </div>
+                            <div className="rounded-xl bg-slate-50 p-3">
+                              <span className="block text-xs text-slate-500">
+                                Getting there
+                              </span>
+                              <strong>{activity.travelMinutes} min</strong>
+                            </div>
+                            <div className="rounded-xl bg-slate-50 p-3">
+                              <span className="block text-xs text-slate-500">
+                                From / person
+                              </span>
+                              <strong>
+                                ₹{activity.fromPrice.toLocaleString(locale)}
+                              </strong>
+                            </div>
+                          </div>
+                          {activity.whyPopular && (
+                            <div className="mt-4 rounded-xl border border-amber-200 bg-amber-50 p-4">
+                              <strong className="flex items-center gap-2 text-sm text-amber-950">
+                                <Sparkles className="size-4 text-amber-600" />
+                                Why travelers love it
+                              </strong>
+                              <p className="mt-1 text-sm leading-6 text-amber-900/80">
+                                {activity.whyPopular}
+                              </p>
+                            </div>
+                          )}
+                          <div className="mt-4 flex flex-wrap items-center gap-2">
+                            {activity.bestTime && (
+                              <Badge variant="secondary">
+                                Best: {activity.bestTime}
+                              </Badge>
+                            )}
+                            {activity.highlights?.map((highlight) => (
+                              <Badge variant="outline" key={highlight}>
+                                {highlight}
+                              </Badge>
+                            ))}
+                          </div>
+                        </div>
+                      </article>
+                    ))
+                  ) : (
+                    <p className="py-5 text-center text-slate-500">
+                      {t("pages.tourism.itinerary.freeDay")}
+                    </p>
+                  )}
+                </div>
+              </section>
+            );
+          })}
         </main>
 
         <aside className="sticky top-28 overflow-hidden rounded-2xl border border-slate-200 bg-white shadow-[0_18px_50px_rgba(15,23,42,.1)]">

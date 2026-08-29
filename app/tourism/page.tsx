@@ -88,7 +88,7 @@ export default function TourismPage() {
             ) +
             (hotel?.fromPrice ?? 2000) * 3;
           return (
-            `${destination.title} ${city?.name} ${city?.state} ${destination.themes.join(" ")}`
+            `${destination.title} ${destination.summary ?? ""} ${city?.name} ${city?.state} ${destination.themes.join(" ")} ${destination.attractions.map((attraction) => attraction.name).join(" ")}`
               .toLowerCase()
               .includes(query.trim().toLowerCase()) &&
             (category === "All" || destination.themes.includes(category)) &&
@@ -269,7 +269,7 @@ export default function TourismPage() {
                     <div
                       className="absolute inset-0 bg-cover bg-center transition duration-500 group-hover:scale-105"
                       style={{
-                        backgroundImage: `url('${destinationImage(destination.destinationId)}')`,
+                        backgroundImage: `url('${destination.heroImage ?? destinationImage(destination.destinationId)}')`,
                       }}
                     />
                     <div className="absolute inset-0 bg-gradient-to-t from-black/65 via-transparent to-transparent" />
@@ -285,6 +285,11 @@ export default function TourismPage() {
                   </div>
                 </Link>
                 <div className="p-5">
+                  {destination.summary && (
+                    <p className="mb-4 line-clamp-2 text-sm leading-6 text-slate-600">
+                      {destination.summary}
+                    </p>
+                  )}
                   <div className="flex items-start justify-between gap-4">
                     <p className="text-sm leading-6 text-slate-600">
                       {t("pages.tourism.discovery.bestIn", {

@@ -153,7 +153,7 @@ export default function TourismBookingsPage() {
                     <div
                       className="absolute inset-0 bg-cover bg-center"
                       style={{
-                        backgroundImage: `url('${destinationImage(item.destination.destinationId)}')`,
+                        backgroundImage: `url('${item.destination.heroImage ?? destinationImage(item.destination.destinationId)}')`,
                       }}
                     />
                     <div className="absolute inset-0 bg-gradient-to-t from-black/70 to-transparent" />
