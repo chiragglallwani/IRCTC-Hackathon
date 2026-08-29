@@ -14,6 +14,7 @@ import {
   PlaneIcon,
   PlaneTakeoff,
   BriefcaseBusiness,
+  Languages,
   LucideProps,
   LogOut,
 } from "lucide-react";
@@ -224,9 +225,13 @@ export function Header() {
           </Popover>
           <Select value={language} onValueChange={setLanguage}>
             <SelectTrigger
-              className="min-h-10 w-[82px] flex-shrink-0 rounded-lg border-[var(--line)] px-2 text-start sm:w-[100px] [&>span]:!inline-block [&>span]:!truncate"
+              className="min-h-10 w-[98px] flex-shrink-0 gap-1 rounded-lg border-[var(--line)] px-2 text-start sm:w-[120px] [&>span]:!inline-block [&>span]:!truncate"
               aria-label={t("navigation.language")}
             >
+              <Languages
+                className="!size-4 shrink-0 text-[var(--primary-dark)]"
+                aria-hidden="true"
+              />
               <SelectValue />
             </SelectTrigger>
             <SelectContent align="end">

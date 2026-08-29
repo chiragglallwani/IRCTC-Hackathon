@@ -201,7 +201,7 @@ function SearchResults() {
   return (
     <div className="page">
       <section className="card flex flex-col md:flex-row items-start justify-between gap-[15px] px-[30px] py-[26px] lg:items-center">
-        <div>
+        <div className="min-w-0">
           <span className="eyebrow">{t("pages.search.eyebrow")}</span>
           <h2>
             {origin?.name ?? t("pages.search.origin")} →{" "}
@@ -238,7 +238,11 @@ function SearchResults() {
               : ""}
           </p>
         </div>
-        <Button variant="secondary" className="w-full md:w-24" asChild>
+        <Button
+          variant="secondary"
+          className="h-auto w-full max-w-full shrink-0 whitespace-normal break-words text-center leading-snug md:w-auto md:min-w-24 md:max-w-64"
+          asChild
+        >
           <Link href="/">{t("pages.search.edit")}</Link>
         </Button>
       </section>
