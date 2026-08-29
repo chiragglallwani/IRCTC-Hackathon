@@ -11,7 +11,7 @@ import {
 
 import { useApp } from "@/components/providers";
 import { Badge } from "@/components/ui/badge";
-import { formatDuration } from "@/lib/journey-utils";
+import { calculateLayoverMinutes, formatDuration } from "@/lib/journey-utils";
 import type { Journey, JourneyLeg, TransportMode } from "@/lib/types";
 
 const modeIcons: Record<TransportMode, LucideIcon> = {
@@ -42,28 +42,29 @@ function TransferBadges({
 }) {
   const { t } = useApp();
   if (!nextLeg) return null;
-
-  if (nextLeg.mode !== leg.mode) {
-    return (
-      <Badge variant="secondary">
-        {t("components.journeyRoute.takeMode", {
-          mode: t(`components.journeyRoute.modes.${nextLeg.mode}`),
-        })}
-      </Badge>
-    );
-  }
+  const layover = calculateLayoverMinutes(leg, nextLeg);
 
   return (
     <>
       <Badge variant="warning">
-        {t("components.journeyRoute.layover", { duration: "45m" })}
-      </Badge>
-      <Badge variant="outline">
-        {t("components.journeyRoute.platformTransfer", {
-          from: arrivalPlatform(index),
-          to: departurePlatform(index + 1),
+        {t("components.journeyRoute.layover", {
+          duration: formatDuration(layover),
         })}
       </Badge>
+      {nextLeg.mode !== leg.mode ? (
+        <Badge variant="secondary">
+          {t("components.journeyRoute.takeMode", {
+            mode: t(`components.journeyRoute.modes.${nextLeg.mode}`),
+          })}
+        </Badge>
+      ) : (
+        <Badge variant="outline">
+          {t("components.journeyRoute.platformTransfer", {
+            from: arrivalPlatform(index),
+            to: departurePlatform(index + 1),
+          })}
+        </Badge>
+      )}
     </>
   );
 }

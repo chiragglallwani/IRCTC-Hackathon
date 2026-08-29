@@ -11,7 +11,7 @@ import {
   TrainFront,
 } from "lucide-react";
 import { quotas } from "@/lib/quotas";
-import { formatDuration } from "@/lib/journey-utils";
+import { calculateLayoverMinutes, formatDuration } from "@/lib/journey-utils";
 import { saveStorage, storageKeys } from "@/lib/storage";
 import type {
   AvailabilityStatus,
@@ -264,7 +264,11 @@ export const JourneyCard = memo(function JourneyCard({
               </div>
               {index < journey.legs.length - 1 && (
                 <Badge variant="secondary">
-                  {t("components.journeyCard.transferTime", { minutes: 45 })}
+                  {t("components.journeyRoute.layover", {
+                    duration: formatDuration(
+                      calculateLayoverMinutes(leg, journey.legs[index + 1]),
+                    ),
+                  })}
                 </Badge>
               )}
             </button>

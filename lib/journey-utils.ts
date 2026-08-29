@@ -9,7 +9,38 @@ import type {
 const DISPLAY_QUOTA_IDS = ["GN", "LD", "SS", "DF", "FT", "HP", "DP", "RE"];
 
 export function formatDuration(minutes: number) {
-  return `${Math.floor(minutes / 60)}h ${minutes % 60}m`;
+  const totalMinutes = Math.max(0, Math.floor(minutes));
+  const days = Math.floor(totalMinutes / (24 * 60));
+  const hours = Math.floor((totalMinutes % (24 * 60)) / 60);
+  const remainingMinutes = totalMinutes % 60;
+
+  if (days > 0)
+    return [
+      `${days}d`,
+      hours > 0 ? `${hours}h` : "",
+      remainingMinutes > 0 ? `${remainingMinutes}m` : "",
+    ]
+      .filter(Boolean)
+      .join(" ");
+  if (hours > 0)
+    return [`${hours}h`, remainingMinutes > 0 ? `${remainingMinutes}m` : ""]
+      .filter(Boolean)
+      .join(" ");
+  return `${remainingMinutes}m`;
+}
+
+function clockMinutes(value: string) {
+  const [hours, minutes] = value.split(":").map(Number);
+  return hours * 60 + minutes;
+}
+
+export function calculateLayoverMinutes(
+  arrivingLeg: JourneyLeg,
+  departingLeg: JourneyLeg,
+) {
+  const arrival = clockMinutes(arrivingLeg.arrival);
+  const departure = clockMinutes(departingLeg.departure);
+  return (departure - arrival + 24 * 60) % (24 * 60);
 }
 
 export function quotaEligibility(

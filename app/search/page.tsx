@@ -27,8 +27,6 @@ import {
 } from "@/components/ui/select";
 import { cn } from "@/lib/utils";
 
-const MINIMUM_SEARCH_DURATION_MS = 2000;
-
 function dateOffset(date: string, offset: number) {
   const d = new Date(`${date}T00:00:00`);
   d.setDate(d.getDate() + offset);
@@ -93,29 +91,20 @@ function SearchResults() {
             .map((offset) => dateOffset(date, offset))
             .filter((value) => value >= todayDate());
     setLoading(true);
-    let minimumLoadingTimer = 0;
-    const minimumLoadingTime = new Promise<void>((resolve) => {
-      minimumLoadingTimer = window.setTimeout(
-        resolve,
-        MINIMUM_SEARCH_DURATION_MS,
-      );
-    });
-    Promise.all([
-      fetch("/api/search", {
-        method: "POST",
-        headers: { "Content-Type": "application/json" },
-        body: JSON.stringify({ input, previewDates }),
-        signal: controller.signal,
-      }).then(async (response) => {
+    fetch("/api/search", {
+      method: "POST",
+      headers: { "Content-Type": "application/json" },
+      body: JSON.stringify({ input, previewDates }),
+      signal: controller.signal,
+    })
+      .then(async (response) => {
         if (!response.ok) throw new Error("Search failed");
         return response.json() as Promise<{
           journeys: Journey[];
           previews: Record<string, number | undefined>;
         }>;
-      }),
-      minimumLoadingTime,
-    ])
-      .then(([{ journeys, previews }]) => {
+      })
+      .then(({ journeys, previews }) => {
         setRaw(journeys);
         setDateOptions(
           previewDates.map((value) => ({
@@ -133,7 +122,6 @@ function SearchResults() {
       });
     return () => {
       controller.abort();
-      window.clearTimeout(minimumLoadingTimer);
     };
   }, [input, date]);
   const results = useMemo(

@@ -2,6 +2,7 @@ import {
   availability,
   connections,
   fares,
+  routes,
   stationById,
   trainById,
 } from "./data";
@@ -46,6 +47,8 @@ for (const edge of connections) {
   if (outgoing) outgoing.push(edge);
   else adjacency.set(edge.fromStation, [edge]);
 }
+
+const routeByTrain = new Map(routes.map((route) => [route.trainId, route]));
 
 const fareByClass = new Map<string, Fare>();
 const fareByClassQuota = new Map<string, Fare>();
@@ -120,6 +123,28 @@ function availabilityFor(
 function time(minutes: number) {
   const normalized = ((minutes % 1440) + 1440) % 1440;
   return `${String(Math.floor(normalized / 60)).padStart(2, "0")}:${String(normalized % 60).padStart(2, "0")}`;
+}
+
+function clockMinutes(value: string) {
+  const [hours, minutes] = value.split(":").map(Number);
+  return hours * 60 + minutes;
+}
+
+function scheduledDeparture(edge: Connection, index: number) {
+  const departure = routeByTrain
+    .get(edge.serviceId)
+    ?.stops.find((stop) => stop.stationId === edge.fromStation)?.departure;
+  return departure
+    ? clockMinutes(departure)
+    : 360 + ((Number(edge.serviceId.replace(/\D/g, "")) || index * 37) % 720);
+}
+
+function nextDepartureAfter(scheduledClock: number, arrival: number) {
+  const arrivalDay = Math.floor(arrival / 1440) * 1440;
+  const sameDayDeparture = arrivalDay + scheduledClock;
+  return sameDayDeparture >= arrival
+    ? sameDayDeparture
+    : sameDayDeparture + 1440;
 }
 function datasetDate(date: string) {
   const day = Math.abs(new Date(`${date}T00:00:00`).getUTCDate() - 24) % 7;
@@ -375,8 +400,7 @@ function legTicketOptions(
 
 function toLeg(
   edge: Connection,
-  index: number,
-  elapsed: number,
+  departureMinutes: number,
   input: SearchInput,
 ): JourneyLeg | null {
   const from = stationById.get(edge.fromStation);
@@ -384,10 +408,6 @@ function toLeg(
   if (!from || !to) return null;
   const service = trainById.get(edge.serviceId);
   const details = fareAndAvailability(edge, input);
-  const departureMinutes =
-    360 +
-    ((Number(edge.serviceId.replace(/\D/g, "")) || index * 37) % 720) +
-    elapsed;
   const ticketOptions = legTicketOptions(edge, input, details.fare);
   const preferredTicket =
     ticketOptions.find((item) => item.travelClass === details.travelClass) ??
@@ -493,14 +513,22 @@ export function searchJourneys(input: SearchInput): Journey[] {
   const passengers = input.adults + input.children;
   const journeys = found
     .map((path, journeyIndex): Journey | null => {
-      let elapsed = 0;
+      let firstDeparture = 0;
+      let previousArrival: number | null = null;
       const legs: JourneyLeg[] = [];
       path.forEach((edge, index) => {
-        const leg = toLeg(edge, index, elapsed, input);
+        const departureClock = scheduledDeparture(edge, index);
+        const departureMinutes =
+          previousArrival === null
+            ? departureClock
+            : nextDepartureAfter(departureClock, previousArrival);
+        if (index === 0) firstDeparture = departureMinutes;
+        const leg = toLeg(edge, departureMinutes, input);
         if (leg) legs.push(leg);
-        elapsed += edge.durationMinutes + (index < path.length - 1 ? 45 : 0);
+        previousArrival = departureMinutes + edge.durationMinutes;
       });
       if (!legs.length) return null;
+      const elapsed = (previousArrival ?? firstDeparture) - firstDeparture;
       const classAvailability = journeyClassAvailability(legs, input);
       const selectedClass =
         classAvailability.find(
