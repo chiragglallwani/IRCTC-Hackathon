@@ -1,0 +1,789 @@
+{
+  "meta": {
+    "dataset": "bharat-journey-hackathon",
+    "version": "2.1.0",
+    "generatedAt": "2026-08-29T00:00:00.000Z",
+    "synthetic": true,
+    "description": "Curated place-level enrichment for featured tourism destinations"
+  },
+  "records": [
+    {
+      "destinationId": "destination_001",
+      "summary": "Sacred hill temples, forested waterfalls and centuries of living heritage make Tirupati much more than a single pilgrimage stop.",
+      "heroImage": "/images/tirupati-venkateswara.webp",
+      "attractions": [
+        {
+          "attractionId": "attraction_001_1",
+          "name": "Sri Venkateswara Temple, Tirumala",
+          "category": "spiritual",
+          "durationMinutes": 240,
+          "fromPrice": 300,
+          "description": "Begin at the sacred hill shrine, with time reserved for security, darshan and the temple precincts.",
+          "whyPopular": "One of India's most visited pilgrimage centres, celebrated for its Dravidian architecture and powerful living traditions.",
+          "bestTime": "Early morning",
+          "imageUrl": "/images/tirupati-venkateswara.webp",
+          "highlights": [
+            "Hill-temple setting",
+            "Dravidian architecture",
+            "Laddu prasadam"
+          ]
+        },
+        {
+          "attractionId": "attraction_001_2",
+          "name": "Kapila Theertham",
+          "category": "nature",
+          "durationMinutes": 90,
+          "fromPrice": 150,
+          "description": "A slower nature-and-spiritual stop beside a waterfall at the foot of the Tirumala hills.",
+          "whyPopular": "It combines a historic Shiva shrine with one of Tirupati's most refreshing natural settings.",
+          "bestTime": "Morning or after monsoon",
+          "imageUrl": "/images/tirupati-kapila-theertham.webp",
+          "highlights": [
+            "Sacred waterfall",
+            "Rocky forest setting",
+            "Quiet temple visit"
+          ]
+        },
+        {
+          "attractionId": "attraction_001_3",
+          "name": "Chandragiri Fort & Raja Mahal",
+          "category": "heritage",
+          "durationMinutes": 150,
+          "fromPrice": 250,
+          "description": "Explore the hill fort, palace museum and landscaped grounds tied to the Vijayanagara era.",
+          "whyPopular": "The elegant Raja Mahal and hill backdrop offer a compelling look at the region beyond its temples.",
+          "bestTime": "Late afternoon",
+          "imageUrl": "/images/tirupati-chandragiri-fort.webp",
+          "highlights": ["Raja Mahal", "Fort history", "Golden-hour views"]
+        }
+      ]
+    },
+    {
+      "destinationId": "destination_002",
+      "summary": "Tawang pairs Himalayan drama with serene monasteries, high-altitude lakes and stories of extraordinary courage.",
+      "attractions": [
+        {
+          "attractionId": "attraction_002_1",
+          "name": "Tawang Monastery",
+          "category": "spiritual",
+          "durationMinutes": 150,
+          "fromPrice": 200,
+          "description": "Explore prayer halls, monastic courtyards and the museum above the Tawang valley.",
+          "whyPopular": "The vast 17th-century monastery is the cultural heart of Tawang and one of the largest Buddhist monasteries in India.",
+          "bestTime": "Morning",
+          "highlights": ["Prayer hall", "Valley views", "Monastic museum"]
+        },
+        {
+          "attractionId": "attraction_002_2",
+          "name": "Sela Pass",
+          "category": "nature",
+          "durationMinutes": 120,
+          "fromPrice": 600,
+          "description": "Pause at the high mountain pass and walk beside the often mist-wrapped Sela Lake.",
+          "whyPopular": "Its dramatic altitude, alpine lake and snow-framed road make it one of Arunachal's iconic landscapes.",
+          "bestTime": "Late morning",
+          "highlights": ["Alpine lake", "Mountain pass", "Snow views"]
+        },
+        {
+          "attractionId": "attraction_002_3",
+          "name": "Tawang War Memorial",
+          "category": "heritage",
+          "durationMinutes": 75,
+          "fromPrice": 100,
+          "description": "Visit the peaceful memorial and understand the region's 1962 history through its exhibits.",
+          "whyPopular": "A moving tribute set against the mountains, known for its stories of courage and evening sound-and-light presentation.",
+          "bestTime": "Late afternoon",
+          "highlights": ["Memorial museum", "Mountain setting", "Evening show"]
+        }
+      ]
+    },
+    {
+      "destinationId": "destination_003",
+      "summary": "Ziro is a gentle landscape of rice fields, pine ridges and Apatani culture made for unhurried exploration.",
+      "attractions": [
+        {
+          "attractionId": "attraction_003_1",
+          "name": "Hong Village",
+          "category": "culture",
+          "durationMinutes": 150,
+          "fromPrice": 350,
+          "description": "Walk through a traditional Apatani settlement with a local guide and learn how village life follows the valley's seasons.",
+          "whyPopular": "It offers one of the most meaningful introductions to Apatani architecture, customs and sustainable farming traditions.",
+          "bestTime": "Morning",
+          "highlights": [
+            "Apatani culture",
+            "Traditional homes",
+            "Local storytelling"
+          ]
+        },
+        {
+          "attractionId": "attraction_003_2",
+          "name": "Kile Pakho Ridge",
+          "category": "nature",
+          "durationMinutes": 120,
+          "fromPrice": 250,
+          "description": "Take a short ridge excursion for layered views over Ziro's fields and forested hills.",
+          "whyPopular": "The panoramic contrast between cultivated valley and Himalayan foothills is a photographer favourite.",
+          "bestTime": "Sunrise or late afternoon",
+          "highlights": ["Valley panorama", "Short hike", "Sunset views"]
+        },
+        {
+          "attractionId": "attraction_003_3",
+          "name": "Talley Valley Wildlife Sanctuary",
+          "category": "nature",
+          "durationMinutes": 240,
+          "fromPrice": 900,
+          "description": "Spend a half day on a guided forest excursion through bamboo, fern and cloud-forest habitat.",
+          "whyPopular": "Its biodiversity and quiet forest trails reveal a wilder side of the Ziro plateau.",
+          "bestTime": "Morning",
+          "highlights": ["Guided forest walk", "Birdlife", "Bamboo groves"]
+        }
+      ]
+    },
+    {
+      "destinationId": "destination_004",
+      "summary": "Sivasagar's temples, royal pavilions and ingenious palaces tell the story of six centuries of Ahom culture.",
+      "attractions": [
+        {
+          "attractionId": "attraction_004_1",
+          "name": "Rang Ghar",
+          "category": "heritage",
+          "durationMinutes": 75,
+          "fromPrice": 150,
+          "description": "Explore the distinctive royal sports pavilion and its open grounds.",
+          "whyPopular": "Often described as one of Asia's oldest surviving amphitheatre-like pavilions, it is an enduring symbol of Ahom design.",
+          "bestTime": "Morning",
+          "highlights": ["Ahom architecture", "Royal pavilion", "Open lawns"]
+        },
+        {
+          "attractionId": "attraction_004_2",
+          "name": "Talatal Ghar",
+          "category": "heritage",
+          "durationMinutes": 120,
+          "fromPrice": 200,
+          "description": "Walk through the atmospheric remains of an Ahom palace-fort with layered corridors and chambers.",
+          "whyPopular": "Its unusual multi-level defensive design makes the complex one of Assam's most intriguing royal monuments.",
+          "bestTime": "Morning",
+          "highlights": ["Palace ruins", "Defensive design", "Photo walk"]
+        },
+        {
+          "attractionId": "attraction_004_3",
+          "name": "Sivadol Temple Complex",
+          "category": "spiritual",
+          "durationMinutes": 90,
+          "fromPrice": 100,
+          "description": "Visit the towering temples beside the historic Sivasagar tank.",
+          "whyPopular": "The soaring temple profile reflected in the great water tank creates Sivasagar's defining city view.",
+          "bestTime": "Sunrise or evening",
+          "highlights": ["Temple towers", "Tank-side views", "Evening rituals"]
+        }
+      ]
+    },
+    {
+      "destinationId": "destination_005",
+      "summary": "Gaya and nearby Bodh Gaya bring together sacred rituals, Buddhist history and places of deep contemplation.",
+      "attractions": [
+        {
+          "attractionId": "attraction_005_1",
+          "name": "Mahabodhi Temple",
+          "category": "spiritual",
+          "durationMinutes": 180,
+          "fromPrice": 200,
+          "description": "Explore the temple precinct, Bodhi Tree and meditation gardens in nearby Bodh Gaya.",
+          "whyPopular": "This UNESCO World Heritage setting marks the place associated with the Buddha's enlightenment.",
+          "bestTime": "Early morning",
+          "highlights": ["Mahabodhi Temple", "Bodhi Tree", "Meditation gardens"]
+        },
+        {
+          "attractionId": "attraction_005_2",
+          "name": "Vishnupad Temple",
+          "category": "spiritual",
+          "durationMinutes": 120,
+          "fromPrice": 150,
+          "description": "Experience one of Gaya's principal pilgrimage sites on the banks of the Falgu River.",
+          "whyPopular": "The temple is central to Gaya's ancient ritual traditions and the city's identity as a pilgrimage centre.",
+          "bestTime": "Morning",
+          "highlights": [
+            "Riverside setting",
+            "Pilgrimage traditions",
+            "Historic shrine"
+          ]
+        },
+        {
+          "attractionId": "attraction_005_3",
+          "name": "Dungeshwari Cave Temples",
+          "category": "heritage",
+          "durationMinutes": 150,
+          "fromPrice": 350,
+          "description": "Travel into the rocky hills to visit the quiet caves linked with the Buddha's years of ascetic practice.",
+          "whyPopular": "The remote setting and intimate cave shrines offer historical context beyond Bodh Gaya's main temple.",
+          "bestTime": "Late morning",
+          "highlights": ["Cave shrines", "Rocky landscape", "Buddhist history"]
+        }
+      ]
+    },
+    {
+      "destinationId": "destination_006",
+      "summary": "Jagdalpur is the gateway to Bastar's thunderous waterfalls, limestone caves and protected forests.",
+      "attractions": [
+        {
+          "attractionId": "attraction_006_1",
+          "name": "Chitrakote Falls",
+          "category": "nature",
+          "durationMinutes": 150,
+          "fromPrice": 350,
+          "description": "View the broad horseshoe waterfall from multiple overlooks and descend closer when conditions permit.",
+          "whyPopular": "Its immense monsoon spread and powerful mist have earned it a place among India's most dramatic waterfalls.",
+          "bestTime": "Morning or sunset",
+          "highlights": ["Panoramic falls", "River gorge", "Sunset mist"]
+        },
+        {
+          "attractionId": "attraction_006_2",
+          "name": "Tirathgarh Falls",
+          "category": "nature",
+          "durationMinutes": 120,
+          "fromPrice": 300,
+          "description": "Follow forest steps to tiered cascades within the Kanger Valley landscape.",
+          "whyPopular": "The multi-level white-water cascades create a gentler, highly scenic contrast to Chitrakote.",
+          "bestTime": "Morning",
+          "highlights": ["Tiered waterfall", "Forest trail", "Picnic stop"]
+        },
+        {
+          "attractionId": "attraction_006_3",
+          "name": "Kanger Valley National Park",
+          "category": "adventure",
+          "durationMinutes": 240,
+          "fromPrice": 950,
+          "description": "Take a guided forest drive and cave excursion subject to park access and seasonal conditions.",
+          "whyPopular": "Dense forest, biodiversity and limestone formations make it Bastar's signature nature experience.",
+          "bestTime": "Early morning",
+          "highlights": ["Forest safari", "Limestone caves", "Wildlife habitat"]
+        }
+      ]
+    },
+    {
+      "destinationId": "destination_007",
+      "summary": "Calangute puts North Goa's beaches, Portuguese-era forts and energetic coastal life within easy reach.",
+      "attractions": [
+        {
+          "attractionId": "attraction_007_1",
+          "name": "Calangute Beach",
+          "category": "nature",
+          "durationMinutes": 150,
+          "fromPrice": 250,
+          "description": "Ease into the coast with a beach walk, sea views and time at the lively beachfront.",
+          "whyPopular": "Its long sandy sweep and central North Goa location make it one of the state's best-known beaches.",
+          "bestTime": "Early morning or sunset",
+          "imageUrl": "/images/destination-4.webp",
+          "highlights": ["Long beachfront", "Sunset", "Water activities"]
+        },
+        {
+          "attractionId": "attraction_007_2",
+          "name": "Fort Aguada",
+          "category": "heritage",
+          "durationMinutes": 120,
+          "fromPrice": 300,
+          "description": "Walk the laterite fort walls and lighthouse area above the Mandovi estuary.",
+          "whyPopular": "The 17th-century fort combines Portuguese history with sweeping sea and river views.",
+          "bestTime": "Late afternoon",
+          "highlights": ["Portuguese fort", "Lighthouse", "Sea views"]
+        },
+        {
+          "attractionId": "attraction_007_3",
+          "name": "Baga Creek & Beach",
+          "category": "nature",
+          "durationMinutes": 150,
+          "fromPrice": 400,
+          "description": "Explore the neighbouring beach and quieter creek edge before the evening energy builds.",
+          "whyPopular": "Baga's mix of creek scenery, beach life and dining makes it a classic North Goa evening stop.",
+          "bestTime": "Late afternoon",
+          "imageUrl": "/images/destination-4.webp",
+          "highlights": ["Creek views", "Beach cafés", "Evening atmosphere"]
+        }
+      ]
+    },
+    {
+      "destinationId": "destination_008",
+      "summary": "Mundra is a practical base for Kutch's historic Jain sites, Mandvi's coast and palace heritage.",
+      "attractions": [
+        {
+          "attractionId": "attraction_008_1",
+          "name": "Bhadreshwar Jain Temple",
+          "category": "heritage",
+          "durationMinutes": 120,
+          "fromPrice": 250,
+          "description": "Visit the serene marble temple complex and learn about its long history of rebuilding and pilgrimage.",
+          "whyPopular": "The important Jain pilgrimage site is admired for its bright marble courtyards and peaceful atmosphere.",
+          "bestTime": "Morning",
+          "highlights": [
+            "Marble architecture",
+            "Pilgrimage history",
+            "Quiet courtyards"
+          ]
+        },
+        {
+          "attractionId": "attraction_008_2",
+          "name": "Vijay Vilas Palace, Mandvi",
+          "category": "heritage",
+          "durationMinutes": 150,
+          "fromPrice": 450,
+          "description": "Take a day excursion to the red-sandstone summer palace, terraces and gardens near Mandvi.",
+          "whyPopular": "Its fusion architecture, film history and rooftop views make it one of coastal Kutch's standout landmarks.",
+          "bestTime": "Late morning",
+          "highlights": ["Palace interiors", "Rooftop views", "Royal gardens"]
+        },
+        {
+          "attractionId": "attraction_008_3",
+          "name": "Mandvi Beach",
+          "category": "nature",
+          "durationMinutes": 150,
+          "fromPrice": 300,
+          "description": "End the excursion with a breezy walk along Mandvi's broad sandy coast.",
+          "whyPopular": "The calm horizon and proximity to Vijay Vilas Palace make it an easy heritage-and-coast pairing.",
+          "bestTime": "Sunset",
+          "imageUrl": "/images/destination-4.webp",
+          "highlights": ["Sandy coast", "Sunset", "Local snacks"]
+        }
+      ]
+    },
+    {
+      "destinationId": "destination_009",
+      "summary": "Kurukshetra brings epic history to life through sacred water bodies, museums and places associated with the Bhagavad Gita.",
+      "attractions": [
+        {
+          "attractionId": "attraction_009_1",
+          "name": "Brahma Sarovar",
+          "category": "spiritual",
+          "durationMinutes": 120,
+          "fromPrice": 100,
+          "description": "Walk the broad ghats surrounding one of Kurukshetra's most important sacred tanks.",
+          "whyPopular": "Its scale, reflections and evening aarti make it the city's most recognisable gathering place.",
+          "bestTime": "Sunrise or evening",
+          "highlights": ["Sacred ghats", "Evening aarti", "Waterside walk"]
+        },
+        {
+          "attractionId": "attraction_009_2",
+          "name": "Jyotisar",
+          "category": "heritage",
+          "durationMinutes": 90,
+          "fromPrice": 150,
+          "description": "Visit the pilgrimage site traditionally associated with Krishna's discourse of the Bhagavad Gita.",
+          "whyPopular": "The ancient banyan setting and interpretation centre connect visitors with Kurukshetra's defining story.",
+          "bestTime": "Morning",
+          "highlights": [
+            "Sacred banyan",
+            "Gita interpretation",
+            "Light and sound show"
+          ]
+        },
+        {
+          "attractionId": "attraction_009_3",
+          "name": "Shri Krishna Museum",
+          "category": "culture",
+          "durationMinutes": 120,
+          "fromPrice": 200,
+          "description": "Explore galleries presenting Krishna through sculpture, painting, archaeology and regional traditions.",
+          "whyPopular": "Its varied collection gives useful cultural context before visiting the city's sacred sites.",
+          "bestTime": "Afternoon",
+          "highlights": [
+            "Art galleries",
+            "Epic storytelling",
+            "Family friendly"
+          ]
+        }
+      ]
+    },
+    {
+      "destinationId": "destination_010",
+      "summary": "Manali balances cedar forests and old temples with mountain viewpoints and high-energy valley adventures.",
+      "attractions": [
+        {
+          "attractionId": "attraction_010_1",
+          "name": "Hidimba Devi Temple",
+          "category": "heritage",
+          "durationMinutes": 90,
+          "fromPrice": 150,
+          "description": "Walk beneath tall deodar trees to Manali's distinctive wooden sanctuary.",
+          "whyPopular": "The pagoda-like temple, forest setting and carved timber details create a uniquely Himachali experience.",
+          "bestTime": "Early morning",
+          "highlights": ["Deodar forest", "Wooden architecture", "Quiet trails"]
+        },
+        {
+          "attractionId": "attraction_010_2",
+          "name": "Solang Valley",
+          "category": "adventure",
+          "durationMinutes": 240,
+          "fromPrice": 1200,
+          "description": "Spend a half day among mountain views with seasonal adventure activities selected on arrival.",
+          "whyPopular": "The broad alpine valley is Manali's most accessible hub for snow play, paragliding and scenic rides.",
+          "bestTime": "Late morning",
+          "highlights": [
+            "Mountain panorama",
+            "Seasonal snow",
+            "Adventure sports"
+          ]
+        },
+        {
+          "attractionId": "attraction_010_3",
+          "name": "Old Manali & Manu Temple",
+          "category": "culture",
+          "durationMinutes": 150,
+          "fromPrice": 300,
+          "description": "Explore village lanes, traditional homes, cafés and the hillside Manu Temple at a relaxed pace.",
+          "whyPopular": "It preserves a slower village atmosphere just beyond the busy centre of modern Manali.",
+          "bestTime": "Late afternoon",
+          "highlights": ["Village lanes", "Manu Temple", "Riverside cafés"]
+        }
+      ]
+    },
+    {
+      "destinationId": "destination_011",
+      "summary": "Dharamshala blends Tibetan culture, forest walks and Himalayan viewpoints into a thoughtful mountain break.",
+      "attractions": [
+        {
+          "attractionId": "attraction_011_1",
+          "name": "Tsuglagkhang Complex",
+          "category": "spiritual",
+          "durationMinutes": 120,
+          "fromPrice": 150,
+          "description": "Visit the temple complex, prayer spaces and Tibetan Museum in McLeod Ganj.",
+          "whyPopular": "It is the spiritual and cultural centre of the Tibetan community in exile and one of the region's most meaningful visits.",
+          "bestTime": "Morning",
+          "highlights": ["Temple circuit", "Tibetan Museum", "Prayer wheels"]
+        },
+        {
+          "attractionId": "attraction_011_2",
+          "name": "Bhagsu Waterfall",
+          "category": "nature",
+          "durationMinutes": 150,
+          "fromPrice": 250,
+          "description": "Follow the uphill path from Bhagsunag to the seasonal waterfall and valley viewpoints.",
+          "whyPopular": "The accessible hike combines mountain air, water scenery and a lively café trail.",
+          "bestTime": "Morning",
+          "highlights": ["Short hike", "Waterfall", "Valley cafés"]
+        },
+        {
+          "attractionId": "attraction_011_3",
+          "name": "Norbulingka Institute",
+          "category": "culture",
+          "durationMinutes": 150,
+          "fromPrice": 350,
+          "description": "Tour peaceful gardens and workshops dedicated to preserving Tibetan arts and crafts.",
+          "whyPopular": "Visitors can watch traditional artisans at work in one of Dharamshala's most beautifully designed cultural spaces.",
+          "bestTime": "Afternoon",
+          "highlights": ["Art workshops", "Temple gardens", "Craft traditions"]
+        }
+      ]
+    },
+    {
+      "destinationId": "destination_012",
+      "summary": "Deoghar combines one of India's major Shiva pilgrimage sites with rocky hills, temples and restorative viewpoints.",
+      "attractions": [
+        {
+          "attractionId": "attraction_012_1",
+          "name": "Baidyanath Jyotirlinga Temple",
+          "category": "spiritual",
+          "durationMinutes": 180,
+          "fromPrice": 250,
+          "description": "Experience the historic temple complex with adequate time for queues and rituals.",
+          "whyPopular": "The revered Jyotirlinga shrine is the centre of Deoghar's identity and draws pilgrims throughout the year.",
+          "bestTime": "Early morning",
+          "highlights": [
+            "Jyotirlinga shrine",
+            "Temple complex",
+            "Living rituals"
+          ]
+        },
+        {
+          "attractionId": "attraction_012_2",
+          "name": "Trikut Hills",
+          "category": "nature",
+          "durationMinutes": 180,
+          "fromPrice": 650,
+          "description": "Travel to the rocky hills for broad views and a ropeway ride when operational.",
+          "whyPopular": "The dramatic outcrops and elevated panorama provide Deoghar's signature nature excursion.",
+          "bestTime": "Late morning",
+          "highlights": ["Ropeway", "Rocky panorama", "Hill walk"]
+        },
+        {
+          "attractionId": "attraction_012_3",
+          "name": "Naulakha Mandir",
+          "category": "heritage",
+          "durationMinutes": 75,
+          "fromPrice": 100,
+          "description": "Pause at the elegant white-and-red temple known for its calm grounds and distinctive form.",
+          "whyPopular": "Its architecture and quieter atmosphere offer a reflective counterpoint to the main pilgrimage complex.",
+          "bestTime": "Late afternoon",
+          "highlights": [
+            "Temple architecture",
+            "Peaceful grounds",
+            "Photo stop"
+          ]
+        }
+      ]
+    },
+    {
+      "destinationId": "destination_013",
+      "summary": "Mysuru is an elegant city of royal architecture, grand gardens, markets and enduring cultural traditions.",
+      "attractions": [
+        {
+          "attractionId": "attraction_013_1",
+          "name": "Mysore Palace",
+          "category": "heritage",
+          "durationMinutes": 180,
+          "fromPrice": 350,
+          "description": "Explore opulent halls, courtyards and the Indo-Saracenic details of the royal residence.",
+          "whyPopular": "One of India's most celebrated palaces, it is especially memorable when illuminated on scheduled evenings.",
+          "bestTime": "Morning or illumination evening",
+          "imageUrl": "/images/destination-2.webp",
+          "highlights": [
+            "Durbar halls",
+            "Royal collections",
+            "Evening illumination"
+          ]
+        },
+        {
+          "attractionId": "attraction_013_2",
+          "name": "Chamundi Hills",
+          "category": "spiritual",
+          "durationMinutes": 150,
+          "fromPrice": 300,
+          "description": "Ascend to the hilltop temple and pause at viewpoints above the city.",
+          "whyPopular": "The sacred hill offers a classic Mysuru panorama and a strong connection to the city's patron goddess.",
+          "bestTime": "Early morning",
+          "highlights": ["Hilltop temple", "City views", "Nandi statue"]
+        },
+        {
+          "attractionId": "attraction_013_3",
+          "name": "Brindavan Gardens",
+          "category": "nature",
+          "durationMinutes": 150,
+          "fromPrice": 400,
+          "description": "Stroll symmetrical gardens below the dam and stay for the musical fountain when scheduled.",
+          "whyPopular": "Terraced lawns, water channels and evening lighting make it Mysuru's classic leisurely outing.",
+          "bestTime": "Late afternoon",
+          "highlights": [
+            "Terraced gardens",
+            "Musical fountain",
+            "Evening lights"
+          ]
+        }
+      ]
+    },
+    {
+      "destinationId": "destination_014",
+      "summary": "Udupi combines a deeply rooted temple town with island geology, working beaches and a distinctive coastal cuisine.",
+      "attractions": [
+        {
+          "attractionId": "attraction_014_1",
+          "name": "Sri Krishna Matha",
+          "category": "spiritual",
+          "durationMinutes": 120,
+          "fromPrice": 150,
+          "description": "Explore the historic temple streets and experience worship through the shrine's distinctive viewing window.",
+          "whyPopular": "The 13th-century matha is the spiritual centre of Udupi and deeply connected to its living traditions and cuisine.",
+          "bestTime": "Early morning",
+          "highlights": ["Historic matha", "Temple streets", "Community meal"]
+        },
+        {
+          "attractionId": "attraction_014_2",
+          "name": "St. Mary's Islands",
+          "category": "nature",
+          "durationMinutes": 240,
+          "fromPrice": 900,
+          "description": "Take a seasonal boat trip to small islands known for striking basalt rock formations.",
+          "whyPopular": "The geometric volcanic columns and clear coastal setting are unlike any other landscape near Udupi.",
+          "bestTime": "Morning",
+          "imageUrl": "/images/destination-4.webp",
+          "highlights": ["Basalt columns", "Boat ride", "Island coast"]
+        },
+        {
+          "attractionId": "attraction_014_3",
+          "name": "Malpe Beach",
+          "category": "nature",
+          "durationMinutes": 150,
+          "fromPrice": 300,
+          "description": "Unwind on the broad working beach and watch fishing boats return toward sunset.",
+          "whyPopular": "Its long shoreline and easy access make it Udupi's most convenient coastal evening.",
+          "bestTime": "Sunset",
+          "imageUrl": "/images/destination-4.webp",
+          "highlights": ["Wide beach", "Fishing harbour", "Sunset"]
+        }
+      ]
+    },
+    {
+      "destinationId": "destination_015",
+      "summary": "Munnar unfolds through rolling tea estates, shola forests, mountain wildlife and cool highland viewpoints.",
+      "heroImage": "/images/destination-3.webp",
+      "attractions": [
+        {
+          "attractionId": "attraction_015_1",
+          "name": "Eravikulam National Park",
+          "category": "nature",
+          "durationMinutes": 210,
+          "fromPrice": 700,
+          "description": "Ride into the protected highlands and walk designated trails through rolling grassland habitat.",
+          "whyPopular": "The park protects the endangered Nilgiri tahr and frames some of Munnar's most memorable mountain views.",
+          "bestTime": "Early morning",
+          "highlights": ["Nilgiri tahr", "Grassland views", "Guided park route"]
+        },
+        {
+          "attractionId": "attraction_015_2",
+          "name": "Kannan Devan Tea Museum",
+          "category": "culture",
+          "durationMinutes": 90,
+          "fromPrice": 300,
+          "description": "Trace Munnar's tea story through vintage equipment, exhibits and a tasting session.",
+          "whyPopular": "It turns the surrounding tea landscape into an understandable story of people, process and flavour.",
+          "bestTime": "Late morning",
+          "highlights": ["Tea history", "Processing demo", "Tea tasting"]
+        },
+        {
+          "attractionId": "attraction_015_3",
+          "name": "Mattupetty Dam & Lake",
+          "category": "nature",
+          "durationMinutes": 150,
+          "fromPrice": 500,
+          "description": "Follow the scenic estate road to the reservoir for lakeside views and optional boating.",
+          "whyPopular": "Still water, green hills and tea-estate drives make it an easy and photogenic Munnar outing.",
+          "bestTime": "Afternoon",
+          "imageUrl": "/images/destination-3.webp",
+          "highlights": ["Reservoir views", "Scenic drive", "Optional boating"]
+        }
+      ]
+    },
+    {
+      "destinationId": "destination_016",
+      "summary": "Varkala's red cliffs, sacred beach and relaxed coastal rhythm create one of Kerala's most distinctive seaside stays.",
+      "heroImage": "/images/destination-4.webp",
+      "attractions": [
+        {
+          "attractionId": "attraction_016_1",
+          "name": "Varkala Cliff",
+          "category": "nature",
+          "durationMinutes": 150,
+          "fromPrice": 250,
+          "description": "Walk the cliff-top promenade between viewpoints, cafés and paths down to the sea.",
+          "whyPopular": "The dramatic laterite cliff directly above the Arabian Sea gives Varkala its unmistakable character.",
+          "bestTime": "Sunset",
+          "imageUrl": "/images/destination-4.webp",
+          "highlights": ["Cliff walk", "Sea views", "Sunset cafés"]
+        },
+        {
+          "attractionId": "attraction_016_2",
+          "name": "Papanasam Beach",
+          "category": "spiritual",
+          "durationMinutes": 120,
+          "fromPrice": 150,
+          "description": "Spend a calm morning on the main beach and observe its longstanding ritual traditions respectfully.",
+          "whyPopular": "The beach is valued both for its broad shoreline and its sacred significance to visiting pilgrims.",
+          "bestTime": "Early morning",
+          "imageUrl": "/images/destination-4.webp",
+          "highlights": ["Sacred shoreline", "Morning walk", "Cliff backdrop"]
+        },
+        {
+          "attractionId": "attraction_016_3",
+          "name": "Kappil Beach & Backwaters",
+          "category": "nature",
+          "durationMinutes": 150,
+          "fromPrice": 450,
+          "description": "Travel north to where a quiet lagoon runs beside the sea, with optional local boating.",
+          "whyPopular": "The narrow meeting of backwater and coast creates one of the area's most peaceful landscapes.",
+          "bestTime": "Late afternoon",
+          "imageUrl": "/images/destination-3.webp",
+          "highlights": ["Lagoon", "Coastal road", "Optional boating"]
+        }
+      ]
+    },
+    {
+      "destinationId": "destination_017",
+      "summary": "Ujjain is a deeply atmospheric sacred city of Jyotirlinga worship, riverside rituals and ancient astronomy.",
+      "attractions": [
+        {
+          "attractionId": "attraction_017_1",
+          "name": "Mahakaleshwar Jyotirlinga",
+          "category": "spiritual",
+          "durationMinutes": 180,
+          "fromPrice": 300,
+          "description": "Visit Ujjain's principal shrine with time planned for entry procedures, queues and the temple precinct.",
+          "whyPopular": "The revered Jyotirlinga and its distinctive rituals make this one of India's foremost Shiva pilgrimage experiences.",
+          "bestTime": "Early morning",
+          "highlights": [
+            "Jyotirlinga shrine",
+            "Temple rituals",
+            "Historic precinct"
+          ]
+        },
+        {
+          "attractionId": "attraction_017_2",
+          "name": "Ram Ghat",
+          "category": "culture",
+          "durationMinutes": 90,
+          "fromPrice": 100,
+          "description": "Walk beside the Shipra River and return near dusk for the evening aarti.",
+          "whyPopular": "The historic ghats are where Ujjain's sacred geography and daily life are most visible.",
+          "bestTime": "Sunrise or evening",
+          "highlights": ["Shipra River", "Evening aarti", "Old-city atmosphere"]
+        },
+        {
+          "attractionId": "attraction_017_3",
+          "name": "Vedh Shala Observatory",
+          "category": "heritage",
+          "durationMinutes": 90,
+          "fromPrice": 200,
+          "description": "Explore large masonry instruments used to understand celestial movement and time.",
+          "whyPopular": "The observatory reveals Ujjain's historic importance to Indian astronomy and timekeeping.",
+          "bestTime": "Afternoon",
+          "highlights": [
+            "Astronomical instruments",
+            "Guided interpretation",
+            "Science heritage"
+          ]
+        }
+      ]
+    },
+    {
+      "destinationId": "destination_018",
+      "summary": "Shirdi offers a focused spiritual journey through the places associated with Sai Baba's life and teachings.",
+      "attractions": [
+        {
+          "attractionId": "attraction_018_1",
+          "name": "Sai Baba Samadhi Mandir",
+          "category": "spiritual",
+          "durationMinutes": 180,
+          "fromPrice": 250,
+          "description": "Begin at the main shrine with enough time for security, darshan and the wider temple complex.",
+          "whyPopular": "The samadhi shrine is the heart of Shirdi and welcomes devotees from across faiths and regions.",
+          "bestTime": "Early morning",
+          "highlights": ["Main shrine", "Darshan", "Temple complex"]
+        },
+        {
+          "attractionId": "attraction_018_2",
+          "name": "Dwarkamai",
+          "category": "heritage",
+          "durationMinutes": 75,
+          "fromPrice": 100,
+          "description": "Visit the simple mosque where Sai Baba lived and where the sacred fire continues to be maintained.",
+          "whyPopular": "Its intimate spaces and preserved objects bring visitors closest to the everyday story of Sai Baba's life.",
+          "bestTime": "Late morning",
+          "highlights": ["Sacred fire", "Historic objects", "Quiet reflection"]
+        },
+        {
+          "attractionId": "attraction_018_3",
+          "name": "Chavadi & Lendi Garden",
+          "category": "spiritual",
+          "durationMinutes": 90,
+          "fromPrice": 100,
+          "description": "Complete the heritage circuit through two peaceful places closely connected with Sai Baba's daily routine.",
+          "whyPopular": "Together they add personal context to the main shrine and provide quieter moments within the pilgrimage.",
+          "bestTime": "Late afternoon",
+          "highlights": [
+            "Heritage circuit",
+            "Garden walk",
+            "Devotional history"
+          ]
+        }
+      ]
+    }
+  ]
+}

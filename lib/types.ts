@@ -101,6 +101,8 @@ export interface TourismDestination {
   destinationId: string;
   cityId: string;
   title: string;
+  summary?: string;
+  heroImage?: string;
   themes: string[];
   bestMonths: string[];
   nearestStationId: string;
@@ -112,6 +114,11 @@ export interface Attraction {
   category: string;
   durationMinutes: number;
   fromPrice: number;
+  description?: string;
+  whyPopular?: string;
+  bestTime?: string;
+  imageUrl?: string;
+  highlights?: string[];
 }
 export interface Hotel {
   hotelId: string;

@@ -1,5 +1,5 @@
 "use client";
-import { useMemo, useState } from "react";
+import { useMemo, useState, useTransition } from "react";
 import { useRouter } from "next/navigation";
 import {
   ArrowLeftRightIcon,
@@ -40,6 +40,7 @@ import {
 import { CLASSSELECTIONLIST, cn } from "@/lib/utils";
 import { useResponsive } from "@/hooks/use-responsive";
 import { Button } from "@/components/ui/button";
+import { JourneyLoader } from "@/components/journey-loader";
 
 const modes: BookingMode[] = ["tatkal", "quick", "explore"];
 
@@ -85,6 +86,7 @@ export function SearchCard({
     infants: 0,
   });
   const [error, setError] = useState("");
+  const [isSearching, startSearchTransition] = useTransition();
   const swap = () => {
     const o = origin;
     setOrigin(destination);
@@ -117,7 +119,9 @@ export function SearchCard({
       class: travelClass,
       mode,
     });
-    router.push(`/search?${q}`);
+    startSearchTransition(() => {
+      router.push(`/search?${q}`);
+    });
   };
   return (
     <Tabs
@@ -298,8 +302,18 @@ export function SearchCard({
               </SelectContent>
             </Select>
           </div>
-          <Button size="lg" className="min-h-[52px]" onClick={submit}>
-            <Search />
+          <Button
+            size="lg"
+            className="min-h-[52px]"
+            onClick={submit}
+            disabled={isSearching}
+            aria-busy={isSearching}
+          >
+            {isSearching ? (
+              <JourneyLoader compact />
+            ) : (
+              <Search aria-hidden="true" />
+            )}
             {mode === "tourism"
               ? t("components.searchCard.exploreIndia")
               : t("components.searchCard.find")}

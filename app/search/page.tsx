@@ -4,6 +4,7 @@ import { useSearchParams } from "next/navigation";
 import Link from "next/link";
 import { SearchX, SlidersHorizontal } from "lucide-react";
 import { JourneyCard } from "@/components/journey-card";
+import { JourneyLoader } from "@/components/journey-loader";
 import { SearchCard } from "@/components/search-card";
 import { useApp } from "@/components/providers";
 import { stationById } from "@/lib/places";
@@ -26,6 +27,8 @@ import {
 } from "@/components/ui/select";
 import { cn } from "@/lib/utils";
 
+const MINIMUM_SEARCH_DURATION_MS = 2000;
+
 function dateOffset(date: string, offset: number) {
   const d = new Date(`${date}T00:00:00`);
   d.setDate(d.getDate() + offset);
@@ -39,6 +42,15 @@ function todayDate() {
   return dateOffset(
     `${new Date().getFullYear()}-${String(new Date().getMonth() + 1).padStart(2, "0")}-${String(new Date().getDate()).padStart(2, "0")}`,
     0,
+  );
+}
+
+function SearchLoadingState({ label }: { label: string }) {
+  return (
+    <div className="card empty-state" role="status" aria-live="polite">
+      <JourneyLoader />
+      <p>{label}</p>
+    </div>
   );
 }
 
@@ -81,20 +93,29 @@ function SearchResults() {
             .map((offset) => dateOffset(date, offset))
             .filter((value) => value >= todayDate());
     setLoading(true);
-    fetch("/api/search", {
-      method: "POST",
-      headers: { "Content-Type": "application/json" },
-      body: JSON.stringify({ input, previewDates }),
-      signal: controller.signal,
-    })
-      .then(async (response) => {
+    let minimumLoadingTimer = 0;
+    const minimumLoadingTime = new Promise<void>((resolve) => {
+      minimumLoadingTimer = window.setTimeout(
+        resolve,
+        MINIMUM_SEARCH_DURATION_MS,
+      );
+    });
+    Promise.all([
+      fetch("/api/search", {
+        method: "POST",
+        headers: { "Content-Type": "application/json" },
+        body: JSON.stringify({ input, previewDates }),
+        signal: controller.signal,
+      }).then(async (response) => {
         if (!response.ok) throw new Error("Search failed");
         return response.json() as Promise<{
           journeys: Journey[];
           previews: Record<string, number | undefined>;
         }>;
-      })
-      .then(({ journeys, previews }) => {
+      }),
+      minimumLoadingTime,
+    ])
+      .then(([{ journeys, previews }]) => {
         setRaw(journeys);
         setDateOptions(
           previewDates.map((value) => ({
@@ -110,7 +131,10 @@ function SearchResults() {
       .finally(() => {
         if (!controller.signal.aborted) setLoading(false);
       });
-    return () => controller.abort();
+    return () => {
+      controller.abort();
+      window.clearTimeout(minimumLoadingTimer);
+    };
   }, [input, date]);
   const results = useMemo(
     () =>
@@ -258,7 +282,7 @@ function SearchResults() {
           </div>
         </div>
       )}
-      <div className="results-toolbar flex flex-col md:flex-row">
+      <div className="results-toolbar mt-6 flex flex-col md:flex-row">
         <div className="">
           <h3>{t("pages.search.found", { count: results.length })}</h3>
           <div className="flex flex-wrap items-center gap-2 [&_button]:border-0 [&_button]:bg-transparent [&_button]:p-0">
@@ -398,7 +422,7 @@ function SearchResults() {
         </aside>
         <div className="grid gap-5">
           {loading ? (
-            <div className="card empty-state">{t("pages.search.loading")}</div>
+            <SearchLoadingState label={t("pages.search.loading")} />
           ) : results.length ? (
             results.map((x) => (
               <JourneyCard key={x.id} journey={x} input={input} />
@@ -431,7 +455,7 @@ export default function SearchPage() {
     <Suspense
       fallback={
         <div className="page">
-          <div className="card empty-state">{t("pages.search.loading")}</div>
+          <SearchLoadingState label={t("pages.search.loading")} />
         </div>
       }
     >
