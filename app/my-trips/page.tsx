@@ -186,10 +186,11 @@ export default function MyTripsPage() {
                           {t("pages.myTrips.pnr", { pnr: booking.pnr })}
                         </span>
                       </div>
-                      <div className="mt-3 flex items-center gap-2">
+                      <div className="mt-3 flex items-start gap-2">
                         <TrainFront className="size-5 shrink-0 text-[var(--primary)]" />
-                        <h2 className="truncate text-xl sm:text-2xl">
-                          {booking.journey.legs[0]?.serviceName}
+                        <h2 className="min-w-0 break-words text-xl sm:text-2xl">
+                          {booking.journey.origin.name} →{" "}
+                          {booking.journey.destination.name}
                         </h2>
                       </div>
                     </div>
