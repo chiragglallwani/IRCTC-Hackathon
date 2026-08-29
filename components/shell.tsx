@@ -78,6 +78,25 @@ const links = [
   },
 ];
 
+function BrandLogo({ footer = false }: { footer?: boolean }) {
+  const { t } = useApp();
+
+  return (
+    <Image
+      src="/images/logo.png"
+      alt={t("common.brand")}
+      width={150}
+      height={150}
+      priority={!footer}
+      className={
+        footer
+          ? "h-[88px] w-[118px] object-contain"
+          : "h-[50px] w-[88px] object-contain sm:h-[58px] sm:w-[122px] lg:h-[72px] lg:w-[150px]"
+      }
+    />
+  );
+}
+
 function navIcons({ key }: { key: string }) {
   const IconComponent = IconMap[key];
 
@@ -113,14 +132,7 @@ export function Header() {
     <>
       <header className="sticky top-0 z-50 flex h-16 items-center gap-2 border-b border-[var(--line)] bg-white px-3 sm:h-[72px] sm:gap-4 sm:px-[18px] lg:h-[88px] lg:gap-[42px] lg:px-[max(24px,calc((100vw_-_1280px)/2))] [&>button_span]:hidden">
         <Link href="/" className="flex shrink-0 items-center">
-          <Image
-            src="/images/logo.png"
-            alt={t("common.brand")}
-            width={150}
-            height={70}
-            priority
-            className="h-[50px] w-[88px] object-contain sm:h-[58px] sm:w-[122px] lg:h-[72px] lg:w-[150px]"
-          />
+          <BrandLogo />
         </Link>
         <nav
           className="mx-auto hidden h-full items-stretch gap-[34px] lg:flex"
@@ -369,7 +381,9 @@ export function Footer() {
   const { t } = useApp();
   return (
     <footer className="mb-[calc(76px_+_env(safe-area-inset-bottom))] grid items-center gap-[30px] border-t border-[var(--line)] px-6 py-8 text-[var(--muted)] lg:mb-0 lg:flex lg:px-[max(24px,calc((100vw_-_1280px)/2))]">
-      <strong className="text-xl text-[var(--ink)]">{t("common.brand")}</strong>
+      <Link href="/" className="w-fit" aria-label={t("common.brand")}>
+        <BrandLogo footer />
+      </Link>
       <span>{t("components.footer.description")}</span>
       <div className="flex gap-6 lg:ml-auto">
         <Link href="/">{t("common.actions.help")}</Link>
