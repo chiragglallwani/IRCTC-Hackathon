@@ -25,11 +25,19 @@ export async function POST(request: Request) {
         receipt: input.receipt,
       }),
     });
-    if (!response.ok)
+    if (!response.ok) {
+      const issue = (await response.json().catch(() => null)) as {
+        error?: { description?: string };
+      } | null;
       return NextResponse.json(
-        { error: "Razorpay test order could not be created." },
+        {
+          error:
+            issue?.error?.description ??
+            "Razorpay payment order could not be created.",
+        },
         { status: 502 },
       );
+    }
     const order = (await response.json()) as {
       id: string;
       amount: number;

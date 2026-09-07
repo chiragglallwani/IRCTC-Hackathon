@@ -49,15 +49,15 @@ describe("tourism assistant", () => {
   });
 
   it("opens saved tourism bookings with a local command", () => {
-    expect(
-      parseLocalTourismCommand("Show my tourism bookings")?.action,
-    ).toBe("view_tourism_bookings");
+    expect(parseLocalTourismCommand("Show my tourism bookings")?.action).toBe(
+      "view_tourism_bookings",
+    );
   });
 
   it("extracts a tourism cancellation reference and requires that action", () => {
-    expect(normalizeTourismBookingReference("R T P hyphen 1 2 3 4 5 6 7 8")).toBe(
-      "RTP-12345678",
-    );
+    expect(
+      normalizeTourismBookingReference("R T P hyphen 1 2 3 4 5 6 7 8"),
+    ).toBe("RTP-12345678");
     expect(
       parseLocalTourismCommand(
         "Cancel my tourism package with reference RTP-12345678",

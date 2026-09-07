@@ -1,8 +1,5 @@
 import { describe, expect, it } from "vitest";
-import {
-  normalizePnr,
-  parsePnrCommand,
-} from "@/lib/assistant/pnr-command";
+import { normalizePnr, parsePnrCommand } from "@/lib/assistant/pnr-command";
 
 describe("PNR assistant commands", () => {
   it("extracts formatted and unformatted PNR values", () => {
@@ -21,9 +18,11 @@ describe("PNR assistant commands", () => {
       action: "status",
       pnr: "123-4567890",
     });
-    expect(parsePnrCommand("Cancel booking for PNR number 1234567890")).toEqual({
-      action: "cancel",
-      pnr: "123-4567890",
-    });
+    expect(parsePnrCommand("Cancel booking for PNR number 1234567890")).toEqual(
+      {
+        action: "cancel",
+        pnr: "123-4567890",
+      },
+    );
   });
 });

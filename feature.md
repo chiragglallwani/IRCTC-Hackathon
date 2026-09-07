@@ -240,13 +240,7 @@ interface ParsedAssistantIntent {
     journeyId: string | null;
   } | null;
   explanationTopic:
-    | "rac"
-    | "waitlist"
-    | "quota"
-    | "tatkal"
-    | "class"
-    | "cancellation"
-    | null;
+    "rac" | "waitlist" | "quota" | "tatkal" | "class" | "cancellation" | null;
   missingFields: Array<keyof VoiceSearchDraft>;
   correctionFields: Array<keyof VoiceSearchDraft>;
   assistantMessage: string;
@@ -315,7 +309,12 @@ type ParseResponse =
   | { ok: true; intent: ParsedAssistantIntent }
   | {
       ok: false;
-      code: "NOT_CONFIGURED" | "RATE_LIMITED" | "TIMEOUT" | "INVALID_OUTPUT" | "UPSTREAM_ERROR";
+      code:
+        | "NOT_CONFIGURED"
+        | "RATE_LIMITED"
+        | "TIMEOUT"
+        | "INVALID_OUTPUT"
+        | "UPSTREAM_ERROR";
       fallbackAvailable: true;
     };
 ```
@@ -350,7 +349,8 @@ interface BookingAdvisory {
   variables?: Record<string, string | number>;
   blocking: boolean;
   spokenPriority: 0 | 1 | 2;
-  suggestedAction?: "change_train" | "change_class" | "change_date" | "review_quota";
+  suggestedAction?:
+    "change_train" | "change_class" | "change_date" | "review_quota";
 }
 ```
 

@@ -60,7 +60,10 @@ export function useSpeechRecognition({
   }, [onFinal]);
 
   const finish = useCallback(() => {
-    const completed = [completedTranscriptRef.current, currentTranscriptRef.current]
+    const completed = [
+      completedTranscriptRef.current,
+      currentTranscriptRef.current,
+    ]
       .filter(Boolean)
       .join(" ")
       .trim();
@@ -76,7 +79,8 @@ export function useSpeechRecognition({
   }, []);
 
   useEffect(() => {
-    const Constructor = window.SpeechRecognition ?? window.webkitSpeechRecognition;
+    const Constructor =
+      window.SpeechRecognition ?? window.webkitSpeechRecognition;
     setSupported(Boolean(Constructor));
     if (!Constructor) return;
     const recognition = new Constructor();
@@ -134,7 +138,9 @@ export function useSpeechRecognition({
           } catch {
             shouldListenRef.current = false;
             discardTranscriptRef.current = true;
-            setError("Voice recognition could not continue. Please try again or type your request.");
+            setError(
+              "Voice recognition could not continue. Please try again or type your request.",
+            );
             finish();
           }
         }, 150);

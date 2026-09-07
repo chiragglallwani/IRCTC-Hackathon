@@ -21,7 +21,9 @@ const MAX_REQUESTS = 12;
 const requestWindows = new Map<string, number[]>();
 
 function clientAddress(request: Request) {
-  return request.headers.get("x-forwarded-for")?.split(",")[0]?.trim() || "local";
+  return (
+    request.headers.get("x-forwarded-for")?.split(",")[0]?.trim() || "local"
+  );
 }
 
 function rateLimited(address: string) {

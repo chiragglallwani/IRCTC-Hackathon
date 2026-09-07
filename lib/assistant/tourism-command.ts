@@ -7,20 +7,28 @@ const monthNames =
   "january|february|march|april|may|june|july|august|september|october|november|december|jan|feb|mar|apr|jun|jul|aug|sep|sept|oct|nov|dec";
 
 export function normalizeTourismBookingReference(value: string) {
-  const match = value.match(/\br\s*t\s*p(?:\s+hyphen)?[\s-]*((?:\d[\s-]*){8})\b/i);
+  const match = value.match(
+    /\br\s*t\s*p(?:\s+hyphen)?[\s-]*((?:\d[\s-]*){8})\b/i,
+  );
   if (!match) return null;
   const digits = match[1].replace(/\D/g, "");
   return digits.length === 8 ? `RTP-${digits}` : null;
 }
 
 export function resolveTourismDestination(query: string) {
-  const normalized = query.trim().toLowerCase().replace(/^discover\s+/, "");
+  const normalized = query
+    .trim()
+    .toLowerCase()
+    .replace(/^discover\s+/, "");
   return tourism.filter((destination) => {
     const city = cityById.get(destination.cityId);
     return [destination.destinationId, destination.title, city?.name]
       .filter(Boolean)
-      .some((value) =>
-        String(value).toLowerCase().replace(/^discover\s+/, "") === normalized,
+      .some(
+        (value) =>
+          String(value)
+            .toLowerCase()
+            .replace(/^discover\s+/, "") === normalized,
       );
   });
 }
@@ -70,9 +78,17 @@ export function parseLocalTourismCommand(
       draft: existing,
       bookingReference: normalizeTourismBookingReference(utterance),
     };
-  if (/\b(?:show|open|view)\b.*\b(?:tourism|holiday|package)\s+bookings?\b/.test(text))
+  if (
+    /\b(?:show|open|view)\b.*\b(?:tourism|holiday|package)\s+bookings?\b/.test(
+      text,
+    )
+  )
     return { action: "view_tourism_bookings" as const, draft: existing };
-  if (!/\b(tourism|tour|trip|holiday|vacation|itinerary|package|getaway)\b/.test(text))
+  if (
+    !/\b(tourism|tour|trip|holiday|vacation|itinerary|package|getaway)\b/.test(
+      text,
+    )
+  )
     return null;
 
   const destination = text.match(
@@ -83,7 +99,9 @@ export function parseLocalTourismCommand(
   const startDate = dates[0] ?? existing.startDate;
   const endDate =
     dates[1] ??
-    (dates[0] && durationDays ? dateOffset(dates[0], durationDays - 1) : existing.endDate);
+    (dates[0] && durationDays
+      ? dateOffset(dates[0], durationDays - 1)
+      : existing.endDate);
   const budgetMatch = text.match(
     /(?:budget(?:\s+of)?|under|within)\s*(?:₹|rs\.?|rupees?)?\s*(\d{4,6})/,
   );
@@ -146,7 +164,10 @@ export function parseLocalTourismCommand(
   return { action: "plan_tourism" as const, draft };
 }
 
-export function buildTourismPlannerUrl(destinationId: string, draft: TourismDraft) {
+export function buildTourismPlannerUrl(
+  destinationId: string,
+  draft: TourismDraft,
+) {
   const params = new URLSearchParams({ destination: destinationId });
   const values: Array<[string, string | number | null]> = [
     ["startDate", draft.startDate],

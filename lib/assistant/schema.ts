@@ -1,6 +1,14 @@
 import { z } from "zod";
 
-export const travelClasses = ["ANY", "1A", "2A", "3A", "SL", "CC", "EC"] as const;
+export const travelClasses = [
+  "ANY",
+  "1A",
+  "2A",
+  "3A",
+  "SL",
+  "CC",
+  "EC",
+] as const;
 export const assistantActions = [
   "search_trains",
   "modify_search",
@@ -19,7 +27,10 @@ export const assistantActions = [
 export const voiceSearchDraftSchema = z.object({
   originQuery: z.string().max(100).nullable(),
   destinationQuery: z.string().max(100).nullable(),
-  date: z.string().regex(/^\d{4}-\d{2}-\d{2}$/).nullable(),
+  date: z
+    .string()
+    .regex(/^\d{4}-\d{2}-\d{2}$/)
+    .nullable(),
   adults: z.number().int().min(1).max(9).nullable(),
   children: z.number().int().min(0).max(6).nullable(),
   infants: z.number().int().min(0).max(6).nullable(),
@@ -52,8 +63,14 @@ export const emptyVoiceSearchDraft: VoiceSearchDraft = {
 
 export const tourismDraftSchema = z.object({
   destinationQuery: z.string().max(100).nullable(),
-  startDate: z.string().regex(/^\d{4}-\d{2}-\d{2}$/).nullable(),
-  endDate: z.string().regex(/^\d{4}-\d{2}-\d{2}$/).nullable(),
+  startDate: z
+    .string()
+    .regex(/^\d{4}-\d{2}-\d{2}$/)
+    .nullable(),
+  endDate: z
+    .string()
+    .regex(/^\d{4}-\d{2}-\d{2}$/)
+    .nullable(),
   durationDays: z.number().int().min(1).max(30).nullable(),
   travelers: z.number().int().min(1).max(20).nullable(),
   rooms: z.number().int().min(1).max(10).nullable(),

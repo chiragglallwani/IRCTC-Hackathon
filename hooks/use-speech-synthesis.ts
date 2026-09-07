@@ -3,16 +3,54 @@
 import { useCallback, useEffect, useRef, useState } from "react";
 
 const feminineVoiceHints = [
-  "female", "woman", "aditi", "aashi", "aarohi", "dhwani", "gul",
-  "heera", "kalpana", "lekha", "neerja", "pallavi", "sapna", "shrut",
-  "sobhana", "swara", "tanish", "veena", "yasmin", "aria", "ava",
-  "fiona", "hazel", "jenny", "karen", "moira", "samantha", "susan",
-  "tessa", "victoria", "zira",
+  "female",
+  "woman",
+  "aditi",
+  "aashi",
+  "aarohi",
+  "dhwani",
+  "gul",
+  "heera",
+  "kalpana",
+  "lekha",
+  "neerja",
+  "pallavi",
+  "sapna",
+  "shrut",
+  "sobhana",
+  "swara",
+  "tanish",
+  "veena",
+  "yasmin",
+  "aria",
+  "ava",
+  "fiona",
+  "hazel",
+  "jenny",
+  "karen",
+  "moira",
+  "samantha",
+  "susan",
+  "tessa",
+  "victoria",
+  "zira",
 ];
 
 const masculineVoiceHints = [
-  "male", "david", "daniel", "gagan", "hemant", "madhur", "manohar",
-  "mark", "mohan", "niranjan", "prabhat", "ravi", "rishi", "valluvar",
+  "male",
+  "david",
+  "daniel",
+  "gagan",
+  "hemant",
+  "madhur",
+  "manohar",
+  "mark",
+  "mohan",
+  "niranjan",
+  "prabhat",
+  "ravi",
+  "rishi",
+  "valluvar",
 ];
 
 function containsHint(value: string, hints: string[]) {
@@ -58,7 +96,8 @@ export function useSpeechSynthesis(locale: string) {
   const [error, setError] = useState<string | null>(null);
   const voicesRef = useRef<SpeechSynthesisVoice[]>([]);
   const pendingSpeechRef = useRef<ReturnType<typeof setTimeout> | null>(null);
-  const supported = typeof window !== "undefined" && "speechSynthesis" in window;
+  const supported =
+    typeof window !== "undefined" && "speechSynthesis" in window;
 
   useEffect(() => {
     if (!supported) return;

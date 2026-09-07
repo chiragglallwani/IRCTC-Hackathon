@@ -14,11 +14,7 @@ import {
   VolumeX,
   X,
 } from "lucide-react";
-import {
-  Dialog,
-  DialogContent,
-  DialogTitle,
-} from "@/components/ui/dialog";
+import { Dialog, DialogContent, DialogTitle } from "@/components/ui/dialog";
 import { Button } from "@/components/ui/button";
 import { useApp } from "@/components/providers";
 import { useAssistantContext } from "./assistant-context";
@@ -64,7 +60,10 @@ import type {
   Station,
   TourismDestination,
 } from "@/lib/types";
-import { createCheckoutContext, type CheckoutContext } from "@/lib/checkout-selection";
+import {
+  createCheckoutContext,
+  type CheckoutContext,
+} from "@/lib/checkout-selection";
 import { journeyAdvisories } from "@/lib/booking-advisories";
 import {
   savedBookings,
@@ -100,11 +99,16 @@ const initialMessage =
 
 const explanations: Record<string, string> = {
   rac: "RAC means Reservation Against Cancellation. You may travel, but a full berth is not guaranteed until the reservation is confirmed.",
-  waitlist: "A waitlisted ticket is not confirmed. Its position can change before chart preparation, so review alternatives with confirmed seats.",
-  quota: "RailEase first shows General quota as a baseline, then chooses the best eligible available quota after passenger criteria are verified.",
-  tatkal: "Tatkal is a short-notice booking mode. In this prototype it is restricted to tomorrow's journey date.",
-  class: "Classes differ in seating, berths, comfort, and fare. Availability is checked separately for every class and quota.",
-  cancellation: "Cancellation conditions depend on timing and booking status. A failed payment never creates a confirmed RailEase booking.",
+  waitlist:
+    "A waitlisted ticket is not confirmed. Its position can change before chart preparation, so review alternatives with confirmed seats.",
+  quota:
+    "RailEase first shows General quota as a baseline, then chooses the best eligible available quota after passenger criteria are verified.",
+  tatkal:
+    "Tatkal is a short-notice booking mode. In this prototype it is restricted to tomorrow's journey date.",
+  class:
+    "Classes differ in seating, berths, comfort, and fare. Availability is checked separately for every class and quota.",
+  cancellation:
+    "Cancellation conditions depend on timing and booking status. A failed payment never creates a confirmed RailEase booking.",
 };
 
 function passengerCount(input: SearchInput) {
@@ -160,18 +164,24 @@ export function AIAssistant() {
   const [tourismDraft, setTourismDraft] =
     useState<TourismDraft>(emptyTourismDraft);
   const [pendingSearch, setPendingSearch] = useState<SearchInput | null>(null);
-  const [pendingCheckout, setPendingCheckout] = useState<CheckoutContext | null>(null);
+  const [pendingCheckout, setPendingCheckout] =
+    useState<CheckoutContext | null>(null);
   const [pendingPnrCancellation, setPendingPnrCancellation] =
     useState<Booking | null>(null);
   const [pendingTourismCancellation, setPendingTourismCancellation] =
     useState<Itinerary | null>(null);
-  const [awaitingTourismCancellationReference, setAwaitingTourismCancellationReference] =
-    useState(false);
-  const [awaitingPnrAction, setAwaitingPnrAction] =
-    useState<PnrAction | null>(null);
+  const [
+    awaitingTourismCancellationReference,
+    setAwaitingTourismCancellationReference,
+  ] = useState(false);
+  const [awaitingPnrAction, setAwaitingPnrAction] = useState<PnrAction | null>(
+    null,
+  );
   const [awaitingField, setAwaitingField] = useState<AwaitingField>(null);
   const [stationChoices, setStationChoices] = useState<Station[]>([]);
-  const [tourismChoices, setTourismChoices] = useState<TourismDestination[]>([]);
+  const [tourismChoices, setTourismChoices] = useState<TourismDestination[]>(
+    [],
+  );
   const [awaitingTourismField, setAwaitingTourismField] =
     useState<AwaitingTourismField>(null);
   const [parsing, setParsing] = useState(false);
@@ -365,7 +375,10 @@ export function AIAssistant() {
       addMessage("assistant", "What date should the holiday end?");
       return;
     }
-    if (requested.startDate < todayDate() || requested.endDate < requested.startDate) {
+    if (
+      requested.startDate < todayDate() ||
+      requested.endDate < requested.startDate
+    ) {
       setAwaitingTourismField("startDate");
       addMessage(
         "assistant",
@@ -378,13 +391,18 @@ export function AIAssistant() {
     setTourismChoices([]);
     setOpen(false);
     stopSpeaking();
-    router.push(buildTourismPlannerUrl(destinations[0].destinationId, requested));
+    router.push(
+      buildTourismPlannerUrl(destinations[0].destinationId, requested),
+    );
     clearConversation(true);
   };
 
   const chooseTourismDestination = (destination: TourismDestination) => {
     setTourismChoices([]);
-    prepareTourism({ ...tourismDraft, destinationQuery: destination.destinationId });
+    prepareTourism({
+      ...tourismDraft,
+      destinationQuery: destination.destinationId,
+    });
   };
 
   const initiateSearch = (input: SearchInput) => {
@@ -527,7 +545,11 @@ export function AIAssistant() {
     }
     if (intent.action === "plan_tourism") {
       if (!intent.tourismDraft) {
-        addMessage("assistant", "Tell me the destination and travel dates for your holiday.", true);
+        addMessage(
+          "assistant",
+          "Tell me the destination and travel dates for your holiday.",
+          true,
+        );
         return;
       }
       prepareTourism({ ...tourismDraft, ...intent.tourismDraft });
@@ -557,7 +579,10 @@ export function AIAssistant() {
       checkoutRequested.current = false;
       autoCheckoutInput.current = null;
       setPhase("welcome");
-      addMessage("assistant", "I cleared the current request. Where would you like to travel?");
+      addMessage(
+        "assistant",
+        "I cleared the current request. Where would you like to travel?",
+      );
       return;
     }
     if (intent.action === "explain_term") {
@@ -569,7 +594,11 @@ export function AIAssistant() {
     }
     if (intent.action === "filter_results") {
       if (!searchPage) {
-        addMessage("assistant", "Search for a journey first, then I can filter the displayed results.", true);
+        addMessage(
+          "assistant",
+          "Search for a journey first, then I can filter the displayed results.",
+          true,
+        );
         return;
       }
       if (next.sort) searchPage.setSort(next.sort);
@@ -586,13 +615,14 @@ export function AIAssistant() {
     }
     if (intent.action === "describe_results") {
       if (!searchPage?.journeys.length) {
-        addMessage("assistant", "There are no displayed journeys to describe yet.", true);
+        addMessage(
+          "assistant",
+          "There are no displayed journeys to describe yet.",
+          true,
+        );
         return;
       }
-      const text = searchPage.journeys
-        .slice(0, 3)
-        .map(resultSummary)
-        .join(" ");
+      const text = searchPage.journeys.slice(0, 3).map(resultSummary).join(" ");
       addMessage("assistant", text);
       speak(text);
       return;
@@ -600,9 +630,14 @@ export function AIAssistant() {
     if (intent.action === "select_journey") {
       const ordinal = intent.resultReference?.ordinal;
       const selectedIndex = ordinal ? ordinal - 1 : -1;
-      const journey = selectedIndex >= 0 ? searchPage?.journeys[selectedIndex] : undefined;
+      const journey =
+        selectedIndex >= 0 ? searchPage?.journeys[selectedIndex] : undefined;
       if (!journey || !searchPage) {
-        addMessage("assistant", "That option is not currently displayed. Choose a visible journey number.", true);
+        addMessage(
+          "assistant",
+          "That option is not currently displayed. Choose a visible journey number.",
+          true,
+        );
         return;
       }
       const checkout = createCheckoutContext({
@@ -622,11 +657,19 @@ export function AIAssistant() {
       );
       return;
     }
-    if (intent.action === "search_trains" || intent.action === "modify_search" || intent.action === "clarify") {
+    if (
+      intent.action === "search_trains" ||
+      intent.action === "modify_search" ||
+      intent.action === "clarify"
+    ) {
       prepareSearch(next, autoSearch);
       return;
     }
-    addMessage("assistant", intent.assistantMessage || "I can help search, filter, and select RailEase journeys.");
+    addMessage(
+      "assistant",
+      intent.assistantMessage ||
+        "I can help search, filter, and select RailEase journeys.",
+    );
   };
 
   async function submitUtterance(value = query, fromVoice = false) {
@@ -790,14 +833,20 @@ export function AIAssistant() {
         if (!user) {
           setPhase("authenticating");
           setAuthOpen(true);
-          addMessage("assistant", "Please sign in. Your selected journey has been preserved.");
+          addMessage(
+            "assistant",
+            "Please sign in. Your selected journey has been preserved.",
+          );
         } else router.push("/checkout");
         return;
       }
       if (isNegative(utterance)) {
         setPendingCheckout(null);
         setPhase("showing_results");
-        addMessage("assistant", "Selection cancelled. Choose another displayed journey.");
+        addMessage(
+          "assistant",
+          "Selection cancelled. Choose another displayed journey.",
+        );
         return;
       }
     }
@@ -808,7 +857,11 @@ export function AIAssistant() {
     }
     if (awaitingField) {
       if (awaitingField === "date") {
-        addMessage("assistant", "Please say a date such as 6 October 2026.", true);
+        addMessage(
+          "assistant",
+          "Please say a date such as 6 October 2026.",
+          true,
+        );
         return;
       } else {
         prepareSearch({ ...draft, [awaitingField]: utterance }, fromVoice);
@@ -832,15 +885,17 @@ export function AIAssistant() {
           pathname,
           draft,
           tourismDraft,
-          displayedResults: (searchPage?.journeys ?? []).slice(0, 5).map((journey, index) => ({
-            index: index + 1,
-            id: journey.id,
-            departure: journey.departure,
-            arrival: journey.arrival,
-            fare: journey.totalFare,
-            transfers: journey.transfers,
-            status: journey.availability,
-          })),
+          displayedResults: (searchPage?.journeys ?? [])
+            .slice(0, 5)
+            .map((journey, index) => ({
+              index: index + 1,
+              id: journey.id,
+              departure: journey.departure,
+              arrival: journey.arrival,
+              fare: journey.totalFare,
+              transfers: journey.transfers,
+              status: journey.availability,
+            })),
         }),
         signal: controller.signal,
       });
@@ -856,7 +911,11 @@ export function AIAssistant() {
         );
     } catch (error) {
       if (error instanceof DOMException && error.name === "AbortError") return;
-      addMessage("assistant", "The assistant service is unavailable. The regular search form still works.", true);
+      addMessage(
+        "assistant",
+        "The assistant service is unavailable. The regular search form still works.",
+        true,
+      );
     } finally {
       if (parseAbortRef.current === controller) parseAbortRef.current = null;
       setParsing(false);
@@ -949,7 +1008,10 @@ export function AIAssistant() {
     }
   }, [pathname, stopListening, stopSpeaking]);
 
-  const visibleChoices = useMemo(() => stationChoices.slice(0, 5), [stationChoices]);
+  const visibleChoices = useMemo(
+    () => stationChoices.slice(0, 5),
+    [stationChoices],
+  );
 
   const closeAssistant = () => {
     speech.cancel();
@@ -1004,29 +1066,50 @@ export function AIAssistant() {
         <div className="flex items-center justify-between border-b border-[var(--line)] p-4 font-extrabold text-[var(--primary-dark)]">
           <DialogTitle className="flex items-center gap-3 text-base font-extrabold">
             <span className="relative size-10 overflow-hidden rounded-full border-2 border-white bg-[#e9f8f5] shadow-sm">
-              <Image src="/images/disha-ai-assistant.png" alt="" fill sizes="40px" className="object-cover object-top" />
+              <Image
+                src="/images/disha-ai-assistant.png"
+                alt=""
+                fill
+                sizes="40px"
+                className="object-cover object-top"
+              />
             </span>
             Disha · AI travel assistant
           </DialogTitle>
-          <button className="grid size-9 place-items-center rounded-full hover:bg-[#eef1f5]" onClick={closeAssistant}>
-            <X /><span className="sr-only">{t("common.actions.close")}</span>
+          <button
+            className="grid size-9 place-items-center rounded-full hover:bg-[#eef1f5]"
+            onClick={closeAssistant}
+          >
+            <X />
+            <span className="sr-only">{t("common.actions.close")}</span>
           </button>
         </div>
-        <div className="min-h-0 flex-1 space-y-3 overflow-y-auto bg-[#f8faff] p-4" aria-live="polite">
+        <div
+          className="min-h-0 flex-1 space-y-3 overflow-y-auto bg-[#f8faff] p-4"
+          aria-live="polite"
+        >
           {messages.map((message) => (
             <div
               key={message.id}
               className={`max-w-[92%] rounded-xl px-3 py-2 text-sm ${message.role === "user" ? "ms-auto bg-[var(--primary)] text-white" : message.warning ? "border border-[#e8a23a] bg-[#fff7e6] text-[#5f4100]" : "border border-[var(--line)] bg-white"}`}
             >
-              {message.warning && <AlertTriangle className="me-1 inline size-4" />}
+              {message.warning && (
+                <AlertTriangle className="me-1 inline size-4" />
+              )}
               {message.text}
             </div>
           ))}
           {parsing && (
-            <div className="flex items-center gap-2 text-sm text-[var(--muted)]"><Loader2 className="size-4 animate-spin" /> Understanding your request…</div>
+            <div className="flex items-center gap-2 text-sm text-[var(--muted)]">
+              <Loader2 className="size-4 animate-spin" /> Understanding your
+              request…
+            </div>
           )}
           {phase === "searching" && !parsing && (
-            <div className="flex items-center gap-2 text-sm text-[var(--muted)]"><Loader2 className="size-4 animate-spin" /> Generating results and checking availability…</div>
+            <div className="flex items-center gap-2 text-sm text-[var(--muted)]">
+              <Loader2 className="size-4 animate-spin" /> Generating results and
+              checking availability…
+            </div>
           )}
           {speech.listening && (
             <div className="rounded-xl border border-[#7cb7ad] bg-[#e9f8f5] p-3 text-sm">
@@ -1040,16 +1123,28 @@ export function AIAssistant() {
                   Stop &amp; send
                 </button>
               </div>
-              <p className="mt-2 text-[var(--ink)]">{speech.transcript || "Speak your complete request, then tap Stop & send."}</p>
+              <p className="mt-2 text-[var(--ink)]">
+                {speech.transcript ||
+                  "Speak your complete request, then tap Stop & send."}
+              </p>
             </div>
           )}
           {speech.error && <p className="form-error">{speech.error}</p>}
-          {speechOutputError && <p className="form-error">{speechOutputError}</p>}
+          {speechOutputError && (
+            <p className="form-error">{speechOutputError}</p>
+          )}
           {visibleChoices.length > 0 && (
             <div className="grid gap-2">
               {visibleChoices.map((station) => (
-                <button key={station.stationId} className="rounded-lg border border-[var(--line)] bg-white p-2 text-start text-sm hover:border-[var(--primary)]" onClick={() => chooseStation(station)}>
-                  <strong>{station.name}</strong> · {station.code}<span className="block text-xs text-[var(--muted)]">{station.state}</span>
+                <button
+                  key={station.stationId}
+                  className="rounded-lg border border-[var(--line)] bg-white p-2 text-start text-sm hover:border-[var(--primary)]"
+                  onClick={() => chooseStation(station)}
+                >
+                  <strong>{station.name}</strong> · {station.code}
+                  <span className="block text-xs text-[var(--muted)]">
+                    {station.state}
+                  </span>
                 </button>
               ))}
             </div>
@@ -1072,28 +1167,80 @@ export function AIAssistant() {
           )}
           {phase === "confirming_search" && (
             <div className="flex gap-2">
-              <Button size="sm" onClick={() => void submitUtterance("yes, search")}>Search trains</Button>
-              <Button size="sm" variant="secondary" onClick={() => void submitUtterance("no")}>Change</Button>
+              <Button
+                size="sm"
+                onClick={() => void submitUtterance("yes, search")}
+              >
+                Search trains
+              </Button>
+              <Button
+                size="sm"
+                variant="secondary"
+                onClick={() => void submitUtterance("no")}
+              >
+                Change
+              </Button>
             </div>
           )}
           {phase === "confirming_journey" && (
             <div className="flex gap-2">
-              <Button size="sm" onClick={() => void submitUtterance("yes, continue")}>Continue to booking</Button>
-              <Button size="sm" variant="secondary" onClick={() => void submitUtterance("no")}>Choose another</Button>
+              <Button
+                size="sm"
+                onClick={() => void submitUtterance("yes, continue")}
+              >
+                Continue to booking
+              </Button>
+              <Button
+                size="sm"
+                variant="secondary"
+                onClick={() => void submitUtterance("no")}
+              >
+                Choose another
+              </Button>
             </div>
           )}
-          {phase === "confirming_pnr_cancellation" && pendingPnrCancellation && (
-            <div className="flex gap-2">
-              <Button size="sm" variant="destructive" onClick={() => void submitUtterance("yes, cancel booking")}>Cancel booking</Button>
-              <Button size="sm" variant="secondary" onClick={() => void submitUtterance("no, keep booking")}>Keep booking</Button>
-            </div>
-          )}
-          {phase === "confirming_tourism_cancellation" && pendingTourismCancellation && (
-            <div className="flex gap-2">
-              <Button size="sm" variant="destructive" onClick={() => void submitUtterance("yes, cancel tourism booking")}>Cancel package</Button>
-              <Button size="sm" variant="secondary" onClick={() => void submitUtterance("no, keep tourism booking")}>Keep package</Button>
-            </div>
-          )}
+          {phase === "confirming_pnr_cancellation" &&
+            pendingPnrCancellation && (
+              <div className="flex gap-2">
+                <Button
+                  size="sm"
+                  variant="destructive"
+                  onClick={() => void submitUtterance("yes, cancel booking")}
+                >
+                  Cancel booking
+                </Button>
+                <Button
+                  size="sm"
+                  variant="secondary"
+                  onClick={() => void submitUtterance("no, keep booking")}
+                >
+                  Keep booking
+                </Button>
+              </div>
+            )}
+          {phase === "confirming_tourism_cancellation" &&
+            pendingTourismCancellation && (
+              <div className="flex gap-2">
+                <Button
+                  size="sm"
+                  variant="destructive"
+                  onClick={() =>
+                    void submitUtterance("yes, cancel tourism booking")
+                  }
+                >
+                  Cancel package
+                </Button>
+                <Button
+                  size="sm"
+                  variant="secondary"
+                  onClick={() =>
+                    void submitUtterance("no, keep tourism booking")
+                  }
+                >
+                  Keep package
+                </Button>
+              </div>
+            )}
         </div>
         <div className="border-t border-[var(--line)] bg-white p-3">
           <div className="flex gap-2">
@@ -1101,9 +1248,21 @@ export function AIAssistant() {
               type="button"
               className={`grid size-11 shrink-0 place-items-center rounded-lg border ${speech.listening ? "border-[#ba1a1a] bg-[#fff0ee] text-[#ba1a1a]" : "border-[var(--line)] text-[var(--primary)]"}`}
               onClick={speech.listening ? speech.stop : speech.start}
-              disabled={!speech.supported || parsing || pathname.startsWith("/checkout/payment")}
-              aria-label={speech.listening ? "Stop listening" : "Start voice search"}
-              title={speech.supported ? (speech.listening ? "Stop and send voice request" : "Start voice search") : "Voice recognition is not supported in this browser"}
+              disabled={
+                !speech.supported ||
+                parsing ||
+                pathname.startsWith("/checkout/payment")
+              }
+              aria-label={
+                speech.listening ? "Stop listening" : "Start voice search"
+              }
+              title={
+                speech.supported
+                  ? speech.listening
+                    ? "Stop and send voice request"
+                    : "Start voice search"
+                  : "Voice recognition is not supported in this browser"
+              }
             >
               {speech.listening ? <MicOff /> : <Mic />}
             </button>
@@ -1111,21 +1270,45 @@ export function AIAssistant() {
               className="min-h-11 min-w-0 flex-1 rounded-lg"
               value={query}
               onChange={(event) => setQuery(event.target.value)}
-              onKeyDown={(event) => event.key === "Enter" && void submitUtterance()}
+              onKeyDown={(event) =>
+                event.key === "Enter" && void submitUtterance()
+              }
               placeholder="Describe a journey or command…"
               maxLength={500}
             />
-            <button type="button" className="grid size-11 shrink-0 place-items-center rounded-lg bg-[var(--primary)] text-white disabled:opacity-60" onClick={() => void submitUtterance()} disabled={!query.trim() || parsing} aria-label="Send">
+            <button
+              type="button"
+              className="grid size-11 shrink-0 place-items-center rounded-lg bg-[var(--primary)] text-white disabled:opacity-60"
+              onClick={() => void submitUtterance()}
+              disabled={!query.trim() || parsing}
+              aria-label="Send"
+            >
               {parsing ? <Loader2 className="animate-spin" /> : <Send />}
             </button>
           </div>
           <div className="mt-2 flex items-center justify-between text-xs text-[var(--muted)]">
-            <span><TrainFront className="me-1 inline size-3.5" />AI interprets; RailEase verifies results and warnings.</span>
-            <button onClick={speaking ? stopSpeaking : () => {
-              const last = [...messages].reverse().find((message) => message.role === "assistant");
-              if (last) speak(last.text);
-            }} aria-label={speaking ? "Stop speaking" : "Read last reply"}>
-              {speaking ? <VolumeX className="size-4" /> : <Volume2 className="size-4" />}
+            <span>
+              <TrainFront className="me-1 inline size-3.5" />
+              AI interprets; RailEase verifies results and warnings.
+            </span>
+            <button
+              onClick={
+                speaking
+                  ? stopSpeaking
+                  : () => {
+                      const last = [...messages]
+                        .reverse()
+                        .find((message) => message.role === "assistant");
+                      if (last) speak(last.text);
+                    }
+              }
+              aria-label={speaking ? "Stop speaking" : "Read last reply"}
+            >
+              {speaking ? (
+                <VolumeX className="size-4" />
+              ) : (
+                <Volume2 className="size-4" />
+              )}
             </button>
           </div>
         </div>

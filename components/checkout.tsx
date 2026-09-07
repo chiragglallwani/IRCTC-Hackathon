@@ -68,10 +68,7 @@ import {
 import Image from "next/image";
 import { cn, getClassTranslationKey } from "@/lib/utils";
 import { useToast } from "@/components/ui/toast";
-import {
-  journeyAdvisories,
-  quotaAdvisories,
-} from "@/lib/booking-advisories";
+import { journeyAdvisories, quotaAdvisories } from "@/lib/booking-advisories";
 
 function availabilityKey(status: AvailabilityStatus) {
   return status === "AVAILABLE"
@@ -832,7 +829,8 @@ export function ConfirmJourney() {
                     if (checked === true) setError("");
                   }}
                 />
-                I understand that RAC, waitlist, or an unconfirmed journey leg is not guaranteed.
+                I understand that RAC, waitlist, or an unconfirmed journey leg
+                is not guaranteed.
               </label>
             )}
             <ul>

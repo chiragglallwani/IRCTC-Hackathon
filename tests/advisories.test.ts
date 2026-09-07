@@ -30,7 +30,12 @@ const station = {
 const journey: Journey = {
   id: "journey-1",
   origin: station,
-  destination: { ...station, stationId: "station-b", code: "BBB", name: "Beta" },
+  destination: {
+    ...station,
+    stationId: "station-b",
+    code: "BBB",
+    name: "Beta",
+  },
   departure: "10:00",
   arrival: "12:00",
   durationMinutes: 120,
@@ -48,7 +53,12 @@ const journey: Journey = {
       status: "AVAILABLE",
       number: 10,
       quotas: [
-        { quotaId: "GN", status: "AVAILABLE", number: 10, confirmationLikelihood: 100 },
+        {
+          quotaId: "GN",
+          status: "AVAILABLE",
+          number: 10,
+          confirmationLikelihood: 100,
+        },
       ],
     },
   ],
@@ -74,7 +84,12 @@ const journey: Journey = {
           status: "AVAILABLE",
           number: 10,
           quotas: [
-            { quotaId: "GN", status: "AVAILABLE", number: 10, confirmationLikelihood: 100 },
+            {
+              quotaId: "GN",
+              status: "AVAILABLE",
+              number: 10,
+              confirmationLikelihood: 100,
+            },
           ],
         },
       ],
@@ -94,18 +109,20 @@ describe("booking advisories", () => {
     const context = createCheckoutContext({ journey, input });
     expect(context.journey.id).toBe(journey.id);
     expect(context.quota).toBe("GN");
-    expect(context.journey.legs.every((leg) => Boolean(leg.travelClass))).toBe(true);
+    expect(context.journey.legs.every((leg) => Boolean(leg.travelClass))).toBe(
+      true,
+    );
   });
 
   it("makes insufficient confirmed seats blocking", () => {
     const constrained: Journey = {
       ...journey,
-      classAvailability: [
-        { ...journey.classAvailability[0], number: 1 },
-      ],
+      classAvailability: [{ ...journey.classAvailability[0], number: 1 }],
     };
     const advisories = journeyAdvisories(constrained, input);
-    expect(advisories.find((item) => item.code === "INSUFFICIENT_SEATS")).toMatchObject({
+    expect(
+      advisories.find((item) => item.code === "INSUFFICIENT_SEATS"),
+    ).toMatchObject({
       blocking: true,
       severity: "danger",
     });
@@ -119,7 +136,11 @@ describe("booking advisories", () => {
         { ...journey.classAvailability[0], status: "WAITLIST", number: 12 },
       ],
     };
-    expect(journeyAdvisories(waitlisted, input).some((item) => item.code === "WAITLIST")).toBe(true);
+    expect(
+      journeyAdvisories(waitlisted, input).some(
+        (item) => item.code === "WAITLIST",
+      ),
+    ).toBe(true);
   });
 
   it("reports final quota selection after passengers are known", () => {

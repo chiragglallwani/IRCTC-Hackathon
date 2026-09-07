@@ -16,6 +16,7 @@ import {
 } from "lucide-react";
 import Link from "next/link";
 import { cityById, hotels, tourism } from "@/lib/tourism-data";
+import { cities } from "@/lib/places";
 import { saveStorage, savedItineraries, storageKeys } from "@/lib/storage";
 import type { Itinerary, ItineraryDay } from "@/lib/types";
 import { useApp } from "@/components/providers";
@@ -47,30 +48,87 @@ function Planner() {
     ? params.get("destination")!
     : tourism[0].destinationId;
   const [destinationId, setDestinationId] = useState(initialDestination);
+  const [sourceCityId, setSourceCityId] = useState(() => {
+    const requested = params.get("source");
+    return cities.some((city) => city.cityId === requested)
+      ? requested!
+      : "city_delhi_new_delhi";
+  });
   const dateParam = (key: string, fallback: string) =>
     /^\d{4}-\d{2}-\d{2}$/.test(params.get(key) ?? "")
       ? params.get(key)!
       : fallback;
   const optionParam = (key: string, options: string[], fallback: string) =>
     options.includes(params.get(key) ?? "") ? params.get(key)! : fallback;
-  const numberParam = (key: string, fallback: number, min: number, max: number) => {
+  const numberParam = (
+    key: string,
+    fallback: number,
+    min: number,
+    max: number,
+  ) => {
     const value = Number(params.get(key));
-    return Number.isFinite(value) && value >= min && value <= max ? value : fallback;
+    return Number.isFinite(value) && value >= min && value <= max
+      ? value
+      : fallback;
   };
-  const [startDate, setStartDate] = useState(() => dateParam("startDate", "2026-10-12"));
-  const [endDate, setEndDate] = useState(() => dateParam("endDate", "2026-10-15"));
-  const [budget, setBudget] = useState(() => numberParam("budget", 35000, 5000, 500000));
-  const [style, setStyle] = useState(() => optionParam("style", ["Family", "Couple", "Solo", "Senior-friendly"], "Family"));
-  const [pace, setPace] = useState(() => optionParam("pace", ["Relaxed", "Balanced", "Packed"], "Balanced"));
-  const [travelMode, setTravelMode] = useState(() => optionParam("travelMode", ["Train", "Train + local transport", "Bus"], "Train + local transport"));
-  const [accommodation, setAccommodation] = useState(() => optionParam("accommodation", ["Budget", "3-star", "4-star", "Luxury"], "4-star"));
-  const [mealPlan, setMealPlan] = useState(() => optionParam("mealPlan", ["No meals", "Breakfast", "Breakfast + dinner"], "Breakfast + dinner"));
-  const [travelers, setTravelers] = useState(() => numberParam("travelers", 2, 1, 20));
+  const [startDate, setStartDate] = useState(() =>
+    dateParam("startDate", "2026-10-12"),
+  );
+  const [endDate, setEndDate] = useState(() =>
+    dateParam("endDate", "2026-10-15"),
+  );
+  const [budget, setBudget] = useState(() =>
+    numberParam("budget", 35000, 5000, 500000),
+  );
+  const [style, setStyle] = useState(() =>
+    optionParam(
+      "style",
+      ["Family", "Couple", "Solo", "Senior-friendly"],
+      "Family",
+    ),
+  );
+  const [pace, setPace] = useState(() =>
+    optionParam("pace", ["Relaxed", "Balanced", "Packed"], "Balanced"),
+  );
+  const [travelMode, setTravelMode] = useState(() =>
+    optionParam(
+      "travelMode",
+      ["Train", "Train + local transport", "Bus"],
+      "Train + local transport",
+    ),
+  );
+  const [accommodation, setAccommodation] = useState(() =>
+    optionParam(
+      "accommodation",
+      ["Budget", "3-star", "4-star", "Luxury"],
+      "4-star",
+    ),
+  );
+  const [mealPlan, setMealPlan] = useState(() =>
+    optionParam(
+      "mealPlan",
+      ["No meals", "Breakfast", "Breakfast + dinner"],
+      "Breakfast + dinner",
+    ),
+  );
+  const [travelers, setTravelers] = useState(() =>
+    numberParam("travelers", 2, 1, 20),
+  );
   const [rooms, setRooms] = useState(() => numberParam("rooms", 1, 1, 10));
 
   const destination = tourism.find(
     (item) => item.destinationId === destinationId,
   )!;
+  const source = cityById.get(sourceCityId) ?? cities[0];
+  const destinationCity = cityById.get(destination.cityId)!;
+  const sourceOptions = [...cities]
+    .filter(
+      (city) =>
+        city.popular ||
+        city.type.includes("railway_hub") ||
+        city.cityId === sourceCityId,
+    )
+    .sort((a, b) => a.name.localeCompare(b.name));
   const destinationHotels = hotels.filter(
     (hotel) => hotel.cityId === destination.cityId,
   );
@@ -98,9 +156,30 @@ function Planner() {
         activityMultiplier,
     );
     const lodging = (selectedHotel?.fromPrice ?? 1800) * nights * rooms;
-    const transportRate =
-      travelMode === "Bus" ? 1200 : travelMode === "Train" ? 1800 : 2400;
-    const transport = transportRate * travelers;
+    const toRadians = (value: number) => (value * Math.PI) / 180;
+    const latitudeDistance = toRadians(
+      destinationCity.latitude - source.latitude,
+    );
+    const longitudeDistance = toRadians(
+      destinationCity.longitude - source.longitude,
+    );
+    const distance =
+      6371 *
+      2 *
+      Math.asin(
+        Math.sqrt(
+          Math.sin(latitudeDistance / 2) ** 2 +
+            Math.cos(toRadians(source.latitude)) *
+              Math.cos(toRadians(destinationCity.latitude)) *
+              Math.sin(longitudeDistance / 2) ** 2,
+        ),
+      );
+    const perKmRate =
+      travelMode === "Bus" ? 0.9 : travelMode === "Train" ? 1.15 : 1.35;
+    const localTransfer = travelMode === "Train + local transport" ? 650 : 0;
+    const transport = Math.round(
+      (Math.max(650, distance * perKmRate * 2) + localTransfer) * travelers,
+    );
     const mealRate =
       mealPlan === "No meals" ? 0 : mealPlan === "Breakfast" ? 350 : 850;
     const meals = mealRate * dayCount * travelers;
@@ -117,6 +196,8 @@ function Planner() {
     };
   }, [
     destination,
+    destinationCity,
+    source,
     selectedHotel,
     nights,
     rooms,
@@ -162,6 +243,7 @@ function Planner() {
     );
     const itinerary: Itinerary = {
       id: `itinerary-${Date.now()}`,
+      source,
       destination,
       startDate,
       endDate,
@@ -233,9 +315,38 @@ function Planner() {
               </div>
             </div>
             <div className="mt-5 grid gap-5 sm:grid-cols-2">
-              <label className="sm:col-span-2">
+              <label>
+                Source
+                <Select value={sourceCityId} onValueChange={setSourceCityId}>
+                  <SelectTrigger>
+                    <SelectValue />
+                  </SelectTrigger>
+                  <SelectContent>
+                    {sourceOptions.map((city) => (
+                      <SelectItem
+                        key={city.cityId}
+                        value={city.cityId}
+                        disabled={city.cityId === destination.cityId}
+                      >
+                        {city.name}, {city.state}
+                      </SelectItem>
+                    ))}
+                  </SelectContent>
+                </Select>
+              </label>
+              <label>
                 {t("pages.tourism.planner.destination")}
-                <Select value={destinationId} onValueChange={setDestinationId}>
+                <Select
+                  value={destinationId}
+                  onValueChange={(value) => {
+                    setDestinationId(value);
+                    const nextDestination = tourism.find(
+                      (item) => item.destinationId === value,
+                    );
+                    if (nextDestination?.cityId === sourceCityId)
+                      setSourceCityId("city_delhi_new_delhi");
+                  }}
+                >
                   <SelectTrigger>
                     <SelectValue />
                   </SelectTrigger>
@@ -485,6 +596,12 @@ function Planner() {
                 <Users className="size-5 text-[#0b6b63]" />
                 <span>
                   {travelers} travelers · {rooms} rooms
+                </span>
+              </div>
+              <div className="flex items-center gap-3">
+                <TrainFront className="size-5 text-[#0b6b63]" />
+                <span>
+                  {source.name} → {destinationCity.name} → {source.name}
                 </span>
               </div>
               <div className="flex items-center gap-3">
