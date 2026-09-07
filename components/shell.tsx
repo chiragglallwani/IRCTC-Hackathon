@@ -4,7 +4,6 @@ import Image from "next/image";
 import { usePathname } from "next/navigation";
 import {
   Accessibility,
-  Bot,
   Minus,
   Plus,
   UserCircle,
@@ -18,7 +17,6 @@ import {
   LucideProps,
   LogOut,
 } from "lucide-react";
-import { useState } from "react";
 import {
   FONT_SIZE_STEP,
   MAX_FONT_SIZE,
@@ -42,6 +40,7 @@ import {
 } from "@/components/ui/select";
 import { languageOptions } from "@/lib/i18n";
 import { Button } from "@/components/ui/button";
+import { AIAssistant } from "@/components/assistant/assistant";
 
 const IconMap: Record<string, React.ComponentType<LucideProps>> = {
   home: HomeIcon,
@@ -297,91 +296,6 @@ export function Header() {
   );
 }
 
-export function AIAssistant() {
-  const { t } = useApp();
-  const [query, setQuery] = useState("");
-  const [replyKey, setReplyKey] = useState("components.assistant.welcome");
-  const ask = (value = query) => {
-    const normalized = value.toLowerCase();
-    const answer = normalized.includes("rac")
-      ? "rac"
-      : normalized.includes("quota") || normalized.includes("कोटा")
-        ? "quota"
-        : normalized.includes("cancel") || normalized.includes("रद्द")
-          ? "cancellation"
-          : normalized.includes("ticket") || normalized.includes("टिकट")
-            ? "ticket"
-            : normalized.includes("cheap") || normalized.includes("सस्त")
-              ? "cheaper"
-              : null;
-    setReplyKey(
-      answer
-        ? `components.assistant.answers.${answer}`
-        : "components.assistant.fallback",
-    );
-    setQuery("");
-  };
-  return (
-    <Popover>
-      <PopoverTrigger asChild>
-        <button
-          className="fixed bottom-[calc(88px_+_env(safe-area-inset-bottom))] end-3 z-[60] grid h-14 w-14 place-items-center rounded-full border-[3px] border-white bg-[var(--primary)] text-white shadow-[0_8px_28px_#0003] sm:end-4 sm:h-[62px] sm:w-[62px] lg:bottom-7 lg:end-7 lg:h-[66px] lg:w-[66px] lg:border-4"
-          aria-label={t("components.assistant.open")}
-        >
-          <Bot />
-        </button>
-      </PopoverTrigger>
-      <PopoverContent
-        className="w-[min(380px,calc(100vw_-_32px))] p-5"
-        side="top"
-        align="end"
-        sideOffset={10}
-        aria-label={t("components.assistant.label")}
-      >
-        <div className="flex items-center justify-between font-extrabold text-[var(--primary-dark)]">
-          <span className="flex gap-2">
-            <Bot /> {t("components.assistant.title")}
-          </span>
-          <PopoverClose className="border-0 bg-transparent">
-            <X />
-            <span className="sr-only">{t("common.actions.close")}</span>
-          </PopoverClose>
-        </div>
-        <p>{t(replyKey)}</p>
-        <div className="grid gap-[7px]">
-          {[
-            t("components.assistant.promptRac"),
-            t("components.assistant.promptQuota"),
-            t("components.assistant.promptTicket"),
-          ].map((x) => (
-            <button
-              className="rounded-[7px] border border-[var(--line)] bg-white p-2 text-start"
-              key={x}
-              onClick={() => ask(x)}
-            >
-              {x}
-            </button>
-          ))}
-        </div>
-        <div className="mt-[14px] flex">
-          <input
-            className="min-h-11 rounded-e-none rounded-s-lg"
-            value={query}
-            onChange={(e) => setQuery(e.target.value)}
-            onKeyDown={(e) => e.key === "Enter" && ask()}
-            placeholder={t("components.assistant.placeholder")}
-          />
-          <button
-            className="rounded-e-lg rounded-s-none border-0 bg-[var(--primary)] px-[14px] text-white"
-            onClick={() => ask()}
-          >
-            {t("common.actions.send")}
-          </button>
-        </div>
-      </PopoverContent>
-    </Popover>
-  );
-}
 export function Footer() {
   const { t } = useApp();
   return (

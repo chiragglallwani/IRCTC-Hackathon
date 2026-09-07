@@ -2,6 +2,7 @@ import type { Metadata } from "next";
 import "./globals.css";
 import { Providers } from "@/components/providers";
 import { AppShell } from "@/components/shell";
+import { AssistantProvider } from "@/components/assistant/assistant-context";
 
 export const metadata: Metadata = {
   title: "RailEase — Journey planning made clear",
@@ -20,7 +21,9 @@ export default function RootLayout({
     <html lang="en">
       <body>
         <Providers>
-          <AppShell>{children}</AppShell>
+          <AssistantProvider>
+            <AppShell>{children}</AppShell>
+          </AssistantProvider>
         </Providers>
       </body>
     </html>

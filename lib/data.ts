@@ -25,13 +25,13 @@ type DataFile<T> = { records: T[] };
 // requires, while the declared boundary type keeps application code type-safe.
 /* eslint-disable @typescript-eslint/no-require-imports */
 const routesJson =
-  require("@/irctc-hackathon-mock/data/large/train-routes.json") as DataFile<TrainRoute>;
+  require("../irctc-hackathon-mock/data/large/train-routes.json") as DataFile<TrainRoute>;
 const connectionsJson =
-  require("@/irctc-hackathon-mock/data/large/connections.json") as DataFile<Connection>;
+  require("../irctc-hackathon-mock/data/large/connections.json") as DataFile<Connection>;
 const faresJson =
-  require("@/irctc-hackathon-mock/data/large/fares.json") as DataFile<Fare>;
+  require("../irctc-hackathon-mock/data/large/fares.json") as DataFile<Fare>;
 const availabilityJson =
-  require("@/irctc-hackathon-mock/data/large/availability.json") as DataFile<Availability>;
+  require("../irctc-hackathon-mock/data/large/availability.json") as DataFile<Availability>;
 /* eslint-enable @typescript-eslint/no-require-imports */
 
 // Avoid asking TypeScript to structurally compare every record in these large

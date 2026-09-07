@@ -47,16 +47,26 @@ function Planner() {
     ? params.get("destination")!
     : tourism[0].destinationId;
   const [destinationId, setDestinationId] = useState(initialDestination);
-  const [startDate, setStartDate] = useState("2026-10-12");
-  const [endDate, setEndDate] = useState("2026-10-15");
-  const [budget, setBudget] = useState(35000);
-  const [style, setStyle] = useState("Family");
-  const [pace, setPace] = useState("Balanced");
-  const [travelMode, setTravelMode] = useState("Train + local transport");
-  const [accommodation, setAccommodation] = useState("4-star");
-  const [mealPlan, setMealPlan] = useState("Breakfast + dinner");
-  const [travelers, setTravelers] = useState(2);
-  const [rooms, setRooms] = useState(1);
+  const dateParam = (key: string, fallback: string) =>
+    /^\d{4}-\d{2}-\d{2}$/.test(params.get(key) ?? "")
+      ? params.get(key)!
+      : fallback;
+  const optionParam = (key: string, options: string[], fallback: string) =>
+    options.includes(params.get(key) ?? "") ? params.get(key)! : fallback;
+  const numberParam = (key: string, fallback: number, min: number, max: number) => {
+    const value = Number(params.get(key));
+    return Number.isFinite(value) && value >= min && value <= max ? value : fallback;
+  };
+  const [startDate, setStartDate] = useState(() => dateParam("startDate", "2026-10-12"));
+  const [endDate, setEndDate] = useState(() => dateParam("endDate", "2026-10-15"));
+  const [budget, setBudget] = useState(() => numberParam("budget", 35000, 5000, 500000));
+  const [style, setStyle] = useState(() => optionParam("style", ["Family", "Couple", "Solo", "Senior-friendly"], "Family"));
+  const [pace, setPace] = useState(() => optionParam("pace", ["Relaxed", "Balanced", "Packed"], "Balanced"));
+  const [travelMode, setTravelMode] = useState(() => optionParam("travelMode", ["Train", "Train + local transport", "Bus"], "Train + local transport"));
+  const [accommodation, setAccommodation] = useState(() => optionParam("accommodation", ["Budget", "3-star", "4-star", "Luxury"], "4-star"));
+  const [mealPlan, setMealPlan] = useState(() => optionParam("mealPlan", ["No meals", "Breakfast", "Breakfast + dinner"], "Breakfast + dinner"));
+  const [travelers, setTravelers] = useState(() => numberParam("travelers", 2, 1, 20));
+  const [rooms, setRooms] = useState(() => numberParam("rooms", 1, 1, 10));
 
   const destination = tourism.find(
     (item) => item.destinationId === destinationId,

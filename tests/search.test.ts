@@ -12,7 +12,7 @@ import {
 describe("data-driven journey search", () => {
   const input = {
     origin: "station_085_central",
-    destination: "station_183_central",
+    destination: "station_183_junction",
     date: "2026-08-24",
     adults: 1,
     children: 0,

@@ -25,6 +25,8 @@ import { Badge, type BadgeVariant } from "@/components/ui/badge";
 import { Button } from "@/components/ui/button";
 import { JourneyRoute } from "@/components/journey-route";
 import { cn } from "@/lib/utils";
+import { createCheckoutContext } from "@/lib/checkout-selection";
+import { journeyAdvisories } from "@/lib/booking-advisories";
 
 function statusVariant(status: AvailabilityStatus): BadgeVariant {
   return status === "AVAILABLE"
@@ -83,81 +85,17 @@ export const JourneyCard = memo(function JourneyCard({
         )
       : (selectedAvailability?.fare ??
         Math.min(...journey.classAvailability.map((item) => item.fare)));
+  const advisories = journeyAdvisories(journey, input, selectedClass ?? undefined);
   const proceed = () => {
-    const checkoutAvailability =
-      selectedAvailability ??
-      journey.classAvailability.find((item) => item.status !== "REGRET") ??
-      journey.classAvailability[0];
-    const checkoutLegTickets = journey.legs.map((leg, index) => {
-      const selectedTicket = selectedLegOptions[index];
-      if (selectedTicket) return selectedTicket;
-      if (journey.legs.length === 1 && checkoutAvailability) {
-        const matchingTicket = leg.ticketOptions.find(
-          (ticket) => ticket.travelClass === checkoutAvailability.travelClass,
-        );
-        if (matchingTicket) return matchingTicket;
-      }
-      return (
-        [...leg.ticketOptions]
-          .filter((ticket) => ticket.status !== "REGRET")
-          .sort((a, b) => a.fare - b.fare)[0] ??
-        [...leg.ticketOptions].sort((a, b) => a.fare - b.fare)[0]
-      );
-    });
-    const selectedLegs = journey.legs.map((leg, index) => {
-      const ticket = checkoutLegTickets[index];
-      return ticket
-        ? {
-            ...leg,
-            fare: ticket.fare,
-            travelClass: ticket.travelClass,
-            availability: {
-              ...(leg.availability ?? {
-                availabilityId: `${leg.id}-${ticket.travelClass}`,
-                trainId: leg.serviceId,
-                fromStation: leg.from.stationId,
-                toStation: leg.to.stationId,
-                travelDate: input.date,
-                quota: "GN",
-                confirmationLikelihood: 0,
-                lastUpdated: new Date().toISOString(),
-              }),
-              class: ticket.travelClass,
-              status: ticket.status,
-              number: ticket.number,
-            },
-          }
-        : leg;
-    });
-    const effectiveClass =
-      journey.legs.length > 1
-        ? selectedLegs.map((leg) => leg.travelClass).join(" + ")
-        : (checkoutAvailability?.travelClass ?? selectedLegs[0].travelClass);
-    const checkoutFare =
-      journey.legs.length > 1
-        ? checkoutLegTickets.reduce(
-            (sum, ticket, index) =>
-              sum + (ticket?.fare ?? journey.legs[index].fare),
-            0,
-          )
-        : (checkoutAvailability?.fare ?? selectedLegs[0].fare);
-    const selectedJourney: Journey = {
-      ...journey,
-      totalFare: checkoutFare,
-      availability:
-        checkoutLegTickets.find((item) => item?.status === "REGRET")?.status ??
-        checkoutLegTickets.find((item) => item?.status === "WAITLIST")
-          ?.status ??
-        checkoutLegTickets.find((item) => item?.status === "RAC")?.status ??
-        checkoutAvailability?.status ??
-        "AVAILABLE",
-      legs: selectedLegs,
-    };
-    saveStorage(storageKeys.checkout, {
-      journey: selectedJourney,
-      input: { ...input, travelClass: effectiveClass },
-      quota: "GN",
-    });
+    saveStorage(
+      storageKeys.checkout,
+      createCheckoutContext({
+        journey,
+        input,
+        selectedClass,
+        selectedLegClasses,
+      }),
+    );
     if (!user) {
       setPendingAuth(true);
       setAuthOpen(true);
@@ -412,6 +350,26 @@ export const JourneyCard = memo(function JourneyCard({
             </ul>
           </div>
         )}
+        <section className="mt-4 grid gap-2" aria-label="Booking advisories">
+          {advisories.map((advisory) => (
+            <div
+              key={advisory.code}
+              className={cn(
+                "rounded-lg border px-3 py-2 text-sm",
+                advisory.severity === "danger"
+                  ? "border-[#e7a09a] bg-[#fff0ee] text-[#7d1b12]"
+                  : advisory.severity === "warning"
+                    ? "border-[#e8c16a] bg-[#fff8e7] text-[#684900]"
+                    : advisory.severity === "success"
+                      ? "border-[#8fc8b8] bg-[#edf9f5] text-[#075b55]"
+                      : "border-[#b6c9ea] bg-[#f2f6ff] text-[#134b8e]",
+              )}
+            >
+              <strong>{advisory.title}</strong>
+              <span className="mt-0.5 block">{advisory.message}</span>
+            </div>
+          ))}
+        </section>
         <div className="journey-actions mt-4">
           <Button
             variant="secondary"
