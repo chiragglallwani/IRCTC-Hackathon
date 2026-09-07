@@ -3,11 +3,11 @@ import { searchJourneys } from "@/lib/search";
 import type { SearchInput } from "@/lib/types";
 
 export async function POST(request: Request) {
-  const body = (await request.json()) as {
+  const body = (await request.json().catch(() => null)) as {
     input?: SearchInput;
     previewDates?: string[];
-  };
-  if (!body.input)
+  } | null;
+  if (!body?.input)
     return NextResponse.json(
       { error: "Search input is required." },
       { status: 400 },

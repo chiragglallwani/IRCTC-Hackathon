@@ -1,5 +1,5 @@
 "use client";
-import { Suspense, useEffect, useMemo, useState } from "react";
+import { Suspense, useCallback, useEffect, useMemo, useState } from "react";
 import { useSearchParams } from "next/navigation";
 import Link from "next/link";
 import { SearchX, SlidersHorizontal } from "lucide-react";
@@ -26,6 +26,7 @@ import {
   SelectValue,
 } from "@/components/ui/select";
 import { cn } from "@/lib/utils";
+import { useAssistantContext } from "@/components/assistant/assistant-context";
 
 function dateOffset(date: string, offset: number) {
   const d = new Date(`${date}T00:00:00`);
@@ -43,6 +44,18 @@ function todayDate() {
   );
 }
 
+function matchesDeparturePeriod(
+  departure: string,
+  period: "morning" | "afternoon" | "evening" | "night" | null,
+) {
+  if (!period) return true;
+  const hour = Number(departure.split(":")[0]);
+  if (period === "morning") return hour >= 5 && hour < 12;
+  if (period === "afternoon") return hour >= 12 && hour < 17;
+  if (period === "evening") return hour >= 17 && hour < 21;
+  return hour >= 21 || hour < 5;
+}
+
 function SearchLoadingState({ label }: { label: string }) {
   return (
     <div className="card empty-state" role="status" aria-live="polite">
@@ -54,6 +67,7 @@ function SearchLoadingState({ label }: { label: string }) {
 
 function SearchResults() {
   const { locale, t } = useApp();
+  const { registerSearchPage } = useAssistantContext();
   const params = useSearchParams();
   const base = useMemo<SearchInput>(
     () => ({
@@ -74,6 +88,9 @@ function SearchResults() {
   const [transfers, setTransfers] = useState<number[]>([]);
   const [onlyAvailable, setOnlyAvailable] = useState(false);
   const [maxFare, setMaxFare] = useState(10000);
+  const [departurePeriod, setDeparturePeriod] = useState<
+    "morning" | "afternoon" | "evening" | "night" | null
+  >(null);
   const [searchOpen, setSearchOpen] = useState(true);
   const [raw, setRaw] = useState<Journey[]>([]);
   const [dateOptions, setDateOptions] = useState<
@@ -133,7 +150,8 @@ function SearchResults() {
             (!transfers.length ||
               transfers.includes(Math.min(2, x.transfers))) &&
             (!onlyAvailable || x.availability === "AVAILABLE") &&
-            x.totalFare <= maxFare,
+            x.totalFare <= maxFare &&
+            matchesDeparturePeriod(x.departure, departurePeriod),
         )
         .sort((a, b) =>
           sort === "fastest"
@@ -142,8 +160,40 @@ function SearchResults() {
               ? a.totalFare - b.totalFare
               : b.score - a.score,
         ),
-    [raw, modes, transfers, onlyAvailable, maxFare, sort],
+    [raw, modes, transfers, onlyAvailable, maxFare, departurePeriod, sort],
   );
+  const setAssistantMaxTransfers = useCallback((value: number | null) => {
+    setTransfers(value === null ? [] : [Math.min(2, Math.max(0, value))]);
+  }, []);
+  useEffect(() => {
+    registerSearchPage({
+      input,
+      journeys: results,
+      loading,
+      sort,
+      onlyAvailable,
+      maxTransfers: transfers.length === 1 ? transfers[0] : null,
+      maxFare,
+      departurePeriod,
+      setSort,
+      setOnlyAvailable,
+      setMaxTransfers: setAssistantMaxTransfers,
+      setMaxFare,
+      setDeparturePeriod,
+    });
+    return () => registerSearchPage(null);
+  }, [
+    input,
+    results,
+    loading,
+    sort,
+    onlyAvailable,
+    transfers,
+    maxFare,
+    departurePeriod,
+    registerSearchPage,
+    setAssistantMaxTransfers,
+  ]);
   const toggle = <T,>(value: T, list: T[], setter: (x: T[]) => void) =>
     setter(
       list.includes(value) ? list.filter((x) => x !== value) : [...list, value],
@@ -298,12 +348,21 @@ function SearchResults() {
                 </Badge>
               </button>
             ))}
-            {modes.length || transfers.length || onlyAvailable ? (
+            {departurePeriod && (
+              <button onClick={() => setDeparturePeriod(null)}>
+                <Badge variant="success">{departurePeriod} departures ×</Badge>
+              </button>
+            )}
+            {modes.length ||
+            transfers.length ||
+            onlyAvailable ||
+            departurePeriod ? (
               <button
                 onClick={() => {
                   setModes([]);
                   setTransfers([]);
                   setOnlyAvailable(false);
+                  setDeparturePeriod(null);
                 }}
               >
                 <Badge variant="outline">

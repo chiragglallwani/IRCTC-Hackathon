@@ -19,6 +19,34 @@ npm run build
 npm start
 ```
 
+## Voice journey assistant
+
+RailEase includes a voice/text journey assistant in the bottom-right corner. It
+uses browser speech recognition for voice input, validates all stations and
+journey data against the local dataset, reuses the existing search page, and
+shows deterministic availability and quota warnings. Chrome or Edge provides
+the most reliable browser speech-recognition experience; typed input remains
+available everywhere.
+
+For full natural-language parsing, create an OpenAI Platform API key and add it
+to `.env.local`:
+
+```text
+OPENAI_API_KEY=sk-...
+```
+
+Do not use a `NEXT_PUBLIC_` prefix. The key is read only by
+`/api/assistant/parse`. `OPENAI_ASSISTANT_MODEL` is optional and defaults to the
+cost-sensitive model recorded in `feature.md`. Without a key, ordinary search,
+typed input, standard railway explanations, and the deterministic voice-command
+fallback continue to work.
+
+The assistant never receives payment credentials, passwords, identity-document
+values, complete passenger profiles, or the full railway dataset. It interprets
+compact commands; RailEase performs search, availability, quota, warning, and
+checkout decisions locally. See `feature.md` for the complete design and test
+contract.
+
 ## Razorpay test mode
 
 Add a Razorpay test key pair to `.env.local`:
@@ -44,4 +72,6 @@ The public key reaches Standard Checkout. The secret is used only by `/api/razor
 - localStorage auth is intentionally passwordless and is not production authentication.
 - The supplied graph contains `train` and `metro_transfer` edges, not scheduled bus services. RailEase renders the available metro connectors as multimodal legs rather than inventing incompatible bus schedules.
 - Razorpay requires the developer's own test credentials and internet access. No secret is committed or exposed to the browser.
-- The AI assistant is deterministic and intentionally does not call an LLM.
+- The assistant uses an optional server-side OpenAI parser for ambiguous natural
+  language. Search results, warnings, quota eligibility, and checkout actions
+  remain deterministic and continue to work without the API key.

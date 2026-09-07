@@ -41,25 +41,13 @@ import { CLASSSELECTIONLIST, cn } from "@/lib/utils";
 import { useResponsive } from "@/hooks/use-responsive";
 import { Button } from "@/components/ui/button";
 import { JourneyLoader } from "@/components/journey-loader";
+import {
+  buildSearchUrl,
+  todayDate,
+  tomorrowDate,
+} from "@/lib/search-navigation";
 
 const modes: BookingMode[] = ["tatkal", "quick", "explore"];
-
-function formatLocalDate(date: Date) {
-  const year = date.getFullYear();
-  const month = String(date.getMonth() + 1).padStart(2, "0");
-  const day = String(date.getDate()).padStart(2, "0");
-  return `${year}-${month}-${day}`;
-}
-
-function todayDate() {
-  return formatLocalDate(new Date());
-}
-
-function tomorrowDate() {
-  const tomorrow = new Date();
-  tomorrow.setDate(tomorrow.getDate() + 1);
-  return formatLocalDate(tomorrow);
-}
 
 export function SearchCard({
   initialMode = "quick",
@@ -109,18 +97,18 @@ export function SearchCard({
       return setError(t("components.searchCard.selectPlaces"));
     if (origin.stationId === destination.stationId)
       return setError(t("components.searchCard.samePlace"));
-    const q = new URLSearchParams({
+    const input = {
       origin: origin.stationId,
       destination: destination.stationId,
       date,
-      adults: String(travellers.adults),
-      children: String(travellers.children),
-      infants: String(travellers.infants),
-      class: travelClass,
+      adults: travellers.adults,
+      children: travellers.children,
+      infants: travellers.infants,
+      travelClass,
       mode,
-    });
+    };
     startSearchTransition(() => {
-      router.push(`/search?${q}`);
+      router.push(buildSearchUrl(input));
     });
   };
   return (

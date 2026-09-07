@@ -68,6 +68,10 @@ import {
 import Image from "next/image";
 import { cn, getClassTranslationKey } from "@/lib/utils";
 import { useToast } from "@/components/ui/toast";
+import {
+  journeyAdvisories,
+  quotaAdvisories,
+} from "@/lib/booking-advisories";
 
 function availabilityKey(status: AvailabilityStatus) {
   return status === "AVAILABLE"
@@ -369,6 +373,7 @@ export function ConfirmJourney() {
   const [context, update] = useCheckout();
   const [error, setError] = useState("");
   const [activeLegId, setActiveLegId] = useState("");
+  const [riskAcknowledged, setRiskAcknowledged] = useState(false);
   if (!context)
     return (
       <div className="page">
@@ -393,6 +398,17 @@ export function ConfirmJourney() {
     classAvailability.find(
       (item) => item.travelClass === context.input.travelClass,
     ) ?? classAvailability[0];
+  const confirmAdvisories = journeyAdvisories(
+    context.journey,
+    context.input,
+    selectedAvailability.travelClass,
+  );
+  const needsRiskAcknowledgement = confirmAdvisories.some(
+    (item) =>
+      item.code === "RAC" ||
+      item.code === "WAITLIST" ||
+      item.code === "MULTI_LEG_RISK",
+  );
   const isMultiLeg = context.journey.legs.length > 1;
   const activeLeg =
     context.journey.legs.find((leg) => leg.id === activeLegId) ??
@@ -495,6 +511,10 @@ export function ConfirmJourney() {
     setError("");
   };
   const proceed = () => {
+    if (needsRiskAcknowledgement && !riskAcknowledged)
+      return setError(
+        "Please acknowledge the RAC, waitlist, or connected-journey warning before continuing.",
+      );
     if (
       (isMultiLeg &&
         selectedLegTickets.some((ticket) => ticket?.status === "REGRET")) ||
@@ -783,6 +803,38 @@ export function ConfirmJourney() {
           </section>
           <section className="card checkout-section">
             <h3>{t("pages.checkout.confirm.important")}</h3>
+            <div className="my-3 grid gap-2" aria-label="Booking advisories">
+              {confirmAdvisories.map((advisory) => (
+                <div
+                  key={advisory.code}
+                  className={cn(
+                    "rounded-lg border px-3 py-2 text-sm",
+                    advisory.severity === "danger"
+                      ? "border-red-200 bg-red-50 text-red-900"
+                      : advisory.severity === "warning"
+                        ? "border-amber-200 bg-amber-50 text-amber-950"
+                        : advisory.severity === "success"
+                          ? "border-emerald-200 bg-emerald-50 text-emerald-950"
+                          : "border-blue-200 bg-blue-50 text-blue-950",
+                  )}
+                >
+                  <strong>{advisory.title}</strong>
+                  <span className="mt-0.5 block">{advisory.message}</span>
+                </div>
+              ))}
+            </div>
+            {needsRiskAcknowledgement && (
+              <label className="my-3 flex items-start gap-2 rounded-lg border border-amber-300 bg-amber-50 p-3 text-sm text-amber-950">
+                <Checkbox
+                  checked={riskAcknowledged}
+                  onCheckedChange={(checked) => {
+                    setRiskAcknowledged(checked === true);
+                    if (checked === true) setError("");
+                  }}
+                />
+                I understand that RAC, waitlist, or an unconfirmed journey leg is not guaranteed.
+              </label>
+            )}
             <ul>
               <li>{t("pages.checkout.confirm.infoFare")}</li>
               <li>{t("pages.checkout.confirm.infoId")}</li>
@@ -796,7 +848,8 @@ export function ConfirmJourney() {
           action={proceed}
           actionDisabled={
             (!isMultiLeg && selectedAvailability.status === "REGRET") ||
-            !hasEnoughConfirmedSeats
+            !hasEnoughConfirmedSeats ||
+            (needsRiskAcknowledgement && !riskAcknowledged)
           }
           label={t("pages.checkout.confirm.continue")}
         />
@@ -975,6 +1028,11 @@ export function PassengerDetails() {
     autoQuotaAvailability?.status === "AVAILABLE" &&
     autoQuotaAvailability.number >= selectedPeople.length,
   );
+  const quotaWarnings = quotaAdvisories({
+    passengers: selectedPeople,
+    mode: context.input.mode,
+    availability: selectedClassAvailability?.quotas ?? [],
+  });
   const passengerCountError = () =>
     toast({
       title: t("common.status.failure"),
@@ -1215,6 +1273,28 @@ export function PassengerDetails() {
                         : t("pages.checkout.confirm.queueStatusNote")}
                     </p>
                   )}
+              </div>
+            )}
+            {selectedPeople.length > 0 && (
+              <div className="mt-3 grid gap-2" aria-label="Quota advisories">
+                {quotaWarnings.map((advisory) => (
+                  <div
+                    key={advisory.code}
+                    className={cn(
+                      "rounded-lg border px-3 py-2 text-sm",
+                      advisory.severity === "danger"
+                        ? "border-red-200 bg-red-50 text-red-900"
+                        : advisory.severity === "warning"
+                          ? "border-amber-200 bg-amber-50 text-amber-950"
+                          : advisory.severity === "success"
+                            ? "border-emerald-200 bg-emerald-50 text-emerald-950"
+                            : "border-blue-200 bg-blue-50 text-blue-950",
+                    )}
+                  >
+                    <strong>{advisory.title}</strong>
+                    <span className="mt-0.5 block">{advisory.message}</span>
+                  </div>
+                ))}
               </div>
             )}
           </section>
