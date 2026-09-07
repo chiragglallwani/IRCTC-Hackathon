@@ -39,7 +39,8 @@ function availabilityAdvisory(
       code: "REGRET",
       severity: "danger",
       title: "Booking unavailable",
-      message: "This option cannot currently be booked. Choose another class or journey.",
+      message:
+        "This option cannot currently be booked. Choose another class or journey.",
       blocking: true,
       spokenPriority: 2,
     };
@@ -104,7 +105,8 @@ export function journeyAdvisories(
       code: "MULTI_LEG_RISK",
       severity: journey.availability === "REGRET" ? "danger" : "warning",
       title: "One or more legs are not confirmed",
-      message: "The overall status reflects the least available leg. Review every leg before continuing.",
+      message:
+        "The overall status reflects the least available leg. Review every leg before continuing.",
       blocking: journey.availability === "REGRET",
       spokenPriority: 2,
     });
@@ -112,7 +114,8 @@ export function journeyAdvisories(
     code: "QUOTA_PENDING",
     severity: "info",
     title: "Best quota checked after passenger selection",
-    message: "General quota is the current baseline. RailEase will choose the best eligible available quota after passenger criteria are verified.",
+    message:
+      "General quota is the current baseline. RailEase will choose the best eligible available quota after passenger criteria are verified.",
     blocking: false,
     spokenPriority: 1,
   });
@@ -134,7 +137,8 @@ export function quotaAdvisories({
         code: "QUOTA_PENDING",
         severity: "info",
         title: "Passenger details required",
-        message: "Add or select passengers to calculate the best eligible quota.",
+        message:
+          "Add or select passengers to calculate the best eligible quota.",
         blocking: false,
         spokenPriority: 1,
       },
@@ -160,7 +164,8 @@ export function quotaAdvisories({
       spokenPriority: best.usedFallback ? 2 : 1,
     },
   ];
-  if (selected) result.unshift(availabilityAdvisory(selected, passengers.length));
+  if (selected)
+    result.unshift(availabilityAdvisory(selected, passengers.length));
   if (
     passengers.some(
       (passenger) =>
@@ -174,7 +179,8 @@ export function quotaAdvisories({
       code: "QUOTA_VERIFICATION",
       severity: "warning",
       title: "Eligibility verification required",
-      message: "Carry valid supporting documents for every claimed concession or special quota.",
+      message:
+        "Carry valid supporting documents for every claimed concession or special quota.",
       blocking: false,
       spokenPriority: 2,
     });

@@ -26,11 +26,21 @@ const numberWords: Record<string, number> = {
 function numberFrom(value: string | undefined) {
   if (!value) return null;
   const parsed = Number(value);
-  return Number.isFinite(parsed) ? parsed : (numberWords[value.toLowerCase()] ?? null);
+  return Number.isFinite(parsed)
+    ? parsed
+    : (numberWords[value.toLowerCase()] ?? null);
 }
 
 function nextWeekday(name: string, now = new Date()) {
-  const names = ["sunday", "monday", "tuesday", "wednesday", "thursday", "friday", "saturday"];
+  const names = [
+    "sunday",
+    "monday",
+    "tuesday",
+    "wednesday",
+    "thursday",
+    "friday",
+    "saturday",
+  ];
   const target = names.indexOf(name.toLowerCase());
   if (target < 0) return null;
   const delta = (target - now.getDay() + 7) % 7 || 7;
@@ -79,10 +89,14 @@ function calendarDate(day: number, month: number, year: number) {
 
 function spokenCalendarDate(text: string, now: Date) {
   const dayFirst = text.match(
-    new RegExp(`\\b(\\d{1,2})(?:st|nd|rd|th)?\\s+(?:of\\s+)?(${monthPattern})(?:[\\s,]+(20\\d{2}))?\\b`),
+    new RegExp(
+      `\\b(\\d{1,2})(?:st|nd|rd|th)?\\s+(?:of\\s+)?(${monthPattern})(?:[\\s,]+(20\\d{2}))?\\b`,
+    ),
   );
   const monthFirst = text.match(
-    new RegExp(`\\b(${monthPattern})\\s+(\\d{1,2})(?:st|nd|rd|th)?(?:[\\s,]+(20\\d{2}))?\\b`),
+    new RegExp(
+      `\\b(${monthPattern})\\s+(\\d{1,2})(?:st|nd|rd|th)?(?:[\\s,]+(20\\d{2}))?\\b`,
+    ),
   );
   const numeric = text.match(/\b(\d{1,2})[\/.](\d{1,2})[\/.](20\d{2})\b/);
 
@@ -113,14 +127,23 @@ function spokenCalendarDate(text: string, now: Date) {
 }
 
 export function parseSpokenDate(text: string, now = new Date()) {
-  if (/day after tomorrow|परसों/.test(text)) return dateOffset(todayDate(now), 2);
+  if (/day after tomorrow|परसों/.test(text))
+    return dateOffset(todayDate(now), 2);
   if (/tomorrow|कल/.test(text)) return dateOffset(todayDate(now), 1);
   if (/today|आज/.test(text)) return todayDate(now);
   const iso = text.match(/\b(20\d{2}-\d{2}-\d{2})\b/)?.[1];
   if (iso) return iso;
   const calendar = spokenCalendarDate(text, now);
   if (calendar) return calendar;
-  for (const weekday of ["sunday", "monday", "tuesday", "wednesday", "thursday", "friday", "saturday"]) {
+  for (const weekday of [
+    "sunday",
+    "monday",
+    "tuesday",
+    "wednesday",
+    "thursday",
+    "friday",
+    "saturday",
+  ]) {
     if (text.includes(weekday)) return nextWeekday(weekday, now);
   }
   return null;
@@ -165,7 +188,11 @@ export function parseLocalCommand(
   const containsRoute = /\bfrom\b.+\bto\b/.test(text) || /से.+तक/.test(text);
   const tatkalRequested = /tatkal|तत्काल/.test(text);
   if (/^(cancel|stop|start over|reset|रद्द|रोक)/.test(text))
-    return baseIntent("cancel", emptyVoiceSearchDraft, "I cleared the current request.");
+    return baseIntent(
+      "cancel",
+      emptyVoiceSearchDraft,
+      "I cleared the current request.",
+    );
 
   const topic = /\brac\b/.test(text)
     ? "rac"
@@ -179,36 +206,97 @@ export function parseLocalCommand(
             ? "cancellation"
             : null;
   if (topic && /what|explain|meaning|mean|क्या|समझा/.test(text)) {
-    const intent = baseIntent("explain_term", existing, "I can explain that railway term.");
+    const intent = baseIntent(
+      "explain_term",
+      existing,
+      "I can explain that railway term.",
+    );
     intent.explanationTopic = topic;
     return intent;
   }
 
-  const ordinalMatch = text.match(/(?:select|choose|book|option|train)\s*(?:the\s*)?(\d+|one|two|three|four|five|first|second|third|fourth|fifth)/);
+  const ordinalMatch = text.match(
+    /(?:select|choose|book|option|train)\s*(?:the\s*)?(\d+|one|two|three|four|five|first|second|third|fourth|fifth)/,
+  );
   if (ordinalMatch) {
-    const ordinalNames: Record<string, number> = { first: 1, second: 2, third: 3, fourth: 4, fifth: 5 };
-    const ordinal = ordinalNames[ordinalMatch[1]] ?? numberFrom(ordinalMatch[1]);
+    const ordinalNames: Record<string, number> = {
+      first: 1,
+      second: 2,
+      third: 3,
+      fourth: 4,
+      fifth: 5,
+    };
+    const ordinal =
+      ordinalNames[ordinalMatch[1]] ?? numberFrom(ordinalMatch[1]);
     if (ordinal) {
-      const intent = baseIntent("select_journey", existing, `Reviewing option ${ordinal}.`);
+      const intent = baseIntent(
+        "select_journey",
+        existing,
+        `Reviewing option ${ordinal}.`,
+      );
       intent.resultReference = { ordinal, journeyId: null };
       return intent;
     }
   }
 
   if (!containsRoute && /cheapest|lowest fare|सबसे सस्त/.test(text))
-    return { ...baseIntent("filter_results", { ...existing, sort: "cheapest" }, "Showing cheapest journeys first."), correctionFields: ["sort"] };
+    return {
+      ...baseIntent(
+        "filter_results",
+        { ...existing, sort: "cheapest" },
+        "Showing cheapest journeys first.",
+      ),
+      correctionFields: ["sort"],
+    };
   if (!containsRoute && /fastest|earliest arrival|सबसे तेज/.test(text))
-    return { ...baseIntent("filter_results", { ...existing, sort: "fastest" }, "Showing fastest journeys first."), correctionFields: ["sort"] };
+    return {
+      ...baseIntent(
+        "filter_results",
+        { ...existing, sort: "fastest" },
+        "Showing fastest journeys first.",
+      ),
+      correctionFields: ["sort"],
+    };
   if (!containsRoute && /recommended|best option/.test(text))
-    return { ...baseIntent("filter_results", { ...existing, sort: "recommended" }, "Showing recommended journeys first."), correctionFields: ["sort"] };
+    return {
+      ...baseIntent(
+        "filter_results",
+        { ...existing, sort: "recommended" },
+        "Showing recommended journeys first.",
+      ),
+      correctionFields: ["sort"],
+    };
   if (!containsRoute && /direct only|no transfers|सीधी/.test(text))
-    return { ...baseIntent("filter_results", { ...existing, maxTransfers: 0 }, "Showing direct journeys only."), correctionFields: ["maxTransfers"] };
-  if (!containsRoute && /available only|confirmed only|confirmed seats|उपलब्ध/.test(text))
-    return { ...baseIntent("filter_results", { ...existing, onlyAvailable: true }, "Showing journeys with confirmed availability."), correctionFields: ["onlyAvailable"] };
+    return {
+      ...baseIntent(
+        "filter_results",
+        { ...existing, maxTransfers: 0 },
+        "Showing direct journeys only.",
+      ),
+      correctionFields: ["maxTransfers"],
+    };
+  if (
+    !containsRoute &&
+    /available only|confirmed only|confirmed seats|उपलब्ध/.test(text)
+  )
+    return {
+      ...baseIntent(
+        "filter_results",
+        { ...existing, onlyAvailable: true },
+        "Showing journeys with confirmed availability.",
+      ),
+      correctionFields: ["onlyAvailable"],
+    };
   if (/read.*result|describe.*result|what.*option/.test(text))
-    return baseIntent("describe_results", existing, "Here are the leading journey options.");
+    return baseIntent(
+      "describe_results",
+      existing,
+      "Here are the leading journey options.",
+    );
 
-  const budgetMatch = text.match(/(?:under|below|less than|maximum|budget)\s*(?:₹|rs\.?|rupees?)?\s*(\d{2,6})/);
+  const budgetMatch = text.match(
+    /(?:under|below|less than|maximum|budget)\s*(?:₹|rs\.?|rupees?)?\s*(\d{2,6})/,
+  );
   const departurePeriod = /morning|सुबह/.test(text)
     ? "morning"
     : /afternoon|दोपहर/.test(text)
@@ -225,7 +313,11 @@ export function parseLocalCommand(
       departurePeriod: departurePeriod ?? existing.departurePeriod,
     };
     return {
-      ...baseIntent("filter_results", next, "I applied the requested fare or departure-time filter."),
+      ...baseIntent(
+        "filter_results",
+        next,
+        "I applied the requested fare or departure-time filter.",
+      ),
       correctionFields: [
         ...(budgetMatch ? ["maxFare"] : []),
         ...(departurePeriod ? ["departurePeriod"] : []),
@@ -237,23 +329,46 @@ export function parseLocalCommand(
     /(?:from\s+)(.+?)\s+(?:to)\s+(.+?)(?=\s+(?:(?:and\s+)?(?:today|tomorrow|day after tomorrow|on|date|journey date|travel date|for|in|with|cheapest|fastest|available|direct|redirect|take me|send me|go to))\b|$)/,
   );
   const hindiRoute = text.match(/(.+?)\s+से\s+(.+?)\s+(?:तक|जाना|की)/);
-  const passenger = text.match(/(\d+|one|two|three|four|five|six|seven|eight|nine|एक|दो|तीन|चार|पांच|छह)\s+(adult|adults|passenger|passengers|वयस्क|यात्री)/);
-  const child = text.match(/(\d+|one|two|three|four|five|six|एक|दो|तीन|चार|पांच|छह)\s+(child|children|बच्च)/);
-  const infant = text.match(/(\d+|one|two|three|four|five|six|एक|दो|तीन|चार|पांच|छह)\s+(infant|infants|शिशु)/);
+  const passenger = text.match(
+    /(\d+|one|two|three|four|five|six|seven|eight|nine|एक|दो|तीन|चार|पांच|छह)\s+(adult|adults|passenger|passengers|वयस्क|यात्री)/,
+  );
+  const child = text.match(
+    /(\d+|one|two|three|four|five|six|एक|दो|तीन|चार|पांच|छह)\s+(child|children|बच्च)/,
+  );
+  const infant = text.match(
+    /(\d+|one|two|three|four|five|six|एक|दो|तीन|चार|पांच|छह)\s+(infant|infants|शिशु)/,
+  );
   const spokenDate = parseSpokenDate(text, now);
-  if (route || hindiRoute || spokenDate || passenger || parseClass(text) || tatkalRequested) {
+  if (
+    route ||
+    hindiRoute ||
+    spokenDate ||
+    passenger ||
+    parseClass(text) ||
+    tatkalRequested
+  ) {
     const next: VoiceSearchDraft = {
       ...existing,
-      originQuery: route?.[1]?.trim() ?? hindiRoute?.[1]?.trim() ?? existing.originQuery,
-      destinationQuery: route?.[2]?.trim() ?? hindiRoute?.[2]?.trim() ?? existing.destinationQuery,
+      originQuery:
+        route?.[1]?.trim() ?? hindiRoute?.[1]?.trim() ?? existing.originQuery,
+      destinationQuery:
+        route?.[2]?.trim() ??
+        hindiRoute?.[2]?.trim() ??
+        existing.destinationQuery,
       date: spokenDate ?? (tatkalRequested ? tomorrowDate(now) : existing.date),
       adults: numberFrom(passenger?.[1]) ?? existing.adults ?? 1,
       children: numberFrom(child?.[1]) ?? existing.children ?? 0,
       infants: numberFrom(infant?.[1]) ?? existing.infants ?? 0,
       travelClass: parseClass(text) ?? existing.travelClass ?? "ANY",
       mode: tatkalRequested ? "tatkal" : (existing.mode ?? "quick"),
-      sort: /cheapest|सस्त/.test(text) ? "cheapest" : /fastest|तेज/.test(text) ? "fastest" : (existing.sort ?? "recommended"),
-      onlyAvailable: /available|confirmed|उपलब्ध/.test(text) ? true : (existing.onlyAvailable ?? false),
+      sort: /cheapest|सस्त/.test(text)
+        ? "cheapest"
+        : /fastest|तेज/.test(text)
+          ? "fastest"
+          : (existing.sort ?? "recommended"),
+      onlyAvailable: /available|confirmed|उपलब्ध/.test(text)
+        ? true
+        : (existing.onlyAvailable ?? false),
       maxTransfers: /direct|सीधी/.test(text) ? 0 : existing.maxTransfers,
       maxFare: budgetMatch ? Number(budgetMatch[1]) : existing.maxFare,
       departurePeriod: departurePeriod ?? existing.departurePeriod,
@@ -263,7 +378,13 @@ export function parseLocalCommand(
       !next.destinationQuery && "destinationQuery",
       !next.date && "date",
     ].filter(Boolean) as string[];
-    const intent = baseIntent(missing.length ? "clarify" : "search_trains", next, missing.length ? "I need a little more information." : "Please confirm the journey details before I search.");
+    const intent = baseIntent(
+      missing.length ? "clarify" : "search_trains",
+      next,
+      missing.length
+        ? "I need a little more information."
+        : "Please confirm the journey details before I search.",
+    );
     intent.missingFields = missing;
     return intent;
   }
@@ -271,7 +392,9 @@ export function parseLocalCommand(
 }
 
 export function isAffirmative(value: string) {
-  return /^(yes|yeah|yep|confirm|continue|search|go ahead|हाँ|हां|जी|ठीक)/i.test(value.trim());
+  return /^(yes|yeah|yep|confirm|continue|search|go ahead|हाँ|हां|जी|ठीक)/i.test(
+    value.trim(),
+  );
 }
 
 export function isNegative(value: string) {

@@ -2,7 +2,13 @@ import { describe, expect, it } from "vitest";
 import { selectDishaVoice } from "@/hooks/use-speech-synthesis";
 
 function voice(name: string, lang: string, localService = true) {
-  return { name, lang, localService, default: false, voiceURI: name } as SpeechSynthesisVoice;
+  return {
+    name,
+    lang,
+    localService,
+    default: false,
+    voiceURI: name,
+  } as SpeechSynthesisVoice;
 }
 
 describe("Disha speech voice selection", () => {
@@ -26,6 +32,8 @@ describe("Disha speech voice selection", () => {
   });
 
   it("never selects a recognizably male voice as the fallback", () => {
-    expect(selectDishaVoice([voice("Microsoft Ravi", "en-IN")], "en-IN")).toBeNull();
+    expect(
+      selectDishaVoice([voice("Microsoft Ravi", "en-IN")], "en-IN"),
+    ).toBeNull();
   });
 });

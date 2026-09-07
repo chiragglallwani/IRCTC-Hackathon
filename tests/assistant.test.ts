@@ -2,10 +2,7 @@ import { describe, expect, it } from "vitest";
 import { parseLocalCommand } from "@/lib/assistant/local-command-parser";
 import { emptyVoiceSearchDraft } from "@/lib/assistant/schema";
 import { resolveStation } from "@/lib/assistant/station-resolver";
-import {
-  buildSearchUrl,
-  validateSearchInput,
-} from "@/lib/search-navigation";
+import { buildSearchUrl, validateSearchInput } from "@/lib/search-navigation";
 
 describe("voice assistant parsing", () => {
   const now = new Date(2026, 8, 5, 10, 0, 0);
@@ -77,7 +74,11 @@ describe("voice assistant parsing", () => {
   it("extracts stations and passengers from a long checkout-oriented request", () => {
     const result = parseLocalCommand(
       "I want to do a quick booking from Ahmedabad to Pune and date of journey will be 6 October 2026 for one adult and one child in third AC redirect me to the check out page for the best recommended search option",
-      { ...emptyVoiceSearchDraft, originQuery: "old unresolved text", date: "2026-09-06" },
+      {
+        ...emptyVoiceSearchDraft,
+        originQuery: "old unresolved text",
+        date: "2026-09-06",
+      },
       now,
     );
     expect(result?.action).toBe("search_trains");
@@ -95,21 +96,35 @@ describe("voice assistant parsing", () => {
 
   it("supports month-first and Indian numeric spoken date formats", () => {
     expect(
-      parseLocalCommand("from Ahmedabad to Mumbai on October 6, 2026", emptyVoiceSearchDraft, now)?.draft.date,
+      parseLocalCommand(
+        "from Ahmedabad to Mumbai on October 6, 2026",
+        emptyVoiceSearchDraft,
+        now,
+      )?.draft.date,
     ).toBe("2026-10-06");
     expect(
-      parseLocalCommand("from Ahmedabad to Mumbai on 06/10/2026", emptyVoiceSearchDraft, now)?.draft.date,
+      parseLocalCommand(
+        "from Ahmedabad to Mumbai on 06/10/2026",
+        emptyVoiceSearchDraft,
+        now,
+      )?.draft.date,
     ).toBe("2026-10-06");
   });
 
   it("recognizes safe local result commands", () => {
-    expect(parseLocalCommand("select option 2")?.resultReference?.ordinal).toBe(2);
+    expect(parseLocalCommand("select option 2")?.resultReference?.ordinal).toBe(
+      2,
+    );
     expect(parseLocalCommand("show direct only")?.draft.maxTransfers).toBe(0);
-    expect(parseLocalCommand("confirmed seats only")?.draft.onlyAvailable).toBe(true);
-    expect(parseLocalCommand("evening trains under 1500")?.draft).toMatchObject({
-      departurePeriod: "evening",
-      maxFare: 1500,
-    });
+    expect(parseLocalCommand("confirmed seats only")?.draft.onlyAvailable).toBe(
+      true,
+    );
+    expect(parseLocalCommand("evening trains under 1500")?.draft).toMatchObject(
+      {
+        departurePeriod: "evening",
+        maxFare: 1500,
+      },
+    );
   });
 
   it("understands a basic Hindi route request", () => {

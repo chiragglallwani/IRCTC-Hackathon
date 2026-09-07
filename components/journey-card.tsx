@@ -85,7 +85,11 @@ export const JourneyCard = memo(function JourneyCard({
         )
       : (selectedAvailability?.fare ??
         Math.min(...journey.classAvailability.map((item) => item.fare)));
-  const advisories = journeyAdvisories(journey, input, selectedClass ?? undefined);
+  const advisories = journeyAdvisories(
+    journey,
+    input,
+    selectedClass ?? undefined,
+  );
   const proceed = () => {
     saveStorage(
       storageKeys.checkout,

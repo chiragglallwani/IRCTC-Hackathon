@@ -257,6 +257,7 @@ export interface ItineraryDay {
 }
 export interface Itinerary {
   id: string;
+  source?: City;
   destination: TourismDestination;
   startDate: string;
   endDate: string;
@@ -281,10 +282,21 @@ export interface Itinerary {
   bookingReference?: string;
   bookedAt?: string;
   bookingStatus?: "confirmed" | "cancelled";
-  paymentMethod?: "upi" | "card" | "pay_later";
+  paymentMethod?: "upi" | "card" | "netbanking" | "pay_later";
+  paymentOrderId?: string;
+  passengers?: TourismPassenger[];
   contact?: {
     name: string;
     email: string;
     phone: string;
   };
+}
+
+export interface TourismPassenger {
+  id: string;
+  name: string;
+  age: number;
+  gender: "female" | "male" | "other";
+  idType: "aadhaar" | "passport" | "driving_license";
+  idNumber: string;
 }

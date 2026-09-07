@@ -101,10 +101,27 @@ export async function POST(request: Request) {
       const issue = (await response.json().catch(() => null)) as {
         error?: { description?: string };
       } | null;
+      const description = issue?.error?.description;
+      // Some Razorpay test accounts do not have UPI QR enabled. Preserve a
+      // usable demo checkout, but never mask this configuration issue in live.
+      if (keyId.startsWith("rzp_test_")) {
+        const id = `qr_mock_${Date.now()}`;
+        return NextResponse.json({
+          id,
+          imageUrl: createMockQrDataUrl(
+            `${id}-${input.receipt}-${input.amount}`,
+          ),
+          closeBy,
+          status: "active",
+          mock: true,
+          fallbackReason:
+            description ?? "QR Codes are not enabled for this test account.",
+        });
+      }
       return NextResponse.json(
         {
           error:
-            issue?.error?.description ??
+            description ??
             "Razorpay QR could not be created. Confirm QR Codes are enabled for this test account.",
         },
         { status: 502 },
